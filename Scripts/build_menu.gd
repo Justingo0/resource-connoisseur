@@ -11,7 +11,6 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_button_pressed() -> void:
-	print("button 1 clicked")
 	camera.building_object = load("res://Scenes/miner.tscn")
 	# I want to set the buildcursor building to miner
 
