@@ -31,7 +31,6 @@ animations = [{
 
 [node name="Conveyer" type="Area2D" unique_id=1277094344 groups=["Block", "Conveyor"]]
 script = ExtResource("1_k37nu")
-held = null
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=309175764]
 shape = SubResource("RectangleShape2D_p7o00")
@@ -44,7 +43,7 @@ autoplay = "move"
 frame_progress = 0.1380663
 
 [node name="RayCast" type="RayCast2D" parent="." unique_id=423209814]
-target_position = Vector2(0, -46)
+target_position = Vector2(0, -66)
 collide_with_areas = true
 collide_with_bodies = false
 
