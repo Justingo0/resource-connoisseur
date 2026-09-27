@@ -7,8 +7,6 @@ size = Vector2(121.09374, 121.09374)
 
 [node name="Ore" type="Area2D" unique_id=545579719 groups=["Ore"]]
 scale = Vector2(2.56, 2.56)
-collision_layer = 8
-collision_mask = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1945875335]
 scale = Vector2(0.2, 0.2)

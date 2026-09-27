@@ -69,8 +69,6 @@ func set_build_cursor(object:PackedScene):
 	building = true
 	
 	var highlight = object.instantiate()
-	highlight.collision_layer = 1
-	highlight.collision_mask = 1
 	build_cursor.add_child(highlight)
 	highlight.position = Vector2.ZERO
 	
