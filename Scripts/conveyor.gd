@@ -2,11 +2,13 @@ extends Area2D
 
 @onready var raycast = $RayCast
 
-@export var held:bool = false
-
 var SPEED:float = 200
 
+@export var held:bool = false
+
 @export var item:CharacterBody2D
+@export var item_incoming:CharacterBody2D
+@export var item_moving:bool
 
 func _ready() -> void:
 	$Body.frame = GameManager.conveyor_frame
@@ -23,8 +25,24 @@ func _physics_process(delta: float) -> void:
 		var next_conveyer = raycast.get_collider()
 		if next_conveyer and next_conveyer.is_in_group("Conveyor") and next_conveyer.held == false and next_conveyer.item == null:
 			item.global_position = item.global_position.move_toward(next_conveyer.global_position, SPEED*delta)
+			next_conveyer.item_incoming = item
+			item_moving = true
 			if item.global_position == next_conveyer.global_position:
 				next_conveyer.item = item
+				next_conveyer.item_incoming = null
+				item = null
+		elif next_conveyer and next_conveyer.is_in_group("Container"):
+			var inventory_size = 0
+			for value in next_conveyer.inventory.values():
+				if value is int:
+					inventory_size += 0
+			if inventory_size >= next_conveyer.inventory_size: return
+			item.global_position = item.global_position.move_toward(global_position + Vector2.UP.rotated(rotation)*64, SPEED*delta)
+			item_moving = true
+			if item.global_position == (global_position + Vector2.UP.rotated(rotation)*64):
+				next_conveyer.inventory["ore"] += 1
+				print(next_conveyer.inventory)
+				item.queue_free()
 				item = null
 
 #func _process(delta: float) -> void:
@@ -43,3 +61,10 @@ func _physics_process(delta: float) -> void:
 		#if body.is_on_conveyor == false:
 			#item = body
 			#body.is_on_conveyor = true
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		if item and not item_moving:
+			item.queue_free()
+		elif item_incoming:
+			item_incoming.queue_free()

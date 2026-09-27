@@ -1,11 +1,16 @@
 [gd_scene format=3 uid="uid://3lhr0h1b5ej"]
 
+[ext_resource type="Script" uid="uid://de6gdx0s1lpmd" path="res://Scripts/container_script.gd" id="1_uq2cn"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(192, 192)
 
-[node name="Home" type="Area2D" unique_id=1003972778 groups=["Block"]]
+[node name="Home" type="Area2D" unique_id=1003972778 groups=["Block", "Container"]]
+z_index = 5
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("1_uq2cn")
+inventory_size = 1000
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1509512366]
 shape = SubResource("RectangleShape2D_p7o00")
