@@ -4,6 +4,8 @@
 size = Vector2(192, 192)
 
 [node name="Home" type="Area2D" unique_id=1003972778 groups=["Block"]]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1509512366]
 shape = SubResource("RectangleShape2D_p7o00")

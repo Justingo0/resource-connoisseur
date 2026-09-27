@@ -30,8 +30,9 @@ animations = [{
 }]
 
 [node name="Conveyer" type="Area2D" unique_id=1277094344 groups=["Block", "Conveyor"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_k37nu")
-held = null
 
 [node name="Collision" type="CollisionShape2D" parent="." unique_id=309175764]
 shape = SubResource("RectangleShape2D_p7o00")

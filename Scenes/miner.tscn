@@ -7,6 +7,8 @@
 size = Vector2(96, 96)
 
 [node name="Miner" type="Area2D" unique_id=545579719 groups=["Block"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_p7qq0")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1945875335]
@@ -20,5 +22,16 @@ position = Vector2(-32, -32)
 scale = Vector2(1.28, 1.28)
 texture = ExtResource("1_h8pov")
 
+[node name="Area2D" type="Area2D" parent="." unique_id=1670879501]
+position = Vector2(-32, -32)
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1067096483]
+position = Vector2(7.15833, -4.5474735e-13)
+scale = Vector2(0.9909057, 0.99609375)
+polygon = PackedVector2Array(-104.105095, 32.12549, -39.517715, 32.12549, -39.517715, 96.376465, 25.069662, 96.376465, 25.069662, 32.12549, 89.65704, 32.12549, 89.65704, -32.12549, 25.069662, -32.12549, 25.069662, -96.376465, -39.517715, -96.376465, -39.517715, -32.12549, -104.105095, -32.12549)
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

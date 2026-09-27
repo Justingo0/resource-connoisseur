@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(32, 32)
 
-[node name="OreItem" type="CharacterBody2D" unique_id=1381419043 groups=["Ore"]]
+[node name="OreItem" type="CharacterBody2D" unique_id=1381419043]
 z_index = 2
 collision_layer = 2
 collision_mask = 2
