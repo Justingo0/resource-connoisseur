@@ -28,7 +28,8 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 Block=""
 Conveyor=""
-Container=""
+Item=""
+Ore=""
 
 [input]
 
