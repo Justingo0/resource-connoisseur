@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://cvbrs641igcdw"]
+
+[ext_resource type="Script" uid="uid://bktk06gyx2lj" path="res://Scripts/build_menu.gd" id="1_hx1pr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sar82"]
+bg_color = Color(0.6610597, 0.5925078, 0.47071713, 0.21960784)
+
+[node name="BuildMenu" type="Control" unique_id=193295564]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hx1pr")
+
+[node name="Panel" type="Panel" parent="." unique_id=1812512742]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -465.0
+offset_top = -179.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel" unique_id=1487909387]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -465.0
+offset_top = -179.0
+offset_bottom = 1.5258789e-05
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Button" type="Button" parent="Panel/HBoxContainer" unique_id=1374977314]
+layout_mode = 2
+size_flags_horizontal = 3
+tooltip_text = "Click me!"
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
+text = "Miner"
+
+[node name="Button2" type="Button" parent="Panel/HBoxContainer" unique_id=1707971017]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
+text = "Conveyor"
+
+[node name="Button3" type="Button" parent="Panel/HBoxContainer" unique_id=208719041]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
+text = "Core"
+
+[node name="Button4" type="Button" parent="Panel/HBoxContainer" unique_id=1187533761]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
+text = "Clear"
+
+[connection signal="pressed" from="Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]

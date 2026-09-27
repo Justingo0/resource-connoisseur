@@ -60,9 +60,8 @@ func _physics_process(_delta: float) -> void:
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(64, 64))
 
 func set_build_cursor(object:PackedScene):
-	if build_cursor.get_child_count() > 1:
-		for child in build_cursor.get_children():
-			child.queue_free()
+	for child in build_cursor.get_children():
+		child.queue_free()
 	
 	if not object:
 		building = false
@@ -70,6 +69,8 @@ func set_build_cursor(object:PackedScene):
 	building = true
 	
 	var highlight = object.instantiate()
+	highlight.collision_layer = 1
+	highlight.collision_mask = 1
 	build_cursor.add_child(highlight)
 	highlight.position = Vector2.ZERO
 	
@@ -87,6 +88,7 @@ func place(object:PackedScene):
 				direction = Vector2(0, sign(direction.y))
 			last_object_built.rotation = deg_to_rad(rad_to_deg(direction.angle()) + 90)
 		return
+	
 	
 	var placed_object = object.instantiate()
 	get_tree().current_scene.add_child(placed_object)
