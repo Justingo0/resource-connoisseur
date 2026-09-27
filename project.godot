@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Third.Space-Game"
+config/version="0.1.0"
 run/main_scene="uid://ccgyrxlfrub0a"
 config/features=PackedStringArray("4.7", "Mobile")
 config/icon="res://icon.svg"
@@ -28,6 +29,7 @@ enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")
 
 Block=""
 Conveyor=""
+Container=""
 Item=""
 Ore=""
 
