@@ -3,6 +3,7 @@ extends Area2D
 var oreCount = 0
 var mineTime = 0
 var time = 0
+@export var held:bool = false
 @export var conveyors = []:
 	set(newValue):
 		conveyors = newValue
@@ -14,7 +15,6 @@ var resources = 0
 var resourceType = ""
 @onready var ore_item = preload("res://Scenes/ore_item.tscn")
 var minerSelf = self
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 		time = 0
 	if not conveyors.is_empty() and resources > 0:
 		var selectedConveyor = conveyorInterval%conveyors.size()
-		if conveyors[selectedConveyor].item == null and conveyors[selectedConveyor].held == false and minerSelf.held == false:
+		if conveyors[selectedConveyor].item == null and conveyors[selectedConveyor].held == false and !held:
 			var newItem = ore_item.instantiate()
 			get_tree().current_scene.add_child(newItem)
 			conveyorInterval += 1
