@@ -62,22 +62,18 @@ position = Vector2(-320, 256)
 
 [node name="Conveyer" parent="." unique_id=1277094344 node_paths=PackedStringArray("item") instance=ExtResource("6_x033f")]
 position = Vector2(-320, 64)
-held = false
 item = NodePath("../Ore4")
 
 [node name="Conveyer2" parent="." unique_id=1222822154 node_paths=PackedStringArray("item") instance=ExtResource("6_x033f")]
 position = Vector2(-320, 128)
-held = false
 item = NodePath("../Ore11")
 
 [node name="Conveyer3" parent="." unique_id=1640065541 node_paths=PackedStringArray("item") instance=ExtResource("6_x033f")]
 position = Vector2(-320, 192)
-held = false
 item = NodePath("../Ore12")
 
 [node name="Conveyer4" parent="." unique_id=125112127 node_paths=PackedStringArray("item") instance=ExtResource("6_x033f")]
 position = Vector2(-320, 256)
-held = false
 item = NodePath("../Ore13")
 
 [node name="Ore" parent="." unique_id=545579719 instance=ExtResource("7_rdbpf")]
