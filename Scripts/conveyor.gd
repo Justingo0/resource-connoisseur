@@ -34,8 +34,7 @@ func _physics_process(delta: float) -> void:
 		elif next_conveyer and next_conveyer.is_in_group("Container"):
 			var inventory_size = 0
 			for value in next_conveyer.inventory.values():
-				if value is int:
-					inventory_size += 0
+				inventory_size += value
 			if inventory_size >= next_conveyer.inventory_size: return
 			item.global_position = item.global_position.move_toward(global_position + Vector2.UP.rotated(rotation)*64, SPEED*delta)
 			item_moving = true
