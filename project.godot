@@ -30,6 +30,8 @@ Block=""
 Conveyor=""
 Item=""
 Ore=""
+Container=""
+Unbreakable=""
 
 [input]
 

@@ -1,10 +1,14 @@
 [gd_scene format=3 uid="uid://rbhy07an84kd"]
 
-[ext_resource type="Texture2D" uid="uid://pdyevrfdikdf" path="res://Assets/Conveyor/Conveyer1.png" id="1_4lxgk"]
+[ext_resource type="Texture2D" uid="uid://na04us1owcye" path="res://Assets/Conveyor/Conveyer1.png" id="1_4lxgk"]
 [ext_resource type="Script" uid="uid://dh57pemlla64d" path="res://Scripts/conveyor.gd" id="1_k37nu"]
-[ext_resource type="Texture2D" uid="uid://ddhwb1q1xoo73" path="res://Assets/Conveyor/Conveyer2.png" id="2_k37nu"]
-[ext_resource type="Texture2D" uid="uid://bu4xgoewffdkv" path="res://Assets/Conveyor/Conveyer3.png" id="3_3glj5"]
-[ext_resource type="Texture2D" uid="uid://mo7fkginyyf3" path="res://Assets/Conveyor/Conveyer4.png" id="4_5xoq8"]
+[ext_resource type="Texture2D" uid="uid://ctw3ki2mmr3co" path="res://Assets/Conveyor/Conveyer2.png" id="2_k37nu"]
+[ext_resource type="Texture2D" uid="uid://d2khnvr0bg6tq" path="res://Assets/Conveyor/Conveyer3.png" id="3_3glj5"]
+[ext_resource type="Texture2D" uid="uid://gljlumyqi65u" path="res://Assets/Conveyor/Conveyer4.png" id="4_5xoq8"]
+[ext_resource type="Texture2D" uid="uid://dbjkaofvk67yn" path="res://Assets/Conveyor/Conveyer5.png" id="6_247tj"]
+[ext_resource type="Texture2D" uid="uid://cwo6weospvo4k" path="res://Assets/Conveyor/Conveyer6.png" id="7_g8mpg"]
+[ext_resource type="Texture2D" uid="uid://ct16k0nrxds03" path="res://Assets/Conveyor/Conveyer7.png" id="8_jhnkp"]
+[ext_resource type="Texture2D" uid="uid://b50u6lhchht41" path="res://Assets/Conveyor/Conveyer8.png" id="9_6nye6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(60, 60)
@@ -23,6 +27,18 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("4_5xoq8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_247tj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_g8mpg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_jhnkp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6nye6")
 }],
 "loop": 1,
 "name": &"move",
@@ -42,11 +58,12 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_p7o00")
 animation = &"move"
 autoplay = "move"
-frame_progress = 0.1380663
+frame_progress = 0.7843642
 
 [node name="RayCast" type="RayCast2D" parent="." unique_id=423209814]
 target_position = Vector2(0, -46)
 collide_with_areas = true
 collide_with_bodies = false
 
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="frame_changed" from="Body" to="." method="_on_body_frame_changed"]

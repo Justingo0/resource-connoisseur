@@ -23,7 +23,7 @@ func _on_body_frame_changed() -> void:
 func _physics_process(delta: float) -> void:
 	if raycast.is_colliding() and item:
 		var next_conveyer = raycast.get_collider()
-		if next_conveyer and next_conveyer.is_in_group("Conveyor") and next_conveyer.held == false and next_conveyer.item == null:
+		if next_conveyer and next_conveyer.is_in_group("Conveyor") and next_conveyer.held == false and (next_conveyer.item == null and (next_conveyer.item_incoming == null or next_conveyer.item_incoming == item)):
 			item.global_position = item.global_position.move_toward(next_conveyer.global_position, SPEED*delta)
 			next_conveyer.item_incoming = item
 			item_moving = true
@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 			item_moving = true
 			if item.global_position == (global_position + Vector2.UP.rotated(rotation)*64):
 				next_conveyer.inventory["ore"] += 1
-				print(next_conveyer.inventory)
+				#print(next_conveyer.inventory)
 				item.queue_free()
 				item = null
 
@@ -64,7 +64,12 @@ func _physics_process(delta: float) -> void:
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
-		if item and not item_moving:
+		if item:
 			item.queue_free()
 		elif item_incoming:
 			item_incoming.queue_free()
+
+
+func _on_mouse_entered() -> void:
+	pass
+	#print(item, ", ", item_incoming)

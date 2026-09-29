@@ -7,7 +7,7 @@ var time = 0
 @export var conveyors = []:
 	set(newValue):
 		conveyors = newValue
-		print(conveyors)
+		#print(conveyors)
 	get:
 		return conveyors
 var conveyorInterval = 0
