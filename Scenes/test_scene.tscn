@@ -18,6 +18,9 @@ texture_region_size = Vector2i(64, 64)
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_50ct6")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
+size = Vector2(60, 60)
+
 [node name="Node2D" type="Node2D" unique_id=1245121356]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1098518263]
@@ -41,7 +44,16 @@ script = ExtResource("1_r5l72")
 modulate = Color(1, 1, 1, 0.41960785)
 z_index = 10
 
-[node name="Home" parent="." unique_id=1526990172 instance=ExtResource("3_hb2xm")]
+[node name="DeleteCursor" type="Area2D" parent="Camera2D" unique_id=1699371476]
+modulate = Color(1, 1, 1, 0.41960785)
+z_index = 10
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/DeleteCursor" unique_id=1154866660]
+shape = SubResource("RectangleShape2D_p7o00")
+
+[node name="Home" parent="." unique_id=1526990172 groups=["Unbreakable"] instance=ExtResource("3_hb2xm")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1254243288]
 

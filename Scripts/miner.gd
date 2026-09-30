@@ -21,7 +21,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	time += delta
+	time += delta*GameManager.time_scale
 	if oreCount > 0 and time > mineTime:
 		resources = min(resources + 1, 10)
 		time = 0

@@ -1,15 +1,15 @@
 extends Camera2D
 
 @onready var build_cursor = $BuildCursor
+@onready var delete_cursor = $DeleteCursor
 
 var mouse_starting_pos := Vector2.ZERO
 var starting_cam_pos := Vector2.ZERO
 var dragging := false
 
-
 var building_mode := false
 var building := false
-var building_object:PackedScene = preload("res://Scenes/conveyor.tscn"):
+var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
 	set(new_object):
 		building_object = new_object
 		set_build_cursor(building_object)
@@ -25,7 +25,7 @@ var GRID_SIZE = 64
 
 var ZOOM_SPEED = 0.1
 var MIN_ZOOM = 0.5
-var MAX_ZOOM = 2
+var MAX_ZOOM = 2.5
 
 func _ready() -> void:
 	set_build_cursor(building_object)
@@ -77,7 +77,8 @@ func _physics_process(_delta: float) -> void:
 		elif current_action == actions.deleting:
 			delete()
 	
-	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(64, 64))
+	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
+	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 
 func set_build_cursor(object:PackedScene):
 	for child in build_cursor.get_children():
@@ -126,11 +127,9 @@ func place(object:PackedScene):
 	#current_action = actions.placing
 
 func delete():
-	if not building_mode or dragging: return
-	var deleting_objects = []
-	deleting_objects.append_array(build_cursor.get_child(0).get_overlapping_bodies())
-	deleting_objects.append_array(build_cursor.get_child(0).get_overlapping_areas())
-	if len(deleting_objects) >= 1:
+	if dragging: return
+	var deleting_objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
+	if not deleting_objects.is_empty():
 		var deleting_object = deleting_objects[0]
 		if deleting_object.is_in_group("Block") and not deleting_object.is_in_group("Unbreakable"):
 			deleting_object.queue_free()

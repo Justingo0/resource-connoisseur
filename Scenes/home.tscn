@@ -3,17 +3,18 @@
 [ext_resource type="Script" uid="uid://de6gdx0s1lpmd" path="res://Scripts/container_script.gd" id="1_uq2cn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
-size = Vector2(192, 192)
+size = Vector2(190, 190)
 
 [sub_resource type="BoxMesh" id="BoxMesh_p7o00"]
 
 [sub_resource type="Gradient" id="Gradient_uq2cn"]
-colors = PackedColorArray(0.5803922, 0.81960785, 1, 1, 0.5816053, 0.8187672, 1, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.18511981, 0.68810195, 0.999999, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_hm3tg"]
 gradient = SubResource("Gradient_uq2cn")
 
-[node name="Home" type="Area2D" unique_id=1003972778 groups=["Block", "Container", "Unbreakable"]]
+[node name="Home" type="Area2D" unique_id=1003972778 groups=["Block", "Container"]]
 z_index = 5
 collision_layer = 3
 collision_mask = 3

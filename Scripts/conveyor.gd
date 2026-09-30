@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	if raycast.is_colliding() and item:
 		var next_conveyer = raycast.get_collider()
 		if next_conveyer and next_conveyer.is_in_group("Conveyor") and next_conveyer.held == false and (next_conveyer.item == null and (next_conveyer.item_incoming == null or next_conveyer.item_incoming == item)):
-			item.global_position = item.global_position.move_toward(next_conveyer.global_position, SPEED*delta)
+			item.global_position = item.global_position.move_toward(next_conveyer.global_position, SPEED*delta*GameManager.time_scale)
 			next_conveyer.item_incoming = item
 			item_moving = true
 			if item.global_position == next_conveyer.global_position:
@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 			for value in next_conveyer.inventory.values():
 				inventory_size += value
 			if inventory_size >= next_conveyer.inventory_size: return
-			item.global_position = item.global_position.move_toward(global_position + Vector2.UP.rotated(rotation)*64, SPEED*delta)
+			item.global_position = item.global_position.move_toward(global_position + Vector2.UP.rotated(rotation)*64, SPEED*delta*GameManager.time_scale)
 			item_moving = true
 			if item.global_position == (global_position + Vector2.UP.rotated(rotation)*64):
 				next_conveyer.inventory["ore"] += 1
