@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://deinq6sk480pu"]
 
-[ext_resource type="Texture2D" uid="uid://f8rrum322feh" path="res://Assets/driller.png" id="1_h8pov"]
 [ext_resource type="Script" uid="uid://bot6kmnge57q3" path="res://Scripts/miner.gd" id="1_p7qq0"]
+[ext_resource type="Texture2D" uid="uid://casb24tydm1ro" path="res://Assets/minerBase.png" id="2_p7qq0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7qq0"]
 size = Vector2(96, 96)
@@ -19,8 +19,8 @@ shape = SubResource("RectangleShape2D_p7qq0")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=308717136]
 texture_filter = 1
 position = Vector2(-32, -32)
-scale = Vector2(1.28, 1.28)
-texture = ExtResource("1_h8pov")
+scale = Vector2(2, 2)
+texture = ExtResource("2_p7qq0")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1670879501]
 position = Vector2(-32, -32)
