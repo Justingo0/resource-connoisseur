@@ -7,7 +7,6 @@ var time = 0
 @export var conveyors = []:
 	set(newValue):
 		conveyors = newValue
-		print(conveyors)
 	get:
 		return conveyors
 var conveyorInterval = 0
@@ -17,7 +16,12 @@ var resourceInterval = 0
 @onready var ore_item = preload("res://Scenes/ore_item.tscn")
 var minerSelf = self
 
+func _ready() -> void:
+	$Sprite2D2/AnimationPlayer.speed_scale = 0
+
 func _process(delta: float) -> void:
+	if !held:
+		$Sprite2D2/AnimationPlayer.play("new_animation")
 	time += delta
 	if oreCount > 0 and time > mineTime:
 		resources = min(resources + 1, 10)
@@ -44,14 +48,15 @@ func _on_area_2d_area_exited(area: Area2D) -> void:
 
 func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Ore"):
-		resourcesUnderneath.append(area.type)
+		resourcesUnderneath.append(area.type.name)
 		oreCount += 1
 		print(resourcesUnderneath)
 		mineTime = 4/oreCount
+		$Sprite2D2/AnimationPlayer.speed_scale = oreCount
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Ore"):
-		resourcesUnderneath.erase(area.type)
+		resourcesUnderneath.erase(area.type.name)
 		oreCount -= 1
 		print(resourcesUnderneath)
 		if oreCount > 0: mineTime = 4/oreCount
