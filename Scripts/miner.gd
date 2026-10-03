@@ -7,8 +7,13 @@ var time = 0
 @export var conveyors = []:
 	set(newValue):
 		conveyors = newValue
+		#print(conveyors)
 	get:
 		return conveyors
+
+@export var max_destroy_time:float
+@export var destroy_time:float = 0.0
+
 var conveyorInterval = 0
 var resources = 0
 var resourcesUnderneath = []
@@ -22,7 +27,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !held:
 		$Sprite2D2/AnimationPlayer.play("new_animation")
-	time += delta
+	time += delta*GameManager.time_scale
 	if oreCount > 0 and time > mineTime:
 		resources = min(resources + 1, 10)
 		time = 0

@@ -49,6 +49,7 @@ _data = {
 collision_layer = 11
 collision_mask = 11
 script = ExtResource("1_p7qq0")
+max_destroy_time = 0.75
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1945875335]
 position = Vector2(-32, -32)
@@ -57,6 +58,7 @@ shape = SubResource("RectangleShape2D_p7qq0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=308717136]
 texture_filter = 1
+use_parent_material = true
 position = Vector2(-32, -32)
 scale = Vector2(2, 2)
 texture = ExtResource("2_p7qq0")
