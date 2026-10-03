@@ -76,6 +76,7 @@ func _input(event: InputEvent) -> void:
 		current_action = null
 
 func _physics_process(delta: float) -> void:
+	keyboard_movement(_delta)
 	#if get_viewport().gui_get_hovered_control() == null:
 		#if Input.is_action_pressed("Place"):
 			#place(building_object)
@@ -101,6 +102,10 @@ func _physics_process(delta: float) -> void:
 	
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
+
+func keyboard_movement(delta):
+	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
+	global_position += moveVector * 500 * delta
 
 func set_build_cursor(object:PackedScene):
 	for child in build_cursor.get_children():

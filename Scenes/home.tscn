@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://3lhr0h1b5ej"]
 
 [ext_resource type="Script" uid="uid://de6gdx0s1lpmd" path="res://Scripts/container_script.gd" id="1_uq2cn"]
+[ext_resource type="Texture2D" uid="uid://c2447bohxeme6" path="res://Assets/core.png" id="2_dt112"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(190, 190)
@@ -69,10 +70,7 @@ max_destroy_time = 2.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1509512366]
 shape = SubResource("RectangleShape2D_p7o00")
 
-[node name="Shape" type="MeshInstance2D" parent="." unique_id=493256260]
-use_parent_material = true
-mesh = SubResource("BoxMesh_p7o00")
-texture = SubResource("GradientTexture1D_hm3tg")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=415642307]
-libraries/ = SubResource("AnimationLibrary_ibywg")
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1729671194]
+texture_filter = 1
+scale = Vector2(3.0000002, 3.0000002)
+texture = ExtResource("2_dt112")

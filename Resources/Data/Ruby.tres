@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OreStats" format=3 uid="uid://di4o2v2cqjeq8"]
+
+[ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="1_mw06f"]
+[ext_resource type="Texture2D" uid="uid://d34ssrpml08sf" path="res://Assets/rubyOre.png" id="1_qgp75"]
+
+[resource]
+script = ExtResource("1_mw06f")
+name = "Ruby"
+icon = ExtResource("1_qgp75")
+metadata/_custom_type_script = "uid://qm6i68lmfktf"

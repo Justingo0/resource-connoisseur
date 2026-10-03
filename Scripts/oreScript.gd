@@ -1,5 +1,6 @@
-extends Node2D
+extends Area2D
 
+@export var type :OreStats
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
