@@ -53,11 +53,16 @@ func _input(event: InputEvent) -> void:
 		current_action = null
 
 func _physics_process(_delta: float) -> void:
+	keyboard_movement(_delta)
 	if Input.is_action_pressed("Place"):
 		place(building_object)
 	if Input.is_action_pressed("Delete"):
 		delete()
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(64, 64))
+
+func keyboard_movement(delta):
+	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
+	global_position += moveVector * 500 * delta
 
 func set_build_cursor(object:PackedScene):
 	for child in build_cursor.get_children():

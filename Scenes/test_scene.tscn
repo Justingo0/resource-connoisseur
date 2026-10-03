@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://3lhr0h1b5ej" path="res://Scenes/home.tscn" id="3_hb2xm"]
 [ext_resource type="PackedScene" uid="uid://cvbrs641igcdw" path="res://Scenes/build_menu.tscn" id="5_ak5v8"]
 [ext_resource type="PackedScene" uid="uid://cbeydmwbdnvel" path="res://Scenes/rubyOre.tscn" id="5_x033f"]
+[ext_resource type="PackedScene" uid="uid://dkfmjnoegfxcs" path="res://Scenes/Player.tscn" id="6_x033f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_50ct6"]
 texture = ExtResource("3_50ct6")
@@ -19,6 +20,9 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_50ct6")
 
 [node name="Node2D" type="Node2D" unique_id=1245121356]
+
+[node name="Player" parent="." unique_id=38408725 instance=ExtResource("6_x033f")]
+position = Vector2(1, -153)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=447860147]
 limit_left = -2272
