@@ -3,6 +3,8 @@ extends Camera2D
 @onready var build_cursor = $BuildCursor
 @onready var delete_cursor = $DeleteCursor
 
+var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
+
 var mouse_starting_pos := Vector2.ZERO
 var starting_cam_pos := Vector2.ZERO
 var dragging := false
@@ -16,6 +18,7 @@ var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
 	get:
 		return building_object
 var last_object_built = null
+var deleting_objects = []
 
 enum actions {placing, deleting, moving}
 var current_action
@@ -49,13 +52,21 @@ func _unhandled_input(event: InputEvent) -> void:
 			var viewport_size = get_viewport().get_visible_rect().size
 			position = (starting_cam_pos + (mouse_starting_pos - get_global_mouse_position())).clamp(Vector2(limit_left+viewport_size.x, limit_top+viewport_size.y), Vector2(limit_right-viewport_size.x, limit_bottom-viewport_size.y))
 	
+	if event.is_action_pressed("Cancel"):
+		for object in deleting_objects:
+			if not object: continue
+			object.destroy_time = object.max_destroy_time
+			object.material = null
+		deleting_objects.clear()
+	
 	if event.is_action_pressed("Place"):
 		current_action = actions.placing
 		building = true
 	if event.is_action_pressed("Delete"):
 		current_action = actions.deleting
 		building = true
-	
+
+func _input(event: InputEvent) -> void:
 	if event.is_action_released("Place"):
 		building = false
 		current_action = null
@@ -64,7 +75,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		building = false
 		current_action = null
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	#if get_viewport().gui_get_hovered_control() == null:
 		#if Input.is_action_pressed("Place"):
 			#place(building_object)
@@ -76,6 +87,17 @@ func _physics_process(_delta: float) -> void:
 			place(building_object)
 		elif current_action == actions.deleting:
 			delete()
+	
+	if not deleting_objects.is_empty():
+		for object in deleting_objects:
+			if not object: continue
+			if "destroy_time" in object:
+				object.destroy_time = max(object.destroy_time - delta*GameManager.time_scale, 0)
+				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
+				if object.destroy_time == 0:
+					object.queue_free()
+			else:
+				object.queue_free()
 	
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
@@ -100,7 +122,16 @@ func set_build_cursor(object:PackedScene):
 
 func place(object:PackedScene):
 	if not object or not building_mode or dragging: return
+	
+	if not deleting_objects.is_empty():
+		for deleting_obj in deleting_objects:
+			if not deleting_obj: continue
+			deleting_obj.destroy_time = deleting_obj.max_destroy_time
+			deleting_obj.material = null
+		deleting_objects.clear()
+	
 	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies():
+		if last_object_built and not last_object_built.is_in_group("Rotate"): return
 		if last_object_built and build_cursor.global_position != last_object_built.global_position:
 			var direction = last_object_built.global_position.direction_to(get_global_mouse_position())
 			if abs(direction.x) > abs(direction.y):
@@ -128,10 +159,14 @@ func place(object:PackedScene):
 
 func delete():
 	if dragging: return
-	var deleting_objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
-	if not deleting_objects.is_empty():
-		var deleting_object = deleting_objects[0]
+	var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
+	if not objects.is_empty(): 
+		var deleting_object = objects[0]
 		if deleting_object.is_in_group("Block") and not deleting_object.is_in_group("Unbreakable"):
-			deleting_object.queue_free()
+			if deleting_object in deleting_objects: return
+			#building_object = null
+			deleting_object.destroy_time = deleting_object.max_destroy_time
+			deleting_object.material = dissolve_shader.duplicate()
+			deleting_objects.append(deleting_object)
 	
 	#current_action = actions.deleting

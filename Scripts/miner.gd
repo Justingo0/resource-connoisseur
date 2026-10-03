@@ -10,6 +10,10 @@ var time = 0
 		#print(conveyors)
 	get:
 		return conveyors
+
+@export var max_destroy_time:float
+@export var destroy_time:float = 0.0
+
 var conveyorInterval = 0
 var resources = 0
 var resourceType = ""

@@ -4,6 +4,9 @@ extends Area2D
 
 var SPEED:float = 200
 
+@export var max_destroy_time:float
+@export var destroy_time:float = 0.0
+
 @export var held:bool = false
 
 @export var item:CharacterBody2D
@@ -31,7 +34,7 @@ func _physics_process(delta: float) -> void:
 				next_conveyer.item = item
 				next_conveyer.item_incoming = null
 				item = null
-		elif next_conveyer and next_conveyer.is_in_group("Container"):
+		elif next_conveyer and next_conveyer.is_in_group("Container") and next_conveyer.held == false:
 			var inventory_size = 0
 			for value in next_conveyer.inventory.values():
 				inventory_size += value

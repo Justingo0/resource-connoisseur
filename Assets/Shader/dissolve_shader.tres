@@ -1,0 +1,18 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://bso6gxbltd7by"]
+
+[ext_resource type="Shader" uid="uid://dp17ipghgueog" path="res://Assets/Shader/dissolve_shader.gdshader" id="1_m8pml"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7ekrn"]
+seed = 16
+frequency = 0.0012
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m8pml"]
+noise = SubResource("FastNoiseLite_7ekrn")
+seamless = true
+
+[resource]
+shader = ExtResource("1_m8pml")
+shader_parameter/dissolve_progress = 0.0690000032775
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_m8pml")
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_thickness = 0.0400000019
