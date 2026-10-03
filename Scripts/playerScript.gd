@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var camera = $"../Camera2D"
 @onready var animation = $AnimatedSprite2D
 var targetPosition:Vector2
+var moving = false
 
 func _ready() -> void:
 	var targetPosition = camera.position
@@ -15,13 +16,16 @@ func _physics_process(delta: float) -> void:
 	if global_position.distance_to(target) > 30:
 		targetPosition = target
 	if abs(rad_to_deg(targetRotation - rotation)) < 1:
-		velocity = forwardDirection * 500
+		velocity = forwardDirection * 400
+		moving = false
 	elif global_position.distance_to(target) > 150:
-		velocity = forwardDirection * 300
+		velocity = forwardDirection * 250
+		moving = true
 	else:
 		velocity = forwardDirection * 0
+		moving = false
 	if global_position.distance_to(targetPosition) > 100:
-		rotation = rotate_toward(rotation, targetRotation, 0.12)
+		rotation = rotate_toward(rotation, targetRotation, 0.07)
 		#velocity = forwardDirection * 0
 	
 	move_and_slide()
