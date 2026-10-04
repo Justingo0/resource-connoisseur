@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://cvbrs641igcdw"]
 
 [ext_resource type="Script" uid="uid://bktk06gyx2lj" path="res://Scripts/build_menu.gd" id="1_hx1pr"]
-[ext_resource type="Texture2D" uid="uid://f8rrum322feh" path="res://Assets/driller.png" id="2_05xuc"]
+[ext_resource type="Texture2D" uid="uid://casb24tydm1ro" path="res://Assets/minerBase.png" id="2_f8evq"]
 [ext_resource type="Texture2D" uid="uid://na04us1owcye" path="res://Assets/Conveyor/Conveyer1.png" id="3_16wyj"]
 [ext_resource type="Texture2D" uid="uid://lli3s0oh13x8" path="res://Assets/UI/pause.png" id="4_16wyj"]
+[ext_resource type="Texture2D" uid="uid://c2447bohxeme6" path="res://Assets/core.png" id="4_t747t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sar82"]
 bg_color = Color(0.6610597, 0.5925078, 0.47071713, 0.21960784)
@@ -62,7 +63,7 @@ offset_right = 40.5
 offset_bottom = 40.5
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_05xuc")
+texture = ExtResource("2_f8evq")
 expand_mode = 1
 
 [node name="Button2" type="Button" parent="Panel/HBoxContainer" unique_id=1707971017]
@@ -95,6 +96,23 @@ mouse_default_cursor_shape = 2
 theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
 text = "Core"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button3" unique_id=1192832696]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -40.5
+offset_top = -40.5
+offset_right = 40.5
+offset_bottom = 40.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_t747t")
+expand_mode = 1
 
 [node name="Button4" type="Button" parent="Panel/HBoxContainer" unique_id=1187533761]
 layout_mode = 2

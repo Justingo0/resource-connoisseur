@@ -76,7 +76,7 @@ func _input(event: InputEvent) -> void:
 		current_action = null
 
 func _physics_process(delta: float) -> void:
-	keyboard_movement(_delta)
+	keyboard_movement(delta)
 	#if get_viewport().gui_get_hovered_control() == null:
 		#if Input.is_action_pressed("Place"):
 			#place(building_object)
@@ -128,13 +128,6 @@ func set_build_cursor(object:PackedScene):
 func place(object:PackedScene):
 	if not object or not building_mode or dragging: return
 	
-	if not deleting_objects.is_empty():
-		for deleting_obj in deleting_objects:
-			if not deleting_obj: continue
-			deleting_obj.destroy_time = deleting_obj.max_destroy_time
-			deleting_obj.material = null
-		deleting_objects.clear()
-	
 	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies():
 		if last_object_built and not last_object_built.is_in_group("Rotate"): return
 		if last_object_built and build_cursor.global_position != last_object_built.global_position:
@@ -145,6 +138,13 @@ func place(object:PackedScene):
 				direction = Vector2(0, sign(direction.y))
 			last_object_built.rotation = deg_to_rad(rad_to_deg(direction.angle()) + 90)
 		return
+	
+	if not deleting_objects.is_empty():
+		for deleting_obj in deleting_objects:
+			if not deleting_obj: continue
+			deleting_obj.destroy_time = deleting_obj.max_destroy_time
+			deleting_obj.material = null
+		deleting_objects.clear()
 	
 	var placed_object = object.instantiate()
 	get_tree().current_scene.add_child(placed_object)

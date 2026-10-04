@@ -75,6 +75,7 @@ polygon = PackedVector2Array(-104.105095, 32.12549, -39.517715, 32.12549, -39.51
 
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1995487381]
 texture_filter = 1
+use_parent_material = true
 position = Vector2(-32, -32)
 scale = Vector2(3, 3)
 texture = ExtResource("3_ljvdd")

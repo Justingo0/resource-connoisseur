@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://deq8y6x3qi08m"]
+
+[ext_resource type="Texture2D" uid="uid://d34ssrpml08sf" path="res://Assets/rubyOre.png" id="1_b6xxr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7qq0"]
+size = Vector2(121.09374, 121.09374)
+
+[node name="Ore" type="Area2D" unique_id=545579719 groups=["Ore"]]
+scale = Vector2(2.56, 2.56)
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1945875335]
+scale = Vector2(0.2, 0.2)
+shape = SubResource("RectangleShape2D_p7qq0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=308717136]
+texture_filter = 1
+texture = ExtResource("1_b6xxr")
