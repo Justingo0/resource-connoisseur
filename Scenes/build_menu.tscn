@@ -176,6 +176,5 @@ expand_mode = 1
 [connection signal="pressed" from="Panel/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/Clear" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Clear" to="." method="_on_clear_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
