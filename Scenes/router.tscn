@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://byicaco3t1gqo"]
+
+[ext_resource type="Script" uid="uid://c0fsqw5ybrq8i" path="res://Scripts/router.gd" id="1_fc2lw"]
+[ext_resource type="Texture2D" uid="uid://d3a1vl3n1yqco" path="res://Assets/Router.png" id="2_cavi2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
+size = Vector2(60, 60)
+
+[node name="Router" type="Area2D" unique_id=419990703 groups=["Block", "Container"]]
+z_index = 5
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_fc2lw")
+inventory_size = 1
+max_destroy_time = 0.1
+
+[node name="Collision" type="CollisionShape2D" parent="." unique_id=309175764]
+shape = SubResource("RectangleShape2D_p7o00")
+
+[node name="Body" type="Sprite2D" parent="." unique_id=724572982]
+texture_filter = 1
+use_parent_material = true
+texture = ExtResource("2_cavi2")
+
+[node name="ConveyorDetector" type="Area2D" parent="." unique_id=418509543]
+collision_layer = 0
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ConveyorDetector" unique_id=2125699980]
+position = Vector2(7.15833, -4.5474735e-13)
+scale = Vector2(0.9909057, 0.99609375)
+polygon = PackedVector2Array(-90.98579, 26.10196, -33.46265, 26.10196, -33.46265, 76.298035, 19.014595, 76.298035, 19.014595, 26.10196, 67.45513, 26.10196, 67.45513, -26.10196, 19.014595, -26.10196, 19.014595, -79.3098, -33.46265, -80.31372, -33.46265, -26.10196, -90.98579, -26.10196)
+
+[node name="OutputTimer" type="Timer" parent="." unique_id=2145795558]
+wait_time = 0.6
+autostart = true
+
+[connection signal="area_entered" from="ConveyorDetector" to="." method="_on_conveyor_detector_area_entered"]
+[connection signal="area_exited" from="ConveyorDetector" to="." method="_on_conveyor_detector_area_exited"]
+[connection signal="timeout" from="OutputTimer" to="." method="_on_output_timer_timeout"]

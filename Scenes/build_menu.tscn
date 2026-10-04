@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://na04us1owcye" path="res://Assets/Conveyor/Conveyer1.png" id="3_16wyj"]
 [ext_resource type="Texture2D" uid="uid://lli3s0oh13x8" path="res://Assets/UI/pause.png" id="4_16wyj"]
 [ext_resource type="Texture2D" uid="uid://c2447bohxeme6" path="res://Assets/core.png" id="4_t747t"]
+[ext_resource type="Texture2D" uid="uid://d3a1vl3n1yqco" path="res://Assets/Router.png" id="5_t747t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sar82"]
 bg_color = Color(0.6610597, 0.5925078, 0.47071713, 0.21960784)
@@ -25,8 +26,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -494.0
-offset_top = -124.0
+offset_left = -490.86536
+offset_top = -103.0
 offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
@@ -52,15 +53,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button" unique_id=476597683]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.5
-offset_top = -40.5
-offset_right = 40.5
-offset_bottom = 40.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("2_f8evq")
@@ -75,15 +74,13 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button2" unique_id=689229979]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.5
-offset_top = -40.5
-offset_right = 40.5
-offset_bottom = 40.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("3_16wyj")
@@ -100,21 +97,42 @@ text = "Core"
 [node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button3" unique_id=1192832696]
 texture_filter = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -40.5
-offset_top = -40.5
-offset_right = 40.5
-offset_bottom = 40.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_t747t")
 expand_mode = 1
 
-[node name="Button4" type="Button" parent="Panel/HBoxContainer" unique_id=1187533761]
+[node name="Button4" type="Button" parent="Panel/HBoxContainer" unique_id=741786183]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+theme_override_font_sizes/font_size = 26
+theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
+text = "Core"
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button4" unique_id=1663943343]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_t747t")
+expand_mode = 1
+
+[node name="Clear" type="Button" parent="Panel/HBoxContainer" unique_id=1187533761]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -158,4 +176,6 @@ expand_mode = 1
 [connection signal="pressed" from="Panel/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Clear" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Clear" to="." method="_on_clear_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

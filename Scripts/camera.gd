@@ -129,8 +129,7 @@ func place(object:PackedScene):
 	if not object or not building_mode or dragging: return
 	
 	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies():
-		if last_object_built and not last_object_built.is_in_group("Rotate"): return
-		if last_object_built and build_cursor.global_position != last_object_built.global_position:
+		if last_object_built and last_object_built.is_in_group("Rotate") and build_cursor.global_position != last_object_built.global_position:
 			var direction = last_object_built.global_position.direction_to(get_global_mouse_position())
 			if abs(direction.x) > abs(direction.y):
 				direction = Vector2(sign(direction.x), 0)
@@ -150,7 +149,7 @@ func place(object:PackedScene):
 	get_tree().current_scene.add_child(placed_object)
 	placed_object.global_position = build_cursor.global_position
 	
-	if last_object_built:
+	if last_object_built and last_object_built.is_in_group("Rotate"):
 		var direction = last_object_built.global_position.direction_to(placed_object.global_position)
 		if abs(direction.x) > abs(direction.y):
 			direction = Vector2(sign(direction.x), 0)

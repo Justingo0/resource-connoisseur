@@ -12,20 +12,21 @@ func _ready() -> void:
 	animation.play("default")
 
 func _process(_delta: float) -> void:
-	if global_position.distance_to(camera.position) > 50:
-		var targetRotation = position.angle_to_point(camera.position)
+	targetPosition = camera.position
+	if global_position.distance_to(targetPosition) > 50:
+		var targetRotation = position.angle_to_point(targetPosition)
 		sprite.global_rotation = rotate_toward(sprite.global_rotation, targetRotation+deg_to_rad(90), 0.1)
 
 func _physics_process(delta: float) -> void:
-	var target = camera.position
+	#var target = camera.position
 	#var forwardDirection = Vector2.from_angle(rotation)
 	
 	#if global_position.distance_to(target) > 30:
 	#if abs(rad_to_deg(targetRotation - rotation)) < 1:
 		#velocity = forwardDirection * 15000 * delta * GameManager.time_scale
 		#moving = false
-	if global_position.distance_to(target) > 50:
-		velocity = global_position.direction_to(target) * 16000 * delta * GameManager.time_scale
+	if global_position.distance_to(targetPosition) > 50:
+		velocity = global_position.direction_to(targetPosition) * 16000 * delta * GameManager.time_scale
 		#look_at(target)
 		#rotation = rotate_toward(rotation, targetRotation, 0.07)
 		moving = true

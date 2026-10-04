@@ -6,6 +6,7 @@ extends Control
 @onready var miner = preload("res://Scenes/miner.tscn")
 @onready var conveyor = preload("res://Scenes/conveyor.tscn")
 @onready var home = preload("res://Scenes/home.tscn")
+@onready var router = preload("res://Scenes/router.tscn")
 
 @onready var play_sign = preload("res://Assets/UI/play.png")
 @onready var pause_sign = preload("res://Assets/UI/pause.png")
@@ -25,6 +26,10 @@ func _on_button_3_pressed() -> void:
 	# I want to set the buildcursor building to core
 
 func _on_button_4_pressed() -> void:
+	camera.building_object = router
+	# I want to set the buildcursor building to router
+
+func _on_clear_pressed() -> void:
 	camera.building_object = null
 	# I want to set the buildcursor building to clear
 
