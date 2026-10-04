@@ -9,4 +9,5 @@ extends Area2D
 @export var held:bool
 
 func _mouse_enter() -> void:
-	print(inventory)
+	pass
+	#print(inventory)

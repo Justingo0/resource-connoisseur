@@ -55,13 +55,13 @@ func _on_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Ore"):
 		resourcesUnderneath.append(area.type.name)
 		oreCount += 1
-		print(resourcesUnderneath)
-		mineTime = 4/oreCount
+		#print(resourcesUnderneath)
+		mineTime = int(4.0/oreCount)
 		$Sprite2D2/AnimationPlayer.speed_scale = oreCount
 
 func _on_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Ore"):
 		resourcesUnderneath.erase(area.type.name)
 		oreCount -= 1
-		print(resourcesUnderneath)
-		if oreCount > 0: mineTime = 4/oreCount
+		#print(resourcesUnderneath)
+		if oreCount > 0: mineTime = int(4.0/oreCount)
