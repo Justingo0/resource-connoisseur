@@ -1,15 +1,15 @@
 Resource Connoisseur is a sandbox game, where you gather resources and bring it back to base to unlock new machines and better equipment.
 
 # Features
-Ore Mining
-Grid Placement System
-​Item Movement with Conveyors
-Object Selection
-Object Deletion
-Conveyor Splitting
-Core Depositing
-Camera Movement
-Player Character
+- Ore Mining
+- Grid Placement System
+​- Item Movement with Conveyors
+- Object Selection
+- Object Deletion
+- Conveyor Splitting
+- Core Depositing
+- Camera Movement
+- Player Character
 
 ----
 
