@@ -7,33 +7,29 @@ extends CharacterBody2D
 var targetPosition:Vector2
 var moving = false
 
+var rotate_tween:Tween = null
+
 func _ready() -> void:
 	targetPosition = camera.position
 	animation.play("default")
 
-func _process(_delta: float) -> void:
-	targetPosition = camera.position
-	if global_position.distance_to(targetPosition) > 50:
-		var targetRotation = position.angle_to_point(targetPosition)
-		sprite.global_rotation = rotate_toward(sprite.global_rotation, targetRotation+deg_to_rad(90), 0.1)
-
 func _physics_process(delta: float) -> void:
-	#var target = camera.position
-	#var forwardDirection = Vector2.from_angle(rotation)
-	
-	#if global_position.distance_to(target) > 30:
-	#if abs(rad_to_deg(targetRotation - rotation)) < 1:
-		#velocity = forwardDirection * 15000 * delta * GameManager.time_scale
-		#moving = false
+	targetPosition = camera.position
+
 	if global_position.distance_to(targetPosition) > 50:
-		velocity = global_position.direction_to(targetPosition) * 16000 * delta * GameManager.time_scale
-		#look_at(target)
-		#rotation = rotate_toward(rotation, targetRotation, 0.07)
+		velocity = global_position.direction_to(targetPosition) * 20000 * delta * GameManager.time_scale
+		
+		var targetRotation = position.angle_to_point(targetPosition)
+		rotate_tween = create_tween()
+		rotate_tween.tween_method(rotate_sprite, sprite.global_rotation, targetRotation+deg_to_rad(90), 0.15)
+		
 		moving = true
 	else:
 		velocity = Vector2.ZERO
 		moving = false
-	#if global_position.distance_to(targetPosition) > 100:
-		#velocity = forwardDirection * 0
 	
 	move_and_slide()
+
+func rotate_sprite(rotating:float):
+	sprite.global_rotation = rotating
+	#print(sprite.global_rotation)

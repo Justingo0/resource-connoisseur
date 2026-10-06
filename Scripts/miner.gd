@@ -21,6 +21,9 @@ var resourceInterval = 0
 @onready var ore_item = preload("res://Scenes/ore_item.tscn")
 var minerSelf = self
 
+var last_generated_item = null
+var selected_conveyor = null
+
 func _ready() -> void:
 	$Sprite2D2/AnimationPlayer.speed_scale = 0
 
@@ -34,12 +37,32 @@ func _process(delta: float) -> void:
 	if not conveyors.is_empty() and resources > 0:
 		var selectedConveyor = conveyorInterval%conveyors.size()
 		if conveyors[selectedConveyor].item == null and conveyors[selectedConveyor].held == false and !held:
-			var newItem = ore_item.instantiate()
-			get_tree().current_scene.add_child(newItem)
+			last_generated_item = ore_item.instantiate()
+			selected_conveyor = conveyors[selectedConveyor]
+			
+			get_tree().current_scene.add_child(last_generated_item)
 			conveyorInterval += 1
 			resources -= 1
-			newItem.global_position = conveyors[selectedConveyor].global_position
-			conveyors[selectedConveyor].item = newItem
+			
+			var starting_pos = global_position
+			
+			if (selected_conveyor.global_position.y - global_position.y) == 64.0 or (selected_conveyor.global_position.y - global_position.y) == -128:
+				print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Bottom or Top")
+				starting_pos.x = selected_conveyor.global_position.x + (64 - (64 * signf(selected_conveyor.global_position.x)))
+				starting_pos.y 
+			else:
+				print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Left or Right")
+				starting_pos.y = selected_conveyor.global_position.x + (64 * signf(selected_conveyor.global_position.x))
+			
+			last_generated_item.global_position = starting_pos #- (64 * global_position.direction_to(selected_conveyor.global_position))
+	if last_generated_item:
+		last_generated_item.global_position = last_generated_item.global_position.move_toward(selected_conveyor.global_position, 200*delta*GameManager.time_scale)
+		selected_conveyor.item_incoming = last_generated_item
+		if last_generated_item.global_position == selected_conveyor.global_position:
+			selected_conveyor.item = last_generated_item
+			selected_conveyor.item_incoming = null
+			last_generated_item = null
+			selected_conveyor = null
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Conveyor"):
