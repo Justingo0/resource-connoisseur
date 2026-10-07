@@ -1,5 +1,7 @@
 extends Area2D
 
+signal inventory_changed(value:int)
+
 @export var inventory = {"ore":0}
 @export var inventory_size:int
 

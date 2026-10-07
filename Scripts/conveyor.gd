@@ -43,6 +43,8 @@ func _physics_process(delta: float) -> void:
 			item_moving = true
 			if item.global_position == (global_position + Vector2.UP.rotated(rotation)*64):
 				next_conveyer.inventory["ore"] += 1
+				next_conveyer.inventory = next_conveyer.inventory
+				#next_conveyer.inventory_changed.emit(next_conveyer.inventory["ore"])
 				#print(next_conveyer.inventory)
 				item.queue_free()
 				item = null

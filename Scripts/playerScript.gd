@@ -15,7 +15,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	targetPosition = camera.position
-
+	
 	if global_position.distance_to(targetPosition) > 50:
 		velocity = global_position.direction_to(targetPosition) * 20000 * delta * GameManager.time_scale
 		

@@ -37,6 +37,9 @@ func _process(delta: float) -> void:
 	if not conveyors.is_empty() and resources > 0:
 		var selectedConveyor = conveyorInterval%conveyors.size()
 		if conveyors[selectedConveyor].item == null and conveyors[selectedConveyor].held == false and !held:
+			if last_generated_item:
+				last_generated_item.queue_free()
+				last_generated_item = null
 			last_generated_item = ore_item.instantiate()
 			selected_conveyor = conveyors[selectedConveyor]
 			
@@ -45,18 +48,20 @@ func _process(delta: float) -> void:
 			resources -= 1
 			
 			var starting_pos = global_position
-			
 			if (selected_conveyor.global_position.y - global_position.y) == 64.0 or (selected_conveyor.global_position.y - global_position.y) == -128:
-				print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Bottom or Top")
-				starting_pos.x = selected_conveyor.global_position.x + (64 - (64 * signf(selected_conveyor.global_position.x)))
-				starting_pos.y 
+				#print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Bottom or Top")
+				starting_pos.x = selected_conveyor.global_position.x
+				if (selected_conveyor.global_position.y - global_position.y) == -128:
+					starting_pos.y -= 64
 			else:
-				print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Left or Right")
-				starting_pos.y = selected_conveyor.global_position.x + (64 * signf(selected_conveyor.global_position.x))
+				#print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Left or Right")
+				starting_pos.y = selected_conveyor.global_position.y
+				if (selected_conveyor.global_position.x - global_position.x) == -128:
+					starting_pos.x -= 64
 			
 			last_generated_item.global_position = starting_pos #- (64 * global_position.direction_to(selected_conveyor.global_position))
 	if last_generated_item:
-		last_generated_item.global_position = last_generated_item.global_position.move_toward(selected_conveyor.global_position, 200*delta*GameManager.time_scale)
+		last_generated_item.global_position = last_generated_item.global_position.move_toward(selected_conveyor.global_position, 400*delta*GameManager.time_scale)
 		selected_conveyor.item_incoming = last_generated_item
 		if last_generated_item.global_position == selected_conveyor.global_position:
 			selected_conveyor.item = last_generated_item
@@ -88,3 +93,9 @@ func _on_area_exited(area: Area2D) -> void:
 		oreCount -= 1
 		#print(resourcesUnderneath)
 		if oreCount > 0: mineTime = int(4.0/oreCount)
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		if last_generated_item:
+			last_generated_item.queue_free()
+			selected_conveyor.item_incoming = null

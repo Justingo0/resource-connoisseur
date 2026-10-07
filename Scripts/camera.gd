@@ -52,12 +52,12 @@ func _unhandled_input(event: InputEvent) -> void:
 			var viewport_size = get_viewport().get_visible_rect().size
 			position = (starting_cam_pos + (mouse_starting_pos - get_global_mouse_position())).clamp(Vector2(limit_left+viewport_size.x, limit_top+viewport_size.y), Vector2(limit_right-viewport_size.x, limit_bottom-viewport_size.y))
 	
-	if event.is_action_pressed("Cancel"):
-		for object in deleting_objects:
-			if not object: continue
-			object.destroy_time = object.max_destroy_time
-			object.material = null
-		deleting_objects.clear()
+	#if event.is_action_pressed("Cancel"):
+		#for object in deleting_objects:
+			#if not object: continue
+			#object.destroy_time = object.max_destroy_time
+			#object.material = null
+		#deleting_objects.clear()
 	
 	if event.is_action_pressed("Place"):
 		current_action = actions.placing
@@ -138,12 +138,12 @@ func place(object:PackedScene):
 			last_object_built.rotation = deg_to_rad(rad_to_deg(direction.angle()) + 90)
 		return
 	
-	if not deleting_objects.is_empty():
-		for deleting_obj in deleting_objects:
-			if not deleting_obj: continue
-			deleting_obj.destroy_time = deleting_obj.max_destroy_time
-			deleting_obj.material = null
-		deleting_objects.clear()
+	#if not deleting_objects.is_empty():
+		#for deleting_obj in deleting_objects:
+			#if not deleting_obj: continue
+			#deleting_obj.destroy_time = deleting_obj.max_destroy_time
+			#deleting_obj.material = null
+		#deleting_objects.clear()
 	
 	var placed_object = object.instantiate()
 	get_tree().current_scene.add_child(placed_object)
@@ -165,7 +165,7 @@ func delete():
 	if dragging: return
 	var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
 	if not objects.is_empty(): 
-		var deleting_object = objects[0]
+		var deleting_object = objects[0] as Area2D
 		if deleting_object.is_in_group("Block") and not deleting_object.is_in_group("Unbreakable"):
 			if deleting_object in deleting_objects: return
 			#building_object = null

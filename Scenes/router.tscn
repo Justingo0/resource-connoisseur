@@ -31,10 +31,10 @@ position = Vector2(7.15833, -4.5474735e-13)
 scale = Vector2(0.9909057, 0.99609375)
 polygon = PackedVector2Array(-90.98579, 26.10196, -33.46265, 26.10196, -33.46265, 76.298035, 19.014595, 76.298035, 19.014595, 26.10196, 67.45513, 26.10196, 67.45513, -26.10196, 19.014595, -26.10196, 19.014595, -79.3098, -33.46265, -80.31372, -33.46265, -26.10196, -90.98579, -26.10196)
 
-[node name="OutputTimer" type="Timer" parent="." unique_id=2145795558]
+[node name="OutputTimer" type="Timer" parent="." unique_id=1447171364]
 wait_time = 0.6
-autostart = true
 
+[connection signal="inventory_changed" from="." to="." method="_on_inventory_changed"]
 [connection signal="area_entered" from="ConveyorDetector" to="." method="_on_conveyor_detector_area_entered"]
 [connection signal="area_exited" from="ConveyorDetector" to="." method="_on_conveyor_detector_area_exited"]
 [connection signal="timeout" from="OutputTimer" to="." method="_on_output_timer_timeout"]
