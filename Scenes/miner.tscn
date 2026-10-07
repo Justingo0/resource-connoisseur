@@ -74,14 +74,14 @@ position = Vector2(7.15833, -4.5474735e-13)
 scale = Vector2(0.9909057, 0.99609375)
 polygon = PackedVector2Array(-104.105095, 32.12549, -39.517715, 32.12549, -39.517715, 96.376465, 25.069662, 96.376465, 25.069662, 32.12549, 89.65704, 32.12549, 89.65704, -32.12549, 25.069662, -32.12549, 25.069662, -96.376465, -39.517715, -96.376465, -39.517715, -32.12549, -104.105095, -32.12549)
 
-[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1995487381]
+[node name="Drill" type="Sprite2D" parent="." unique_id=1995487381]
 texture_filter = 1
 use_parent_material = true
 position = Vector2(-32, -32)
 scale = Vector2(3, 3)
 texture = ExtResource("3_ljvdd")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D2" unique_id=2113555063]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Drill" unique_id=2113555063]
 libraries/ = SubResource("AnimationLibrary_rfhns")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
