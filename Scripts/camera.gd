@@ -76,7 +76,7 @@ func _input(event: InputEvent) -> void:
 		current_action = null
 
 func _physics_process(delta: float) -> void:
-	keyboard_movement(_delta)
+	keyboard_movement(delta)
 	#if get_viewport().gui_get_hovered_control() == null:
 		#if Input.is_action_pressed("Place"):
 			#place(building_object)
