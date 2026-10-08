@@ -39,7 +39,10 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="Player" type="CharacterBody2D" unique_id=38408725]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kyqiw"]
+size = Vector2(20, 32)
+
+[node name="Player" type="CharacterBody2D" unique_id=38408725 groups=["Enemy"]]
 z_index = 10
 scale = Vector2(3, 3)
 collision_layer = 15
@@ -50,3 +53,6 @@ script = ExtResource("1_kyqiw")
 texture_filter = 1
 rotation = 1.5707964
 sprite_frames = SubResource("SpriteFrames_sar82")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1788188403]
+shape = SubResource("RectangleShape2D_kyqiw")

@@ -30,9 +30,12 @@ Block=""
 Conveyor=""
 Item=""
 Ore=""
+<<<<<<<HEADConveyor=""
 Container=""
 Unbreakable=""
 Rotate=""
+Enemy=""
+Bullet=""
 
 [input]
 

@@ -1,5 +1,7 @@
 [gd_scene format=4 uid="uid://ccgyrxlfrub0a"]
 
+[ext_resource type="PackedScene" uid="uid://dhtwtpvdf8yu" path="res://Scenes/spawner.tscn" id="1_d3awe"]
+[ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="1_oho3u"]
 [ext_resource type="Script" uid="uid://dxbsch1ssmkrg" path="res://Scripts/camera.gd" id="1_r5l72"]
 [ext_resource type="Texture2D" uid="uid://tynngbbimgp5" path="res://Assets/Tile.png" id="3_50ct6"]
 [ext_resource type="PackedScene" uid="uid://3lhr0h1b5ej" path="res://Scenes/home.tscn" id="3_hb2xm"]
@@ -24,7 +26,22 @@ size = Vector2(60, 60)
 
 [node name="Node2D" type="Node2D" unique_id=1245121356]
 
+[node name="Spawner" parent="." unique_id=263560184 instance=ExtResource("1_d3awe")]
+position = Vector2(1200, 0)
+
+[node name="Turret" parent="." unique_id=1590054207 instance=ExtResource("1_oho3u")]
+position = Vector2(313, 38)
+
+[node name="Turret2" parent="." unique_id=267276838 instance=ExtResource("1_oho3u")]
+position = Vector2(200, -256)
+
+[node name="Turret3" parent="." unique_id=2119031838 instance=ExtResource("1_oho3u")]
+position = Vector2(188, 310)
+
+[node name="Player" parent="." unique_id=38408725 instance=ExtResource("6_x033f")]
+
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1098518263]
+visible = false
 z_index = -1
 texture_filter = 1
 position = Vector2(32, 32)

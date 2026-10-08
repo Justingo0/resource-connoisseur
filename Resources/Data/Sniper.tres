@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://sxvaf54lydtu"]
+
+[ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="1_a77f4"]
+
+[resource]
+script = ExtResource("1_a77f4")
+range = 50
+reloadSpeed = 2.0
+spread = 1.0
+damage = 300
+metadata/_custom_type_script = "uid://bh8paehk3cbxk"
