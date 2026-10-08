@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var raycast = $RayCast
 
-var SPEED:float = 200
+var SPEED:float = 300
 
 @export var max_destroy_time:float
 @export var destroy_time:float = 0.0
