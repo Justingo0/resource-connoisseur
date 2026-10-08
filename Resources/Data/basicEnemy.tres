@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://djlwhk4xg3h5q"]
+
+[ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="1_2rcrr"]
+
+[resource]
+script = ExtResource("1_2rcrr")
+size = 1.0
+health = 100
+speed = 500
+range = 10
+reloadSpeed = 0.33
+shotCount = 1
+damage = 10
+projectileSpeed = 1280
+projectileLifetime = 0.5
+metadata/_custom_type_script = "uid://bh8paehk3cbxk"
