@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dhtwtpvdf8yu"]
+
+[ext_resource type="Script" uid="uid://bumcr3ome1kb0" path="res://Scripts/spawner.gd" id="1_mdv8j"]
+[ext_resource type="Texture2D" uid="uid://i42hp0nucpjp" path="res://icon.svg" id="2_xhbpr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfrxy"]
+radius = 307.02606
+
+[node name="Spawner" type="Area2D" unique_id=263560184]
+skew = 0.41015238
+script = ExtResource("1_mdv8j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1373397993]
+shape = SubResource("CircleShape2D_pfrxy")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1822683556]
+texture = ExtResource("2_xhbpr")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
