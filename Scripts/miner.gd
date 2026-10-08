@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 		if resources > 0:
 			output()
 		time = 0
-	if last_generated_item and selected_conveyor and (selected_conveyor.item_incoming == last_generated_item or selected_conveyor.item == null):
+	if last_generated_item and selected_conveyor and (selected_conveyor.item == null): #or selected_conveyor.item_incoming == last_generated_item):
 		last_generated_item.global_position = last_generated_item.global_position.move_toward(selected_conveyor.global_position, 400*delta*GameManager.time_scale)
 		if last_generated_item.global_position == selected_conveyor.global_position:
 			selected_conveyor.item = last_generated_item
@@ -80,12 +80,12 @@ func _notification(what: int) -> void:
 func output():
 	if not conveyors.is_empty() and resources > 0:
 		selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
-		if selected_conveyor.item != null or selected_conveyor.item_incoming != null:
+		if selected_conveyor.item != null: #or selected_conveyor.item_incoming != null:
 			for i in conveyors.size():
 				conveyorInterval += 1
 				selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
-				if selected_conveyor.item == null or selected_conveyor.item_incoming == null: return
-		if (selected_conveyor.item_incoming == null or selected_conveyor.item == null) and selected_conveyor.held == false and !held:
+				if selected_conveyor.item == null: return #or selected_conveyor.item_incoming == null: return
+		if (selected_conveyor.item == null) and selected_conveyor.held == false and !held:
 			if last_generated_item:
 				last_generated_item.queue_free()
 				last_generated_item = null

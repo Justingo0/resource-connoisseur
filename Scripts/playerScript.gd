@@ -31,5 +31,6 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func rotate_sprite(rotating:float):
+	if GameManager.time_scale <= 0.0: return
 	sprite.global_rotation = rotating
-	#print(sprite.global_rotation)
+	print(sprite.global_rotation)
