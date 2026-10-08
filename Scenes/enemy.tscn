@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bk4af1g14txca"]
+
+[ext_resource type="Script" uid="uid://cmb0vk0ecirel" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Texture2D" uid="uid://i42hp0nucpjp" path="res://icon.svg" id="2_afpow"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sar82"]
+size = Vector2(128, 128)
+
+[node name="Enemy" type="CharacterBody2D" unique_id=2136730827 groups=["Enemy"]]
+script = ExtResource("1_1f0kj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2114281520]
+shape = SubResource("RectangleShape2D_sar82")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=435060236]
+texture = ExtResource("2_afpow")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=991496633]
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+color = Color(0.9999997, 0.047747113, 0.21749973, 0.4509804)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1382670652]
+
+[node name="bulletDetector" type="CollisionShape2D" parent="Area2D" unique_id=1846499004]
+shape = SubResource("RectangleShape2D_sar82")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
