@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="turretStats" format=3 uid="uid://ubquto7gj313"]
+
+[ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_qpx85"]
+
+[resource]
+script = ExtResource("1_qpx85")
+size = 1
+health = 100
+range = 10
+reloadSpeed = 0.33
+shotCount = 1
+laser = true
+damage = 10
+projectileSpeed = 1280
+projectileLifetime = 0.5
+widthMultiplier = 5.0
+knockAmount = 200
+metadata/_custom_type_script = "uid://bd63pnbqlmvh0"
