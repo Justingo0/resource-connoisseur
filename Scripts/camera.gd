@@ -18,10 +18,13 @@ var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
 	get:
 		return building_object
 var last_object_built = null
+var building_objects = []
 var deleting_objects = []
 
 enum actions {placing, deleting, moving}
 var current_action
+
+var viewport_size
 
 # PRIVATE SETTINGS
 var GRID_SIZE = 64
@@ -32,6 +35,7 @@ var MAX_ZOOM = 2.5
 
 func _ready() -> void:
 	set_build_cursor(building_object)
+	#viewport_size = get_viewport().get_visible_rect().size
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -49,8 +53,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			zoom = clamp(zoom - Vector2(ZOOM_SPEED, ZOOM_SPEED), Vector2(MIN_ZOOM, MIN_ZOOM), Vector2(MAX_ZOOM, MAX_ZOOM))
 	elif event is InputEventMouseMotion:
 		if dragging:
-			var viewport_size = get_viewport().get_visible_rect().size
-			position = (starting_cam_pos + (mouse_starting_pos - get_global_mouse_position())).clamp(Vector2(limit_left+viewport_size.x, limit_top+viewport_size.y), Vector2(limit_right-viewport_size.x, limit_bottom-viewport_size.y))
+			pass
+			#var viewport_size = get_viewport().get_visible_rect().size
+			#position = (starting_cam_pos + (mouse_starting_pos - get_global_mouse_position()))#.clamp(Vector2(limit_left+viewport_size.x, limit_top+viewport_size.y), Vector2(limit_right-viewport_size.x, limit_bottom-viewport_size.y))
 	
 	#if event.is_action_pressed("Cancel"):
 		#for object in deleting_objects:
@@ -60,28 +65,45 @@ func _unhandled_input(event: InputEvent) -> void:
 		#deleting_objects.clear()
 	
 	if event.is_action_pressed("Place"):
+		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 0)
 		current_action = actions.placing
 		building = true
 	if event.is_action_pressed("Delete"):
+		if not building_objects.is_empty():
+			for object in building_objects:
+				object.queue_free()
+			building_objects.clear()
+			build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
+		
+		print(deleting_objects)
+		if not deleting_objects.is_empty():
+			for object in deleting_objects:
+				if not object: continue
+				object.destroy_time = object.max_destroy_time
+				object.material = null
+			deleting_objects.clear()
+		
 		current_action = actions.deleting
 		building = true
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("Place"):
+		for object in building_objects:
+			object.held = false
+			object.modulate = Color.from_rgba8(255, 255, 255, 255)
+		
+		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
+		
 		building = false
 		current_action = null
 		last_object_built = null
+		building_objects.clear()
 	if event.is_action_released("Delete"):
 		building = false
 		current_action = null
 
 func _physics_process(delta: float) -> void:
-	keyboard_movement(delta)
-	#if get_viewport().gui_get_hovered_control() == null:
-		#if Input.is_action_pressed("Place"):
-			#place(building_object)
-		#if Input.is_action_pressed("Delete"):
-			#delete()
+	#keyboard_movement(delta)
 	
 	if building:
 		if current_action == actions.placing:
@@ -89,13 +111,14 @@ func _physics_process(delta: float) -> void:
 		elif current_action == actions.deleting:
 			delete()
 	
-	if not deleting_objects.is_empty():
+	if not deleting_objects.is_empty() and current_action != actions.deleting:
 		for object in deleting_objects:
 			if not object: continue
 			if "destroy_time" in object:
 				object.destroy_time = max(object.destroy_time - delta*GameManager.time_scale, 0)
 				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
 				if object.destroy_time == 0:
+					deleting_objects.erase(object)
 					object.queue_free()
 			else:
 				object.queue_free()
@@ -105,7 +128,8 @@ func _physics_process(delta: float) -> void:
 
 func keyboard_movement(delta):
 	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
-	global_position += moveVector * 500 * delta
+	#var viewport_size = get_viewport().get_visible_rect().size
+	position += moveVector * 800 * delta
 
 func set_build_cursor(object:PackedScene):
 	for child in build_cursor.get_children():
@@ -148,6 +172,9 @@ func place(object:PackedScene):
 	var placed_object = object.instantiate()
 	get_tree().current_scene.add_child(placed_object)
 	placed_object.global_position = build_cursor.global_position
+	placed_object.held = true
+	placed_object.modulate = Color.from_rgba8(255, 255, 255, 140)
+	building_objects.append(placed_object)
 	
 	if last_object_built and last_object_built.is_in_group("Rotate"):
 		var direction = last_object_built.global_position.direction_to(placed_object.global_position)
@@ -163,10 +190,11 @@ func place(object:PackedScene):
 
 func delete():
 	if dragging: return
+	building_object = null
 	var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
 	if not objects.is_empty(): 
 		var deleting_object = objects[0] as Area2D
-		if deleting_object.is_in_group("Block") and not deleting_object.is_in_group("Unbreakable"):
+		if deleting_object.is_in_group("Block") and deleting_object.held == false and not deleting_object.is_in_group("Unbreakable"):
 			if deleting_object in deleting_objects: return
 			#building_object = null
 			deleting_object.destroy_time = deleting_object.max_destroy_time

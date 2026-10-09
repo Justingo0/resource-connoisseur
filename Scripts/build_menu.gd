@@ -1,6 +1,6 @@
 extends Control
 
-@onready var camera = $"../../Camera2D"
+@onready var camera = %Camera2D
 @onready var pause_state_sign = $PauseButton/TextureRect
 
 @onready var miner = preload("res://Scenes/miner.tscn")

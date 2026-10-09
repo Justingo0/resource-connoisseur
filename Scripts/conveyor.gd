@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var raycast = $RayCast
+@onready var conveyor_body = $Body
 
 var SPEED:float = 200
 
@@ -11,7 +12,7 @@ var SPEED:float = 200
 
 @export var item:CharacterBody2D
 @export var item_incoming:CharacterBody2D
-@export var item_moving:bool
+var item_moving:bool = true
 
 func _ready() -> void:
 	$Body.frame = GameManager.conveyor_frame
@@ -19,9 +20,6 @@ func _ready() -> void:
 func _on_body_frame_changed() -> void:
 	if held:
 		GameManager.conveyor_frame = $Body.frame
-
-#func _physics_process(delta: float) -> void:
-	#moving_body.constant_linear_velocity = Vector2.UP.rotated(rotation) * SPEED * delta
 
 func _physics_process(delta: float) -> void:
 	if raycast.is_colliding() and item:
@@ -48,6 +46,11 @@ func _physics_process(delta: float) -> void:
 				#print(next_conveyer.inventory)
 				item.queue_free()
 				item = null
+		else:
+			item_moving = false
+	#if item_moving == true and conveyor_body.speed_scale == 0 and GameManager.time_scale > 0:
+		#conveyor_body.frame = GameManager.conveyor_frame
+	#conveyor_body.speed_scale = 1 * (1 if item_moving else 0) * GameManager.time_scale
 
 #func _process(delta: float) -> void:
 	#if item and not held:
