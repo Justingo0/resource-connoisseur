@@ -25,7 +25,6 @@ func _physics_process(delta: float) -> void:
 			scale.y *= widthMultiplier
 			global_position += forwardDirection * range * 32
 			oneShot = true
-		print(projectileSpeed * projectileLifetime)
 	else:
 		global_position += forwardDirection * projectileSpeed * delta
 
