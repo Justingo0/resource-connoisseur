@@ -7,7 +7,6 @@
 radius = 307.02606
 
 [node name="Spawner" type="Area2D" unique_id=263560184]
-skew = 0.41015238
 script = ExtResource("1_mdv8j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1373397993]
@@ -15,5 +14,3 @@ shape = SubResource("CircleShape2D_pfrxy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1822683556]
 texture = ExtResource("2_xhbpr")
-
-[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
