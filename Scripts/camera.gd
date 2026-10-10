@@ -4,6 +4,7 @@ extends Camera2D
 @onready var delete_cursor = $DeleteCursor
 
 var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
+var contruct_shader = preload("res://Assets/Shader/construct_shader.tres")
 
 var mouse_starting_pos := Vector2.ZERO
 var starting_cam_pos := Vector2.ZERO
@@ -18,13 +19,18 @@ var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
 	get:
 		return building_object
 var last_object_built = null
-var building_objects = []
-var deleting_objects = []
+var building_objects := []
+var deleting_objects := []
+
+var current_objects := []
+var interacting_object = null
+var object_iteration := 0
 
 enum actions {placing, deleting, moving}
 var current_action
+var object_action
 
-var viewport_size
+var speed := 1.0
 
 # PRIVATE SETTINGS
 var GRID_SIZE = 64
@@ -65,7 +71,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		#deleting_objects.clear()
 	
 	if event.is_action_pressed("Place"):
-		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 0)
+		#build_cursor.modulate = Color.from_rgba8(255, 255, 255, 0)
+		speed = 1.0
 		current_action = actions.placing
 		building = true
 	if event.is_action_pressed("Delete"):
@@ -75,53 +82,93 @@ func _unhandled_input(event: InputEvent) -> void:
 			building_objects.clear()
 			build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
 		
-		print(deleting_objects)
-		if not deleting_objects.is_empty():
-			for object in deleting_objects:
-				if not object: continue
-				object.destroy_time = object.max_destroy_time
-				object.material = null
-			deleting_objects.clear()
-		
 		current_action = actions.deleting
 		building = true
+		
+		var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
+		if objects.is_empty():
+			for object in current_objects:
+				if not object or object == interacting_object: continue
+				object.destroy_time = object.max_destroy_time
+				object.material = null
+				object.queue_free()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("Place"):
-		for object in building_objects:
-			object.held = false
-			object.modulate = Color.from_rgba8(255, 255, 255, 255)
+		#for object in building_objects:
+			#object.material.set_shader_parameter("dissolve_progress", 1)
 		
 		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
+		
+		if object_action == actions.deleting:
+			current_objects.clear()
+		current_objects.append_array(building_objects)
+		object_action = actions.placing
 		
 		building = false
 		current_action = null
 		last_object_built = null
 		building_objects.clear()
 	if event.is_action_released("Delete"):
+		if not current_objects.is_empty() and object_action == actions.placing:
+			object_action = null
+			return
+		
+		current_objects.append_array(deleting_objects)
+		object_action = actions.deleting
+		deleting_objects.clear()
 		building = false
 		current_action = null
 
 func _physics_process(delta: float) -> void:
-	#keyboard_movement(delta)
-	
 	if building:
 		if current_action == actions.placing:
 			place(building_object)
 		elif current_action == actions.deleting:
 			delete()
 	
-	if not deleting_objects.is_empty() and current_action != actions.deleting:
-		for object in deleting_objects:
-			if not object: continue
-			if "destroy_time" in object:
-				object.destroy_time = max(object.destroy_time - delta*GameManager.time_scale, 0)
-				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
-				if object.destroy_time == 0:
-					deleting_objects.erase(object)
+	if not current_objects.is_empty():
+		if object_iteration <= current_objects.size()-1:
+			var object = current_objects[object_iteration]
+			interacting_object = object
+			if not object:
+				object_iteration += 1
+				return
+			if object_action == actions.deleting:
+				if "destroy_time" in object:
+					object.destroy_time = max(object.destroy_time - delta*GameManager.time_scale*speed, 0)
+					if not object.material:
+						object.material = dissolve_shader.duplicate()
+					object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
+					if object.destroy_time == 0:
+						object_iteration += 1
+						object.queue_free()
+				else:
+					object_iteration += 1
 					object.queue_free()
-			else:
-				object.queue_free()
+			elif object_action == actions.placing:
+				if "destroy_time" in object:
+					object.destroy_time = min(object.destroy_time + delta*GameManager.time_scale*speed, object.max_destroy_time)
+					if not object.material:
+						object.material = contruct_shader.duplicate()
+					object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
+					if object.destroy_time == object.max_destroy_time:
+						object_iteration += 1
+						object.held = false
+						object.modulate = Color.from_rgba8(255, 255, 255, 255)
+						object.material = null
+				else:
+					object_iteration += 1
+					object.queue_free()
+					object.held = false
+					object.modulate = Color.from_rgba8(255, 255, 255, 255)
+					object.material = null
+		else:
+			object_iteration = 0
+			interacting_object = null
+	else:
+		object_iteration = 0
+		interacting_object = null
 	
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
@@ -171,8 +218,10 @@ func place(object:PackedScene):
 	
 	var placed_object = object.instantiate()
 	get_tree().current_scene.add_child(placed_object)
-	placed_object.global_position = build_cursor.global_position
 	placed_object.held = true
+	placed_object.destroy_time = 0
+	placed_object.global_position = build_cursor.global_position
+	#placed_object.material = contruct_shader.duplicate()
 	placed_object.modulate = Color.from_rgba8(255, 255, 255, 140)
 	building_objects.append(placed_object)
 	

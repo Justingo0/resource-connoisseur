@@ -1,6 +1,6 @@
-[gd_resource type="ShaderMaterial" format=3 uid="uid://bso6gxbltd7by"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d3f45njfn00j2"]
 
-[ext_resource type="Shader" uid="uid://dp17ipghgueog" path="res://Assets/Shader/dissolve_shader.gdshader" id="1_m8pml"]
+[ext_resource type="Shader" uid="uid://dp17ipghgueog" path="res://Assets/Shader/dissolve_shader.gdshader" id="1_6flhs"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_7ekrn"]
 seed = 16
@@ -11,10 +11,10 @@ noise = SubResource("FastNoiseLite_7ekrn")
 seamless = true
 
 [resource]
-shader = ExtResource("1_m8pml")
+shader = ExtResource("1_6flhs")
 shader_parameter/dissolve_progress = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_m8pml")
-shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_color = Color(0, 0.6, 0.6862745, 1)
 shader_parameter/edge_thickness = 0.0400000019
-shader_parameter/outline_color = Color(1, 0, 0, 1)
+shader_parameter/outline_color = Color(4.9093364e-06, 0.60164505, 0.68448514, 1)
 shader_parameter/outline_width = 2.0

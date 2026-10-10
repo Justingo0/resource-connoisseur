@@ -43,14 +43,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 10
 
-[node name="Button" type="Button" parent="Panel/HBoxContainer" unique_id=1374977314]
+[node name="Selection1" type="Button" parent="Panel/HBoxContainer" unique_id=1374977314]
 layout_mode = 2
 size_flags_horizontal = 3
 tooltip_text = "Select Miner."
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button" unique_id=476597683]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Selection1" unique_id=476597683]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -65,13 +65,13 @@ grow_vertical = 2
 texture = ExtResource("2_f8evq")
 expand_mode = 1
 
-[node name="Button2" type="Button" parent="Panel/HBoxContainer" unique_id=1707971017]
+[node name="Selection2" type="Button" parent="Panel/HBoxContainer" unique_id=1707971017]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button2" unique_id=689229979]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Selection2" unique_id=689229979]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -86,7 +86,7 @@ grow_vertical = 2
 texture = ExtResource("3_16wyj")
 expand_mode = 1
 
-[node name="Button3" type="Button" parent="Panel/HBoxContainer" unique_id=208719041]
+[node name="Selection3" type="Button" parent="Panel/HBoxContainer" unique_id=208719041]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -94,7 +94,7 @@ theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
 text = "Core"
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button3" unique_id=1192832696]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Selection3" unique_id=1192832696]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -109,7 +109,7 @@ grow_vertical = 2
 texture = ExtResource("4_t747t")
 expand_mode = 1
 
-[node name="Button4" type="Button" parent="Panel/HBoxContainer" unique_id=741786183]
+[node name="Selection4" type="Button" parent="Panel/HBoxContainer" unique_id=741786183]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
@@ -117,7 +117,7 @@ theme_override_font_sizes/font_size = 26
 theme_override_styles/normal = SubResource("StyleBoxFlat_sar82")
 text = "Core"
 
-[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Button4" unique_id=1663943343]
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer/Selection4" unique_id=1663943343]
 texture_filter = 1
 layout_mode = 1
 anchors_preset = 15
@@ -172,9 +172,9 @@ grow_vertical = 2
 texture = ExtResource("4_16wyj")
 expand_mode = 1
 
-[connection signal="pressed" from="Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
-[connection signal="pressed" from="Panel/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Selection1" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Selection2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Selection3" to="." method="_on_button_3_pressed"]
+[connection signal="pressed" from="Panel/HBoxContainer/Selection4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Clear" to="." method="_on_clear_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

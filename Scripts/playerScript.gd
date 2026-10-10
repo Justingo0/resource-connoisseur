@@ -13,6 +13,9 @@ var rotate_tween:Tween = null
 
 var last_velocity = Vector2.ZERO
 
+enum actions {default, mine}
+var action = actions.default
+
 func _ready() -> void:
 	#targetPosition = camera.position
 	animation.play("default")
@@ -20,7 +23,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	player_movement(delta)
 	
-	sprite.rotation = rotate_toward(sprite.rotation, position.angle_to_point(last_velocity + position)+deg_to_rad(90), 0.15)
+	sprite.rotation = rotate_toward(sprite.rotation, position.angle_to_point(last_velocity + position)+deg_to_rad(90), 0.35)
 	
 	#targetPosition = camera.position
 	#
@@ -37,6 +40,9 @@ func _physics_process(delta: float) -> void:
 		#moving = false
 	
 	move_and_slide()
+
+func give_action(assignment):
+	action = assignment
 
 func player_movement(delta:float):
 	var move_vector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")

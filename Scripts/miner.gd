@@ -14,7 +14,17 @@ var time = 0
 		return conveyors
 
 @export var max_destroy_time:float
-@export var destroy_time:float = 0.0
+@export var destroy_time:float = 0.0:
+	set(new_val):
+		destroy_time = new_val
+		if destroy_time == max_destroy_time:
+			if not has_node("Drill"): return
+			$Drill.visible = true
+		else:
+			if not has_node("Drill"): return
+			$Drill.visible = false
+	get:
+		return destroy_time
 
 var conveyorInterval = 0
 var resources = 0
@@ -28,6 +38,7 @@ var selected_conveyor = null
 
 func _ready() -> void:
 	driller_anim.speed_scale = 0
+	$Drill.visible = true
 	if !held:
 		driller_anim.play("new_animation")
 
