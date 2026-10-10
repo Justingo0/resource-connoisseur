@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://na04us1owcye" path="res://Assets/Conveyor/Conveyer1.png" id="3_16wyj"]
 [ext_resource type="Texture2D" uid="uid://lli3s0oh13x8" path="res://Assets/UI/pause.png" id="4_16wyj"]
 [ext_resource type="Texture2D" uid="uid://c2447bohxeme6" path="res://Assets/core.png" id="4_f8evq"]
+[ext_resource type="Script" uid="uid://y86org7m2ksf" path="res://Scripts/waveTimer.gd" id="6_t747t"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sar82"]
 bg_color = Color(0.6610597, 0.5925078, 0.47071713, 0.21960784)
@@ -154,8 +155,38 @@ grow_vertical = 2
 texture = ExtResource("4_16wyj")
 expand_mode = 1
 
+[node name="waveTimer" type="Label" parent="." unique_id=1300177428]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1120.0
+offset_top = -616.0
+offset_right = -864.0
+offset_bottom = -552.0
+grow_horizontal = 0
+grow_vertical = 0
+horizontal_alignment = 1
+script = ExtResource("6_t747t")
+
+[node name="skipWaveButton" type="Button" parent="." unique_id=1950342748]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -880.0
+offset_top = -608.0
+offset_right = -840.0
+offset_bottom = -577.0
+text = "skip"
+
 [connection signal="pressed" from="Panel/HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Button2" to="." method="_on_button_2_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Button3" to="." method="_on_button_3_pressed"]
 [connection signal="pressed" from="Panel/HBoxContainer/Button4" to="." method="_on_button_4_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="skipWaveButton" to="." method="_on_skip_wave_button_pressed"]

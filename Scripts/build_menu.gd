@@ -1,5 +1,7 @@
 extends Control
 
+signal startPrematurely()
+
 @onready var camera = $"../../Camera2D"
 @onready var pause_state_sign = $PauseButton/TextureRect
 
@@ -32,3 +34,6 @@ func _on_pause_button_pressed() -> void:
 	paused = not paused
 	GameManager.time_scale = 0 if paused else 1
 	pause_state_sign.texture = play_sign if paused else pause_sign
+
+func _on_skip_wave_button_pressed() -> void:
+	startPrematurely.emit()
