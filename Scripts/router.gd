@@ -32,14 +32,14 @@ var conveyor_interval = 0
 
 func _on_conveyor_detector_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Conveyor"):
-		if area.held == true: return
-		var conveyor_ray = area.get_node("RayCast")
-		#print(conveyor_ray.get_collider())
-		if conveyor_ray.is_colliding() and conveyor_ray.get_collider() == self:
-			return
+		#if area.held == true: return
+		#var conveyor_ray = area.get_node("RayCast")
+		#if conveyor_ray.is_colliding() and conveyor_ray.get_collider() == self:
+			#return
 		
 		conveyors.append(area)
 		conveyors = conveyors
+		deposit()
 
 func _on_conveyor_detector_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Conveyor") and area in conveyors:
@@ -49,37 +49,38 @@ func _on_conveyor_detector_area_exited(area: Area2D) -> void:
 func _physics_process(delta: float) -> void:
 	if last_output_item:
 		last_output_item.global_position = last_output_item.global_position.move_toward(output_conveyor.global_position, 400*delta*GameManager.time_scale)
-		if output_conveyor.global_position == output_conveyor.global_position:
+		if last_output_item.global_position == output_conveyor.global_position:
 			output_conveyor.item = last_output_item
 			output_conveyor.item_incoming = null
 			last_output_item = null
 			output_conveyor = null
 
 func deposit():
+	#print(conveyors.is_empty() or inventory["ore"] <= 0)
 	if conveyors.is_empty() or inventory["ore"] <= 0: return
 	
 	conveyor_interval += 1
 	#print(conveyor_interval%conveyors.size())
 	output_conveyor = conveyors[conveyor_interval%conveyors.size()]
-	if not output_conveyor: return
 	
 	var conveyor_ray = output_conveyor.get_node("RayCast")
 	if conveyor_ray.is_colliding() and conveyor_ray.get_collider() == self:
 		conveyors.erase(output_conveyor)
-		if conveyors.is_empty(): return
-		output_conveyor = conveyors[conveyor_interval%conveyors.size()]
+		deposit()
+		return
 	
-	if output_conveyor and output_conveyor.item == null and output_conveyor.held == false and !held:
+	#print(output_conveyor.item == null and output_conveyor.held == false and !held)
+	if output_conveyor.item == null and output_conveyor.held == false and !held:
 		inventory["ore"] -= 1
 		inventory = inventory
 		last_output_item = ore_item.instantiate()
 		get_tree().current_scene.call_deferred('add_child', last_output_item)
 		
 		var starting_pos = global_position
-		if (output_conveyor.global_position.y - global_position.y) == 64.0 or (output_conveyor.global_position.y - global_position.y) == -128:
-			starting_pos.x = output_conveyor.global_position.x
-		else:
-			starting_pos.y = output_conveyor.global_position.y
+		#if (output_conveyor.global_position.y - global_position.y) == 64.0 or (output_conveyor.global_position.y - global_position.y) == -128:
+			#starting_pos.x = output_conveyor.global_position.x
+		#else:
+			#starting_pos.y = output_conveyor.global_position.y
 		
 		last_output_item.global_position = starting_pos
 		output_conveyor.item_incoming = last_output_item

@@ -24,7 +24,7 @@ var deleting_objects := []
 
 var current_objects := []
 var interacting_object = null
-var object_iteration := 0
+#var object_iteration := 0
 
 enum actions {placing, deleting, moving}
 var current_action
@@ -80,18 +80,39 @@ func _unhandled_input(event: InputEvent) -> void:
 			for object in building_objects:
 				object.queue_free()
 			building_objects.clear()
-			build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
+			return
+		
+		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
+		
+		#if current_objects.is_empty():
+		if object_action == actions.placing:
+			return
+		elif object_action == null and not current_objects.is_empty():
+			for object in current_objects:
+				object.queue_free()
+			current_objects.clear()
 		
 		current_action = actions.deleting
 		building = true
 		
-		var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
-		if objects.is_empty():
-			for object in current_objects:
-				if not object or object == interacting_object: continue
-				object.destroy_time = object.max_destroy_time
-				object.material = null
-				object.queue_free()
+		#var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
+		#if not objects.is_empty():
+			#if object_action == actions.placing:
+				#current_objects.clear()
+			#current_action = actions.deleting
+			#building = true
+		#else:
+			#current_action = null
+			#object_action = null
+			#building = false
+		
+		#var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
+		#if objects.is_empty():
+			#for object in current_objects:
+				#if not object or object == interacting_object: continue
+				#object.destroy_time = object.max_destroy_time
+				#object.material = null
+				#object.queue_free()
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("Place"):
@@ -110,7 +131,11 @@ func _input(event: InputEvent) -> void:
 		last_object_built = null
 		building_objects.clear()
 	if event.is_action_released("Delete"):
-		if not current_objects.is_empty() and object_action == actions.placing:
+		#if not current_objects.is_empty() and object_action == actions.placing:
+			#object_action = null
+			#return
+			
+		if object_action == actions.placing:
 			object_action = null
 			return
 		
@@ -121,6 +146,11 @@ func _input(event: InputEvent) -> void:
 		current_action = null
 
 func _physics_process(delta: float) -> void:
+	if GameManager.time_scale <= 0.0:
+		keyboard_movement(delta)
+	else:
+		position = Vector2.ZERO
+	
 	if building:
 		if current_action == actions.placing:
 			place(building_object)
@@ -128,47 +158,39 @@ func _physics_process(delta: float) -> void:
 			delete()
 	
 	if not current_objects.is_empty():
-		if object_iteration <= current_objects.size()-1:
-			var object = current_objects[object_iteration]
-			interacting_object = object
-			if not object:
-				object_iteration += 1
-				return
-			if object_action == actions.deleting:
-				if "destroy_time" in object:
-					object.destroy_time = max(object.destroy_time - delta*GameManager.time_scale*speed, 0)
-					if not object.material:
-						object.material = dissolve_shader.duplicate()
-					object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
-					if object.destroy_time == 0:
-						object_iteration += 1
-						object.queue_free()
-				else:
-					object_iteration += 1
+		var object = current_objects[0]
+		interacting_object = object
+		if not object:
+			return
+		if object_action == actions.deleting:
+			if "destroy_time" in object:
+				object.destroy_time = max(object.destroy_time - delta*GameManager.time_scale*speed, 0)
+				if not object.material:
+					object.material = dissolve_shader.duplicate()
+				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
+				if object.destroy_time == 0:
 					object.queue_free()
-			elif object_action == actions.placing:
-				if "destroy_time" in object:
-					object.destroy_time = min(object.destroy_time + delta*GameManager.time_scale*speed, object.max_destroy_time)
-					if not object.material:
-						object.material = contruct_shader.duplicate()
-					object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
-					if object.destroy_time == object.max_destroy_time:
-						object_iteration += 1
-						object.held = false
-						object.modulate = Color.from_rgba8(255, 255, 255, 255)
-						object.material = null
-				else:
-					object_iteration += 1
-					object.queue_free()
+					current_objects.erase(object)
+			else:
+				object.queue_free()
+				current_objects.erase(object)
+		elif object_action == actions.placing:
+			if "destroy_time" in object:
+				object.destroy_time = min(object.destroy_time + delta*GameManager.time_scale*speed, object.max_destroy_time)
+				if not object.material:
+					object.material = contruct_shader.duplicate()
+				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
+				if object.destroy_time == object.max_destroy_time:
 					object.held = false
 					object.modulate = Color.from_rgba8(255, 255, 255, 255)
 					object.material = null
-		else:
-			object_iteration = 0
-			interacting_object = null
-	else:
-		object_iteration = 0
-		interacting_object = null
+					current_objects.erase(object)
+			else:
+				object.queue_free()
+				object.held = false
+				object.modulate = Color.from_rgba8(255, 255, 255, 255)
+				object.material = null
+				current_objects.erase(object)
 	
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
@@ -176,7 +198,7 @@ func _physics_process(delta: float) -> void:
 func keyboard_movement(delta):
 	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
 	#var viewport_size = get_viewport().get_visible_rect().size
-	position += moveVector * 800 * delta
+	position += moveVector * 300 * delta
 
 func set_build_cursor(object:PackedScene):
 	for child in build_cursor.get_children():
