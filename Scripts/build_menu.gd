@@ -1,27 +1,51 @@
 extends Control
 
-@onready var camera = $"../../Camera2D"
+signal startPrematurely
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var camera = %Camera2D
+@onready var pause_state_sign = $PauseButton/TextureRect
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+@onready var miner = preload("res://Scenes/miner.tscn")
+@onready var conveyor = preload("res://Scenes/conveyor.tscn")
+@onready var home = preload("res://Scenes/home.tscn")
+@onready var router = preload("res://Scenes/router.tscn")
+@onready var turrent = preload("res://Scenes/turret.tscn")
+
+@onready var play_sign = preload("res://Assets/UI/play.png")
+@onready var pause_sign = preload("res://Assets/UI/pause.png")
+
+var paused = false
 
 func _on_button_pressed() -> void:
-	camera.building_object = load("res://Scenes/miner.tscn")
+	camera.building_object = miner
 	# I want to set the buildcursor building to miner
 
 func _on_button_2_pressed() -> void:
-	camera.building_object = load("res://Scenes/conveyor.tscn")
+	camera.building_object = conveyor
 	# I want to set the buildcursor building to conveyor
 
 func _on_button_3_pressed() -> void:
-	camera.building_object = load("res://Scenes/home.tscn")
+	camera.building_object = home
 	# I want to set the buildcursor building to core
 
 func _on_button_4_pressed() -> void:
+	camera.building_object = router
+	# I want to set the buildcursor building to router
+
+func _on_selection_5_pressed() -> void:
+	camera.building_object = turrent
+	# I want to set the buildcursor building to turrent
+
+func _on_clear_pressed() -> void:
 	camera.building_object = null
 	# I want to set the buildcursor building to clear
+
+func _on_pause_button_pressed() -> void:
+	paused = not paused
+	GameManager.time_scale = 0 if paused else 1
+	pause_state_sign.texture = play_sign if paused else pause_sign
+
+func _on_skip_wave_button_pressed() -> void:
+	if GameManager.time_scale <= 0.0: return
+	print("MUAHAHAHAH")
+	startPrematurely.emit()

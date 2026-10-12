@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://buokk0ij5kndh"]
+
+[ext_resource type="Script" uid="uid://by4lc3lesdxok" path="res://Scripts/turret.gd" id="1_hskch"]
+[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/turretBase.png" id="2_6spbj"]
+[ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/turretTop.png" id="3_pulj5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
+size = Vector2(48, 48)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6spbj"]
+radius = 195.04102
+
+[node name="Turret" type="Area2D" unique_id=1590054207 groups=["Block"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_hskch")
+max_destroy_time = 0.1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1532442197]
+shape = SubResource("RectangleShape2D_p7o00")
+
+[node name="turretBase" type="Sprite2D" parent="." unique_id=1616883434]
+texture_filter = 1
+use_parent_material = true
+texture = ExtResource("2_6spbj")
+
+[node name="turretTop" type="Sprite2D" parent="." unique_id=1432120540]
+texture_filter = 1
+scale = Vector2(2, 2)
+texture = ExtResource("3_pulj5")
+
+[node name="rangeCone" type="Area2D" parent="." unique_id=619147179]
+collision_layer = 8
+collision_mask = 8
+
+[node name="range" type="CollisionShape2D" parent="rangeCone" unique_id=1631723139]
+shape = SubResource("CircleShape2D_6spbj")
+debug_color = Color(0.606062, 0.532644, 0.28561583, 0.41960785)
+
+[connection signal="body_entered" from="rangeCone" to="." method="_on_range_cone_body_entered"]
+[connection signal="body_exited" from="rangeCone" to="." method="_on_range_cone_body_exited"]
