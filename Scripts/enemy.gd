@@ -8,11 +8,11 @@ func _physics_process(delta: float) -> void:
 	var targetAngle = position.angle_to_point(targetLocation.global_position)
 	var forwardDirection = Vector2.from_angle(rotation)
 	if abs(rad_to_deg(targetAngle - rotation)) < 1:
-		velocity = forwardDirection * speed
+		velocity = forwardDirection * speed *GameManager.time_scale
 	elif global_position.distance_to(targetLocation.global_position) > 400:
-		velocity = forwardDirection * 100
+		velocity = forwardDirection * 100 *GameManager.time_scale
 	else:
-		velocity = forwardDirection * 0
+		velocity = Vector2.ZERO
 	if global_position.distance_to(targetLocation.global_position) > 100:
 		rotation = rotate_toward(rotation, targetAngle, 0.07)
 	move_and_slide()

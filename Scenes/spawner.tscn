@@ -14,3 +14,7 @@ shape = SubResource("CircleShape2D_pfrxy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1822683556]
 texture = ExtResource("2_xhbpr")
+
+[node name="WaveSpawning" type="Timer" parent="." unique_id=1456084966]
+
+[connection signal="timeout" from="WaveSpawning" to="." method="_on_wave_spawning_timeout"]

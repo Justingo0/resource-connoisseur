@@ -13,7 +13,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	time += delta
+	time += delta*GameManager.time_scale
 	if time > 1:
 		timeForWave -= 1
 		if timeForWave >= 60:

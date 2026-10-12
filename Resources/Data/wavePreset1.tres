@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_qt7dk")
-waveTimes = [1, 1, 2, 3, 4]
+waveTimes = [3, 6, 15, 20, 20]
 waves = [[1], [3], [5], [10], [20]]
 metadata/_custom_type_script = "uid://sbtvp5qiyinq"

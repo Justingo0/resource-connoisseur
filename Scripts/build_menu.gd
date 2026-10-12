@@ -1,8 +1,6 @@
 extends Control
 
-signal startPrematurely()
-
-signal startPrematurely()
+signal startPrematurely
 
 @onready var camera = %Camera2D
 @onready var pause_state_sign = $PauseButton/TextureRect
@@ -11,6 +9,7 @@ signal startPrematurely()
 @onready var conveyor = preload("res://Scenes/conveyor.tscn")
 @onready var home = preload("res://Scenes/home.tscn")
 @onready var router = preload("res://Scenes/router.tscn")
+@onready var turrent = preload("res://Scenes/turret.tscn")
 
 @onready var play_sign = preload("res://Assets/UI/play.png")
 @onready var pause_sign = preload("res://Assets/UI/pause.png")
@@ -33,6 +32,10 @@ func _on_button_4_pressed() -> void:
 	camera.building_object = router
 	# I want to set the buildcursor building to router
 
+func _on_selection_5_pressed() -> void:
+	camera.building_object = turrent
+	# I want to set the buildcursor building to turrent
+
 func _on_clear_pressed() -> void:
 	camera.building_object = null
 	# I want to set the buildcursor building to clear
@@ -43,4 +46,6 @@ func _on_pause_button_pressed() -> void:
 	pause_state_sign.texture = play_sign if paused else pause_sign
 
 func _on_skip_wave_button_pressed() -> void:
+	if GameManager.time_scale <= 0.0: return
+	print("MUAHAHAHAH")
 	startPrematurely.emit()

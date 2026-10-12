@@ -39,11 +39,14 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3dj7"]
+size = Vector2(14, 12)
+
 [node name="Player" type="CharacterBody2D" unique_id=38408725]
 z_index = 11
 scale = Vector2(3, 3)
-collision_layer = 15
-collision_mask = 15
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_kyqiw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1209258144]
@@ -51,4 +54,4 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_sar82")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1788188403]
-shape = SubResource("RectangleShape2D_kyqiw")
+shape = SubResource("RectangleShape2D_m3dj7")
