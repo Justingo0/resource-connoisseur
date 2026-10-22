@@ -2,6 +2,8 @@ extends Resource
 
 class_name unitStats
 
+@export var frames:SpriteFrames
+
 @export var size:float
 @export var health:int
 @export var speed:int
