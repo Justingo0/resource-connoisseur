@@ -23,7 +23,6 @@ func _process(delta: float) -> void:
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:
-		print("OHH THE AGONY")
 		queue_free()
 
 func knockback(knockDirection: Vector2, knockAmount: int) -> void:
