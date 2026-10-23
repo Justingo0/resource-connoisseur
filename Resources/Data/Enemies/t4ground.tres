@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://c3qypahsqyk77"]
+
+[ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/turretTop.png" id="1_5brl5"]
+[ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="2_c6hqf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iyrlx"]
+atlas = ExtResource("1_5brl5")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hghv2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iyrlx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_c6hqf")
+frames = SubResource("SpriteFrames_hghv2")
+size = 3.0
+health = 3000
+speed = 300
+metadata/_custom_type_script = "uid://bh8paehk3cbxk"
