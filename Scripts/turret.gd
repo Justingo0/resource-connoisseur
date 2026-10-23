@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var turretTop = $turretTop
 @onready var bullet = preload("res://Scenes/bullet.tscn")
-@onready var turretProperties = preload("res://Resources/Data/Peashooter.tres")
+@onready var turretProperties = preload("res://Resources/Data/Turrets/Peashooter.tres")
 @onready var range = $rangeCone/range
 
 @export var held:bool = false

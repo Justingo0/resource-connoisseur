@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed:int
-var health = 100
+@export var health:int
 @onready var targetLocation = $"../Home"
 
 func _physics_process(delta: float) -> void:
