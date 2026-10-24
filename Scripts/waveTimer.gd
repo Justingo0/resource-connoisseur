@@ -1,6 +1,6 @@
 extends Label
 
-@onready var waveTime = $"../../../Spawner"
+@onready var waveTime = $"../../../../Spawner"
 
 var timeForWave:int
 var waveCount:int

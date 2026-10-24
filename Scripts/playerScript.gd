@@ -45,7 +45,7 @@ func give_action(assignment):
 	action = assignment
 
 func player_movement(delta:float):
-	var move_vector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
+	var move_vector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")*GameManager.time_scale
 	var target_velocity = move_vector * delta * SPEED*10
 	velocity = velocity.move_toward(target_velocity, 50)*GameManager.time_scale
 	if move_vector != Vector2.ZERO:

@@ -134,7 +134,8 @@ func _input(event: InputEvent) -> void:
 		#if not current_objects.is_empty() and object_action == actions.placing:
 			#object_action = null
 			#return
-			
+		
+		building_object = null
 		if object_action == actions.placing:
 			object_action = null
 			return
