@@ -48,6 +48,7 @@ scale = Vector2(3, 3)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_kyqiw")
+SPEED = 5000.0
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1815160954]
 visible = false

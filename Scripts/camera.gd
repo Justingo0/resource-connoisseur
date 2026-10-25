@@ -185,7 +185,7 @@ func _physics_process(delta: float) -> void:
 func keyboard_movement(delta):
 	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
 	#var viewport_size = get_viewport().get_visible_rect().size
-	position += moveVector * 300 * delta
+	position += moveVector * 500 * delta
 
 func set_build_cursor(object:PackedScene):
 	for child in build_cursor.get_children():
