@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cvbrs641igcdw"]
 
 [ext_resource type="Script" uid="uid://bktk06gyx2lj" path="res://Scripts/build_menu.gd" id="1_hx1pr"]
+[ext_resource type="FontFile" uid="uid://bxvbmimhusou1" path="res://Assets/UI/Square.ttf" id="2_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://casb24tydm1ro" path="res://Assets/minerBase.png" id="2_f8evq"]
 [ext_resource type="Texture2D" uid="uid://na04us1owcye" path="res://Assets/Conveyor/Conveyer1.png" id="3_16wyj"]
 [ext_resource type="Texture2D" uid="uid://bxxhwnjbcm10y" path="res://Assets/UI/play.png" id="3_u07jk"]
@@ -32,6 +33,10 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 8
 
+[sub_resource type="LabelSettings" id="LabelSettings_f7kgh"]
+font = ExtResource("2_0dv3k")
+font_size = 18
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tsw58"]
 bg_color = Color(0.05490196, 0.05490196, 0.05490196, 0)
 border_width_left = 2
@@ -47,6 +52,10 @@ border_width_left = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_liqnk"]
 bg_color = Color(0.05490196, 0.05490196, 0.05490196, 0.7921569)
 border_width_left = 2
+
+[sub_resource type="LabelSettings" id="LabelSettings_u07jk"]
+font = ExtResource("2_0dv3k")
+font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sar82"]
 bg_color = Color(0.6610597, 0.5925078, 0.47071713, 0.21960784)
@@ -83,12 +92,20 @@ border_width_bottom = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5fij"]
 bg_color = Color(0.043137256, 0.043137256, 0.043137256, 0.77254903)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b2sko"]
 bg_color = Color(0.043137256, 0.043137256, 0.043137256, 0.3529412)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7e7c6"]
-bg_color = Color(0.043137256, 0.043137256, 0.043137256, 0.53333336)
+bg_color = Color(0.043137256, 0.043137256, 0.043137256, 0.85490197)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
@@ -119,10 +136,13 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 14.0
+offset_left = 55.0
+offset_top = 2.0
 offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
+text = "Next wave in... 99:99"
+label_settings = SubResource("LabelSettings_f7kgh")
 vertical_alignment = 1
 script = ExtResource("6_t747t")
 
@@ -133,7 +153,6 @@ anchor_left = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -37.0
-offset_top = 2.0
 offset_right = -2.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -157,6 +176,20 @@ grow_vertical = 2
 texture = ExtResource("3_u07jk")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="WaveCounter" type="Label" parent="WaveContainer" unique_id=851440245]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 55.0
+offset_bottom = -8.0
+grow_vertical = 2
+text = "99"
+label_settings = SubResource("LabelSettings_u07jk")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="OldPlacement" type="Panel" parent="." unique_id=1812512742]
 visible = false
@@ -357,9 +390,9 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 6.0
-offset_top = 5.0
+offset_top = 4.0
 offset_right = -6.0
-offset_bottom = -7.0
+offset_bottom = -8.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("4_16wyj")
