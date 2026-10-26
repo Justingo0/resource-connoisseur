@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="factoryStats" format=3 uid="uid://dux2nmvmm42tu"]
+
+[ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_8f2gr"]
+
+[resource]
+script = ExtResource("1_8f2gr")
+size = 1
+health = 200
+input = {
+"Ruby": 2,
+"Titanium": 1
+}
+output = {
+"RubyAlloy": 1
+}
+productionTime = 1.0
+inventory = [{}]
+metadata/_custom_type_script = "uid://bjqapbmg5eu4y"
