@@ -1,4 +1,5 @@
 extends Area2D
+var health = 2000
 
 signal inventory_changed(value:int)
 
@@ -12,4 +13,9 @@ signal inventory_changed(value:int)
 
 func _mouse_enter() -> void:
 	pass
-	#print(inventory)
+	print(inventory)
+	
+func take_damage(damage: int) -> void:
+	health -= damage
+	if health < 1:
+		queue_free()

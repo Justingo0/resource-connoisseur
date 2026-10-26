@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(190, 190)
 
-[node name="Home" type="Area2D" unique_id=1003972778 groups=["Block", "Container"]]
+[node name="Home" type="Area2D" unique_id=280351326 groups=["Block", "Container"]]
 z_index = 5
 collision_layer = 3
 collision_mask = 3
