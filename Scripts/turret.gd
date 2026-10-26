@@ -62,10 +62,10 @@ func take_damage(damage: int) -> void:
 func shoot():
 	if held: return
 
-	#if inventory.ore >= 0.5:
-		#inventory.ore = inventory.ore - 0.5
-	#else:
-		#return
+	if inventory.ore >= 0.5:
+		inventory.ore = inventory.ore - 0.5
+	else:
+		return
 
 	while shotCount > 0:
 		reloadTimer = 0
