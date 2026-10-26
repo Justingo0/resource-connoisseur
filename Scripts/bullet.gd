@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var enemyBullet:bool
 @export var widthMultiplier:float
 @export var knockAmount:int
 @export var range:int
@@ -28,8 +29,15 @@ func _physics_process(delta: float) -> void:
 	else:
 		global_position += forwardDirection * projectileSpeed * delta
 
+func _on_area_entered(area: Area2D) -> void:
+	if(enemyBullet and area.is_in_group("Block")):
+		area.take_damage(damage)
+		projectilePierce -= 1
+		if projectilePierce < 0:
+			queue_free()
+
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Enemy"):
+	if(!enemyBullet and body.is_in_group("Enemy")):
 		body.take_damage(damage)
 		body.knockback(forwardDirection, knockAmount)
 		projectilePierce -= 1
