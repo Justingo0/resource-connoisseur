@@ -2,9 +2,12 @@ extends Camera2D
 
 @onready var build_cursor = $BuildCursor
 @onready var delete_cursor = $DeleteCursor
+@onready var mine_cursor = $DeleteCursor/MineCursor
+
+@onready var player = %Player
 
 var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
-var contruct_shader = preload("res://Assets/Shader/construct_shader.tres")
+var construct_shader = preload("res://Assets/Shader/construct_shader.tres")
 
 var mouse_starting_pos := Vector2.ZERO
 var starting_cam_pos := Vector2.ZERO
@@ -63,66 +66,47 @@ func _unhandled_input(event: InputEvent) -> void:
 			#var viewport_size = get_viewport().get_visible_rect().size
 			#position = (starting_cam_pos + (mouse_starting_pos - get_global_mouse_position()))#.clamp(Vector2(limit_left+viewport_size.x, limit_top+viewport_size.y), Vector2(limit_right-viewport_size.x, limit_bottom-viewport_size.y))
 	
-	#if event.is_action_pressed("Cancel"):
-		#for object in deleting_objects:
-			#if not object: continue
-			#object.destroy_time = object.max_destroy_time
-			#object.material = null
-		#deleting_objects.clear()
-	
 	if event.is_action_pressed("Place"):
-		#build_cursor.modulate = Color.from_rgba8(255, 255, 255, 0)
+		if object_action == actions.deleting and current_objects.size() > 0: return
 		speed = 1.0
 		current_action = actions.placing
 		building = true
 	if event.is_action_pressed("Delete"):
+		#print(object_action == actions.placing and not current_objects.is_empty())
+		#print(not building_objects.is_empty())
+		#print((delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()).is_empty())
+		if object_action == actions.placing and not current_objects.is_empty(): return
+		building_object = null
 		if not building_objects.is_empty():
 			for object in building_objects:
 				object.queue_free()
 			building_objects.clear()
+			current_action = null
 			return
-		
-		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
-		
-		#if current_objects.is_empty():
-		if object_action == actions.placing:
+		if (delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()).is_empty():
 			return
-		elif object_action == null and not current_objects.is_empty():
-			for object in current_objects:
-				object.queue_free()
-			current_objects.clear()
-		
 		current_action = actions.deleting
 		building = true
 		
-		#var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
-		#if not objects.is_empty():
-			#if object_action == actions.placing:
-				#current_objects.clear()
-			#current_action = actions.deleting
-			#building = true
-		#else:
-			#current_action = null
-			#object_action = null
-			#building = false
-		
-		#var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
-		#if objects.is_empty():
+		#building_object = null
+		#build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
+		#
+		#if object_action == actions.placing:
+			#return
+		#elif object_action == null and not current_objects.is_empty():
 			#for object in current_objects:
-				#if not object or object == interacting_object: continue
-				#object.destroy_time = object.max_destroy_time
-				#object.material = null
 				#object.queue_free()
+			#current_objects.clear()
+		#
+		#current_action = actions.deleting
+		#building = true
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("Place"):
-		#for object in building_objects:
-			#object.material.set_shader_parameter("dissolve_progress", 1)
+		if object_action == actions.deleting and current_objects.size() > 0: return
 		
 		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
 		
-		if object_action == actions.deleting:
-			current_objects.clear()
 		current_objects.append_array(building_objects)
 		object_action = actions.placing
 		
@@ -131,19 +115,15 @@ func _input(event: InputEvent) -> void:
 		last_object_built = null
 		building_objects.clear()
 	if event.is_action_released("Delete"):
-		#if not current_objects.is_empty() and object_action == actions.placing:
-			#object_action = null
-			#return
-			
-		if object_action == actions.placing:
-			object_action = null
-			return
+		#print(object_action == actions.placing and current_objects.size() > 0)
+		if object_action == actions.placing and not current_objects.is_empty(): return
 		
 		current_objects.append_array(deleting_objects)
 		object_action = actions.deleting
-		deleting_objects.clear()
+		
 		building = false
 		current_action = null
+		deleting_objects.clear()
 
 func _physics_process(delta: float) -> void:
 	if GameManager.time_scale <= 0.0:
@@ -157,18 +137,24 @@ func _physics_process(delta: float) -> void:
 		elif current_action == actions.deleting:
 			delete()
 	
+	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
+	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
+	
 	if not current_objects.is_empty():
+		#print("Has Current Objects")
 		var object = current_objects[0]
-		interacting_object = object
 		if not object:
 			return
+		interacting_object = object
+		#print("Object exist")
 		if object_action == actions.deleting:
+			#print("Deleting ", current_objects)
 			if "destroy_time" in object:
 				object.destroy_time = max(object.destroy_time - delta*GameManager.time_scale*speed, 0)
 				if not object.material:
 					object.material = dissolve_shader.duplicate()
 				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
-				if object.destroy_time == 0:
+				if object.destroy_time == 0.0:
 					object.queue_free()
 					current_objects.erase(object)
 			else:
@@ -178,7 +164,7 @@ func _physics_process(delta: float) -> void:
 			if "destroy_time" in object:
 				object.destroy_time = min(object.destroy_time + delta*GameManager.time_scale*speed, object.max_destroy_time)
 				if not object.material:
-					object.material = contruct_shader.duplicate()
+					object.material = construct_shader.duplicate()
 				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
 				if object.destroy_time == object.max_destroy_time:
 					object.held = false
@@ -191,14 +177,11 @@ func _physics_process(delta: float) -> void:
 				object.modulate = Color.from_rgba8(255, 255, 255, 255)
 				object.material = null
 				current_objects.erase(object)
-	
-	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
-	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 
 func keyboard_movement(delta):
 	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
 	#var viewport_size = get_viewport().get_visible_rect().size
-	position += moveVector * 300 * delta
+	position += moveVector * 500 * delta
 
 func set_build_cursor(object:PackedScene):
 	for child in build_cursor.get_children():
@@ -219,8 +202,18 @@ func set_build_cursor(object:PackedScene):
 		highlight.held = true
 
 func place(object:PackedScene):
+	if not building_object:
+		var overlapping = mine_cursor.get_overlapping_areas()+mine_cursor.get_overlapping_bodies()
+		if not overlapping.is_empty():
+			var selectingOre = overlapping[0]
+			if selectingOre and selectingOre.is_in_group("Ore"):
+				player.give_action(player.actions.mining, selectingOre)
+			else:
+				player.give_action(player.actions.default, null)
+		else:
+			player.give_action(player.actions.default, null)
 	if not object or not building_mode or dragging: return
-	
+	player.give_action(player.actions.default, null)
 	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies():
 		if last_object_built and last_object_built.is_in_group("Rotate") and build_cursor.global_position != last_object_built.global_position:
 			var direction = last_object_built.global_position.direction_to(get_global_mouse_position())
@@ -243,7 +236,7 @@ func place(object:PackedScene):
 	placed_object.held = true
 	placed_object.destroy_time = 0
 	placed_object.global_position = build_cursor.global_position
-	#placed_object.material = contruct_shader.duplicate()
+	#placed_object.material = construct_shader.duplicate()
 	placed_object.modulate = Color.from_rgba8(255, 255, 255, 140)
 	building_objects.append(placed_object)
 	
@@ -261,12 +254,11 @@ func place(object:PackedScene):
 
 func delete():
 	if dragging: return
-	building_object = null
 	var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
 	if not objects.is_empty(): 
 		var deleting_object = objects[0] as Area2D
 		if deleting_object.is_in_group("Block") and deleting_object.held == false and not deleting_object.is_in_group("Unbreakable"):
-			if deleting_object in deleting_objects: return
+			if deleting_object in deleting_objects or deleting_object in current_objects: return
 			#building_object = null
 			deleting_object.destroy_time = deleting_object.max_destroy_time
 			deleting_object.material = dissolve_shader.duplicate()

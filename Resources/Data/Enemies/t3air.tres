@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://dc2343pdi0wto"]
+
+[ext_resource type="Texture2D" uid="uid://d34ssrpml08sf" path="res://Assets/rubyOre.png" id="1_ebi35"]
+[ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="2_m35gh"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_idxpp"]
+atlas = ExtResource("1_ebi35")
+region = Rect2(0, 0, 25, 25)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_afpow"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_idxpp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_m35gh")
+frames = SubResource("SpriteFrames_afpow")
+size = 1.5
+health = 500
+speed = 650
+air = true
+metadata/_custom_type_script = "uid://bh8paehk3cbxk"

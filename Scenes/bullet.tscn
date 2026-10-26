@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sar82"]
 
 [node name="Bullet" type="Area2D" unique_id=1773517755 groups=["Bullet"]]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 11
+collision_mask = 11
 script = ExtResource("1_oduel")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1297865220]
@@ -17,4 +17,5 @@ texture = ExtResource("1_xjght")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=961684313]
 shape = SubResource("RectangleShape2D_sar82")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

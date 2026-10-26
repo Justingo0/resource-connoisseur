@@ -1,0 +1,35 @@
+[gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://clqrwvudbiiyy"]
+
+[ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="1_06736"]
+[ext_resource type="Texture2D" uid="uid://i42hp0nucpjp" path="res://icon.svg" id="1_o32xd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0l5x"]
+atlas = ExtResource("1_o32xd")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hghv2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0l5x")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_06736")
+frames = SubResource("SpriteFrames_hghv2")
+size = 1.5
+health = 400
+speed = 600
+range = 3
+reloadSpeed = 0.1
+shotCount = 1
+shotgun = true
+damage = 10
+projectileSpeed = 1280
+projectileLifetime = 0.5
+projectilePierce = 2
+metadata/_custom_type_script = "uid://bh8paehk3cbxk"
