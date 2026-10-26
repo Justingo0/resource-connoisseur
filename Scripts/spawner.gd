@@ -77,6 +77,7 @@ func spawn_enemy(enemyIndex) -> void:
 	enemyClone.projectilePierce =  enemyStats.projectilePierce
 	enemyClone.projectileSpeed = enemyStats.projectileSpeed
 	enemyClone.shotCount = enemyStats.shotCount
+	enemyClone.shotInterval = enemyStats.shotInterval
 	enemyClone.spread = enemyStats.spread
 	enemyClone.reloadSpeed = enemyStats.reloadSpeed
 	enemyClone.damage = enemyStats.damage
