@@ -1,5 +1,7 @@
 extends Area2D
 
+var health = 50
+
 signal inventory_changed(value:int)
 
 @onready var ore_item = preload("res://Scenes/ore_item.tscn")
@@ -54,6 +56,12 @@ func _physics_process(delta: float) -> void:
 			output_conveyor.item_incoming = null
 			last_output_item = null
 			output_conveyor = null
+
+func take_damage(damage: int) -> void:
+	if !held:
+		health -= damage
+		if health < 1:
+			queue_free()
 
 func deposit():
 	#print(conveyors.is_empty() or inventory["ore"] <= 0)
