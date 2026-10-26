@@ -1,5 +1,7 @@
 extends Area2D
 
+var health = 20
+
 @onready var raycast = $RayCast
 @onready var conveyor_body = $Body
 
@@ -68,6 +70,12 @@ func _physics_process(delta: float) -> void:
 		#if body.is_on_conveyor == false:
 			#item = body
 			#body.is_on_conveyor = true
+
+func take_damage(damage: int) -> void:
+	if !held:
+		health -= damage
+		if health < 1:
+			queue_free()
 
 func _notification(what: int) -> void:
 	if what == NOTIFICATION_PREDELETE:
