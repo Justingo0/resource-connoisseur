@@ -47,5 +47,4 @@ func _on_pause_button_pressed() -> void:
 
 func _on_skip_wave_button_pressed() -> void:
 	if GameManager.time_scale <= 0.0: return
-	print("MUAHAHAHAH")
 	startPrematurely.emit()

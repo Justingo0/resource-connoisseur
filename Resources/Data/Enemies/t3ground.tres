@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://bqo5lgqy1vbah"]
+
+[ext_resource type="Texture2D" uid="uid://d3a1vl3n1yqco" path="res://Assets/Router.png" id="1_8x7en"]
+[ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="2_q1xys"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6nnp"]
+atlas = ExtResource("1_8x7en")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1f0kj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6nnp")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("2_q1xys")
+frames = SubResource("SpriteFrames_1f0kj")
+size = 2.0
+health = 1000
+speed = 400
+metadata/_custom_type_script = "uid://bh8paehk3cbxk"

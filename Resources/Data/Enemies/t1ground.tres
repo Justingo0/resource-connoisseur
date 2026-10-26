@@ -1,0 +1,47 @@
+[gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://djlwhk4xg3h5q"]
+
+[ext_resource type="Texture2D" uid="uid://dowkrufv23wfg" path="res://Assets/groundT1.png" id="1_a2cw3"]
+[ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="1_b658m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eootr"]
+atlas = ExtResource("1_a2cw3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7x4d"]
+atlas = ExtResource("1_a2cw3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_optjw"]
+atlas = ExtResource("1_a2cw3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a2cw3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eootr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7x4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_optjw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_b658m")
+frames = SubResource("SpriteFrames_a2cw3")
+size = 1.0
+health = 100
+speed = 650
+range = 10
+reloadSpeed = 0.33
+shotCount = 1
+damage = 10
+projectileSpeed = 1280
+projectileLifetime = 0.5
+metadata/_custom_type_script = "uid://bh8paehk3cbxk"
