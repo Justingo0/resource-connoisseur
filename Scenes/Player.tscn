@@ -51,8 +51,7 @@ script = ExtResource("1_kyqiw")
 SPEED = 5000.0
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1815160954]
-visible = false
-points = PackedVector2Array(0, -57, 0, 0)
+points = PackedVector2Array(0, -21, 0, 0)
 width = 2.0
 joint_mode = 2
 begin_cap_mode = 2
@@ -63,3 +62,7 @@ sprite_frames = SubResource("SpriteFrames_sar82")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1788188403]
 shape = SubResource("RectangleShape2D_m3dj7")
+
+[node name="MineTime" type="Timer" parent="." unique_id=1167882874]
+
+[connection signal="timeout" from="MineTime" to="." method="_on_mine_time_timeout"]

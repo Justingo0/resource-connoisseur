@@ -2,6 +2,7 @@ extends Camera2D
 
 @onready var build_cursor = $BuildCursor
 @onready var delete_cursor = $DeleteCursor
+@onready var mine_cursor = $DeleteCursor/MineCursor
 
 @onready var player = %Player
 
@@ -147,7 +148,6 @@ func _physics_process(delta: float) -> void:
 		interacting_object = object
 		#print("Object exist")
 		if object_action == actions.deleting:
-			player.give_action(player.actions.deconstruct, object)
 			#print("Deleting ", current_objects)
 			if "destroy_time" in object:
 				object.destroy_time = max(object.destroy_time - delta*GameManager.time_scale*speed, 0)
@@ -161,7 +161,6 @@ func _physics_process(delta: float) -> void:
 				object.queue_free()
 				current_objects.erase(object)
 		elif object_action == actions.placing:
-			player.give_action(player.actions.construct, object)
 			if "destroy_time" in object:
 				object.destroy_time = min(object.destroy_time + delta*GameManager.time_scale*speed, object.max_destroy_time)
 				if not object.material:
@@ -178,9 +177,6 @@ func _physics_process(delta: float) -> void:
 				object.modulate = Color.from_rgba8(255, 255, 255, 255)
 				object.material = null
 				current_objects.erase(object)
-	else:
-		player.give_action(player.actions.default, null)
-		interacting_object = null
 
 func keyboard_movement(delta):
 	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
@@ -206,8 +202,18 @@ func set_build_cursor(object:PackedScene):
 		highlight.held = true
 
 func place(object:PackedScene):
+	if not building_object:
+		var overlapping = mine_cursor.get_overlapping_areas()+mine_cursor.get_overlapping_bodies()
+		if not overlapping.is_empty():
+			var selectingOre = overlapping[0]
+			if selectingOre and selectingOre.is_in_group("Ore"):
+				player.give_action(player.actions.mining, selectingOre)
+			else:
+				player.give_action(player.actions.default, null)
+		else:
+			player.give_action(player.actions.default, null)
 	if not object or not building_mode or dragging: return
-	
+	player.give_action(player.actions.default, null)
 	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies():
 		if last_object_built and last_object_built.is_in_group("Rotate") and build_cursor.global_position != last_object_built.global_position:
 			var direction = last_object_built.global_position.direction_to(get_global_mouse_position())
