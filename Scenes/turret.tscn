@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/turretTop.png" id="3_pulj5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
-size = Vector2(48, 48)
+size = Vector2(54, 54)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6spbj"]
 radius = 195.04102
 
-[node name="Turret" type="Area2D" unique_id=1590054207 groups=["Block"]]
+[node name="Turret" type="Area2D" unique_id=1590054207 groups=["Block", "Container"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_hskch")
