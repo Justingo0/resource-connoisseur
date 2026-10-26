@@ -9,8 +9,8 @@ radius = 56.008926
 radius = 1027.1694
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2136730827 groups=["Enemy"]]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 11
+collision_mask = 11
 script = ExtResource("1_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2114281520]
@@ -31,6 +31,8 @@ offset_bottom = 218.56793
 color = Color(1, 0, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1382670652]
+collision_layer = 8
+collision_mask = 8
 
 [node name="bulletDetector" type="CollisionShape2D" parent="Area2D" unique_id=1846499004]
 shape = SubResource("CircleShape2D_hghv2")

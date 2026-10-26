@@ -13,6 +13,7 @@ var targets = []
 @export var reloadSpeed:float
 @export var spread:float
 @export var shotCount:int
+@export var shotInterval:float
 @export var laser:bool
 @export var shotgun:bool
 @export var damage:int
@@ -78,8 +79,8 @@ func shoot():
 	var shotsLeft = shotCount
 	while shotsLeft > 0:
 		reloadTimer = 0
-		if(!shotgun):
-			await get_tree().create_timer(0.02).timeout
+		if !shotgun:
+			await get_tree().create_timer(shotInterval).timeout
 		shotsLeft -= 1
 		var bulletClone = bullet.instantiate()
 		bulletClone.position = global_position

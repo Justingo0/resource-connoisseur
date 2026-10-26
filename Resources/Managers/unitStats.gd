@@ -13,6 +13,9 @@ class_name unitStats
 @export var reloadSpeed:float
 @export var spread:float
 @export var shotCount:int
+@export var shotInterval:float
+@export var laser:bool
+@export var shotgun:bool
 
 @export var damage:int
 @export var curvature:float
@@ -21,3 +24,5 @@ class_name unitStats
 @export var projectilePierce:int
 @export var splashRadius:int
 @export var splashDamage:int
+@export var widthMultiplier:float
+@export var knockAmount:int
