@@ -1,6 +1,6 @@
 **Resource Connoisseur** is a sandbox game, where you gather resources and bring it back to base to unlock new machines and better equipment.
 
-# Features
+# Features & Updates
 * Ore Mining
 * Grid Placement System
 * Item Movement with Conveyors
@@ -16,6 +16,15 @@
 * Enemy Movement
 * Sequential Placing & Deleting
 * Conveyor Splitter
+* Added a fresh UI with nice buttons
+* Made it so build menu has different tabs
+* Added player mining
+* Player deposits into the core while mining
+* Added walls to the map
+* Map is no longer a boring square
+* Map now has environmental walls
+* Fixed bug where deconstruction would sometimes glitch and pause
+* Fixed problem where building and deleting cancelled each other in a really buggy manner
 # How To Play?
 ​**WASD** to move.​
 
