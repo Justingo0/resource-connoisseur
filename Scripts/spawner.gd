@@ -60,7 +60,7 @@ func spawn_wave():
 			spawn_enemy(waveIndex)
 			await get_tree().create_timer(0.01).timeout
 			spawnCount += 1
-			waveIndex += 1
+		waveIndex += 1
 
 func spawn_enemy(enemyIndex) -> void:
 	var enemyStats = enemyArray[enemyIndex]
@@ -70,9 +70,24 @@ func spawn_enemy(enemyIndex) -> void:
 	enemyClone.global_position.x += randf_range(-300, 300)
 	enemyClone.get_node("AnimatedSprite2D").sprite_frames = enemyStats.frames
 	enemyClone.get_node("AnimatedSprite2D").play("default")
-	get_tree().current_scene.add_child(enemyClone)
 	enemyClone.speed = enemyStats.speed
 	enemyClone.health = enemyStats.health
+	enemyClone.air = enemyStats.air
+	enemyClone.projectileLifetime = enemyStats.projectileLifetime
+	enemyClone.projectilePierce =  enemyStats.projectilePierce
+	enemyClone.projectileSpeed = enemyStats.projectileSpeed
+	enemyClone.shotCount = enemyStats.shotCount
+	enemyClone.shotInterval = enemyStats.shotInterval
+	enemyClone.spread = enemyStats.spread
+	enemyClone.reloadSpeed = enemyStats.reloadSpeed
+	enemyClone.damage = enemyStats.damage
+	enemyClone.laser = enemyStats.laser
+	enemyClone.shotgun = enemyStats.shotgun
+	enemyClone.range = enemyStats.range
+	enemyClone.widthMultiplier = enemyStats.widthMultiplier 
+	enemyClone.knockAmount = enemyStats.knockAmount
+
+	get_tree().current_scene.add_child(enemyClone)
 
 func start_wave() -> void:
 	spawn_wave()

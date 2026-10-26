@@ -2,25 +2,42 @@
 
 [ext_resource type="Script" uid="uid://cmb0vk0ecirel" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sar82"]
-size = Vector2(96, 96)
+[sub_resource type="CircleShape2D" id="CircleShape2D_mdv8j"]
+radius = 56.008926
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hghv2"]
+radius = 1027.1694
 
 [node name="Enemy" type="CharacterBody2D" unique_id=2136730827 groups=["Enemy"]]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 11
+collision_mask = 11
 script = ExtResource("1_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2114281520]
-shape = SubResource("RectangleShape2D_sar82")
+shape = SubResource("CircleShape2D_mdv8j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1235793605]
+clip_children = 2
 texture_filter = 1
 rotation = 1.5707964
 scale = Vector2(5, 5)
 
+[node name="ColorRect" type="ColorRect" parent="AnimatedSprite2D" unique_id=1798895908]
+visible = false
+offset_left = -196.36917
+offset_top = -215.06448
+offset_right = 198.24731
+offset_bottom = 218.56793
+color = Color(1, 0, 0, 1)
+
 [node name="Area2D" type="Area2D" parent="." unique_id=1382670652]
+collision_layer = 8
+collision_mask = 8
 
 [node name="bulletDetector" type="CollisionShape2D" parent="Area2D" unique_id=1846499004]
-shape = SubResource("RectangleShape2D_sar82")
+shape = SubResource("CircleShape2D_hghv2")
+debug_color = Color(0.6745601, 0.5026713, 0.19050765, 0.41960785)
 
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

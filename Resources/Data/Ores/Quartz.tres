@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="OreStats" format=3 uid="uid://b4l7gepg8c448"]
+
+[ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="1_8w25q"]
+
+[resource]
+script = ExtResource("1_8w25q")
+name = "Quartz"
+metadata/_custom_type_script = "uid://qm6i68lmfktf"

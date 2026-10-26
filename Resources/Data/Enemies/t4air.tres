@@ -24,4 +24,5 @@ frames = SubResource("SpriteFrames_287tu")
 size = 4.0
 health = 1400
 speed = 450
+air = true
 metadata/_custom_type_script = "uid://bh8paehk3cbxk"

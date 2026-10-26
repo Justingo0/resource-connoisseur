@@ -2,7 +2,7 @@ extends Area2D
 
 @onready var turretTop = $turretTop
 @onready var bullet = preload("res://Scenes/bullet.tscn")
-@onready var turretProperties = preload("res://Resources/Data/Turrets/Peashooter.tres")
+@onready var turretProperties = preload("res://Resources/Data/Turrets/Hua-Che.tres")
 @onready var range = $rangeCone/range
 
 @export var held:bool = false
@@ -14,6 +14,9 @@ var targets = []
 var targetRotation:float
 var reloadTimer:float
 var shotCount:int
+
+@export var inventory_size = 10
+@export var inventory = {"ore": 0}
 
 func _ready() -> void:
 	range.shape.radius = turretProperties.range * 64
@@ -47,14 +50,27 @@ func _physics_process(_delta: float) -> void:
 		targetRotation = global_position.angle_to_point(targets[0].global_position)
 		if abs(rad_to_deg(angle_difference(targetRotation + 1.571, turretTop.global_rotation))) < 3 and reloadTimer > turretProperties.reloadSpeed:
 			shoot()
+			reloadTimer = 0
 	pointAtEnemy(targetRotation)
+
+func take_damage(damage: int) -> void:
+	if !held:
+		health -= damage
+		if health < 1:
+			queue_free()
 
 func shoot():
 	if held: return
-	
+
+	if inventory.ore >= 0.5:
+		inventory.ore = inventory.ore - 0.5
+	else:
+		return
+
 	while shotCount > 0:
 		reloadTimer = 0
-		await get_tree().create_timer(0.02).timeout
+		if !turretProperties.shotgun:
+			await get_tree().create_timer(turretProperties.shotInterval).timeout
 		shotCount -= 1
 		var bulletClone = bullet.instantiate()
 		bulletClone.position = global_position
@@ -63,6 +79,8 @@ func shoot():
 		bulletClone.damage = turretProperties.damage
 		bulletClone.projectilePierce = turretProperties.projectilePierce
 		bulletClone.projectileSpeed = turretProperties.projectileSpeed
+		if(turretProperties.shotgun):
+			bulletClone.projectileSpeed += randf_range(-200, 200)
 		bulletClone.laser = turretProperties.laser
 		bulletClone.range = turretProperties.range
 		bulletClone.widthMultiplier = turretProperties.widthMultiplier

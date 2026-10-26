@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="factoryStats" format=3 uid="uid://cf6xyw62ii08y"]
+
+[ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_e1jii"]
+
+[resource]
+script = ExtResource("1_e1jii")
+input = {
+"Fluorite": 3
+}
+output = {
+"Fluorine": 1
+}
+metadata/_custom_type_script = "uid://bjqapbmg5eu4y"
