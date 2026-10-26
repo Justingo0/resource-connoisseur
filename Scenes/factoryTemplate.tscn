@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://xoy54k244pnd"]
+
+[ext_resource type="Script" uid="uid://drgisgwrt7m67" path="res://Scripts/factoryTemplate.gd" id="1_llkfa"]
+[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/turretBase.png" id="1_teede"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sar82"]
+size = Vector2(62, 62)
+
+[node name="factoryTemplate" type="Area2D" unique_id=1741287052 groups=["Block", "Container"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("1_llkfa")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1548036570]
+texture = ExtResource("1_teede")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1205832426]
+visible = false
+shape = SubResource("RectangleShape2D_sar82")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
