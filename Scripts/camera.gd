@@ -4,7 +4,7 @@ extends Camera2D
 @onready var delete_cursor = $DeleteCursor
 
 var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
-var contruct_shader = preload("res://Assets/Shader/construct_shader.tres")
+var construct_shader = preload("res://Assets/Shader/construct_shader.tres")
 
 var mouse_starting_pos := Vector2.ZERO
 var starting_cam_pos := Vector2.ZERO
@@ -178,7 +178,7 @@ func _physics_process(delta: float) -> void:
 			if "destroy_time" in object:
 				object.destroy_time = min(object.destroy_time + delta*GameManager.time_scale*speed, object.max_destroy_time)
 				if not object.material:
-					object.material = contruct_shader.duplicate()
+					object.material = construct_shader.duplicate()
 				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
 				if object.destroy_time == object.max_destroy_time:
 					object.held = false
@@ -243,7 +243,7 @@ func place(object:PackedScene):
 	placed_object.held = true
 	placed_object.destroy_time = 0
 	placed_object.global_position = build_cursor.global_position
-	#placed_object.material = contruct_shader.duplicate()
+	#placed_object.material = construct_shader.duplicate()
 	placed_object.modulate = Color.from_rgba8(255, 255, 255, 140)
 	building_objects.append(placed_object)
 	
