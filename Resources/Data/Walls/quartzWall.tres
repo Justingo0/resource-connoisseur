@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="wallStats" format=3 uid="uid://e60ph27xkik1"]
+
+[ext_resource type="Script" uid="uid://bgxel607vfhi8" path="res://Resources/Managers/wallStats.gd" id="1_sx08x"]
+
+[resource]
+script = ExtResource("1_sx08x")
+metadata/_custom_type_script = "uid://bgxel607vfhi8"
