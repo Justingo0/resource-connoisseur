@@ -167,13 +167,12 @@ func _physics_process(delta: float) -> void:
 					object.material = construct_shader.duplicate()
 				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
 				if object.destroy_time == object.max_destroy_time:
-					object.held = false
+					#object.held = false
 					object.modulate = Color.from_rgba8(255, 255, 255, 255)
 					object.material = null
 					current_objects.erase(object)
 			else:
-				object.queue_free()
-				object.held = false
+				#object.held = false
 				object.modulate = Color.from_rgba8(255, 255, 255, 255)
 				object.material = null
 				current_objects.erase(object)
@@ -200,6 +199,7 @@ func set_build_cursor(object:PackedScene):
 	
 	if "held" in highlight:
 		highlight.held = true
+		print(highlight.held)
 
 func place(object:PackedScene):
 	if not building_object:
@@ -233,7 +233,7 @@ func place(object:PackedScene):
 	
 	var placed_object = object.instantiate()
 	get_tree().current_scene.add_child(placed_object)
-	placed_object.held = true
+	#placed_object.held = true
 	placed_object.destroy_time = 0
 	placed_object.global_position = build_cursor.global_position
 	#placed_object.material = construct_shader.duplicate()

@@ -22,7 +22,7 @@ signal inventory_changed(value:int)
 @export var held:bool
 
 var last_output_item = null
-var output_conveyor = null
+@export var output_conveyor = null
 
 var conveyors = []:
 	set(newValue):
@@ -32,23 +32,25 @@ var conveyors = []:
 		return conveyors
 var conveyor_interval = 0
 
+func get_disabled() -> bool:
+	if destroy_time == max_destroy_time and held == false:
+		return true
+	return false
+
 func _on_conveyor_detector_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Conveyor"):
-		#if area.held == true: return
-		#var conveyor_ray = area.get_node("RayCast")
-		#if conveyor_ray.is_colliding() and conveyor_ray.get_collider() == self:
-			#return
-		
+	if (area.is_in_group("Conveyor") or area.is_in_group("Container")) and area.held == false:
+		if area in conveyors: return
 		conveyors.append(area)
 		conveyors = conveyors
 		deposit()
 
 func _on_conveyor_detector_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Conveyor") and area in conveyors:
+	if area.is_in_group("Conveyor") or area.is_in_group("Container") and area in conveyors:
 		conveyors.erase(area)
 		conveyors = conveyors
 
 func _physics_process(delta: float) -> void:
+	if get_disabled(): return
 	if last_output_item:
 		last_output_item.global_position = last_output_item.global_position.move_toward(output_conveyor.global_position, 400*delta*GameManager.time_scale)
 		if last_output_item.global_position == output_conveyor.global_position:
@@ -58,40 +60,61 @@ func _physics_process(delta: float) -> void:
 			output_conveyor = null
 
 func take_damage(damage: int) -> void:
-	if !held:
+	if !get_disabled():
 		health -= damage
 		if health < 1:
 			queue_free()
 
 func deposit():
-	#print(conveyors.is_empty() or inventory["ore"] <= 0)
+	if get_disabled(): return
 	if conveyors.is_empty() or inventory["ore"] <= 0: return
 	
 	conveyor_interval += 1
 	#print(conveyor_interval%conveyors.size())
 	output_conveyor = conveyors[conveyor_interval%conveyors.size()]
+	if not output_conveyor or ("output_conveyor" in output_conveyor and output_conveyor.output_conveyor == self):
+		conveyors.erase(output_conveyor)
+		output_conveyor = null
+		for convey in conveyors:
+			if convey and ("output_conveyor" in convey and convey.output_conveyor != self):
+				output_conveyor = convey
+				break
+		if not output_conveyor: return
+	print(output_conveyor)
+	#print("Where am i")
 	
 	var conveyor_ray = output_conveyor.get_node("RayCast")
-	if conveyor_ray.is_colliding() and conveyor_ray.get_collider() == self:
+	if conveyor_ray and conveyor_ray.is_colliding() and conveyor_ray.get_collider() == self:
 		conveyors.erase(output_conveyor)
 		deposit()
 		return
 	
 	#print(output_conveyor.item == null and output_conveyor.held == false and !held)
-	if output_conveyor.item == null and output_conveyor.held == false and !held:
-		inventory["ore"] -= 1
-		inventory = inventory
-		last_output_item = ore_item.instantiate()
-		get_tree().current_scene.call_deferred('add_child', last_output_item)
-		
-		var starting_pos = global_position
-		#if (output_conveyor.global_position.y - global_position.y) == 64.0 or (output_conveyor.global_position.y - global_position.y) == -128:
-			#starting_pos.x = output_conveyor.global_position.x
-		#else:
-			#starting_pos.y = output_conveyor.global_position.y
-		
-		last_output_item.global_position = starting_pos
-		output_conveyor.item_incoming = last_output_item
+	if output_conveyor.is_in_group("Conveyor"):
+		if output_conveyor.item == null and output_conveyor.held == false and !held:
+			last_output_item = ore_item.instantiate()
+			get_tree().current_scene.call_deferred('add_child', last_output_item)
+			
+			var starting_pos = global_position
+			
+			last_output_item.global_position = starting_pos
+			output_conveyor.item_incoming = last_output_item
+		else:
+			return
+	elif output_conveyor.is_in_group("Container"):
+		var size = 0
+		for value in output_conveyor.inventory.values():
+			size += value
+		if size >= output_conveyor.inventory_size:
+			conveyors.erase(output_conveyor)
+			deposit()
+			return
+		output_conveyor.inventory["ore"] += 1
+		output_conveyor.inventory = output_conveyor.inventory
+	else:
+		return
+	inventory["ore"] -= 1
+	inventory = inventory
 
 func _on_inventory_changed(value: int) -> void:
 	if value > 0:
