@@ -8,10 +8,10 @@ signal inventory_changed(value:int)
 
 @onready var output_timer = $OutputTimer
 
-@export var inventory = {"ore":0}:
+@export var inventory = {}:
 	set(new_val):
 		inventory = new_val
-		inventory_changed.emit(inventory["ore"])
+		inventory_changed.emit(inventory[inventory.keys()[0]])
 	get:
 		return inventory
 @export var inventory_size:int
@@ -38,8 +38,10 @@ func get_disabled() -> bool:
 	return false
 
 func _on_conveyor_detector_area_entered(area: Area2D) -> void:
-	if (area.is_in_group("Conveyor") or area.is_in_group("Container")) and area.held == false:
+	if (area.is_in_group("Conveyor") or area.is_in_group("Container")) and area.held == false and area != self:
 		if area in conveyors: return
+		if not held:
+			print(area, " from ", self)
 		conveyors.append(area)
 		conveyors = conveyors
 		deposit()
@@ -67,20 +69,20 @@ func take_damage(damage: int) -> void:
 
 func deposit():
 	if get_disabled(): return
-	if conveyors.is_empty() or inventory["ore"] <= 0: return
+	if conveyors.is_empty() or inventory.keys().size() == 0 or inventory.values()[0] <= 0: return
 	
 	conveyor_interval += 1
 	#print(conveyor_interval%conveyors.size())
 	output_conveyor = conveyors[conveyor_interval%conveyors.size()]
-	if not output_conveyor or ("output_conveyor" in output_conveyor and output_conveyor.output_conveyor == self):
+	if not output_conveyor: #or ("output_conveyor" in output_conveyor and output_conveyor.output_conveyor == self):
 		conveyors.erase(output_conveyor)
 		output_conveyor = null
 		for convey in conveyors:
-			if convey and ("output_conveyor" in convey and convey.output_conveyor != self):
+			if convey: #and ("output_conveyor" in convey and convey.output_conveyor != self):
 				output_conveyor = convey
 				break
 		if not output_conveyor: return
-	print(output_conveyor)
+	#print(output_conveyor)
 	#print("Where am i")
 	
 	var conveyor_ray = output_conveyor.get_node("RayCast")
@@ -93,6 +95,7 @@ func deposit():
 	if output_conveyor.is_in_group("Conveyor"):
 		if output_conveyor.item == null and output_conveyor.held == false and !held:
 			last_output_item = ore_item.instantiate()
+			last_output_item.itemType = inventory.keys()[0]
 			get_tree().current_scene.call_deferred('add_child', last_output_item)
 			
 			var starting_pos = global_position
@@ -109,11 +112,11 @@ func deposit():
 			conveyors.erase(output_conveyor)
 			deposit()
 			return
-		output_conveyor.inventory["ore"] += 1
+		output_conveyor.inventory[inventory.keys()[0]] += 1
 		output_conveyor.inventory = output_conveyor.inventory
 	else:
 		return
-	inventory["ore"] -= 1
+	inventory[inventory.keys()[0]] -= 1
 	inventory = inventory
 
 func _on_inventory_changed(value: int) -> void:

@@ -102,6 +102,7 @@ func output():
 				last_generated_item = null
 			last_generated_item = ore_item.instantiate()
 			
+			last_generated_item.itemType = resourcesUnderneath[conveyorInterval%resourcesUnderneath.size()]
 			get_tree().current_scene.add_child(last_generated_item)
 			conveyorInterval += 1
 			resources -= 1

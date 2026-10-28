@@ -3,7 +3,7 @@ var health = 2000
 
 signal inventory_changed(value:int)
 
-@export var inventory = {"ore":0}
+@export var inventory = {}
 @export var inventory_size:int
 
 @export var max_destroy_time:float
@@ -13,8 +13,8 @@ signal inventory_changed(value:int)
 
 func _mouse_enter() -> void:
 	pass
-	print(inventory)
-	
+	#print(inventory)
+
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:

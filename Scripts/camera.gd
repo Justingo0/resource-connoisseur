@@ -6,6 +6,9 @@ extends Camera2D
 
 @onready var player = %Player
 
+@onready var inventory_display = $DeleteCursor/InventoryDisplay
+@onready var item_container = $DeleteCursor/InventoryDisplay/ItemContainer
+
 var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
 var construct_shader = preload("res://Assets/Shader/construct_shader.tres")
 
@@ -27,6 +30,8 @@ var deleting_objects := []
 
 var current_objects := []
 var interacting_object = null
+
+var hovering_object = null
 #var object_iteration := 0
 
 enum actions {placing, deleting, moving}
@@ -137,6 +142,16 @@ func _physics_process(delta: float) -> void:
 		elif current_action == actions.deleting:
 			delete()
 	
+	if hovering_object:
+		if hovering_object.is_in_group("Conveyor"):
+			if hovering_object.item != null:
+				update_inventory_display({hovering_object.item.itemType:1})
+			else:
+				update_inventory_display({})
+		else:
+			update_inventory_display(hovering_object.inventory)
+	
+	inventory_display.global_position = get_global_mouse_position()
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	
@@ -265,3 +280,36 @@ func delete():
 			deleting_objects.append(deleting_object)
 	
 	#current_action = actions.deleting
+
+func update_inventory_display(items:Dictionary):
+	var item_keys = items.keys()
+	#for item in item_keys:
+		#var amount = items[item]
+		#var index = item_keys.find(item)
+		#var item_display = item_container.get_child(index)
+		#
+	for item_display in item_container.get_children():
+		#var index = item_container.get_children().find(item_display)
+		#var item = items[items.keys()[index]]
+		if item_display.name in item_keys:
+			item_display.visible = true
+			item_display.get_child(0).text = "x" + str(items[item_display.name])
+		else:
+			item_display.visible = false
+
+func _on_delete_cursor_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Conveyor") or area.is_in_group("Container"):
+		hovering_object = area
+		if area.is_in_group("Conveyor"):
+			if area.item != null:
+				update_inventory_display({area.item.itemType:1})
+			else:
+				update_inventory_display({})
+		else:
+			update_inventory_display(area.inventory)
+		inventory_display.visible = true
+
+func _on_delete_cursor_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Conveyor") or area.is_in_group("Container") and hovering_object == area:
+		hovering_object = null
+		inventory_display.visible = false

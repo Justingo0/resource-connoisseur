@@ -42,7 +42,9 @@ func _physics_process(delta: float) -> void:
 			item.global_position = item.global_position.move_toward(global_position + Vector2.UP.rotated(rotation)*64, SPEED*delta*GameManager.time_scale)
 			item_moving = true
 			if item.global_position == (global_position + Vector2.UP.rotated(rotation)*64):
-				next_conveyer.inventory["ore"] += 1
+				if not (item.itemType in next_conveyer.inventory.keys()):
+					next_conveyer.inventory[item.itemType] = 0
+				next_conveyer.inventory[item.itemType] += 1
 				next_conveyer.inventory = next_conveyer.inventory
 				#next_conveyer.inventory_changed.emit(next_conveyer.inventory["ore"])
 				#print(next_conveyer.inventory)
