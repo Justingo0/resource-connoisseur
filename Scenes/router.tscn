@@ -33,6 +33,7 @@ polygon = PackedVector2Array(-90.98579, 26.10196, -33.46265, 26.10196, -33.46265
 
 [node name="OutputTimer" type="Timer" parent="." unique_id=1447171364]
 wait_time = 0.4
+autostart = true
 
 [connection signal="inventory_changed" from="." to="." method="_on_inventory_changed"]
 [connection signal="area_entered" from="ConveyorDetector" to="." method="_on_conveyor_detector_area_entered"]

@@ -294,6 +294,7 @@ func update_inventory_display(items:Dictionary):
 		if item_display.name in item_keys:
 			item_display.visible = true
 			item_display.get_child(0).text = "x" + str(items[item_display.name])
+			item_display.texture = load("res://Resources/Data/Ores/"+item_display.name+".tres").icon
 		else:
 			item_display.visible = false
 

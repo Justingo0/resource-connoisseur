@@ -11,6 +11,11 @@ signal inventory_changed(value:int)
 
 @export var held:bool
 
+func get_disabled() -> bool:
+	if destroy_time == max_destroy_time and held == false:
+		return false
+	return true
+
 func _mouse_enter() -> void:
 	pass
 	#print(inventory)

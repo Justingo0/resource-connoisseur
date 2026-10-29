@@ -23,6 +23,11 @@ func _ready() -> void:
 	health = turretProperties.health
 	shotCount = turretProperties.shotCount
 
+func get_disabled() -> bool:
+	if destroy_time == max_destroy_time and held == false:
+		return false
+	return true
+
 func _process(delta: float) -> void:
 	reloadTimer += delta*GameManager.time_scale
 

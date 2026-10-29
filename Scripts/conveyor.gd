@@ -16,8 +16,15 @@ var SPEED:float = 300
 @export var item_incoming:CharacterBody2D
 var item_moving:bool = true
 
+@export var output_conveyor = null
+
 func _ready() -> void:
 	$Body.frame = GameManager.conveyor_frame
+
+func get_disabled() -> bool:
+	if destroy_time == max_destroy_time and held == false:
+		return false
+	return true
 
 func _on_body_frame_changed() -> void:
 	if held:
@@ -26,6 +33,7 @@ func _on_body_frame_changed() -> void:
 func _physics_process(delta: float) -> void:
 	if raycast.is_colliding() and item:
 		var next_conveyer = raycast.get_collider()
+		output_conveyor = next_conveyer
 		if next_conveyer and next_conveyer.is_in_group("Conveyor") and next_conveyer.held == false and (next_conveyer.item == null and (next_conveyer.item_incoming == null or next_conveyer.item_incoming == item)):
 			item.global_position = item.global_position.move_toward(next_conveyer.global_position, SPEED*delta*GameManager.time_scale)
 			next_conveyer.item_incoming = item

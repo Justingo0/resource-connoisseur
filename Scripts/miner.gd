@@ -42,6 +42,11 @@ func _ready() -> void:
 	if !held:
 		driller_anim.play("new_animation")
 
+func get_disabled() -> bool:
+	if destroy_time == max_destroy_time and held == false:
+		return false
+	return true
+
 func _process(delta: float) -> void:
 	time += delta*GameManager.time_scale
 	if oreCount > 0 and time > mineTime:
@@ -58,12 +63,12 @@ func _process(delta: float) -> void:
 			selected_conveyor = null
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Conveyor"):
+	if area.is_in_group("Conveyor") or area.is_in_group("Container") and area.held == false:
 		conveyors.append(area)
 		conveyors = conveyors
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Conveyor"):
+	if area.is_in_group("Conveyor") or area.is_in_group("Container") and area in conveyors:
 		conveyors.erase(area)
 		conveyors = conveyors
 
@@ -91,34 +96,49 @@ func _notification(what: int) -> void:
 func output():
 	if not conveyors.is_empty() and resources > 0:
 		selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
-		if selected_conveyor.item != null: #or selected_conveyor.item_incoming != null:
-			for i in conveyors.size():
+		var itemType = resourcesUnderneath[conveyorInterval%resourcesUnderneath.size()]
+		if selected_conveyor.is_in_group("Conveyor"):
+			if selected_conveyor.item != null: #or selected_conveyor.item_incoming != null:
+				for i in conveyors.size():
+					conveyorInterval += 1
+					selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
+					if selected_conveyor.item == null: return #or selected_conveyor.item_incoming == null: return
+			if (selected_conveyor.item == null) and selected_conveyor.held == false and !held:
+				if last_generated_item:
+					last_generated_item.queue_free()
+					last_generated_item = null
+				last_generated_item = ore_item.instantiate()
+				
+				last_generated_item.itemType = itemType
+				get_tree().current_scene.add_child(last_generated_item)
 				conveyorInterval += 1
-				selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
-				if selected_conveyor.item == null: return #or selected_conveyor.item_incoming == null: return
-		if (selected_conveyor.item == null) and selected_conveyor.held == false and !held:
-			if last_generated_item:
-				last_generated_item.queue_free()
-				last_generated_item = null
-			last_generated_item = ore_item.instantiate()
+				resources -= 1
+				
+				selected_conveyor.item_incoming = last_generated_item
+				
+				var starting_pos = global_position
+				if (selected_conveyor.global_position.y - global_position.y) == 64.0 or (selected_conveyor.global_position.y - global_position.y) == -128:
+					#print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Bottom or Top")
+					starting_pos.x = selected_conveyor.global_position.x
+					if (selected_conveyor.global_position.y - global_position.y) == -128:
+						starting_pos.y -= 64
+				else:
+					#print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Left or Right")
+					starting_pos.y = selected_conveyor.global_position.y
+					if (selected_conveyor.global_position.x - global_position.x) == -128:
+						starting_pos.x -= 64
+				
+				last_generated_item.global_position = starting_pos #- (64 * global_position.direction_to(selected_conveyor.global_position))
+		elif selected_conveyor.is_in_group("Container"):
+			var size = 0
+			for value in selected_conveyor.inventory.values():
+				size += value
+			if size >= selected_conveyor.inventory_size: return
 			
-			last_generated_item.itemType = resourcesUnderneath[conveyorInterval%resourcesUnderneath.size()]
-			get_tree().current_scene.add_child(last_generated_item)
 			conveyorInterval += 1
 			resources -= 1
 			
-			selected_conveyor.item_incoming = last_generated_item
-			
-			var starting_pos = global_position
-			if (selected_conveyor.global_position.y - global_position.y) == 64.0 or (selected_conveyor.global_position.y - global_position.y) == -128:
-				#print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Bottom or Top")
-				starting_pos.x = selected_conveyor.global_position.x
-				if (selected_conveyor.global_position.y - global_position.y) == -128:
-					starting_pos.y -= 64
-			else:
-				#print((selected_conveyor.global_position.y - global_position.y), " - ", (selected_conveyor.global_position.y - global_position.y) > 0.0, " - From Left or Right")
-				starting_pos.y = selected_conveyor.global_position.y
-				if (selected_conveyor.global_position.x - global_position.x) == -128:
-					starting_pos.x -= 64
-			
-			last_generated_item.global_position = starting_pos #- (64 * global_position.direction_to(selected_conveyor.global_position))
+			if not (itemType in selected_conveyor.inventory.keys()):
+				selected_conveyor.inventory[itemType] = 0
+			selected_conveyor.inventory[itemType] += 1
+			selected_conveyor.inventory = selected_conveyor.inventory
