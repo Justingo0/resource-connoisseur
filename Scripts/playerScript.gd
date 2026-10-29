@@ -13,6 +13,7 @@ extends CharacterBody2D
 var targetPosition:Vector2
 var moving = false
 
+
 var rotate_tween:Tween = null
 
 var last_velocity = Vector2.ZERO
@@ -21,6 +22,7 @@ enum actions {default, mining}
 var action = actions.default
 
 var action_object = null
+var mining_ore:Area2D
 
 func _ready() -> void:
 	#targetPosition = camera.position
@@ -72,5 +74,8 @@ func player_movement(delta:float):
 
 func _on_mine_time_timeout() -> void:
 	if not main_core: return
-	main_core.inventory["ore"] += 1
-	print(main_core.inventory["ore"])
+	if action_object.is_in_group("Ore"):
+		if not (action_object.type.name in main_core.inventory.keys()):
+			main_core.inventory[action_object.type.name] = 0
+		main_core.inventory[action_object.type.name] += 1
+		print(main_core.inventory[action_object.type.name])
