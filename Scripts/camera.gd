@@ -229,7 +229,7 @@ func place(object:PackedScene):
 			player.give_action(player.actions.default, null)
 	if not object or not building_mode or dragging: return
 	player.give_action(player.actions.default, null)
-	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies():
+	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies() and not build_cursor.get_child(0).is_in_group("OverwriteSelf"):
 		if last_object_built and last_object_built.is_in_group("Rotate") and build_cursor.global_position != last_object_built.global_position:
 			var direction = last_object_built.global_position.direction_to(get_global_mouse_position())
 			if abs(direction.x) > abs(direction.y):
@@ -247,6 +247,10 @@ func place(object:PackedScene):
 		#deleting_objects.clear()
 	
 	var placed_object = object.instantiate()
+	if placed_object.is_in_group("OverwriteSelf"):
+		var deleting = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
+		if not deleting.is_empty():
+			deleting[0].queue_free()
 	get_tree().current_scene.add_child(placed_object)
 	#placed_object.held = true
 	placed_object.destroy_time = 0
@@ -301,6 +305,8 @@ func update_inventory_display(items:Dictionary):
 func _on_delete_cursor_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Conveyor") or area.is_in_group("Container"):
 		hovering_object = area
+		if hovering_object.has_method("highlight"):
+			hovering_object.highlight(true)
 		if area.is_in_group("Conveyor"):
 			if area.item != null:
 				update_inventory_display({area.item.itemType:1})
@@ -312,5 +318,7 @@ func _on_delete_cursor_area_entered(area: Area2D) -> void:
 
 func _on_delete_cursor_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Conveyor") or area.is_in_group("Container") and hovering_object == area:
+		if area.has_method("highlight"):
+			area.highlight(false)
 		hovering_object = null
 		inventory_display.visible = false

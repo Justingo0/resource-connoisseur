@@ -3,7 +3,9 @@ extends Area2D
 @onready var turretTop = $turretTop
 @onready var bullet = preload("res://Scenes/bullet.tscn")
 @onready var turretProperties = preload("res://Resources/Data/Turrets/Hua-Che.tres")
+
 @onready var range = $rangeCone/range
+@onready var range_outline = $RadiusOutline
 
 @export var held:bool = false
 @export var max_destroy_time:float = 2.5
@@ -17,6 +19,12 @@ var shotCount:int
 
 @export var inventory_size = 10
 @export var inventory = {"ore": 0}
+
+# Radius Outline Settings
+var dot_count: int = 36
+var dash_length_ratio: float = 0.5
+var line_width: float = 2.0
+var radius_color: Color = Color.YELLOW
 
 func _ready() -> void:
 	range.shape.radius = turretProperties.range * 64
@@ -96,3 +104,35 @@ func shoot():
 
 func pointAtEnemy(angle: float) -> void:
 	turretTop.rotation = rotate_toward(turretTop.rotation, targetRotation + 1.571, 0.1)
+
+func highlight(toggle:bool):
+	print(toggle)
+	if not held and toggle:
+		range_outline.queue_redraw()
+		range_outline.visible = true
+	elif not toggle:
+		range_outline.visible = false
+
+func _on_radius_outline_draw() -> void:
+	var center = Vector2.ZERO
+	var total_segments = dot_count * 2
+	var angle_step = 2 * PI / total_segments
+	
+	# Determine how many steps represent the actual "dot/dash"
+	var dash_steps = max(1, int(total_segments * dash_length_ratio / dot_count))
+	
+	var points = PackedVector2Array()
+	
+	# Calculate all vertices along the circle perimeter
+	for i in range(total_segments + 1):
+		var angle = i * angle_step
+		points.append(center + Vector2(cos(angle), sin(angle)) * turretProperties.range * 64)
+		
+	# Draw alternating segments
+	for i in range(0, total_segments, 2):
+		var start_index = i
+		var end_index = min(i + dash_steps, total_segments)
+		
+		# Draw a multi-segmented arc segment to maintain the true curve
+		for j in range(start_index, end_index):
+			range_outline.draw_line(points[j], points[j + 1], radius_color, line_width, true)

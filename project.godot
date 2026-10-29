@@ -35,6 +35,7 @@ Rotate=""
 Enemy=""
 Bullet=""
 Container=""
+OverwriteSelf=""
 
 [input]
 

@@ -38,5 +38,9 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_6spbj")
 debug_color = Color(0.606062, 0.532644, 0.28561583, 0.41960785)
 
+[node name="RadiusOutline" type="Node2D" parent="." unique_id=1365690402]
+visible = false
+
 [connection signal="body_entered" from="rangeCone" to="." method="_on_range_cone_body_entered"]
 [connection signal="body_exited" from="rangeCone" to="." method="_on_range_cone_body_exited"]
+[connection signal="draw" from="RadiusOutline" to="." method="_on_radius_outline_draw"]
