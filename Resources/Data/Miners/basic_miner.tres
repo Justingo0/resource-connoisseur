@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="minerStats" format=3 uid="uid://s8sox3x81p57"]
+
+[ext_resource type="Texture2D" uid="uid://dq2yh8nw3wo0a" path="res://Assets/mineBuild.png" id="1_6xhlx"]
+[ext_resource type="Script" uid="uid://bkdxivsj5wkl2" path="res://Resources/Managers/minerStats.gd" id="1_nk0dt"]
+[ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="2_1cgts"]
+
+[resource]
+script = ExtResource("1_nk0dt")
+icon = ExtResource("1_6xhlx")
+scene = ExtResource("2_1cgts")
+metadata/_custom_type_script = "uid://bkdxivsj5wkl2"

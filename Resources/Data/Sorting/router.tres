@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="blockStats" format=3 uid="uid://blyr3tph1yotb"]
+
+[ext_resource type="Script" uid="uid://b8flukosvjb3m" path="res://Resources/Managers/blockStats.gd" id="1_b4klt"]
+[ext_resource type="Texture2D" uid="uid://d3a1vl3n1yqco" path="res://Assets/Router.png" id="1_yoo6d"]
+[ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="2_qraew"]
+
+[resource]
+script = ExtResource("1_b4klt")
+icon = ExtResource("1_yoo6d")
+scene = ExtResource("2_qraew")
+destroy_time = 0.05
+metadata/_custom_type_script = "uid://b8flukosvjb3m"

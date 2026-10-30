@@ -16,30 +16,6 @@ signal startPrematurely
 
 var paused = false
 
-#func _on_button_pressed() -> void:
-	#camera.building_object = miner
-	## I want to set the buildcursor building to miner
-#
-#func _on_button_2_pressed() -> void:
-	#camera.building_object = conveyor
-	## I want to set the buildcursor building to conveyor
-#
-#func _on_button_3_pressed() -> void:
-	#camera.building_object = home
-	## I want to set the buildcursor building to core
-#
-#func _on_button_4_pressed() -> void:
-	#camera.building_object = router
-	## I want to set the buildcursor building to router
-#
-#func _on_selection_5_pressed() -> void:
-	#camera.building_object = turrent
-	## I want to set the buildcursor building to turrent
-#
-#func _on_clear_pressed() -> void:
-	#camera.building_object = null
-	## I want to set the buildcursor building to clear
-
 func _on_pause_button_pressed() -> void:
 	paused = not paused
 	GameManager.time_scale = 0 if paused else 1

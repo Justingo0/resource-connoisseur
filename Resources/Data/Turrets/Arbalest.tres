@@ -1,10 +1,11 @@
 [gd_resource type="Resource" script_class="turretStats" format=3 uid="uid://sxvaf54lydtu"]
 
+[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/turretBuild.png" id="1_kiaiv"]
 [ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_lg766"]
+[ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="2_yabdx"]
 
 [resource]
 script = ExtResource("1_lg766")
-health = 200
 range = 14
 reloadSpeed = 1.0
 spread = 5.0
@@ -13,4 +14,7 @@ damage = 25
 projectileSpeed = 2700
 projectileLifetime = 0.4
 knockAmount = 25
+icon = ExtResource("1_kiaiv")
+scene = ExtResource("2_yabdx")
+health = 200
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="homeStats" format=3 uid="uid://dbpkngq3k44eb"]
+
+[ext_resource type="Texture2D" uid="uid://c2447bohxeme6" path="res://Assets/core.png" id="1_23lji"]
+[ext_resource type="PackedScene" uid="uid://3lhr0h1b5ej" path="res://Scenes/home.tscn" id="2_1cog4"]
+[ext_resource type="Script" uid="uid://bsvksvbebmlem" path="res://Resources/Managers/homeStats.gd" id="3_uun48"]
+
+[resource]
+script = ExtResource("3_uun48")
+icon = ExtResource("1_23lji")
+scene = ExtResource("2_1cog4")
+destroy_time = 4.0
+metadata/_custom_type_script = "uid://bsvksvbebmlem"

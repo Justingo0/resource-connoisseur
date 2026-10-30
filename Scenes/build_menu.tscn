@@ -14,15 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/turretTop.png" id="8_cb7yr"]
 [ext_resource type="Script" uid="uid://c6f7oghh7tfqj" path="res://Scripts/UserInterface/selection_menu.gd" id="11_4o04s"]
 [ext_resource type="PackedScene" uid="uid://busepgbfxl48t" path="res://Scenes/selection_button.tscn" id="11_v31xr"]
-[ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="12_510gx"]
 [ext_resource type="Texture2D" uid="uid://dq2yh8nw3wo0a" path="res://Assets/mineBuild.png" id="13_b2sko"]
-[ext_resource type="PackedScene" uid="uid://rbhy07an84kd" path="res://Scenes/conveyor.tscn" id="15_7e7c6"]
-[ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="16_yy28n"]
+[ext_resource type="Resource" uid="uid://s8sox3x81p57" path="res://Resources/Data/Miners/basic_miner.tres" id="16_fg8k8"]
 [ext_resource type="Texture2D" uid="uid://d4idlmt7lifhb" path="res://Assets/UI/TabsIcons/Miners.png" id="17_fg8k8"]
-[ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="17_yy28n"]
+[ext_resource type="Resource" uid="uid://clc15lbcd830h" path="res://Resources/Data/Sorting/Conveyors/basic_conveyor.tres" id="17_u07jk"]
+[ext_resource type="Resource" uid="uid://blyr3tph1yotb" path="res://Resources/Data/Sorting/router.tres" id="18_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
-[ext_resource type="PackedScene" uid="uid://3lhr0h1b5ej" path="res://Scenes/home.tscn" id="18_ebtcv"]
+[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/turretBuild.png" id="19_0dv3k"]
+[ext_resource type="Resource" uid="uid://sxvaf54lydtu" path="res://Resources/Data/Turrets/Arbalest.tres" id="19_cj8qe"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
+[ext_resource type="Resource" uid="uid://dbpkngq3k44eb" path="res://Resources/Data/Base/basic_home.tres" id="21_cj8qe"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
 [ext_resource type="Texture2D" uid="uid://bfly65mc47vth" path="res://Assets/UI/TabsIcons/Trash.png" id="23_dnf6v"]
 
@@ -416,13 +417,13 @@ theme_override_constants/separation = 12
 script = ExtResource("11_4o04s")
 
 [node name="Selections" type="Panel" parent="SelectionMenu" unique_id=74807063]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_cb7yr")
 
 [node name="Miners" type="GridContainer" parent="SelectionMenu/Selections" unique_id=421368240]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -443,8 +444,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("13_b2sko")
-object_scene = ExtResource("12_510gx")
-base_texture = ExtResource("13_b2sko")
+type = ExtResource("16_fg8k8")
 
 [node name="Conveyors" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1047868339]
 visible = false
@@ -468,16 +468,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("3_16wyj")
-object_scene = ExtResource("15_7e7c6")
-base_texture = ExtResource("3_16wyj")
+type = ExtResource("17_u07jk")
 
 [node name="Selection2" parent="SelectionMenu/Selections/Conveyors" unique_id=1982493121 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("5_t747t")
-object_scene = ExtResource("16_yy28n")
-base_texture = ExtResource("5_t747t")
+type = ExtResource("18_0dv3k")
 
 [node name="Turrets" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1409683317]
 visible = false
@@ -500,13 +498,10 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("7_v31xr")
-object_scene = ExtResource("17_yy28n")
-base_texture = ExtResource("7_v31xr")
-sub_texture = ExtResource("8_cb7yr")
+texture_normal = ExtResource("19_0dv3k")
+type = ExtResource("19_cj8qe")
 
 [node name="Base" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1813311783]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -527,10 +522,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("4_t747t")
-object_scene = ExtResource("18_ebtcv")
-base_texture = ExtResource("4_t747t")
+type = ExtResource("21_cj8qe")
 
 [node name="HiddenArea" type="Control" parent="SelectionMenu" unique_id=2031371284]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
