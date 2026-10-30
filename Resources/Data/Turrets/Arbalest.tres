@@ -15,6 +15,7 @@ projectileSpeed = 2700
 projectileLifetime = 0.4
 knockAmount = 25
 icon = ExtResource("1_kiaiv")
+name = "Arbalest"
 scene = ExtResource("2_yabdx")
 health = 200
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

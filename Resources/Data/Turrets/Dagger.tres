@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_c7us3")
-size = 1
-health = 100
 range = 8
 reloadSpeed = 0.2
 spread = 10.0
@@ -15,4 +13,7 @@ projectileSpeed = 1280
 projectileLifetime = 0.4
 widthMultiplier = 50.0
 knockAmount = 5
+name = "Dagger"
+size = 1
+health = 100
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

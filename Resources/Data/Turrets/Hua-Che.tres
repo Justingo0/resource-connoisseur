@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_622r3")
-health = 300
 range = 13
 reloadSpeed = 0.1
 spread = 30.0
@@ -14,4 +13,6 @@ projectileSpeed = 1500
 projectileLifetime = 0.6
 projectilePierce = 1
 knockAmount = 15
+name = "Hau-Che"
+health = 300
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

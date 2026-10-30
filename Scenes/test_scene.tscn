@@ -227,7 +227,12 @@ bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
-border_width_bottom = 8
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_p7o00"]
 font = ExtResource("7_yglu3")
@@ -288,15 +293,17 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_p7o00")
 
 [node name="InventoryDisplay" type="Panel" parent="Player/Camera2D/DeleteCursor" unique_id=806023210]
+visible = false
 top_level = true
 z_index = 10
 custom_minimum_size = Vector2(50, 50)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -648.0
-offset_right = 149.0
-offset_bottom = -562.0
+offset_left = -64.0
+offset_top = -417.0
+offset_right = 85.0
+offset_bottom = -331.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_cb7yr")
 
@@ -305,8 +312,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -12.0
-offset_bottom = -19.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -7.0
+offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 4

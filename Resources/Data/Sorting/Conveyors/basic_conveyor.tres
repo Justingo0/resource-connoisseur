@@ -8,7 +8,9 @@
 script = ExtResource("3_qdjp7")
 speed = 300
 icon = ExtResource("1_718qu")
+name = "Basic Conveyor"
 scene = ExtResource("2_krdar")
 health = 20
 destroy_time = 0.05
+description = "Transports items."
 metadata/_custom_type_script = "uid://c0dn5eitsdxyh"

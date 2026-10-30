@@ -7,6 +7,7 @@
 [resource]
 script = ExtResource("3_uun48")
 icon = ExtResource("1_23lji")
+name = "Core"
 scene = ExtResource("2_1cog4")
 destroy_time = 4.0
 metadata/_custom_type_script = "uid://bsvksvbebmlem"

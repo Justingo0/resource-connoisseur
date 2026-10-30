@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_3cbxr")
-health = 500
 range = 20
 reloadSpeed = 3.0
 spread = 5.0
@@ -14,4 +13,6 @@ projectileSpeed = 4000
 projectileLifetime = 0.33
 projectilePierce = 10
 knockAmount = 50
+name = "Ballista"
+health = 500
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

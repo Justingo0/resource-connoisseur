@@ -20,8 +20,7 @@
 [ext_resource type="Resource" uid="uid://clc15lbcd830h" path="res://Resources/Data/Sorting/Conveyors/basic_conveyor.tres" id="17_u07jk"]
 [ext_resource type="Resource" uid="uid://blyr3tph1yotb" path="res://Resources/Data/Sorting/router.tres" id="18_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
-[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/turretBuild.png" id="19_0dv3k"]
-[ext_resource type="Resource" uid="uid://sxvaf54lydtu" path="res://Resources/Data/Turrets/Arbalest.tres" id="19_cj8qe"]
+[ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
 [ext_resource type="Resource" uid="uid://dbpkngq3k44eb" path="res://Resources/Data/Base/basic_home.tres" id="21_cj8qe"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
@@ -107,6 +106,25 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qi0q1"]
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7o00"]
+font = ExtResource("2_0dv3k")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cj8qe"]
+font = ExtResource("2_0dv3k")
+font_size = 11
 
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
@@ -498,8 +516,7 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("19_0dv3k")
-type = ExtResource("19_cj8qe")
+type = ExtResource("19_0dv3k")
 
 [node name="Base" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1813311783]
 layout_mode = 1
@@ -681,6 +698,51 @@ grow_vertical = 2
 texture = ExtResource("23_dnf6v")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="ItemDisplay" type="Panel" parent="." unique_id=1032480367]
+unique_name_in_owner = true
+top_level = true
+z_index = 10
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -737.0
+offset_top = -394.0
+offset_right = -579.0
+offset_bottom = -302.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qi0q1")
+
+[node name="Name" type="Label" parent="ItemDisplay" unique_id=812347860]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Object name here"
+label_settings = SubResource("LabelSettings_p7o00")
+
+[node name="Description" type="Label" parent="ItemDisplay" unique_id=278484383]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 37.0
+offset_right = -6.0
+offset_bottom = 83.0
+grow_horizontal = 2
+text = "Lorem ipsum dolor sit amet consectuer."
+label_settings = SubResource("LabelSettings_cj8qe")
+autowrap_mode = 2
 
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
 [connection signal="pressed" from="OldPlacement/HBoxContainer/Selection1" to="." method="_on_button_pressed"]
