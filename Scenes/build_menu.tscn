@@ -435,6 +435,7 @@ theme_override_constants/separation = 12
 script = ExtResource("11_4o04s")
 
 [node name="Selections" type="Panel" parent="SelectionMenu" unique_id=74807063]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -542,7 +543,6 @@ texture_normal = ExtResource("4_t747t")
 type = ExtResource("21_cj8qe")
 
 [node name="HiddenArea" type="Control" parent="SelectionMenu" unique_id=2031371284]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
@@ -701,6 +701,7 @@ stretch_mode = 5
 
 [node name="ItemDisplay" type="Panel" parent="." unique_id=1032480367]
 unique_name_in_owner = true
+visible = false
 top_level = true
 z_index = 10
 custom_minimum_size = Vector2(50, 50)
