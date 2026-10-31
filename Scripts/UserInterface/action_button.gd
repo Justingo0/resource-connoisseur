@@ -8,7 +8,7 @@ func _pressed() -> void:
 	call(str(name).to_lower())
 
 func play():
-	get_tree().change_scene_to_file("res://Scenes/test_scene.tscn")
+	get_tree().change_scene_to_file("res://Scenes/loading_screen.tscn")
 
 func settings():
 	print("OH SO YOU WANT TO CHANGE SETTINGS!?!?!?")

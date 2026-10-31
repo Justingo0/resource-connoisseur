@@ -146,6 +146,7 @@ texture = ExtResource("3_ce3w2")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("2_n45e2")
+speed = 1.4
 
 [node name="Logo" type="Control" parent="." unique_id=1471873699]
 layout_mode = 1
@@ -182,19 +183,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 624.88464
-offset_top = -39.000004
-offset_right = -380.82556
-offset_bottom = -210.04385
+offset_left = 627.00006
+offset_top = -43.000004
+offset_right = -378.71014
+offset_bottom = -214.04385
 grow_horizontal = 2
 grow_vertical = 2
-rotation = -0.046450235
+rotation = -0.1818113
 pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("3_ce3w2")
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("2_n45e2")
 direction = 1
+speed = 1.3
 
 [node name="LogoTexture" type="TextureRect" parent="Logo" unique_id=1686471403]
 layout_mode = 1
