@@ -16,6 +16,8 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(1024, -3712, 896, -3840
 [node name="Enemy" type="CharacterBody2D" unique_id=2136730827 groups=["Enemy"]]
 collision_layer = 11
 collision_mask = 11
+motion_mode = 1
+wall_min_slide_angle = 0.017453292
 script = ExtResource("1_1f0kj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2114281520]
