@@ -43,6 +43,16 @@ collision_mask = 8
 shape = SubResource("CircleShape2D_hghv2")
 debug_color = Color(0.6745601, 0.5026713, 0.19050765, 0.41960785)
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=674082287]
+path_max_distance = 147.0
+navigation_layers = 255
+avoidance_layers = 0
+avoidance_mask = 0
+debug_enabled = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="NavigationAgent2D" unique_id=1250587147]
+navigation_polygon = SubResource("NavigationPolygon_hghv2")
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
