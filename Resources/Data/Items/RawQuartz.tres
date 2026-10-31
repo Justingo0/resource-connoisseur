@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://b1w145js3f4xu"]
+
+[ext_resource type="Texture2D" uid="uid://chr7ixp6bd7ac" path="res://Assets/RawQuartz.png" id="1_t7ijj"]
+[ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="1_y6lgr"]
+
+[resource]
+script = ExtResource("1_y6lgr")
+icon = ExtResource("1_t7ijj")
+name = "Quartz"

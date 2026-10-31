@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://b18vk7nj5fls2"]
+
+[ext_resource type="Texture2D" uid="uid://swlbtrr0eavp" path="res://Assets/RawTopaz.png" id="1_5u5rk"]
+[ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="1_ax18s"]
+
+[resource]
+script = ExtResource("1_ax18s")
+icon = ExtResource("1_5u5rk")
+name = "Topaz"
