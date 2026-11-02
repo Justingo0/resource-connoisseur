@@ -18,7 +18,7 @@ var reloadTimer:float
 var shotCount:int
 
 @export var inventory_size = 10
-@export var inventory = {"ore": 0}
+@export var inventory = {}
 
 # Radius Outline Settings
 var dot_count: int = 36
@@ -74,12 +74,14 @@ func take_damage(damage: int) -> void:
 
 func shoot():
 	if held: return
-
-	if inventory.ore >= 0.5:
-		inventory.ore = inventory.ore - 0.5
+	print(inventory)
+	if !inventory.keys().is_empty():
+		if inventory[inventory.keys()[0]] >= 0.5:
+			inventory[inventory.keys()[0]] = inventory[inventory.keys()[0]] - 0.5
+		else:
+			return
 	else:
 		return
-
 	while shotCount > 0:
 		reloadTimer = 0
 		if !turretProperties.shotgun:

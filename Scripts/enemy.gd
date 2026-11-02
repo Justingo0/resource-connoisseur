@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 var targets = []
 
+@onready var navigator = $NavigationAgent2D
+@onready var sprite = $AnimatedSprite2D
+
 @export var speed:int
 @export var health:int
 @export var air:bool
@@ -32,21 +35,17 @@ func _ready() -> void:
 	if air:
 		collision_mask = 5
 		collision_layer = 5
+	navigator.target_position = targetLocation.global_position
 
 func _physics_process(delta: float) -> void:
 	reloadTimer += delta*GameManager.time_scale
 	if(!targetLocation): return
-	var targetAngle = global_position.angle_to_point(targetLocation.global_position)
-	var forwardDirection = Vector2.from_angle(rotation)
-	if abs(rad_to_deg(targetAngle - rotation)) < 1:
-		velocity = forwardDirection * speed *GameManager.time_scale
-	elif global_position.distance_to(targetLocation.global_position) > 400:
-		velocity = forwardDirection * 100 *GameManager.time_scale
-	else:
-		velocity = Vector2.ZERO
-	if global_position.distance_to(targetLocation.global_position) > 100:
-		rotation = rotate_toward(rotation, targetAngle, 0.07)
-	if abs(rad_to_deg(angle_difference(targetRotation + 1.571, global_rotation))) < 120 and reloadTimer > reloadSpeed:
+	var targetDirection = to_local(navigator.get_next_path_position()).normalized()
+	var targetAngle = targetDirection.angle()
+	sprite.rotation = rotate_toward(sprite.global_rotation, targetAngle + 1.571, 0.07)
+	var forwardDirection = Vector2.from_angle(sprite.rotation - 1.571)
+	velocity = forwardDirection * speed *GameManager.time_scale
+	if abs(rad_to_deg(angle_difference(targetRotation, sprite.global_rotation + 1.571))) < 120 and reloadTimer > reloadSpeed:
 		shoot()
 		reloadTimer = 0
 	move_and_slide()

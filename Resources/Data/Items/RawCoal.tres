@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://dciq2sid2ltxi"]
+
+[ext_resource type="Texture2D" uid="uid://5cb7b5gc83fx" path="res://Assets/RawCoal.png" id="1_fy88v"]
+[ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="2_8e2w2"]
+
+[resource]
+script = ExtResource("2_8e2w2")
+icon = ExtResource("1_fy88v")
+name = "Coal"

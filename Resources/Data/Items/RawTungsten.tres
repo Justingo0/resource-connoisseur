@@ -1,0 +1,9 @@
+[gd_resource type="Resource" format=3 uid="uid://c85ri5ehx6sve"]
+
+[ext_resource type="Texture2D" uid="uid://dj7xjxwf2i2e" path="res://Assets/RawTungsten.png" id="1_byjru"]
+[ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="1_nhkw0"]
+
+[resource]
+script = ExtResource("1_nhkw0")
+icon = ExtResource("1_byjru")
+name = "Tungsten"
