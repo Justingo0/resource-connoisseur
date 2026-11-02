@@ -21,6 +21,7 @@
 [ext_resource type="Resource" uid="uid://blyr3tph1yotb" path="res://Resources/Data/Sorting/router.tres" id="18_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
 [ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
+[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/turretBuild.png" id="19_cj8qe"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
 [ext_resource type="Resource" uid="uid://dbpkngq3k44eb" path="res://Resources/Data/Base/basic_home.tres" id="21_cj8qe"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
@@ -125,6 +126,20 @@ font = ExtResource("2_0dv3k")
 [sub_resource type="LabelSettings" id="LabelSettings_cj8qe"]
 font = ExtResource("2_0dv3k")
 font_size = 11
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlj0r"]
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+expand_margin_left = 50.0
+expand_margin_right = 5.0
 
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
@@ -517,6 +532,7 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+texture_normal = ExtResource("19_cj8qe")
 type = ExtResource("19_0dv3k")
 
 [node name="Base" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1813311783]
@@ -701,7 +717,6 @@ stretch_mode = 5
 
 [node name="ItemDisplay" type="Panel" parent="." unique_id=1032480367]
 unique_name_in_owner = true
-visible = false
 top_level = true
 z_index = 10
 custom_minimum_size = Vector2(50, 50)
@@ -744,6 +759,36 @@ grow_horizontal = 2
 text = "Lorem ipsum dolor sit amet consectuer."
 label_settings = SubResource("LabelSettings_cj8qe")
 autowrap_mode = 2
+
+[node name="Annoucement" type="Label" parent="." unique_id=1853022101]
+custom_minimum_size = Vector2(0, 44)
+custom_maximum_size = Vector2(-1, 44)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -2.5
+offset_top = 20.0
+offset_right = 2.5
+offset_bottom = 64.0
+grow_horizontal = 2
+pivot_offset_ratio = Vector2(0.5, 0)
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+label_settings = SubResource("LabelSettings_p7o00")
+vertical_alignment = 1
+autowrap_trim_flags = 0
+
+[node name="TextureRect" type="TextureRect" parent="Annoucement" unique_id=894354975]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = 5.0
+offset_right = -262.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
 [connection signal="pressed" from="OldPlacement/HBoxContainer/Selection1" to="." method="_on_button_pressed"]
