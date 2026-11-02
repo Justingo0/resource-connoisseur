@@ -6,6 +6,9 @@ extends Camera2D
 
 @onready var player = %Player
 
+@onready var inventory_display = $DeleteCursor/InventoryDisplay
+@onready var item_container = $DeleteCursor/InventoryDisplay/ItemContainer
+
 var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
 var construct_shader = preload("res://Assets/Shader/construct_shader.tres")
 
@@ -27,6 +30,8 @@ var deleting_objects := []
 
 var current_objects := []
 var interacting_object = null
+
+var hovering_object = null
 #var object_iteration := 0
 
 enum actions {placing, deleting, moving}
@@ -137,6 +142,16 @@ func _physics_process(delta: float) -> void:
 		elif current_action == actions.deleting:
 			delete()
 	
+	if hovering_object:
+		if hovering_object.is_in_group("Conveyor"):
+			if hovering_object.item != null:
+				update_inventory_display({hovering_object.item.itemType:1})
+			else:
+				update_inventory_display({})
+		else:
+			update_inventory_display(hovering_object.inventory)
+	
+	inventory_display.global_position = get_global_mouse_position()
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	
@@ -167,13 +182,12 @@ func _physics_process(delta: float) -> void:
 					object.material = construct_shader.duplicate()
 				object.material.set_shader_parameter("dissolve_progress", 1-object.destroy_time/object.max_destroy_time)
 				if object.destroy_time == object.max_destroy_time:
-					object.held = false
+					#object.held = false
 					object.modulate = Color.from_rgba8(255, 255, 255, 255)
 					object.material = null
 					current_objects.erase(object)
 			else:
-				object.queue_free()
-				object.held = false
+				#object.held = false
 				object.modulate = Color.from_rgba8(255, 255, 255, 255)
 				object.material = null
 				current_objects.erase(object)
@@ -200,6 +214,7 @@ func set_build_cursor(object:PackedScene):
 	
 	if "held" in highlight:
 		highlight.held = true
+		print(highlight.held)
 
 func place(object:PackedScene):
 	if not building_object:
@@ -214,7 +229,7 @@ func place(object:PackedScene):
 			player.give_action(player.actions.default, null)
 	if not object or not building_mode or dragging: return
 	player.give_action(player.actions.default, null)
-	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies():
+	if build_cursor.get_child(0).has_overlapping_areas() or build_cursor.get_child(0).has_overlapping_bodies() and not build_cursor.get_child(0).is_in_group("OverwriteSelf"):
 		if last_object_built and last_object_built.is_in_group("Rotate") and build_cursor.global_position != last_object_built.global_position:
 			var direction = last_object_built.global_position.direction_to(get_global_mouse_position())
 			if abs(direction.x) > abs(direction.y):
@@ -232,8 +247,12 @@ func place(object:PackedScene):
 		#deleting_objects.clear()
 	
 	var placed_object = object.instantiate()
+	if placed_object.is_in_group("OverwriteSelf"):
+		var deleting = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
+		if not deleting.is_empty():
+			deleting[0].queue_free()
 	get_tree().current_scene.add_child(placed_object)
-	placed_object.held = true
+	#placed_object.held = true
 	placed_object.destroy_time = 0
 	placed_object.global_position = build_cursor.global_position
 	#placed_object.material = construct_shader.duplicate()
@@ -265,3 +284,41 @@ func delete():
 			deleting_objects.append(deleting_object)
 	
 	#current_action = actions.deleting
+
+func update_inventory_display(items:Dictionary):
+	var item_keys = items.keys()
+	#for item in item_keys:
+		#var amount = items[item]
+		#var index = item_keys.find(item)
+		#var item_display = item_container.get_child(index)
+		#
+	for item_display in item_container.get_children():
+		#var index = item_container.get_children().find(item_display)
+		#var item = items[items.keys()[index]]
+		if item_display.name in item_keys:
+			item_display.visible = true
+			item_display.get_child(0).text = "x" + str(items[item_display.name])
+			item_display.texture = load("res://Resources/Data/Ores/"+item_display.name+".tres").icon
+		else:
+			item_display.visible = false
+
+func _on_delete_cursor_area_entered(area: Area2D) -> void:
+	if area.is_in_group("Conveyor") or area.is_in_group("Container"):
+		hovering_object = area
+		if hovering_object.has_method("highlight"):
+			hovering_object.highlight(true)
+		if area.is_in_group("Conveyor"):
+			if area.item != null:
+				update_inventory_display({area.item.itemType:1})
+			else:
+				update_inventory_display({})
+		else:
+			update_inventory_display(area.inventory)
+		inventory_display.visible = true
+
+func _on_delete_cursor_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Conveyor") or area.is_in_group("Container") and hovering_object == area:
+		if area.has_method("highlight"):
+			area.highlight(false)
+		hovering_object = null
+		inventory_display.visible = false

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="OreStats" format=3 uid="uid://m74ijmtebdjw"]
+
+[ext_resource type="Texture2D" uid="uid://dkav400nfe0h3" path="res://Assets/CoalOre.png" id="1_i6i7e"]
+[ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="1_yiyii"]
+
+[resource]
+script = ExtResource("1_yiyii")
+icon = ExtResource("1_i6i7e")
+name = "Coal"
+metadata/_custom_type_script = "uid://qm6i68lmfktf"

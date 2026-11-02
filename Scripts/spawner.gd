@@ -35,7 +35,7 @@ var timeForWave:int
 func _ready() -> void:
 	wave_spawn_timer.wait_time = waveTimes[0]
 	timeForWave = waveTimes[0]
-	wave_spawn_timer.start()
+	#wave_spawn_timer.start()
 	await get_tree().create_timer(0.02).timeout
 	waveInfo.emit(waveCount, timeForWave)
 	gameUI.startPrematurely.connect(start_wave)

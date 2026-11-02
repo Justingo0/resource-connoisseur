@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="OreStats" format=3 uid="uid://qp4lsbh0gjiw"]
 
+[ext_resource type="Texture2D" uid="uid://cbid65lpalk7c" path="res://Assets/fluoriteOre.png" id="1_f0yik"]
 [ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="1_vxc0a"]
 
 [resource]
 script = ExtResource("1_vxc0a")
+icon = ExtResource("1_f0yik")
 name = "Fluorite"
 metadata/_custom_type_script = "uid://qm6i68lmfktf"

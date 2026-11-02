@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://dc2343pdi0wto"]
 
-[ext_resource type="Texture2D" uid="uid://d34ssrpml08sf" path="res://Assets/rubyOre.png" id="1_ebi35"]
+[ext_resource type="Texture2D" uid="uid://ceohrvcj2b3s3" path="res://Assets/rubyOre.png" id="1_ebi35"]
 [ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="2_m35gh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_idxpp"]

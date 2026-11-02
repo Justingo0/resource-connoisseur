@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_rurbd")
-health = 150
 range = 6
 reloadSpeed = 0.5
 spread = 35.0
@@ -14,4 +13,6 @@ damage = 6
 projectileSpeed = 1300
 projectileLifetime = 0.3
 knockAmount = 12
+name = "Blunderbuss"
+health = 150
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

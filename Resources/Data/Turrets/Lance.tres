@@ -4,7 +4,6 @@
 
 [resource]
 script = ExtResource("1_0atx0")
-health = 250
 range = 10
 reloadSpeed = 1.5
 shotCount = 1
@@ -15,4 +14,6 @@ projectileLifetime = 0.2
 projectilePierce = 5
 widthMultiplier = 5.0
 knockAmount = 15
+name = "Lance"
+health = 250
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

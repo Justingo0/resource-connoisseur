@@ -14,15 +14,15 @@
 [ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/turretTop.png" id="8_cb7yr"]
 [ext_resource type="Script" uid="uid://c6f7oghh7tfqj" path="res://Scripts/UserInterface/selection_menu.gd" id="11_4o04s"]
 [ext_resource type="PackedScene" uid="uid://busepgbfxl48t" path="res://Scenes/selection_button.tscn" id="11_v31xr"]
-[ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="12_510gx"]
 [ext_resource type="Texture2D" uid="uid://dq2yh8nw3wo0a" path="res://Assets/mineBuild.png" id="13_b2sko"]
-[ext_resource type="PackedScene" uid="uid://rbhy07an84kd" path="res://Scenes/conveyor.tscn" id="15_7e7c6"]
-[ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="16_yy28n"]
+[ext_resource type="Resource" uid="uid://s8sox3x81p57" path="res://Resources/Data/Miners/basic_miner.tres" id="16_fg8k8"]
 [ext_resource type="Texture2D" uid="uid://d4idlmt7lifhb" path="res://Assets/UI/TabsIcons/Miners.png" id="17_fg8k8"]
-[ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="17_yy28n"]
+[ext_resource type="Resource" uid="uid://clc15lbcd830h" path="res://Resources/Data/Sorting/Conveyors/basic_conveyor.tres" id="17_u07jk"]
+[ext_resource type="Resource" uid="uid://blyr3tph1yotb" path="res://Resources/Data/Sorting/router.tres" id="18_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
-[ext_resource type="PackedScene" uid="uid://3lhr0h1b5ej" path="res://Scenes/home.tscn" id="18_ebtcv"]
+[ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
+[ext_resource type="Resource" uid="uid://dbpkngq3k44eb" path="res://Resources/Data/Base/basic_home.tres" id="21_cj8qe"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
 [ext_resource type="Texture2D" uid="uid://bfly65mc47vth" path="res://Assets/UI/TabsIcons/Trash.png" id="23_dnf6v"]
 
@@ -106,6 +106,25 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qi0q1"]
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_p7o00"]
+font = ExtResource("2_0dv3k")
+
+[sub_resource type="LabelSettings" id="LabelSettings_cj8qe"]
+font = ExtResource("2_0dv3k")
+font_size = 11
 
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
@@ -423,6 +442,7 @@ size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_cb7yr")
 
 [node name="Miners" type="GridContainer" parent="SelectionMenu/Selections" unique_id=421368240]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -443,8 +463,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("13_b2sko")
-object_scene = ExtResource("12_510gx")
-base_texture = ExtResource("13_b2sko")
+type = ExtResource("16_fg8k8")
 
 [node name="Conveyors" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1047868339]
 visible = false
@@ -468,16 +487,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("3_16wyj")
-object_scene = ExtResource("15_7e7c6")
-base_texture = ExtResource("3_16wyj")
+type = ExtResource("17_u07jk")
 
 [node name="Selection2" parent="SelectionMenu/Selections/Conveyors" unique_id=1982493121 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("5_t747t")
-object_scene = ExtResource("16_yy28n")
-base_texture = ExtResource("5_t747t")
+type = ExtResource("18_0dv3k")
 
 [node name="Turrets" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1409683317]
 visible = false
@@ -500,13 +517,9 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("7_v31xr")
-object_scene = ExtResource("17_yy28n")
-base_texture = ExtResource("7_v31xr")
-sub_texture = ExtResource("8_cb7yr")
+type = ExtResource("19_0dv3k")
 
 [node name="Base" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1813311783]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -527,8 +540,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("4_t747t")
-object_scene = ExtResource("18_ebtcv")
-base_texture = ExtResource("4_t747t")
+type = ExtResource("21_cj8qe")
 
 [node name="HiddenArea" type="Control" parent="SelectionMenu" unique_id=2031371284]
 layout_mode = 2
@@ -686,6 +698,52 @@ grow_vertical = 2
 texture = ExtResource("23_dnf6v")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="ItemDisplay" type="Panel" parent="." unique_id=1032480367]
+unique_name_in_owner = true
+visible = false
+top_level = true
+z_index = 10
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -737.0
+offset_top = -394.0
+offset_right = -579.0
+offset_bottom = -302.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qi0q1")
+
+[node name="Name" type="Label" parent="ItemDisplay" unique_id=812347860]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 5.0
+offset_right = -6.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Object name here"
+label_settings = SubResource("LabelSettings_p7o00")
+
+[node name="Description" type="Label" parent="ItemDisplay" unique_id=278484383]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 6.0
+offset_top = 37.0
+offset_right = -6.0
+offset_bottom = 83.0
+grow_horizontal = 2
+text = "Lorem ipsum dolor sit amet consectuer."
+label_settings = SubResource("LabelSettings_cj8qe")
+autowrap_mode = 2
 
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
 [connection signal="pressed" from="OldPlacement/HBoxContainer/Selection1" to="." method="_on_button_pressed"]

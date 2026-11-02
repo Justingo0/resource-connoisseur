@@ -3,7 +3,10 @@ var health = 2000
 
 signal inventory_changed(value:int)
 
-@export var inventory = {"ore":0}
+@export var inventory = {}:
+	set(new_val):
+		inventory = new_val
+		GameManager.core_inventory = inventory
 @export var inventory_size:int
 
 @export var max_destroy_time:float
@@ -11,10 +14,11 @@ signal inventory_changed(value:int)
 
 @export var held:bool
 
-func _mouse_enter() -> void:
-	pass
-	print(inventory)
-	
+func get_disabled() -> bool:
+	if destroy_time == max_destroy_time and held == false:
+		return false
+	return true
+
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:

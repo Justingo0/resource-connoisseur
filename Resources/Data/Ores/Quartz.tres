@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="OreStats" format=3 uid="uid://b4l7gepg8c448"]
 
+[ext_resource type="Texture2D" uid="uid://b0jssc8th868x" path="res://Assets/QuartzOre.png" id="1_5j1u4"]
 [ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="1_8w25q"]
 
 [resource]
 script = ExtResource("1_8w25q")
+icon = ExtResource("1_5j1u4")
 name = "Quartz"
 metadata/_custom_type_script = "uid://qm6i68lmfktf"

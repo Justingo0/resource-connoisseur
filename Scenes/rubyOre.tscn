@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://cbeydmwbdnvel"]
 
 [ext_resource type="Script" uid="uid://dy8iq8kan5aya" path="res://Scripts/oreScript.gd" id="1_2upsk"]
-[ext_resource type="Texture2D" uid="uid://d34ssrpml08sf" path="res://Assets/rubyOre.png" id="1_b6xxr"]
+[ext_resource type="Texture2D" uid="uid://ceohrvcj2b3s3" path="res://Assets/rubyOre.png" id="1_b6xxr"]
+[ext_resource type="Texture2D" uid="uid://cbid65lpalk7c" path="res://Assets/fluoriteOre.png" id="3_2upsk"]
 [ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="3_f641p"]
 
 [sub_resource type="Resource" id="Resource_k1ysm"]
 script = ExtResource("3_f641p")
-name = "Ruby"
 icon = ExtResource("1_b6xxr")
+name = "Ruby"
 metadata/_custom_type_script = "uid://qm6i68lmfktf"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7qq0"]
@@ -26,4 +27,6 @@ shape = SubResource("RectangleShape2D_p7qq0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=308717136]
 texture_filter = 1
-texture = ExtResource("1_b6xxr")
+position = Vector2(0.007812709, 0.007812709)
+scale = Vector2(0.37817383, 0.37817383)
+texture = ExtResource("3_2upsk")

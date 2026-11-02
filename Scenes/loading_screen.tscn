@@ -1,0 +1,90 @@
+[gd_scene format=3 uid="uid://hg1nrmrkqijb"]
+
+[ext_resource type="Script" uid="uid://cmpl5ojolxspj" path="res://Scripts/UserInterface/loading_screen.gd" id="1_1godw"]
+[ext_resource type="Texture2D" uid="uid://befydcy5cqsya" path="res://Assets/UI/SmallGear.png" id="1_nfm0g"]
+[ext_resource type="Script" uid="uid://pvmcjpn5xfy5" path="res://Scripts/UserInterface/gear_rotate.gd" id="2_fayou"]
+[ext_resource type="Texture2D" uid="uid://huhnaedk2d3n" path="res://Assets/UI/Gear.png" id="3_1godw"]
+[ext_resource type="FontFile" uid="uid://bxvbmimhusou1" path="res://Assets/UI/Square.ttf" id="5_yisgd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7o00"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t5fij"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wew43"]
+bg_color = Color(0.8980392, 0.7764706, 0.22352941, 1)
+
+[node name="LoadingScreen" type="Control" unique_id=1188595610]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1godw")
+next_scene = "uid://ccgyrxlfrub0a"
+
+[node name="Panel" type="Panel" parent="." unique_id=1120612848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7o00")
+
+[node name="Gear1" type="TextureRect" parent="." unique_id=1671337167]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1039.0
+offset_top = 488.99997
+offset_right = -44.70105
+offset_bottom = -97.09149
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.24414395
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_nfm0g")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_fayou")
+direction = 1
+speed = 1.4
+
+[node name="Gear2" type="TextureRect" parent="." unique_id=653072340]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 947.0
+offset_top = 505.0
+offset_right = -95.096924
+offset_bottom = -39.56195
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 0.32298395
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("3_1godw")
+expand_mode = 1
+stretch_mode = 5
+script = ExtResource("2_fayou")
+
+[node name="LoadingBar" type="ProgressBar" parent="." unique_id=1050710438]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -13.5
+offset_bottom = 13.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.95, 0.95, 0.95, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 13
+theme_override_fonts/font = ExtResource("5_yisgd")
+theme_override_styles/background = SubResource("StyleBoxEmpty_t5fij")
+theme_override_styles/fill = SubResource("StyleBoxFlat_wew43")
+value = 50.0
