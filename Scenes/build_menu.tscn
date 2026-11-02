@@ -138,7 +138,7 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 1
-expand_margin_left = 50.0
+expand_margin_left = 43.0
 expand_margin_right = 5.0
 
 [node name="BuildMenu" type="Control" unique_id=193295564]
@@ -717,6 +717,7 @@ stretch_mode = 5
 
 [node name="ItemDisplay" type="Panel" parent="." unique_id=1032480367]
 unique_name_in_owner = true
+visible = false
 top_level = true
 z_index = 10
 custom_minimum_size = Vector2(50, 50)
@@ -761,6 +762,7 @@ label_settings = SubResource("LabelSettings_cj8qe")
 autowrap_mode = 2
 
 [node name="Annoucement" type="Label" parent="." unique_id=1853022101]
+visible = false
 custom_minimum_size = Vector2(0, 44)
 custom_maximum_size = Vector2(-1, 44)
 layout_mode = 1
@@ -773,23 +775,35 @@ offset_right = 2.5
 offset_bottom = 64.0
 grow_horizontal = 2
 pivot_offset_ratio = Vector2(0.5, 0)
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(0, -1.5)
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "RIp brochacho"
 label_settings = SubResource("LabelSettings_p7o00")
 vertical_alignment = 1
 autowrap_trim_flags = 0
 
-[node name="TextureRect" type="TextureRect" parent="Annoucement" unique_id=894354975]
+[node name="Icon" type="TextureRect" parent="Annoucement" unique_id=894354975]
+texture_filter = 1
+custom_maximum_size = Vector2(44, 44)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -41.0
-offset_top = 5.0
-offset_right = -262.0
-offset_bottom = -5.0
+offset_left = -36.0
+offset_top = 7.0
+offset_right = -120.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("19_cj8qe")
+expand_mode = 1
+stretch_mode = 5
 
+[node name="HideTimer" type="Timer" parent="Annoucement" unique_id=378649260]
+one_shot = true
+
+[connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
 [connection signal="pressed" from="OldPlacement/HBoxContainer/Selection1" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="OldPlacement/HBoxContainer/Selection2" to="." method="_on_button_2_pressed"]
@@ -798,3 +812,4 @@ grow_vertical = 2
 [connection signal="pressed" from="OldPlacement/HBoxContainer/Selection5" to="." method="_on_selection_5_pressed"]
 [connection signal="pressed" from="OldPlacement/HBoxContainer/Clear" to="." method="_on_clear_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="timeout" from="Annoucement/HideTimer" to="." method="_on_hide_timer_timeout"]
