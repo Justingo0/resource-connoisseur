@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var driller_anim = $Drill/AnimationPlayer
 
+@export var health = 200 
 var oreCount = 0
 var mineTime = 0
 var time = 0
@@ -142,3 +143,8 @@ func output():
 				selected_conveyor.inventory[itemType] = 0
 			selected_conveyor.inventory[itemType] += 1
 			selected_conveyor.inventory = selected_conveyor.inventory
+
+func take_damage(damage: int) -> void:
+	health -= damage
+	if health < 1:
+		queue_free()
