@@ -18,7 +18,7 @@ var reloadTimer:float
 var shotCount:int
 
 @export var inventory_size = 10
-@export var inventory = {"ore": 0}
+@export var inventory = {}
 
 # Radius Outline Settings
 var dot_count: int = 36
