@@ -26,6 +26,7 @@
 [ext_resource type="Resource" uid="uid://dbpkngq3k44eb" path="res://Resources/Data/Base/basic_home.tres" id="21_cj8qe"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
 [ext_resource type="Texture2D" uid="uid://bfly65mc47vth" path="res://Assets/UI/TabsIcons/Trash.png" id="23_dnf6v"]
+[ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
@@ -138,8 +139,13 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 1
-expand_margin_left = 43.0
+expand_margin_left = 5.0
+expand_margin_top = 5.0
 expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_pj23d"]
+font = ExtResource("2_0dv3k")
 
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
@@ -802,6 +808,30 @@ stretch_mode = 5
 
 [node name="HideTimer" type="Timer" parent="Annoucement" unique_id=378649260]
 one_shot = true
+
+[node name="Tutorial" type="Control" parent="." unique_id=1135636278]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("27_2lbpn")
+
+[node name="1" type="Control" parent="Tutorial" unique_id=657197617]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Tip" type="Label" parent="Tutorial/1" unique_id=554254195]
+layout_mode = 0
+offset_left = 850.0
+offset_top = 434.0
+offset_right = 1132.0
+offset_bottom = 545.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Welcome to Resource Connoiseur! Start by openning the Miners menu"
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
