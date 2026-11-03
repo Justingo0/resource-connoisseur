@@ -275,7 +275,7 @@ func delete():
 	if dragging: return
 	var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
 	if not objects.is_empty(): 
-		var deleting_object = objects[0] as Area2D
+		var deleting_object = objects[0]
 		if deleting_object.is_in_group("Block") and deleting_object.held == false and not deleting_object.is_in_group("Unbreakable"):
 			if deleting_object in deleting_objects or deleting_object in current_objects: return
 			#building_object = null
