@@ -14,6 +14,7 @@ func _ready() -> void:
 func start_iteration():
 	if iteration > 0:
 		tutorial.get_child(iteration-1).visible = false
+		get_node(actions.keys()[iteration-1]).offset_transform_enabled = false
 	if tutorial.get_child_count() == 0 or actions.size() == 0: return
 	if tutorial.get_child_count() <= iteration or actions.size() <= iteration: return
 	var tip = tutorial.get_child(iteration)
