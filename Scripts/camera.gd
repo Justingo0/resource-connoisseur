@@ -1,5 +1,9 @@
 extends Camera2D
 
+signal on_object_placed(obj:Node2D)
+signal on_object_deleted
+signal on_action_finised(action:String)
+
 @onready var build_cursor = $BuildCursor
 @onready var delete_cursor = $DeleteCursor
 @onready var mine_cursor = $DeleteCursor/MineCursor
@@ -172,9 +176,15 @@ func _physics_process(delta: float) -> void:
 				if object.destroy_time == 0.0:
 					object.queue_free()
 					current_objects.erase(object)
+					on_object_deleted.emit()
+					if current_objects.is_empty():
+						on_action_finised.emit("deleting")
 			else:
 				object.queue_free()
 				current_objects.erase(object)
+				on_object_deleted.emit()
+				if current_objects.is_empty():
+					on_action_finised.emit("deleting")
 		elif object_action == actions.placing:
 			if "destroy_time" in object:
 				object.destroy_time = min(object.destroy_time + delta*GameManager.time_scale*speed, object.max_destroy_time)
@@ -186,11 +196,17 @@ func _physics_process(delta: float) -> void:
 					object.modulate = Color.from_rgba8(255, 255, 255, 255)
 					object.material = null
 					current_objects.erase(object)
+					on_object_placed.emit(object)
+					if current_objects.is_empty():
+						on_action_finised.emit("placing")
 			else:
 				#object.held = false
 				object.modulate = Color.from_rgba8(255, 255, 255, 255)
 				object.material = null
 				current_objects.erase(object)
+				on_object_placed.emit(object)
+				if current_objects.is_empty():
+					on_action_finised.emit("placing")
 
 func keyboard_movement(delta):
 	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
