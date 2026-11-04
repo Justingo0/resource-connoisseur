@@ -1,6 +1,6 @@
 extends Camera2D
 
-signal on_object_placed(obj:Node2D)
+signal on_object_placed(obj_type:PackedScene)
 signal on_object_deleted
 signal on_action_finised(action:String)
 
@@ -176,13 +176,11 @@ func _physics_process(delta: float) -> void:
 				if object.destroy_time == 0.0:
 					object.queue_free()
 					current_objects.erase(object)
-					on_object_deleted.emit()
 					if current_objects.is_empty():
 						on_action_finised.emit("deleting")
 			else:
 				object.queue_free()
 				current_objects.erase(object)
-				on_object_deleted.emit()
 				if current_objects.is_empty():
 					on_action_finised.emit("deleting")
 		elif object_action == actions.placing:
@@ -196,7 +194,6 @@ func _physics_process(delta: float) -> void:
 					object.modulate = Color.from_rgba8(255, 255, 255, 255)
 					object.material = null
 					current_objects.erase(object)
-					on_object_placed.emit(object)
 					if current_objects.is_empty():
 						on_action_finised.emit("placing")
 			else:
@@ -204,7 +201,6 @@ func _physics_process(delta: float) -> void:
 				object.modulate = Color.from_rgba8(255, 255, 255, 255)
 				object.material = null
 				current_objects.erase(object)
-				on_object_placed.emit(object)
 				if current_objects.is_empty():
 					on_action_finised.emit("placing")
 
@@ -227,6 +223,7 @@ func set_build_cursor(object:PackedScene):
 	highlight.collision_mask = 1
 	build_cursor.add_child(highlight)
 	highlight.position = Vector2.ZERO
+	
 	
 	if "held" in highlight:
 		highlight.held = true
@@ -275,6 +272,8 @@ func place(object:PackedScene):
 	placed_object.modulate = Color.from_rgba8(255, 255, 255, 140)
 	building_objects.append(placed_object)
 	
+	on_object_placed.emit(object)
+	
 	if last_object_built and last_object_built.is_in_group("Rotate"):
 		var direction = last_object_built.global_position.direction_to(placed_object.global_position)
 		if abs(direction.x) > abs(direction.y):
@@ -290,14 +289,15 @@ func place(object:PackedScene):
 func delete():
 	if dragging: return
 	var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
-	if not objects.is_empty(): 
-		var deleting_object = objects[0] as Area2D
-		if deleting_object.is_in_group("Block") and deleting_object.held == false and not deleting_object.is_in_group("Unbreakable"):
+	if not objects.is_empty():
+		var deleting_object = objects[0]
+		if deleting_object and deleting_object.is_in_group("Block") and deleting_object.held == false and not deleting_object.is_in_group("Unbreakable"):
 			if deleting_object in deleting_objects or deleting_object in current_objects: return
 			#building_object = null
 			deleting_object.destroy_time = deleting_object.max_destroy_time
 			deleting_object.material = dissolve_shader.duplicate()
 			deleting_objects.append(deleting_object)
+			on_object_deleted.emit()
 	
 	#current_action = actions.deleting
 
