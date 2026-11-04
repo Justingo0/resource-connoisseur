@@ -53,3 +53,6 @@ func _on_hide_timer_timeout() -> void:
 	tween.tween_property(annoucment_label, "offset_transform_position_ratio", Vector2(0,-1.5), 0.3)
 	tween.play()
 	print("recieved conceal")
+
+func get_camera() -> Camera2D:
+	return camera

@@ -1,8 +1,6 @@
 @tool
 extends TextureButton
 
-@onready var subtexture_rect = $SubTexture
-
 @onready var camera = $"../../../../../../Player/Camera2D"
 @onready var item_display = %ItemDisplay
 
