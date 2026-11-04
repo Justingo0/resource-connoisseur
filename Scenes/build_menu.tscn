@@ -91,7 +91,8 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 5
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wew43"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lpbhf"]
+bg_color = Color(0.09320182, 0.09320182, 0.09320182, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t5fij"]
 bg_color = Color(0.043137256, 0.043137256, 0.043137256, 0.77254903)
@@ -145,10 +146,17 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
+[sub_resource type="Resource" id="Resource_liqnk"]
+script = ExtResource("28_liqnk")
+highlight_type = "color"
+highlight_value = Color(1, 1, 1, 0.24200001)
+action_type = "pressed"
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
 [sub_resource type="Resource" id="Resource_yhxw7"]
 script = ExtResource("28_liqnk")
-highlight_type = "scale"
-highlight_value = Vector2(1.3, 1.3)
+highlight_type = "null"
+highlight_value = null
 action_type = "pressed"
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
@@ -603,7 +611,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wew43")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lpbhf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t5fij")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b2sko")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7e7c6")
@@ -629,7 +637,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wew43")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lpbhf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t5fij")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b2sko")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7e7c6")
@@ -655,7 +663,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wew43")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lpbhf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t5fij")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b2sko")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7e7c6")
@@ -681,7 +689,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wew43")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lpbhf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t5fij")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b2sko")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7e7c6")
@@ -708,7 +716,7 @@ texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxEmpty_wew43")
+theme_override_styles/normal = SubResource("StyleBoxFlat_lpbhf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t5fij")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b2sko")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7e7c6")
@@ -826,11 +834,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
 actions = {
-NodePath("../SelectionMenu/Tabs/Container/Miners"): SubResource("Resource_yhxw7"),
+NodePath("../SelectionMenu/Tabs/Container/Miners"): SubResource("Resource_liqnk"),
 NodePath("../SelectionMenu/Selections/Miners/Selection"): SubResource("Resource_yhxw7")
 }
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -865,6 +874,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="2" type="Control" parent="Tutorial" unique_id=1504456066]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -887,6 +897,40 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
 text = "select the basic miner."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="3" type="Control" parent="Tutorial" unique_id=1698269418]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/3" unique_id=698988129]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 188.0
+offset_top = -10.5
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Miners collect resources from ore viens.
+Try placing it with LMB."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
