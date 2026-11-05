@@ -10,7 +10,9 @@ extends Area2D
 @onready var sprite = $Sprite2D
 
 func _ready() -> void:
-	sprite.texture = type.icon
+	if sprite:
+		sprite.texture = type.icon
 
 func restartProperties() -> void:
-	sprite.texture = type.icon
+	if sprite:
+		sprite.texture = type.icon
