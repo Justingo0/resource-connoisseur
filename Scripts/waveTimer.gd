@@ -18,19 +18,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	time += delta*GameManager.time_scale
-	if time > 1:
-		timeForWave -= 1
-		if timeForWave >= 60:
-			var minutes = str(floor(timeForWave/60))
-			var seconds = max(0, timeForWave%60)
-			if seconds < 10:
-				seconds = "0" + str(seconds)
-			seconds = str(seconds)
-			text = starting_text + minutes + ":" + seconds
-		else:
-			text = starting_text + str(max(0, timeForWave%60))
-		time = 0
+	if not GameManager.tutorial_mode:
+		time += delta*GameManager.time_scale
+		if time > 1:
+			timeForWave -= 1
+			if timeForWave >= 60:
+				var minutes = str(floor(timeForWave/60))
+				var seconds = max(0, timeForWave%60)
+				if seconds < 10:
+					seconds = "0" + str(seconds)
+				seconds = str(seconds)
+				text = starting_text + minutes + ":" + seconds
+			else:
+				text = starting_text + str(max(0, timeForWave%60))
+			time = 0
+	else:
+		text = "waiting..."
 
 func set_timer(newWaveCount, newTimeForWave) -> void:
 	timeForWave = newTimeForWave
