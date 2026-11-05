@@ -21,10 +21,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		any_key_pressed.emit()
 
 func start_iteration():
-	if iteration > 0 and actions[iteration-1][0]:
+	if iteration > 0:
 		tutorial.get_child(iteration-1).visible = false
-		get_node(actions[iteration-1][0]).offset_transform_enabled = false
-		get_node(actions[iteration-1][0]).material = null
+		if actions[iteration-1][0]:
+			get_node(actions[iteration-1][0]).offset_transform_enabled = false
+			get_node(actions[iteration-1][0]).material = null
 	if tutorial.get_child_count() == 0 or actions.size() == 0: return
 	if tutorial.get_child_count() <= iteration or actions.size() <= iteration: return
 	print("Made it through Security")
