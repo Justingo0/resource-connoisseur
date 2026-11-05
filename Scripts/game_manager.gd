@@ -4,6 +4,8 @@ extends Node
 static var times_logged:int = 0
 
 # Game Values
+static var tutorial_mode:bool = false
+
 static var time_scale:float = 1
 static var conveyor_frame:int = 0
 
