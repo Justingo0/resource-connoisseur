@@ -147,23 +147,23 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
+[sub_resource type="Resource" id="Resource_tsw58"]
+script = ExtResource("28_liqnk")
+highlight_type = "color"
+highlight_value = Color(1, 1, 1, 1)
+expected_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
 [sub_resource type="Resource" id="Resource_5mldt"]
 script = ExtResource("28_liqnk")
 highlight_value = null
-expected_value = ExtResource("29_tsw58")
-metadata/_custom_type_script = "uid://w07ceot5mi5n"
-
-[sub_resource type="Resource" id="Resource_liqnk"]
-script = ExtResource("28_liqnk")
-highlight_type = "color"
-highlight_value = Color(1, 1, 1, 0.24200001)
 expected_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
-[sub_resource type="Resource" id="Resource_yhxw7"]
+[sub_resource type="Resource" id="Resource_qi0q1"]
 script = ExtResource("28_liqnk")
 highlight_value = null
-expected_value = null
+expected_value = ExtResource("29_tsw58")
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="LabelSettings" id="LabelSettings_pj23d"]
@@ -839,11 +839,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = {
-0: SubResource("Resource_5mldt"),
-NodePath("../SelectionMenu/Tabs/Container/Miners"): SubResource("Resource_liqnk"),
-NodePath("../SelectionMenu/Selections/Miners/Selection"): SubResource("Resource_yhxw7")
-}
+actions = Array[Array]([[NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -938,6 +934,34 @@ grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
 text = "Miners collect resources from ore viens.
 Try placing it with LMB."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="4" type="Control" parent="Tutorial" unique_id=1834216908]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -312.0
+offset_top = -175.0
+offset_right = -25.0
+offset_bottom = -97.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/4" unique_id=1769120315]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "now we need to extract the mined ore from the miner. open the conveyors menu."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
