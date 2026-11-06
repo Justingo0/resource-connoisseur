@@ -28,25 +28,24 @@ func start_iteration():
 			get_node(actions[iteration-1][0]).material = null
 	if tutorial.get_child_count() == 0 or actions.size() == 0: return
 	if tutorial.get_child_count() <= iteration or actions.size() <= iteration: return
-	print("Made it through Security")
 	var action = actions[iteration][1] as tutorialStats
 	var tip = tutorial.get_child(iteration)
 	tip.visible = true
-	if not actions[iteration][0] and action.expected_value != null:
-		print("A hobo")
+	if not actions[iteration][0] and not action.use_next:
 		var placed_obj = null
 		while placed_obj != action.expected_value:
-			placed_obj = await camera.get(action.external_action)
+			if action.recieving_object == "GameManager":
+				placed_obj = await GameManager.get(action.external_action)
+			elif action.recieving_object == "Camera":
+				placed_obj = await camera.get(action.external_action)
 		iteration += 1
 		start_iteration()
 		return
-	elif not actions[iteration][0] and action.expected_value == null:
-		print("Another hobo")
+	if action.use_next:
 		await any_key_pressed
 		iteration += 1
 		start_iteration()
 		return
-	print("Not a hobo")
 	var action_button = get_node(actions[iteration][0])
 	
 	if action.highlight_type == "color":
@@ -58,6 +57,5 @@ func start_iteration():
 		action_button["offset_transform_"+action.highlight_type] = action.highlight_value
 	
 	await action_button.get(action.action_type)
-	print("All done")
 	iteration += 1
 	start_iteration()
