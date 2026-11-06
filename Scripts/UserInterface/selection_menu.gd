@@ -17,7 +17,6 @@ func _ready() -> void:
 		camera.building_object = null
 		Input.action_press("Delete")
 		)
-	tabs.remove_at(4)
 	for tab in tabs:
 		tab.pressed.connect(func():
 			tab_switch(tab.name, tab))

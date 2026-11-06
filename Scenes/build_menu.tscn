@@ -23,10 +23,12 @@
 [ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/turretBuild.png" id="19_cj8qe"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
+[ext_resource type="Resource" uid="uid://dgykme6jgn6kr" path="res://Resources/Data/Walls/fluoriteWall.tres" id="21_5mldt"]
 [ext_resource type="Resource" uid="uid://dbpkngq3k44eb" path="res://Resources/Data/Base/basic_home.tres" id="21_cj8qe"]
+[ext_resource type="Texture2D" uid="uid://bhgw5wof3rmg0" path="res://Assets/RawFluorite.png" id="21_qi0q1"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
-[ext_resource type="Texture2D" uid="uid://bfly65mc47vth" path="res://Assets/UI/TabsIcons/Trash.png" id="23_dnf6v"]
 [ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
+[ext_resource type="Texture2D" uid="uid://dlcq5afw7rf34" path="res://Assets/UI/TabsIcons/Walls.png" id="27_qi0q1"]
 [ext_resource type="Script" uid="uid://w07ceot5mi5n" path="res://Resources/Managers/tutorialStats.gd" id="28_liqnk"]
 [ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="29_tsw58"]
 
@@ -500,7 +502,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -441.21997
+offset_left = -496.0
 offset_top = -305.0
 offset_right = -19.999756
 offset_bottom = -20.0
@@ -596,7 +598,32 @@ size_flags_vertical = 3
 texture_normal = ExtResource("19_cj8qe")
 type = ExtResource("19_0dv3k")
 
+[node name="Walls" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1682967110]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.5
+offset_top = 12.5
+offset_right = -12.5
+offset_bottom = -18.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+theme_override_constants/h_separation = 7
+theme_override_constants/v_separation = 6
+columns = 6
+
+[node name="Selection" parent="SelectionMenu/Selections/Walls" unique_id=1889069550 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("21_qi0q1")
+type = ExtResource("21_5mldt")
+
 [node name="Base" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1813311783]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -643,7 +670,7 @@ offset_right = -6.0
 offset_bottom = -12.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 4
+columns = 5
 
 [node name="Miners" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=1324528805]
 texture_filter = 1
@@ -723,6 +750,31 @@ texture = ExtResource("20_fg8k8")
 expand_mode = 1
 stretch_mode = 5
 
+[node name="Walls" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=871083808]
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = SubResource("StyleBoxFlat_lpbhf")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_t5fij")
+theme_override_styles/hover = SubResource("StyleBoxFlat_b2sko")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7e7c6")
+
+[node name="TextureRect2" type="TextureRect" parent="SelectionMenu/Tabs/Container/Walls" unique_id=387913221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.045448
+offset_top = 6.0
+offset_right = -11.045448
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_qi0q1")
+expand_mode = 1
+stretch_mode = 5
+
 [node name="Base" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=1931005291]
 texture_filter = 1
 layout_mode = 2
@@ -746,33 +798,6 @@ offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("22_dnf6v")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Delete" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=871083808]
-visible = false
-texture_filter = 1
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/normal = SubResource("StyleBoxFlat_lpbhf")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_t5fij")
-theme_override_styles/hover = SubResource("StyleBoxFlat_b2sko")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7e7c6")
-
-[node name="TextureRect" type="TextureRect" parent="SelectionMenu/Tabs/Container/Delete" unique_id=1392467778]
-modulate = Color(1, 0, 0, 1)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 5.9628067
-offset_top = 3.0
-offset_right = -5.9628067
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("23_dnf6v")
 expand_mode = 1
 stretch_mode = 5
 
