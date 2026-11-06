@@ -17,7 +17,7 @@ func _ready() -> void:
 	start_iteration()
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey:
+	if event.is_action_pressed("Place"):
 		any_key_pressed.emit()
 
 func start_iteration():
