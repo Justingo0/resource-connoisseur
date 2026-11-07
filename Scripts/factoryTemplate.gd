@@ -39,3 +39,11 @@ func _on_conveyor_detector_area_exited(area: Area2D) -> void:
 		conveyors.erase(area)
 		conveyors = conveyors
 
+func _on_production_timer_timeout() -> void:
+	if inventory.keys().size() > 0 and resources != inventory_size:
+		if inputItem.size() == 2 and inventory[inventory.keys()[0]] >= inputItem.keys()[0] and inventory[inventory.keys()[1]] >= inputItem.keys()[1]:
+			resources = min(resources + 1, 10)
+		elif inventory[inventory.keys()[0]] >= inputItem.values()[0]:
+			inventory[inventory.keys()[0]] -= inputItem.values()[0]
+			resources = min(resources + 1, 10)
+
