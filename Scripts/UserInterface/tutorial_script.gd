@@ -56,11 +56,13 @@ func start_iteration():
 			elif action.public_recieving_object:
 				placed_obj = await get_node(NodePath(action.public_recieving_object)).get(action.external_action)
 		iteration += 1
+		fire_trigger(action)
 		start_iteration()
 		return
 	if action.use_next:
 		await any_key_pressed
 		iteration += 1
+		fire_trigger(action)
 		start_iteration()
 		return
 	var action_button = get_node(actions[iteration][0])
@@ -75,4 +77,16 @@ func start_iteration():
 	
 	await action_button.get(action.action_type)
 	iteration += 1
+	fire_trigger(action)
 	start_iteration()
+
+func fire_trigger(action:tutorialStats):
+	if action.trigger_property:
+		if action.private_trigger_object == "GameManager" and not action.public_trigger_object:
+			GameManager[action.trigger_property] = action.trigger_value
+			print(GameManager[action.trigger_property]," into ", action.trigger_value)
+		elif action.private_trigger_object == "Camera" and not action.public_trigger_object:
+			camera[action.trigger_property] = action.trigger_value
+		elif action.public_trigger_object:
+			get_node(NodePath(action.public_trigger_object))[action.trigger_property] = action.trigger_value
+		#print(action.trigger_value)

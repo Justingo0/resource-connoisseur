@@ -156,8 +156,7 @@ script = ExtResource("28_liqnk")
 use_next = true
 highlight_value = null
 expected_value = null
-use_guide_arrow = true
-guide_node = "../../../Ores/rubyOre154"
+trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_tsw58"]
@@ -165,18 +164,21 @@ script = ExtResource("28_liqnk")
 highlight_type = "color"
 highlight_value = Color(1, 1, 1, 0.5)
 expected_value = null
+trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_5mldt"]
 script = ExtResource("28_liqnk")
 highlight_value = null
 expected_value = null
+trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_qi0q1"]
 script = ExtResource("28_liqnk")
 highlight_value = null
 expected_value = ExtResource("29_tsw58")
+trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_nlj0r"]
@@ -184,12 +186,14 @@ script = ExtResource("28_liqnk")
 highlight_type = "color"
 highlight_value = Color(1, 1, 1, 0.5)
 expected_value = null
+trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_5jpdo"]
 script = ExtResource("28_liqnk")
 highlight_value = null
 expected_value = null
+trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_ypmmn"]
@@ -198,6 +202,7 @@ highlight_value = null
 private_recieving_object = "GameManager"
 external_action = "on_inventory_changed"
 expected_value = true
+trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_ep4du"]
@@ -205,14 +210,17 @@ script = ExtResource("28_liqnk")
 use_next = true
 highlight_value = null
 expected_value = null
+private_trigger_object = "GameManager"
+trigger_property = "tutorial_mode"
+trigger_value = false
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_6gs3s"]
 script = ExtResource("28_liqnk")
-highlight_value = null
+highlight_type = "color"
+highlight_value = Color(1, 1, 1, 0.5)
 expected_value = ExtResource("32_5jpdo")
-use_guide_arrow = true
-guide_node = "../../../Ores/rubyOre154"
+trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="LabelSettings" id="LabelSettings_pj23d"]
@@ -916,7 +924,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath(""), SubResource("Resource_6gs3s")]])
+actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -1199,14 +1207,13 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="9" type="Control" parent="Tutorial" unique_id=1545711098]
-visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -283.0
+offset_left = -304.0
 offset_top = -183.0
 offset_right = -26.0
 offset_bottom = -101.0
@@ -1218,11 +1225,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Test"
+text = "hurry! a wave of enemies is approaching! start by placing walls to block the enemy's path."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1

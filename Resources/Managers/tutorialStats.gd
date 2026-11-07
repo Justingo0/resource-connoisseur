@@ -15,3 +15,8 @@ class_name tutorialStats
 @export_group("Guide")
 @export var use_guide_arrow:bool = false
 @export var guide_node:String
+@export_group("Triggers")
+@export_enum("GameManager", "Camera") var private_trigger_object:String = "Camera"
+@export var public_trigger_object:NodePath
+@export var trigger_property:String
+@export var trigger_value:Variant
