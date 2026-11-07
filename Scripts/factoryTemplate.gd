@@ -20,6 +20,60 @@ signal inventory_changed(value:int)
 		#if inventory[1] >= productionNeeds[0]:
 			#print("resource 2 locked and loaded")
 
+func output():
+	if not conveyors.is_empty() and resources > 0 and not last_output_item:
+		selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
+		if not selected_conveyor or selected_conveyor.held or ("output_conveyor" in selected_conveyor and selected_conveyor.output_conveyor == self):
+			#conveyors.erase(output_conveyor)
+			selected_conveyor = null
+			for conveyor in conveyors:
+				if conveyor and conveyor.held == false and ("output_conveyor" in conveyor and conveyor.output_conveyor != self):
+					selected_conveyor = conveyor
+					break
+			if not selected_conveyor: return
+		if selected_conveyor.is_in_group("Conveyor"):
+			if selected_conveyor.item != null: #or selected_conveyor.item_incoming != null:
+				for i in conveyors.size():
+					conveyorInterval += 1
+					selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
+					if selected_conveyor.item == null: return #or selected_conveyor.item_incoming == null: return
+			if (selected_conveyor.item == null) and selected_conveyor.held == false and !held:
+				last_generated_item = outputType.instantiate()
+				last_generated_item.itemType = "Quartz"
+				get_tree().current_scene.add_child(last_generated_item)
+				last_generated_item.setProperties()
+				last_output_item = last_generated_item
+				output_conveyor = selected_conveyor
+				conveyorInterval += 1
+				resources -= 1
+				
+				selected_conveyor.item_incoming = last_generated_item
+				
+				var starting_pos = global_position
+				if (selected_conveyor.global_position.y - global_position.y) == 64.0 or (selected_conveyor.global_position.y - global_position.y) == -128:
+					starting_pos.x = selected_conveyor.global_position.x
+					if (selected_conveyor.global_position.y - global_position.y) == -128:
+						starting_pos.y -= 64
+				else:
+					starting_pos.y = selected_conveyor.global_position.y
+					if (selected_conveyor.global_position.x - global_position.x) == -128:
+						starting_pos.x -= 64
+				
+				last_generated_item.global_position = starting_pos #- (64 * global_position.direction_to(selected_conveyor.global_position))
+		elif selected_conveyor.is_in_group("Container"):
+			var size = 0
+			for value in selected_conveyor.inventory.values():
+				size += value
+			if size >= selected_conveyor.inventory_size: return
+			
+			conveyorInterval += 1
+			resources -= 1
+			
+			if not (outputType in selected_conveyor.inventory.keys()):
+				selected_conveyor.inventory[outputType] = 0
+			selected_conveyor.inventory[outputType] += 1
+			selected_conveyor.inventory = selected_conveyor.inventory
+
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:
