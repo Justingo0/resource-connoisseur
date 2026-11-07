@@ -144,8 +144,8 @@ func _on_inventory_changed(value: int) -> void:
 	#else:
 		#output_timer.stop()
 
-func _notification(what: int) -> void:
-	if what == NOTIFICATION_PREDELETE:
+func _notification(notif: int) -> void:
+	if notif == NOTIFICATION_PREDELETE:
 		if last_output_item:
 			last_output_item.queue_free()
 			output_conveyor.item_incoming = null
