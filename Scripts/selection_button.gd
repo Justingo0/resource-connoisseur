@@ -49,6 +49,7 @@ func _process(delta: float) -> void:
 func _on_pressed() -> void:
 	if not type: return
 	camera.building_object = type.scene
+	camera.building_object_type = type
 
 func _on_mouse_entered() -> void:
 	if not Engine.is_editor_hint():
