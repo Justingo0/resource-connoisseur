@@ -24,3 +24,18 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:
 		queue_free()
+
+func _on_conveyor_detector_area_entered(area: Area2D) -> void:
+	if (area.is_in_group("Conveyor") or area.is_in_group("Container")) and area.held == false and area != self:
+		if not held:
+			pass
+			#print(area, " from ", self)
+		conveyors.append(area)
+		conveyors = conveyors
+		output()
+
+func _on_conveyor_detector_area_exited(area: Area2D) -> void:
+	if area.is_in_group("Conveyor") or area.is_in_group("Container") and area in conveyors:
+		conveyors.erase(area)
+		conveyors = conveyors
+
