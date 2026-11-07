@@ -24,6 +24,8 @@ var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
 		set_build_cursor(building_object)
 	get:
 		return building_object
+@export var building_object_type:Resource
+
 var last_object_built = null
 var building_objects := []
 var deleting_objects := []
@@ -205,16 +207,15 @@ func set_build_cursor(object:PackedScene):
 		building_mode = false
 		return
 	building_mode = true
+
 	
 	var highlight = object.instantiate() as Area2D
+	if "held" in highlight:
+		highlight.held = true
 	highlight.collision_layer = 0
 	highlight.collision_mask = 1
 	build_cursor.add_child(highlight)
 	highlight.position = Vector2.ZERO
-	
-	if "held" in highlight:
-		highlight.held = true
-		print(highlight.held)
 
 func place(object:PackedScene):
 	if not building_object:
@@ -251,6 +252,8 @@ func place(object:PackedScene):
 		var deleting = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
 		if not deleting.is_empty():
 			deleting[0].queue_free()
+	if "type" in placed_object:
+		placed_object.type = building_object_type
 	get_tree().current_scene.add_child(placed_object)
 	#placed_object.held = true
 	placed_object.destroy_time = 0
@@ -313,7 +316,8 @@ func _on_delete_cursor_area_entered(area: Area2D) -> void:
 			else:
 				update_inventory_display({})
 		else:
-			update_inventory_display(area.inventory)
+			print(area)
+			#update_inventory_display(area.inventory)
 		inventory_display.visible = true
 
 func _on_delete_cursor_area_exited(area: Area2D) -> void:
