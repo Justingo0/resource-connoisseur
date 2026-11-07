@@ -47,3 +47,8 @@ func _on_production_timer_timeout() -> void:
 			inventory[inventory.keys()[0]] -= inputItem.values()[0]
 			resources = min(resources + 1, 10)
 
+func _notification(notif: int) -> void:
+	if notif == NOTIFICATION_PREDELETE:
+		if last_output_item:
+			last_output_item.queue_free()
+			output_conveyor.item_incoming = null
