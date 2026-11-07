@@ -29,6 +29,11 @@ func tab_switch(tab:String, tab_button):
 	if not selected_tab:
 		printerr("THIS TAB DOENS'T #$&!ING EXIST!!!")
 		return
+	if selected_tab.visible:
+		$Selections.visible = false
+		$HiddenArea.visible = true
+		selected_tab.visible = false
+		return
 	for selection in selections:
 		if selection == selected_tab:
 			selection.visible = true
