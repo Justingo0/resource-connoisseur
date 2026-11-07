@@ -5,5 +5,4 @@ class_name factoryStats
 @export var output:Dictionary
 @export var productionTime:float
 
-@export var inventory_size:Array
-@export var inventory:Array
+@export var inventory_size:int
