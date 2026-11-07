@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://dlcq5afw7rf34" path="res://Assets/UI/TabsIcons/Walls.png" id="27_qi0q1"]
 [ext_resource type="Script" uid="uid://w07ceot5mi5n" path="res://Resources/Managers/tutorialStats.gd" id="28_liqnk"]
 [ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="29_tsw58"]
+[ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="32_5jpdo"]
+[ext_resource type="Texture2D" uid="uid://y7f4x2xgn0fj" path="res://Assets/UI/Arrow.png" id="32_nlj0r"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
@@ -149,6 +151,15 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
+[sub_resource type="Resource" id="Resource_87c2h"]
+script = ExtResource("28_liqnk")
+use_next = true
+highlight_value = null
+expected_value = null
+use_guide_arrow = true
+guide_node = "../../../Ores/rubyOre154"
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
 [sub_resource type="Resource" id="Resource_tsw58"]
 script = ExtResource("28_liqnk")
 highlight_type = "color"
@@ -184,7 +195,7 @@ metadata/_custom_type_script = "uid://w07ceot5mi5n"
 [sub_resource type="Resource" id="Resource_ypmmn"]
 script = ExtResource("28_liqnk")
 highlight_value = null
-recieving_object = "GameManager"
+private_recieving_object = "GameManager"
 external_action = "on_inventory_changed"
 expected_value = true
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
@@ -194,6 +205,14 @@ script = ExtResource("28_liqnk")
 use_next = true
 highlight_value = null
 expected_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_6gs3s"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = ExtResource("32_5jpdo")
+use_guide_arrow = true
+guide_node = "../../../Ores/rubyOre154"
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="LabelSettings" id="LabelSettings_pj23d"]
@@ -897,7 +916,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = Array[Array]([[NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")]])
+actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath(""), SubResource("Resource_6gs3s")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -907,34 +926,46 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -312.0
-offset_top = -218.0
-offset_right = -20.0
+offset_left = -309.0
+offset_top = -171.0
+offset_right = -24.0
 offset_bottom = -97.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="Tip" type="Label" parent="Tutorial/1" unique_id=554254195]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -141.0
-offset_top = -55.5
-offset_right = 141.0
-offset_bottom = 55.5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -36.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Welcome to Resource Connoiseur! Start by openning the Miners menu"
+text = "Welcome to Resource Connoiseur! in this game, you'll be gathering resources, building factories, and fighting waves of enemies."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="2" type="Control" parent="Tutorial" unique_id=1504456066]
+[node name="Tip2" type="Label" parent="Tutorial/1" unique_id=1015747210]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -55.0
+offset_top = 63.0
+offset_right = -2.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press LMB to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="2" type="Control" parent="Tutorial" unique_id=1951374172]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -942,14 +973,45 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -436.0
+offset_left = -312.0
+offset_top = -174.0
+offset_right = -25.0
+offset_bottom = -97.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/2" unique_id=1222113967]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "lets start with mining. open the miners menu. this is where you'll find all your miners and extractors."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="3" type="Control" parent="Tutorial" unique_id=1504456066]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -488.0
 offset_top = -367.0
-offset_right = -228.0
+offset_right = -280.0
 offset_bottom = -324.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Tip" type="Label" parent="Tutorial/2" unique_id=1261046706]
+[node name="Tip" type="Label" parent="Tutorial/3" unique_id=1261046706]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -963,7 +1025,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="3" type="Control" parent="Tutorial" unique_id=1698269418]
+[node name="4" type="Control" parent="Tutorial" unique_id=1698269418]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -978,7 +1040,7 @@ offset_bottom = -324.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Tip" type="Label" parent="Tutorial/3" unique_id=698988129]
+[node name="Tip" type="Label" parent="Tutorial/4" unique_id=698988129]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -997,7 +1059,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="4" type="Control" parent="Tutorial" unique_id=1834216908]
+[node name="5" type="Control" parent="Tutorial" unique_id=1834216908]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -1012,7 +1074,7 @@ offset_bottom = -97.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Tip" type="Label" parent="Tutorial/4" unique_id=1769120315]
+[node name="Tip" type="Label" parent="Tutorial/5" unique_id=1769120315]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1027,7 +1089,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="5" type="Control" parent="Tutorial" unique_id=1477138393]
+[node name="6" type="Control" parent="Tutorial" unique_id=1477138393]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -1035,14 +1097,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -436.0
+offset_left = -487.0
 offset_top = -367.0
-offset_right = -234.0
+offset_right = -285.0
 offset_bottom = -324.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Tip" type="Label" parent="Tutorial/5" unique_id=675648660]
+[node name="Tip" type="Label" parent="Tutorial/6" unique_id=675648660]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1057,7 +1119,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="6" type="Control" parent="Tutorial" unique_id=1649714962]
+[node name="7" type="Control" parent="Tutorial" unique_id=1649714962]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -1072,7 +1134,7 @@ offset_bottom = -324.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Tip" type="Label" parent="Tutorial/6" unique_id=2030580820]
+[node name="Tip" type="Label" parent="Tutorial/7" unique_id=2030580820]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1090,7 +1152,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="7" type="Control" parent="Tutorial" unique_id=1941815497]
+[node name="8" type="Control" parent="Tutorial" unique_id=1941815497]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -1105,7 +1167,7 @@ offset_bottom = -101.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Tip" type="Label" parent="Tutorial/7" unique_id=1870032198]
+[node name="Tip" type="Label" parent="Tutorial/8" unique_id=1870032198]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1120,7 +1182,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Tip2" type="Label" parent="Tutorial/7" unique_id=1239801062]
+[node name="Tip2" type="Label" parent="Tutorial/8" unique_id=1239801062]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1131,10 +1193,60 @@ offset_right = -2.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "<- Press any key"
+text = "<- Press LMB to continue"
 label_settings = SubResource("LabelSettings_87c2h")
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="9" type="Control" parent="Tutorial" unique_id=1545711098]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -283.0
+offset_top = -183.0
+offset_right = -26.0
+offset_bottom = -101.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/9" unique_id=2097264283]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Test"
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="GuideArrow" type="TextureRect" parent="." unique_id=518443954]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -614.0
+offset_top = -628.0
+offset_right = -538.0
+offset_bottom = -552.0
+grow_horizontal = 0
+grow_vertical = 0
+rotation = -2.7283967
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("32_nlj0r")
+expand_mode = 1
+stretch_mode = 5
 
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
