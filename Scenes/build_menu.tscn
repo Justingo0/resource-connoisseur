@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://c6f7oghh7tfqj" path="res://Scripts/UserInterface/selection_menu.gd" id="11_4o04s"]
 [ext_resource type="PackedScene" uid="uid://busepgbfxl48t" path="res://Scenes/selection_button.tscn" id="11_v31xr"]
 [ext_resource type="Texture2D" uid="uid://dq2yh8nw3wo0a" path="res://Assets/mineBuild.png" id="13_b2sko"]
+[ext_resource type="Texture2D" uid="uid://cy4lb3o2s1f08" path="res://Assets/PrototypeWall.png" id="16_5mldt"]
 [ext_resource type="Resource" uid="uid://s8sox3x81p57" path="res://Resources/Data/Miners/basic_miner.tres" id="16_fg8k8"]
 [ext_resource type="Texture2D" uid="uid://d4idlmt7lifhb" path="res://Assets/UI/TabsIcons/Miners.png" id="17_fg8k8"]
 [ext_resource type="Resource" uid="uid://clc15lbcd830h" path="res://Resources/Data/Sorting/Conveyors/basic_conveyor.tres" id="17_u07jk"]
@@ -21,11 +22,11 @@
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
 [ext_resource type="Resource" uid="uid://dgykme6jgn6kr" path="res://Resources/Data/Walls/fluoriteWall.tres" id="21_5mldt"]
 [ext_resource type="Resource" uid="uid://dbpkngq3k44eb" path="res://Resources/Data/Base/basic_home.tres" id="21_cj8qe"]
-[ext_resource type="Texture2D" uid="uid://bhgw5wof3rmg0" path="res://Assets/RawFluorite.png" id="21_qi0q1"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
 [ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
 [ext_resource type="Texture2D" uid="uid://dlcq5afw7rf34" path="res://Assets/UI/TabsIcons/Walls.png" id="27_qi0q1"]
 [ext_resource type="Script" uid="uid://w07ceot5mi5n" path="res://Resources/Managers/tutorialStats.gd" id="28_liqnk"]
+[ext_resource type="PackedScene" uid="uid://rbhy07an84kd" path="res://Scenes/conveyor.tscn" id="29_5mldt"]
 [ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="29_tsw58"]
 [ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="32_5jpdo"]
 [ext_resource type="Texture2D" uid="uid://y7f4x2xgn0fj" path="res://Assets/UI/Arrow.png" id="32_nlj0r"]
@@ -226,9 +227,17 @@ metadata/_custom_type_script = "uid://w07ceot5mi5n"
 [sub_resource type="Resource" id="Resource_q8lmm"]
 script = ExtResource("28_liqnk")
 highlight_value = null
-public_recieving_object = NodePath("../../../Tutorial/11")
-external_action = "body_entered"
-expected_value = NodePath("../../../Player")
+expected_value = ExtResource("29_5mldt")
+use_guide_arrow = true
+guide_node = "../../../Tutorial/11"
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_ju4c0"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+external_action = "on_action_finised"
+expected_value = "placing"
 use_guide_arrow = true
 guide_node = "../../../Tutorial/11"
 trigger_value = null
@@ -465,7 +474,6 @@ texture_normal = ExtResource("19_cj8qe")
 type = ExtResource("19_0dv3k")
 
 [node name="Walls" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1682967110]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -485,7 +493,7 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("21_qi0q1")
+texture_normal = ExtResource("16_5mldt")
 type = ExtResource("21_5mldt")
 
 [node name="Base" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1813311783]
@@ -763,7 +771,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")]])
+actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -1105,6 +1113,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="11" type="Control" parent="Tutorial" unique_id=1049159196]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -1123,14 +1132,47 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 188.0
+offset_left = 166.0
 offset_top = -10.5
 offset_right = 207.0
 offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "block of this area using the flourite wall."
+text = "block of this area by drawing a line of floruite walls."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="12" type="Control" parent="Tutorial" unique_id=1358947849]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/12" unique_id=462524414]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = -10.5
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "block of this area by drawing a line of floruite walls."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1

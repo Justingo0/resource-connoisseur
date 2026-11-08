@@ -7,18 +7,11 @@
 size = Vector2(60, 60)
 
 [node name="Wall" type="Area2D" unique_id=66120586 groups=["Block"]]
-collision_layer = 3
-collision_mask = 3
+collision_layer = 11
+collision_mask = 11
 script = ExtResource("1_yjehn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=699649772]
-shape = SubResource("RectangleShape2D_p7o00")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1069600888]
-collision_layer = 8
-collision_mask = 8
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=146142571]
 shape = SubResource("RectangleShape2D_p7o00")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1478071558]
