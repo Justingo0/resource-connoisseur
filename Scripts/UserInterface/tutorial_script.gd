@@ -34,6 +34,7 @@ func _process(_delta: float) -> void:
 
 func start_iteration():
 	if iteration > 0:
+		guide_node = null
 		tutorial.get_child(iteration-1).visible = false
 		if actions[iteration-1][0]:
 			get_node(actions[iteration-1][0]).offset_transform_enabled = false
@@ -41,19 +42,23 @@ func start_iteration():
 	if tutorial.get_child_count() == 0 or actions.size() == 0: return
 	if tutorial.get_child_count() <= iteration or actions.size() <= iteration: return
 	var action = actions[iteration][1] as tutorialStats
-	guide_node = null
 	if action.use_guide_arrow:
 		guide_node = get_node(NodePath(action.guide_node))
 	var tip = tutorial.get_child(iteration)
 	tip.visible = true
 	if not actions[iteration][0] and not action.use_next:
 		var placed_obj = null
-		while placed_obj != action.expected_value:
+		var expecting_value = action.expected_value
+		if expecting_value is NodePath:
+			expecting_value = get_node(action.expected_value)
+		print(expecting_value)
+		while placed_obj != expecting_value:
 			if action.private_recieving_object == "GameManager" and not action.public_recieving_object:
 				placed_obj = await GameManager.get(action.external_action)
 			elif action.private_recieving_object == "Camera" and not action.public_recieving_object:
 				placed_obj = await camera.get(action.external_action)
 			elif action.public_recieving_object:
+				print(get_node(NodePath(action.public_recieving_object)))
 				placed_obj = await get_node(NodePath(action.public_recieving_object)).get(action.external_action)
 		iteration += 1
 		fire_trigger(action)
@@ -84,7 +89,7 @@ func fire_trigger(action:tutorialStats):
 	if action.trigger_property:
 		if action.private_trigger_object == "GameManager" and not action.public_trigger_object:
 			GameManager[action.trigger_property] = action.trigger_value
-			print(GameManager[action.trigger_property]," into ", action.trigger_value)
+			#print(GameManager[action.trigger_property]," into ", action.trigger_value)
 		elif action.private_trigger_object == "Camera" and not action.public_trigger_object:
 			camera[action.trigger_property] = action.trigger_value
 		elif action.public_trigger_object:
