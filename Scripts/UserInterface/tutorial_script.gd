@@ -26,7 +26,7 @@ func _input(event: InputEvent) -> void:
 func _process(_delta: float) -> void:
 	if guide_node:
 		guide_arrow.visible = true
-		var dir = (camera.position-Vector2(0,266)).angle_to_point(guide_node.global_position)
+		var dir = (camera.global_position-Vector2(0,266)).angle_to_point(guide_node.global_position)
 		guide_arrow.rotation = dir + deg_to_rad(90)
 		print(dir + deg_to_rad(90))
 	else:
