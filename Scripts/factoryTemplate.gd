@@ -39,6 +39,10 @@ var resources = 0
 	get:
 		return conveyors
 
+func get_disabled() -> bool:
+	if destroy_time == max_destroy_time and held == false:
+		return false
+	return true
 
 func _ready() -> void:
 	if type:
