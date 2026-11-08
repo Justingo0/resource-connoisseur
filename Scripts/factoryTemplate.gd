@@ -1,9 +1,20 @@
 extends Area2D
 signal inventory_changed(value:int)
 
-@export var inventory_size = 10
-@export var inventory = {"ore": 0}
-@export var productionNeeds:Array
+@export var inventory_size:int
+
+@onready var timer = $ProductionTimer
+
+@export var type:blockStats
+
+@export var inputItem:Dictionary
+
+@export var outputItem:OreStats
+
+@export var inventory = {}:
+	set(new_val):
+		inventory = new_val
+		GameManager.core_inventory = inventory
 
 @export var max_destroy_time:float
 @export var destroy_time:float
@@ -11,6 +22,22 @@ signal inventory_changed(value:int)
 @export var held:bool
 
 @export var health = 200
+
+var conveyorInterval = 0
+var last_output_item = null
+var last_generated_item = null
+var selected_conveyor = null
+@export var output_conveyor = null
+
+@onready var outputType = preload("res://Scenes/ore_item.tscn")
+
+var resources = 0
+@export var conveyors = []:
+	set(newValue):
+		conveyors = newValue
+		#print(conveyors)
+	get:
+		return conveyors
 
 func _physics_process(delta: float) -> void:
 	if inventory.keys().size() > 0 and resources != inventory_size:
