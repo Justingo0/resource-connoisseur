@@ -1,13 +1,15 @@
 [gd_scene format=3 uid="uid://btf7on0x1gbau"]
 
 [ext_resource type="Texture2D" uid="uid://cy4lb3o2s1f08" path="res://Assets/PrototypeWall.png" id="1_d155t"]
+[ext_resource type="Script" uid="uid://bocrcylsxndeb" path="res://Scripts/wall.gd" id="1_yjehn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(60, 60)
 
-[node name="Wall" type="Area2D" unique_id=66120586]
+[node name="Wall" type="Area2D" unique_id=66120586 groups=["Block"]]
 collision_layer = 3
 collision_mask = 3
+script = ExtResource("1_yjehn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=699649772]
 shape = SubResource("RectangleShape2D_p7o00")
