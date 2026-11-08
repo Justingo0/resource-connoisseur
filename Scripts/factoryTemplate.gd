@@ -39,6 +39,14 @@ var resources = 0
 	get:
 		return conveyors
 
+
+func _ready() -> void:
+	if type:
+		inventory_size = type.inventory_size
+		timer.wait_time = type.production_time
+		inputItem = type.input
+		outputItem = type.output
+
 func _physics_process(delta: float) -> void:
 	if inventory.keys().size() > 0 and resources != inventory_size:
 		if inventory[inventory.keys()[0]] == 0:
