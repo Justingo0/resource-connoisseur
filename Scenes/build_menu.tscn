@@ -246,8 +246,7 @@ metadata/_custom_type_script = "uid://w07ceot5mi5n"
 [sub_resource type="Resource" id="Resource_ir0w5"]
 script = ExtResource("28_liqnk")
 highlight_value = null
-external_action = "on_action_finised"
-expected_value = "placing"
+expected_value = ExtResource("29_5mldt")
 use_guide_arrow = true
 guide_node = "../../../Tutorial/14"
 trigger_value = null
