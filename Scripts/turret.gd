@@ -1,5 +1,7 @@
 extends Area2D
 
+@export var inputItem:Dictionary
+
 @onready var turretTop = $turretTop
 @onready var bullet = preload("res://Scenes/bullet.tscn")
 @onready var turretProperties = preload("res://Resources/Data/Turrets/Hua-Che.tres")
@@ -30,6 +32,8 @@ func _ready() -> void:
 	range.shape.radius = turretProperties.range * 64
 	health = turretProperties.health
 	shotCount = turretProperties.shotCount
+	inputItem = turretProperties.input
+	print(turretProperties.input)
 
 func get_disabled() -> bool:
 	if destroy_time == max_destroy_time and held == false:
