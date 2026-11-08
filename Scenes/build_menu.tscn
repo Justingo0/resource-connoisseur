@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
 [ext_resource type="Texture2D" uid="uid://dlcq5afw7rf34" path="res://Assets/UI/TabsIcons/Walls.png" id="27_qi0q1"]
 [ext_resource type="Script" uid="uid://w07ceot5mi5n" path="res://Resources/Managers/tutorialStats.gd" id="28_liqnk"]
-[ext_resource type="PackedScene" uid="uid://rbhy07an84kd" path="res://Scenes/conveyor.tscn" id="29_5mldt"]
+[ext_resource type="PackedScene" uid="uid://btf7on0x1gbau" path="res://Scenes/wall.tscn" id="29_5mldt"]
 [ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="29_tsw58"]
 [ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="32_5jpdo"]
 [ext_resource type="Texture2D" uid="uid://y7f4x2xgn0fj" path="res://Assets/UI/Arrow.png" id="32_nlj0r"]
