@@ -26,6 +26,15 @@ func _physics_process(delta: float) -> void:
 		if inventory.keys().size() > 1:
 			if inventory[inventory.keys()[1]] == 0:
 				inventory.erase(inventory.keys()[1])
+	if get_disabled(): return
+	if last_output_item:
+		last_output_item.global_position = last_output_item.global_position.move_toward(output_conveyor.global_position, 400*delta*GameManager.time_scale)
+		if last_output_item.global_position == output_conveyor.global_position:
+			output_conveyor.item = last_output_item
+			output_conveyor.item_incoming = null
+			last_output_item = null
+			output_conveyor = null
+	output()
 
 func output():
 	if not conveyors.is_empty() and resources > 0 and not last_output_item:
