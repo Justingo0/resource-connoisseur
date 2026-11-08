@@ -1742,5 +1742,8 @@ metadata/_scene_painted = true
 [node name="11" type="Node2D" parent="Tutorial" unique_id=1344834439]
 position = Vector2(954, -1740)
 
+[node name="14" type="Node2D" parent="Tutorial" unique_id=150966890]
+position = Vector2(-1250, -1740)
+
 [connection signal="area_entered" from="Player/Camera2D/DeleteCursor" to="Player/Camera2D" method="_on_delete_cursor_area_entered"]
 [connection signal="area_exited" from="Player/Camera2D/DeleteCursor" to="Player/Camera2D" method="_on_delete_cursor_area_exited"]

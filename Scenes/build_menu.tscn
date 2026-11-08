@@ -243,6 +243,26 @@ guide_node = "../../../Tutorial/11"
 trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
+[sub_resource type="Resource" id="Resource_ir0w5"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+external_action = "on_action_finised"
+expected_value = "placing"
+use_guide_arrow = true
+guide_node = "../../../Tutorial/14"
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_oqjwq"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+external_action = "on_action_finised"
+expected_value = "placing"
+use_guide_arrow = true
+guide_node = "../../../Tutorial/14"
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
 [sub_resource type="LabelSettings" id="LabelSettings_pj23d"]
 font = ExtResource("2_0dv3k")
 
@@ -771,7 +791,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")]])
+actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -1173,6 +1193,121 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
 text = "block of this area by drawing a line of floruite walls."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="13" type="Control" parent="Tutorial" unique_id=1570741911]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -151.0
+offset_right = -232.0
+offset_bottom = -108.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/13" unique_id=1680306857]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 196.0
+offset_top = -16.0
+offset_right = 207.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Make sure all points are covered."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/13" unique_id=1264294877]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 197.0
+offset_top = 41.0
+offset_right = 250.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press LMB to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="14" type="Control" parent="Tutorial" unique_id=88551446]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/14" unique_id=943728756]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = -10.5
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "now block the path to the left with walls."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="15" type="Control" parent="Tutorial" unique_id=234694663]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/15" unique_id=1252986769]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = -10.5
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "now block the path to the left with walls."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
