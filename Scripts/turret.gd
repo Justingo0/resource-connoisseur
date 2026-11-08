@@ -4,7 +4,7 @@ extends Area2D
 
 @onready var turretTop = $turretTop
 @onready var bullet = preload("res://Scenes/bullet.tscn")
-@onready var turretProperties = preload("res://Resources/Data/Turrets/Hua-Che.tres")
+@onready var turretProperties = preload("res://Resources/Data/Turrets/Ballista.tres")
 
 @onready var range = $rangeCone/range
 @onready var range_outline = $RadiusOutline
@@ -80,8 +80,8 @@ func shoot():
 	if held: return
 	print(inventory)
 	if !inventory.keys().is_empty():
-		if inventory[inventory.keys()[0]] >= 0.5:
-			inventory[inventory.keys()[0]] = inventory[inventory.keys()[0]] - 0.5
+		if inventory[inventory.keys()[0]] >= inputItem.values()[0]:
+			inventory[inventory.keys()[0]] = inventory[inventory.keys()[0]] - inputItem.values()[0]
 		else:
 			return
 	else:
