@@ -9,6 +9,10 @@ func setProperties() -> void:
 	if isOre(itemType):
 		var ItemStats = load("res://Resources/Data/Items/Raw%s.tres"%[itemType])
 		sprite2D.texture = ItemStats.icon
+	else:
+		var ItemStats = load("res://Resources/Data/Items/%s.tres"%[itemType])
+		print(ItemStats)
+		sprite2D.texture = ItemStats.icon
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
