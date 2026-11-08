@@ -19,6 +19,13 @@ signal inventory_changed(value:int)
 	#if productionNeeds.size() >= 2:
 		#if inventory[1] >= productionNeeds[0]:
 			#print("resource 2 locked and loaded")
+func _physics_process(delta: float) -> void:
+	if inventory.keys().size() > 0 and resources != inventory_size:
+		if inventory[inventory.keys()[0]] == 0:
+			inventory.erase(inventory.keys()[0])
+		if inventory.keys().size() > 1:
+			if inventory[inventory.keys()[1]] == 0:
+				inventory.erase(inventory.keys()[1])
 
 func output():
 	if not conveyors.is_empty() and resources > 0 and not last_output_item:
