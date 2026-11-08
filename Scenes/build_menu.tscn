@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://w07ceot5mi5n" path="res://Resources/Managers/tutorialStats.gd" id="28_liqnk"]
 [ext_resource type="PackedScene" uid="uid://btf7on0x1gbau" path="res://Scenes/wall.tscn" id="29_5mldt"]
 [ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="29_tsw58"]
+[ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="30_qi0q1"]
 [ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="32_5jpdo"]
 [ext_resource type="Texture2D" uid="uid://y7f4x2xgn0fj" path="res://Assets/UI/Arrow.png" id="32_nlj0r"]
 
@@ -267,6 +268,28 @@ script = ExtResource("28_liqnk")
 use_next = true
 highlight_value = null
 expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_em7h0"]
+script = ExtResource("28_liqnk")
+highlight_type = "color"
+highlight_value = Color(1, 1, 1, 0.5)
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_dgefj"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_w8fxn"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = ExtResource("30_qi0q1")
 trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
@@ -798,7 +821,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")], [NodePath(""), SubResource("Resource_lu4v0")]])
+actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")], [NodePath(""), SubResource("Resource_lu4v0")], [NodePath("../SelectionMenu/Tabs/Container/Turrets"), SubResource("Resource_em7h0")], [NodePath("../SelectionMenu/Selections/Turrets/Selection"), SubResource("Resource_dgefj")], [NodePath(""), SubResource("Resource_w8fxn")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -1366,6 +1389,135 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "<- Press LMB to continue"
 label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="17" type="Control" parent="Tutorial" unique_id=1033901817]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -151.0
+offset_right = -232.0
+offset_bottom = -108.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/17" unique_id=1861622792]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 145.0
+offset_top = -16.0
+offset_right = 207.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Now that we have defense, we need offense. Time for turrets!"
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="18" type="Control" parent="Tutorial" unique_id=1031545762]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -487.0
+offset_top = -367.0
+offset_right = -285.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/18" unique_id=2000766087]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -13.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "select the Chu-Ko-Nu."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="19" type="Control" parent="Tutorial" unique_id=1295591969]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/19" unique_id=1426631535]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 188.0
+offset_top = -10.5
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Place 2 turrets on both sides, Behind the walls."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="20" type="Control" parent="Tutorial" unique_id=293715472]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/20" unique_id=1488351612]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 139.0
+offset_top = -10.5
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Once completed, place 2 miners on ore viens near each turrets."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 

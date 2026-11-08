@@ -17,7 +17,11 @@ var guide_node:Node2D
 func _ready() -> void:
 	for tip in tutorial.get_children():
 		tip.visible = false
-	start_iteration()
+	if $"..".tutorial_mode:
+		GameManager.tutorial_mode = true
+		start_iteration()
+	else:
+		GameManager.tutorial_mode = false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Place"):

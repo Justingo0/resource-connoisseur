@@ -19,6 +19,8 @@ signal send_announcement(icon:Texture2D, message:String)
 @onready var play_sign = preload("res://Assets/UI/play.png")
 @onready var pause_sign = preload("res://Assets/UI/pause.png")
 
+@export var tutorial_mode:bool = true
+
 var paused = false
 
 var ANNOUNCEMENT_DURATION = 3 #seconds
