@@ -5,7 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://na04us1owcye" path="res://Assets/Conveyor/Conveyer1.png" id="3_16wyj"]
 [ext_resource type="Texture2D" uid="uid://bxxhwnjbcm10y" path="res://Assets/UI/play.png" id="3_u07jk"]
 [ext_resource type="Texture2D" uid="uid://lli3s0oh13x8" path="res://Assets/UI/pause.png" id="4_16wyj"]
-[ext_resource type="Texture2D" uid="uid://c2447bohxeme6" path="res://Assets/core.png" id="4_t747t"]
 [ext_resource type="Texture2D" uid="uid://d3a1vl3n1yqco" path="res://Assets/Router.png" id="5_t747t"]
 [ext_resource type="Script" uid="uid://y86org7m2ksf" path="res://Scripts/waveTimer.gd" id="6_t747t"]
 [ext_resource type="Script" uid="uid://c6f7oghh7tfqj" path="res://Scripts/UserInterface/selection_menu.gd" id="11_4o04s"]
@@ -17,10 +16,12 @@
 [ext_resource type="Resource" uid="uid://clc15lbcd830h" path="res://Resources/Data/Sorting/Conveyors/basic_conveyor.tres" id="17_u07jk"]
 [ext_resource type="Resource" uid="uid://blyr3tph1yotb" path="res://Resources/Data/Sorting/router.tres" id="18_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
+[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/turretBase.png" id="18_qi0q1"]
 [ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
+[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/turretBuild.png" id="19_cj8qe"]
 [ext_resource type="Resource" uid="uid://b55swmillii22" path="res://Resources/Data/Factories/graphitePress.tres" id="20_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
-[ext_resource type="Resource" uid="uid://dbpkngq3k44eb" path="res://Resources/Data/Base/basic_home.tres" id="21_cj8qe"]
+[ext_resource type="Resource" uid="uid://dgykme6jgn6kr" path="res://Resources/Data/Walls/fluoriteWall.tres" id="21_5mldt"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
 [ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
 [ext_resource type="Texture2D" uid="uid://dlcq5afw7rf34" path="res://Assets/UI/TabsIcons/Walls.png" id="27_qi0q1"]
@@ -437,7 +438,6 @@ theme_override_constants/separation = 12
 script = ExtResource("11_4o04s")
 
 [node name="Selections" type="Panel" parent="SelectionMenu" unique_id=74807063]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -523,6 +523,7 @@ texture_normal = ExtResource("19_cj8qe")
 type = ExtResource("19_0dv3k")
 
 [node name="Walls" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1682967110]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -566,10 +567,11 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("4_t747t")
+texture_normal = ExtResource("18_qi0q1")
 type = ExtResource("20_0dv3k")
 
 [node name="HiddenArea" type="Control" parent="SelectionMenu" unique_id=2031371284]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
@@ -805,7 +807,7 @@ offset_right = -120.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("19_cj8qe")
+texture = ExtResource("20_fg8k8")
 expand_mode = 1
 stretch_mode = 5
 
