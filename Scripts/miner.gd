@@ -103,6 +103,7 @@ func output():
 				for i in conveyors.size():
 					conveyorInterval += 1
 					selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
+					if selected_conveyor.is_in_group("Container"): continue
 					if selected_conveyor.item == null: return #or selected_conveyor.item_incoming == null: return
 			if (selected_conveyor.item == null) and selected_conveyor.held == false and !held:
 				if last_generated_item:

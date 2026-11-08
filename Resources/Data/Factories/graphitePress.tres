@@ -1,14 +1,37 @@
 [gd_resource type="Resource" script_class="factoryStats" format=3 uid="uid://b55swmillii22"]
 
+[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/turretBase.png" id="1_44n4x"]
 [ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_c4fwl"]
+[ext_resource type="Texture2D" uid="uid://5cb7b5gc83fx" path="res://Assets/RawCoal.png" id="2_1aik2"]
+[ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="2_syqd1"]
+[ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="3_jypod"]
+[ext_resource type="Texture2D" uid="uid://dydb4t41j541j" path="res://Assets/Graphite.png" id="4_1aik2"]
+
+[sub_resource type="Resource" id="Resource_0g4ye"]
+script = ExtResource("3_jypod")
+icon = ExtResource("2_1aik2")
+name = "Coal"
+metadata/_custom_type_script = "uid://qm6i68lmfktf"
+
+[sub_resource type="Resource" id="Resource_247tj"]
+script = ExtResource("3_jypod")
+icon = ExtResource("4_1aik2")
+name = "Graphite"
+metadata/_custom_type_script = "uid://qm6i68lmfktf"
 
 [resource]
 script = ExtResource("1_c4fwl")
 input = {
-"Coal": 2
+SubResource("Resource_0g4ye"): 2
 }
-output = {
-"Graphite": 1
-}
-productionTime = 2.0
+output = SubResource("Resource_247tj")
+production_time = 3.0
+inventory_size = 10
+icon = ExtResource("1_44n4x")
+name = "Graphite Press"
+scene = ExtResource("2_syqd1")
+size = 2
+health = 200
+destroy_time = 2.0
+description = "Mmmm Graphite, pure carbon"
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"

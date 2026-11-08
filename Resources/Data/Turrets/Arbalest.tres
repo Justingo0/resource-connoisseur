@@ -2,10 +2,21 @@
 
 [ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/turretBuild.png" id="1_kiaiv"]
 [ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_lg766"]
+[ext_resource type="Texture2D" uid="uid://swlbtrr0eavp" path="res://Assets/RawTopaz.png" id="2_n3akm"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="2_yabdx"]
+[ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="3_i35kc"]
+
+[sub_resource type="Resource" id="Resource_733rx"]
+script = ExtResource("3_i35kc")
+icon = ExtResource("2_n3akm")
+name = "Topaz"
+metadata/_custom_type_script = "uid://fvk4kso7ogn0"
 
 [resource]
 script = ExtResource("1_lg766")
+input = {
+SubResource("Resource_733rx"): 0.5
+}
 range = 14
 reloadSpeed = 1.0
 spread = 5.0

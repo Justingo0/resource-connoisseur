@@ -99,3 +99,6 @@ func shoot():
 
 func pointAtEnemy(angle: float) -> void:
 	rotation = rotate_toward(rotation, targetRotation + 1.571, 0.2)
+
+func _on_timer_timeout() -> void:
+	navigator.target_position = targetLocation.global_position

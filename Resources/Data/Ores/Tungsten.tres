@@ -1,8 +1,10 @@
 [gd_resource type="Resource" script_class="OreStats" format=3 uid="uid://dgpenujx5gtm4"]
 
 [ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="1_6nwsk"]
+[ext_resource type="Texture2D" uid="uid://dqd72u5hopkx1" path="res://Assets/TungstenOre.png" id="1_63psp"]
 
 [resource]
 script = ExtResource("1_6nwsk")
+icon = ExtResource("1_63psp")
 name = "Tungsten"
 metadata/_custom_type_script = "uid://qm6i68lmfktf"

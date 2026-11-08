@@ -4,7 +4,7 @@ class_name turretStats
 
 @export var inventory_size:Array
 @export var inventory:Array
-@export var shotNeeds:Array
+@export var input:Dictionary
 
 @export var range:int
 @export var reloadSpeed:float
