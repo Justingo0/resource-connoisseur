@@ -13,7 +13,7 @@ metadata/_custom_type_script = "uid://fvk4kso7ogn0"
 [resource]
 script = ExtResource("1_c7us3")
 input = {
-SubResource("Resource_6spbj"): 0.5
+SubResource("Resource_6spbj"): 0.25
 }
 range = 8
 reloadSpeed = 0.2
