@@ -9,7 +9,7 @@ signal inventory_changed(value:int)
 
 @export var inputItem:Dictionary
 
-@export var outputItem:OreStats
+@export var outputItem:itemStats
 
 @export var inventory = {}:
 	set(new_val):
