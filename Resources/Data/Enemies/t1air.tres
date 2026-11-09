@@ -1,30 +1,27 @@
 [gd_resource type="Resource" script_class="unitStats" format=3 uid="uid://co8swpe5hvxdn"]
 
-[ext_resource type="Texture2D" uid="uid://i42hp0nucpjp" path="res://icon.svg" id="1_ae3hv"]
+[ext_resource type="Texture2D" uid="uid://ckeodte63g74w" path="res://Assets/airT1.png" id="1_ae3hv"]
 [ext_resource type="Script" uid="uid://bh8paehk3cbxk" path="res://Resources/Managers/unitStats.gd" id="2_x5rn6"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ae3hv"]
-atlas = ExtResource("1_ae3hv")
-region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x5rn6"]
 atlas = ExtResource("1_ae3hv")
-region = Rect2(64, 0, 64, 64)
+region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_l84op"]
 atlas = ExtResource("1_ae3hv")
-region = Rect2(0, 64, 64, 64)
+region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_etkrb"]
 atlas = ExtResource("1_ae3hv")
-region = Rect2(64, 64, 64, 64)
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wcdj3"]
+atlas = ExtResource("1_ae3hv")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aei6h"]
 animations = [{
 "frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ae3hv")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_x5rn6")
 }, {
@@ -33,10 +30,13 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_etkrb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wcdj3")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 30.0
 }]
 
 [resource]
@@ -44,6 +44,12 @@ script = ExtResource("2_x5rn6")
 frames = SubResource("SpriteFrames_aei6h")
 size = 0.5
 health = 75
-speed = 1200
+speed = 900
 air = true
+reloadSpeed = 0.1
+shotCount = 1
+laser = true
+damage = 5
+projectileSpeed = 1200
+projectileLifetime = 1.0
 metadata/_custom_type_script = "uid://bh8paehk3cbxk"

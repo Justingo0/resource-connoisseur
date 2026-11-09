@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="itemStats" format=3 uid="uid://df3iks5wlrl0x"]
+
+[ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="1_lq4ww"]
+[ext_resource type="Texture2D" uid="uid://dydb4t41j541j" path="res://Assets/Graphite.png" id="1_xou1a"]
+
+[resource]
+script = ExtResource("1_lq4ww")
+icon = ExtResource("1_xou1a")
+name = "Graphite"
+metadata/_custom_type_script = "uid://fvk4kso7ogn0"

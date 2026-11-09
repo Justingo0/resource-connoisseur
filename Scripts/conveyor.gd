@@ -43,6 +43,10 @@ func _physics_process(delta: float) -> void:
 				next_conveyer.item_incoming = null
 				item = null
 		elif next_conveyer and next_conveyer.is_in_group("Container") and next_conveyer.held == false:
+			
+			if "inputItem" in next_conveyer and not item.itemType in next_conveyer.inputItem.keys()[0].name:
+				item_moving = false
+				return
 			var inventory_size = 0
 			for value in next_conveyer.inventory.values():
 				inventory_size += value

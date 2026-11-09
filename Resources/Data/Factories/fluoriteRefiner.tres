@@ -10,4 +10,12 @@ input = {
 output = {
 "Fluorine": 1
 }
+production_time = null
+inventory_size = null
+name = null
+size = null
+health = null
+buildCosts = null
+destroy_time = null
+description = null
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"

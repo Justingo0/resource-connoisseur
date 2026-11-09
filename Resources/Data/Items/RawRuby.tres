@@ -1,7 +1,7 @@
-[gd_resource type="Resource" format=3 uid="uid://dgju38etarbh3"]
+[gd_resource type="Resource" script_class="itemStats" format=3 uid="uid://dgju38etarbh3"]
 
 [ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="1_a0mph"]
-[ext_resource type="Texture2D" uid="uid://bktfrrkhvt3tm" path="res://Assets/minerDrill.png" id="1_kuty0"]
+[ext_resource type="Texture2D" uid="uid://c8eaenpv46a1m" path="res://Assets/RawRuby.png" id="1_kuty0"]
 
 [resource]
 script = ExtResource("1_a0mph")

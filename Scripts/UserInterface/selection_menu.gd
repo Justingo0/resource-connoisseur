@@ -17,7 +17,6 @@ func _ready() -> void:
 		camera.building_object = null
 		Input.action_press("Delete")
 		)
-	tabs.remove_at(4)
 	for tab in tabs:
 		tab.pressed.connect(func():
 			tab_switch(tab.name, tab))
@@ -28,7 +27,12 @@ func tab_switch(tab:String, tab_button):
 	
 	var selected_tab = selections.filter(func(node): return node.name == tab)[0]
 	if not selected_tab:
-		printerr("THIS TAB DOENS'T #$&!ING EXIST!!!")
+		printerr("THIS TAB DOENS'T [#$&!]ING EXIST!!!")
+		return
+	if not tab_button.button_pressed:
+		$Selections.visible = false
+		$HiddenArea.visible = true
+		selected_tab.visible = false
 		return
 	for selection in selections:
 		if selection == selected_tab:

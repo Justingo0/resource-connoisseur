@@ -1,5 +1,9 @@
 extends Camera2D
 
+signal on_object_placed(obj_type:PackedScene)
+signal on_object_deleted
+signal on_action_finised(action:String)
+
 @onready var build_cursor = $BuildCursor
 @onready var delete_cursor = $DeleteCursor
 @onready var mine_cursor = $DeleteCursor/MineCursor
@@ -24,6 +28,8 @@ var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
 		set_build_cursor(building_object)
 	get:
 		return building_object
+@export var building_object_type:Resource
+
 var last_object_built = null
 var building_objects := []
 var deleting_objects := []
@@ -172,9 +178,13 @@ func _physics_process(delta: float) -> void:
 				if object.destroy_time == 0.0:
 					object.queue_free()
 					current_objects.erase(object)
+					if current_objects.is_empty():
+						on_action_finised.emit("deleting")
 			else:
 				object.queue_free()
 				current_objects.erase(object)
+				if current_objects.is_empty():
+					on_action_finised.emit("deleting")
 		elif object_action == actions.placing:
 			if "destroy_time" in object:
 				object.destroy_time = min(object.destroy_time + delta*GameManager.time_scale*speed, object.max_destroy_time)
@@ -186,11 +196,15 @@ func _physics_process(delta: float) -> void:
 					object.modulate = Color.from_rgba8(255, 255, 255, 255)
 					object.material = null
 					current_objects.erase(object)
+					if current_objects.is_empty():
+						on_action_finised.emit("placing")
 			else:
 				#object.held = false
 				object.modulate = Color.from_rgba8(255, 255, 255, 255)
 				object.material = null
 				current_objects.erase(object)
+				if current_objects.is_empty():
+					on_action_finised.emit("placing")
 
 func keyboard_movement(delta):
 	var moveVector = Input.get_vector("leftButton", "rightButton", "upButton", "downButton")
@@ -205,8 +219,11 @@ func set_build_cursor(object:PackedScene):
 		building_mode = false
 		return
 	building_mode = true
+
 	
 	var highlight = object.instantiate() as Area2D
+	if "held" in highlight:
+		highlight.held = true
 	highlight.collision_layer = 0
 	highlight.collision_mask = 1
 	build_cursor.add_child(highlight)
@@ -214,7 +231,6 @@ func set_build_cursor(object:PackedScene):
 	
 	if "held" in highlight:
 		highlight.held = true
-		print(highlight.held)
 
 func place(object:PackedScene):
 	if not building_object:
@@ -251,6 +267,8 @@ func place(object:PackedScene):
 		var deleting = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
 		if not deleting.is_empty():
 			deleting[0].queue_free()
+	if "type" in placed_object:
+		placed_object.type = building_object_type
 	get_tree().current_scene.add_child(placed_object)
 	#placed_object.held = true
 	placed_object.destroy_time = 0
@@ -258,6 +276,8 @@ func place(object:PackedScene):
 	#placed_object.material = construct_shader.duplicate()
 	placed_object.modulate = Color.from_rgba8(255, 255, 255, 140)
 	building_objects.append(placed_object)
+	
+	on_object_placed.emit(object)
 	
 	if last_object_built and last_object_built.is_in_group("Rotate"):
 		var direction = last_object_built.global_position.direction_to(placed_object.global_position)
@@ -274,14 +294,14 @@ func place(object:PackedScene):
 func delete():
 	if dragging: return
 	var objects = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
-	if not objects.is_empty(): 
-		var deleting_object = objects[0] as Area2D
-		if deleting_object.is_in_group("Block") and deleting_object.held == false and not deleting_object.is_in_group("Unbreakable"):
+	if not objects.is_empty():
+		var deleting_object = objects[0]
+		if deleting_object and deleting_object.is_in_group("Block") and deleting_object.held == false and not deleting_object.is_in_group("Unbreakable"):
 			if deleting_object in deleting_objects or deleting_object in current_objects: return
-			#building_object = null
 			deleting_object.destroy_time = deleting_object.max_destroy_time
 			deleting_object.material = dissolve_shader.duplicate()
 			deleting_objects.append(deleting_object)
+			on_object_deleted.emit()
 	
 	#current_action = actions.deleting
 
@@ -313,7 +333,8 @@ func _on_delete_cursor_area_entered(area: Area2D) -> void:
 			else:
 				update_inventory_display({})
 		else:
-			update_inventory_display(area.inventory)
+			print(area)
+			#update_inventory_display(area.inventory)
 		inventory_display.visible = true
 
 func _on_delete_cursor_area_exited(area: Area2D) -> void:

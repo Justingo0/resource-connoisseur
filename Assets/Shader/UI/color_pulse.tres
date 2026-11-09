@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cuev60ehshir"]
+
+[ext_resource type="Shader" uid="uid://1ptswse5minl" path="res://Assets/Shader/UI/color_pulse.gdshader" id="1_57ady"]
+
+[resource]
+shader = ExtResource("1_57ady")
+shader_parameter/pulse_color = Color(1, 1, 1, 1)
+shader_parameter/speed = 3.0000001392401203
