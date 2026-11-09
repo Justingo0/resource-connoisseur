@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="factoryStats" format=3 uid="uid://b55swmillii22"]
 
-[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/turretBase.png" id="1_44n4x"]
+[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="1_44n4x"]
 [ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_c4fwl"]
 [ext_resource type="Texture2D" uid="uid://5cb7b5gc83fx" path="res://Assets/RawCoal.png" id="2_1aik2"]
 [ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="2_syqd1"]

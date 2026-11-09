@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xoy54k244pnd"]
 
 [ext_resource type="Script" uid="uid://drgisgwrt7m67" path="res://Scripts/factoryTemplate.gd" id="1_llkfa"]
-[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/turretBase.png" id="1_teede"]
+[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="1_teede"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sar82"]
 size = Vector2(62, 62)
