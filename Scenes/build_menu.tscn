@@ -293,6 +293,83 @@ expected_value = ExtResource("30_qi0q1")
 trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
+[sub_resource type="Resource" id="Resource_mekxv"]
+script = ExtResource("28_liqnk")
+use_next = true
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_7so82"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = ExtResource("29_tsw58")
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_ymuu6"]
+script = ExtResource("28_liqnk")
+use_next = true
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_pmilx"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+external_action = "on_action_finised"
+expected_value = "placing"
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_ep86p"]
+script = ExtResource("28_liqnk")
+use_next = true
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_hmkjk"]
+script = ExtResource("28_liqnk")
+highlight_type = "color"
+highlight_value = Color(1, 1, 1, 0.5)
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_pvcui"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_ifh0d"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = ExtResource("32_5jpdo")
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_pv6lm"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+external_action = "on_action_finised"
+expected_value = "placing"
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_1fcxi"]
+script = ExtResource("28_liqnk")
+use_next = true
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
 [sub_resource type="LabelSettings" id="LabelSettings_pj23d"]
 font = ExtResource("2_0dv3k")
 
@@ -438,6 +515,7 @@ theme_override_constants/separation = 12
 script = ExtResource("11_4o04s")
 
 [node name="Selections" type="Panel" parent="SelectionMenu" unique_id=74807063]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -571,7 +649,6 @@ texture_normal = ExtResource("18_qi0q1")
 type = ExtResource("20_0dv3k")
 
 [node name="HiddenArea" type="Control" parent="SelectionMenu" unique_id=2031371284]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2
@@ -822,7 +899,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")], [NodePath(""), SubResource("Resource_lu4v0")], [NodePath("../SelectionMenu/Tabs/Container/Turrets"), SubResource("Resource_em7h0")], [NodePath("../SelectionMenu/Selections/Turrets/Selection"), SubResource("Resource_dgefj")], [NodePath(""), SubResource("Resource_w8fxn")]])
+actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")], [NodePath(""), SubResource("Resource_lu4v0")], [NodePath("../SelectionMenu/Tabs/Container/Turrets"), SubResource("Resource_em7h0")], [NodePath("../SelectionMenu/Selections/Turrets/Selection"), SubResource("Resource_dgefj")], [NodePath(""), SubResource("Resource_w8fxn")], [NodePath(""), SubResource("Resource_mekxv")], [NodePath(""), SubResource("Resource_7so82")], [NodePath(""), SubResource("Resource_ymuu6")], [NodePath(""), SubResource("Resource_pmilx")], [NodePath(""), SubResource("Resource_ep86p")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_hmkjk")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection2"), SubResource("Resource_pvcui")], [NodePath(""), SubResource("Resource_ifh0d")], [NodePath(""), SubResource("Resource_pv6lm")], [NodePath(""), SubResource("Resource_1fcxi")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -844,12 +921,12 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -63.0
-offset_top = -36.0
+offset_left = -48.0
+offset_top = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Welcome to Resource Connoiseur! in this game, you'll be gathering resources, building factories, and fighting waves of enemies."
+text = "Welcome to Resource Connoiseur (Demo)! in this game, you'll be gathering resources, building factories, and fighting waves of enemies."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -860,7 +937,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -55.0
+offset_left = -41.0
 offset_top = 63.0
 offset_right = -2.0
 offset_bottom = 4.0
@@ -1476,20 +1553,20 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 188.0
-offset_top = -10.5
+offset_left = 235.0
+offset_top = 14.0
 offset_right = 207.0
 offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Place 2 turrets on both sides, Behind the walls."
+text = "Place 2 turrets."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="20" type="Control" parent="Tutorial" unique_id=293715472]
+[node name="20" type="Control" parent="Tutorial" unique_id=1429063003]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -1504,7 +1581,56 @@ offset_bottom = -324.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Tip" type="Label" parent="Tutorial/20" unique_id=1488351612]
+[node name="Tip" type="Label" parent="Tutorial/20" unique_id=541009631]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "do the same on the other side."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/20" unique_id=137025568]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = 43.0
+offset_right = 205.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press LMB to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="21" type="Control" parent="Tutorial" unique_id=293715472]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/21" unique_id=1488351612]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1519,6 +1645,314 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
 text = "Once completed, place 2 miners on ore viens near each turrets."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="22" type="Control" parent="Tutorial" unique_id=1373056443]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/22" unique_id=1234874344]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "do the same on the other side."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/22" unique_id=1006840198]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = 43.0
+offset_right = 205.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press LMB to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="23" type="Control" parent="Tutorial" unique_id=1067018198]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/23" unique_id=375899907]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 126.0
+offset_top = -27.0
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Draw a track of conveyors from the miners to turrets, but stop before connecting them together."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="24" type="Control" parent="Tutorial" unique_id=772579703]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/24" unique_id=702115348]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "do the same on the other side."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/24" unique_id=136770976]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = 43.0
+offset_right = 205.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press LMB to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="25" type="Control" parent="Tutorial" unique_id=297130604]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -439.0
+offset_top = -153.0
+offset_right = -231.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/25" unique_id=14386695]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 87.0
+offset_top = -27.0
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "the reason we stopped is so we can evenly share the resources between 2 turrets. We do that by using routers."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="26" type="Control" parent="Tutorial" unique_id=625495075]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -488.0
+offset_top = -367.0
+offset_right = -280.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/26" unique_id=46813348]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "select the router."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="27" type="Control" parent="Tutorial" unique_id=1894911184]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/27" unique_id=989353674]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 188.0
+offset_top = -8.0
+offset_right = 207.0
+offset_bottom = 10.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "place the router at the end of the conveyor track."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="28" type="Control" parent="Tutorial" unique_id=219550971]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/28" unique_id=52768084]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = -7.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "draw 2 tracks from each end of the router to each turret."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="29" type="Control" parent="Tutorial" unique_id=1241995860]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/29" unique_id=1085892015]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_top = 3.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "do the same on the other side."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/29" unique_id=1137864464]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = 43.0
+offset_right = 205.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press LMB to continue"
+label_settings = SubResource("LabelSettings_87c2h")
 vertical_alignment = 1
 autowrap_mode = 3
 
