@@ -712,7 +712,7 @@ metadata/_scene_painted = true
 
 [node name="rubyOre150" parent="Ores" unique_id=1674724631 instance=ExtResource("5_x033f")]
 position = Vector2(1472, -1024)
-type = ExtResource("11_bwjpn")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre52" parent="Ores" unique_id=918626772 instance=ExtResource("5_x033f")]
@@ -722,12 +722,12 @@ metadata/_scene_painted = true
 
 [node name="rubyOre151" parent="Ores" unique_id=520169194 instance=ExtResource("5_x033f")]
 position = Vector2(1472, -1088)
-type = ExtResource("11_bwjpn")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre152" parent="Ores" unique_id=982203998 instance=ExtResource("5_x033f")]
 position = Vector2(1408, -1024)
-type = ExtResource("11_bwjpn")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre153" parent="Ores" unique_id=440767173 instance=ExtResource("5_x033f")]
@@ -787,17 +787,17 @@ metadata/_scene_painted = true
 
 [node name="rubyOre62" parent="Ores" unique_id=685306952 instance=ExtResource("5_x033f")]
 position = Vector2(-640, -1088)
-type = ExtResource("11_ibmi3")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre63" parent="Ores" unique_id=48190100 instance=ExtResource("5_x033f")]
 position = Vector2(-640, -1152)
-type = ExtResource("11_ibmi3")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre64" parent="Ores" unique_id=916671068 instance=ExtResource("5_x033f")]
 position = Vector2(-704, -1152)
-type = ExtResource("11_ibmi3")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre25" parent="Ores" unique_id=519053405 instance=ExtResource("5_x033f")]
@@ -812,7 +812,7 @@ metadata/_scene_painted = true
 
 [node name="rubyOre27" parent="Ores" unique_id=69791168 instance=ExtResource("5_x033f")]
 position = Vector2(1344, -1920)
-type = ExtResource("15_i0miu")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre34" parent="Ores" unique_id=2102743537 instance=ExtResource("5_x033f")]
@@ -832,7 +832,7 @@ metadata/_scene_painted = true
 
 [node name="rubyOre38" parent="Ores" unique_id=1576286849 instance=ExtResource("5_x033f")]
 position = Vector2(1280, -1920)
-type = ExtResource("15_i0miu")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre39" parent="Ores" unique_id=884123933 instance=ExtResource("5_x033f")]
@@ -842,37 +842,37 @@ metadata/_scene_painted = true
 
 [node name="rubyOre40" parent="Ores" unique_id=811148624 instance=ExtResource("5_x033f")]
 position = Vector2(1280, -1984)
-type = ExtResource("15_i0miu")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre41" parent="Ores" unique_id=1444525892 instance=ExtResource("5_x033f")]
 position = Vector2(1216, -1984)
-type = ExtResource("15_i0miu")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre78" parent="Ores" unique_id=2033804424 instance=ExtResource("5_x033f")]
 position = Vector2(960, -1280)
-type = ExtResource("11_ibmi3")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre79" parent="Ores" unique_id=14448562 instance=ExtResource("5_x033f")]
 position = Vector2(960, -1344)
-type = ExtResource("11_ibmi3")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre81" parent="Ores" unique_id=2041626868 instance=ExtResource("5_x033f")]
 position = Vector2(896, -1216)
-type = ExtResource("11_ibmi3")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre96" parent="Ores" unique_id=451297902 instance=ExtResource("5_x033f")]
 position = Vector2(896, -1280)
-type = ExtResource("11_ibmi3")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre80" parent="Ores" unique_id=1399553963 instance=ExtResource("5_x033f")]
 position = Vector2(896, -1344)
-type = ExtResource("11_ibmi3")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre42" parent="Ores" unique_id=2080632852 instance=ExtResource("5_x033f")]
@@ -887,22 +887,22 @@ metadata/_scene_painted = true
 
 [node name="rubyOre31" parent="Ores" unique_id=1201143214 instance=ExtResource("5_x033f")]
 position = Vector2(512, -1984)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre32" parent="Ores" unique_id=111000807 instance=ExtResource("5_x033f")]
 position = Vector2(512, -1920)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre65" parent="Ores" unique_id=1360516682 instance=ExtResource("5_x033f")]
 position = Vector2(576, -1920)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre66" parent="Ores" unique_id=1735400550 instance=ExtResource("5_x033f")]
 position = Vector2(576, -1984)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre67" parent="Ores" unique_id=1480113211 instance=ExtResource("5_x033f")]
@@ -932,32 +932,37 @@ metadata/_scene_painted = true
 
 [node name="rubyOre72" parent="Ores" unique_id=1371489444 instance=ExtResource("5_x033f")]
 position = Vector2(448, -1920)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre73" parent="Ores" unique_id=440275096 instance=ExtResource("5_x033f")]
 position = Vector2(448, -1856)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre29" parent="Ores" unique_id=1326754278 instance=ExtResource("5_x033f")]
 position = Vector2(-1408, -1472)
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre74" parent="Ores" unique_id=2061413525 instance=ExtResource("5_x033f")]
 position = Vector2(-1408, -1536)
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre75" parent="Ores" unique_id=767420407 instance=ExtResource("5_x033f")]
 position = Vector2(-1472, -1600)
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre76" parent="Ores" unique_id=32253537 instance=ExtResource("5_x033f")]
 position = Vector2(-1408, -1600)
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre77" parent="Ores" unique_id=1930036469 instance=ExtResource("5_x033f")]
 position = Vector2(-1344, -1536)
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre82" parent="Ores" unique_id=283721859 instance=ExtResource("5_x033f")]
@@ -1116,22 +1121,22 @@ metadata/_scene_painted = true
 
 [node name="rubyOre86" parent="Ores" unique_id=1576069342 instance=ExtResource("5_x033f")]
 position = Vector2(-960, -1600)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre87" parent="Ores" unique_id=283133891 instance=ExtResource("5_x033f")]
 position = Vector2(-960, -1664)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre88" parent="Ores" unique_id=1752279564 instance=ExtResource("5_x033f")]
 position = Vector2(-1024, -1664)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre89" parent="Ores" unique_id=1413259320 instance=ExtResource("5_x033f")]
 position = Vector2(-1024, -1728)
-type = ExtResource("12_040rt")
+type = ExtResource("16_6bfml")
 metadata/_scene_painted = true
 
 [node name="rubyOre90" parent="Ores" unique_id=1477528714 instance=ExtResource("5_x033f")]
