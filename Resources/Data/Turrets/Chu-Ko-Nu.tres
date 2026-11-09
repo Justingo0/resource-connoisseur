@@ -20,5 +20,5 @@ icon = ExtResource("1_r25xw")
 name = "Chu-Ko-Nu"
 scene = ExtResource("2_g7qng")
 health = 200
-description = "Stupid ugly."
+description = "Shoots enemies. Only takes in Flourite."
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

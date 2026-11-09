@@ -370,6 +370,22 @@ expected_value = null
 trigger_value = null
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
+[sub_resource type="Resource" id="Resource_5bfav"]
+script = ExtResource("28_liqnk")
+use_next = true
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_814mk"]
+script = ExtResource("28_liqnk")
+use_next = true
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
 [sub_resource type="LabelSettings" id="LabelSettings_pj23d"]
 font = ExtResource("2_0dv3k")
 
@@ -899,7 +915,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")], [NodePath(""), SubResource("Resource_lu4v0")], [NodePath("../SelectionMenu/Tabs/Container/Turrets"), SubResource("Resource_em7h0")], [NodePath("../SelectionMenu/Selections/Turrets/Selection"), SubResource("Resource_dgefj")], [NodePath(""), SubResource("Resource_w8fxn")], [NodePath(""), SubResource("Resource_mekxv")], [NodePath(""), SubResource("Resource_7so82")], [NodePath(""), SubResource("Resource_ymuu6")], [NodePath(""), SubResource("Resource_pmilx")], [NodePath(""), SubResource("Resource_ep86p")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_hmkjk")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection2"), SubResource("Resource_pvcui")], [NodePath(""), SubResource("Resource_ifh0d")], [NodePath(""), SubResource("Resource_pv6lm")], [NodePath(""), SubResource("Resource_1fcxi")]])
+actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")], [NodePath(""), SubResource("Resource_lu4v0")], [NodePath("../SelectionMenu/Tabs/Container/Turrets"), SubResource("Resource_em7h0")], [NodePath("../SelectionMenu/Selections/Turrets/Selection"), SubResource("Resource_dgefj")], [NodePath(""), SubResource("Resource_w8fxn")], [NodePath(""), SubResource("Resource_mekxv")], [NodePath(""), SubResource("Resource_7so82")], [NodePath(""), SubResource("Resource_ymuu6")], [NodePath(""), SubResource("Resource_pmilx")], [NodePath(""), SubResource("Resource_ep86p")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_hmkjk")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection2"), SubResource("Resource_pvcui")], [NodePath(""), SubResource("Resource_ifh0d")], [NodePath(""), SubResource("Resource_pv6lm")], [NodePath(""), SubResource("Resource_1fcxi")], [NodePath(""), SubResource("Resource_5bfav")], [NodePath(""), SubResource("Resource_814mk")], [NodePath(""), SubResource("Resource_814mk")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -926,7 +942,7 @@ offset_top = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Welcome to Resource Connoiseur (Demo)! in this game, you'll be gathering resources, building factories, and fighting waves of enemies."
+text = "Welcome to Resource Connoisseur (Demo)! in this game, you'll be gathering resources, building factories, and fighting waves of enemies."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1035,7 +1051,7 @@ offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Miners collect resources from ore viens.
+text = "Miners collect resources from ore veins.
 Try placing it with LMB."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
@@ -1129,7 +1145,7 @@ offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Place a track of conveyors from the miners to the core."
+text = "Place a track of conveyors from the miner to the core."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1159,7 +1175,7 @@ offset_left = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "If you every misplaced anything, hold down rmb to delete."
+text = "If you ever misplaced anything, hold down rmb to delete."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1947,6 +1963,152 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 166.0
+offset_top = 43.0
+offset_right = 205.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press F to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="30" type="Control" parent="Tutorial" unique_id=1970185872]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1006.0
+offset_top = -624.0
+offset_right = -798.0
+offset_bottom = -581.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/30" unique_id=1113615232]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 161.0
+offset_right = 262.0
+offset_bottom = 14.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = " if the wave hasn't started yet, press the next arrow to skip wait time."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/30" unique_id=3011025]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 166.0
+offset_top = 48.0
+offset_right = 205.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press F to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="31" type="Control" parent="Tutorial" unique_id=103537874]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -153.0
+offset_right = -232.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/31" unique_id=779520748]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 84.0
+offset_top = -64.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "after all that, you built a source of resources aswell as defense to protect your core. now your ready to continue on your own. Have fun!"
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/31" unique_id=359568945]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
+offset_top = 43.0
+offset_right = 205.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press F to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="32" type="Control" parent="Tutorial" unique_id=744984515]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -153.0
+offset_right = -232.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/32" unique_id=199448218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 84.0
+offset_top = -21.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Oh and if you find any bugs or spelling mistakes (i suck at spelling). Let us know!"
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/32" unique_id=334196079]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
 offset_top = 43.0
 offset_right = 205.0
 offset_bottom = 14.0
