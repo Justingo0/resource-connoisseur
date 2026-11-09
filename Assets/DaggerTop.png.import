@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://crt6dnay6ivb6"
-path="res://.godot/imported/turretBase.png-7c1d63ebcef49e5e4828c35bd570af0a.ctex"
+uid="uid://ee1qbu4trhlf"
+path="res://.godot/imported/DaggerTop.png-340250a60ac5979f8de2307580324259.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/turretBase.png"
-dest_files=["res://.godot/imported/turretBase.png-7c1d63ebcef49e5e4828c35bd570af0a.ctex"]
+source_file="res://Assets/DaggerTop.png"
+dest_files=["res://.godot/imported/DaggerTop.png-340250a60ac5979f8de2307580324259.ctex"]
 
 [params]
 
