@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="2_syqd1"]
 [ext_resource type="Script" uid="uid://qm6i68lmfktf" path="res://Resources/Managers/oreStats.gd" id="3_jypod"]
 [ext_resource type="Texture2D" uid="uid://dydb4t41j541j" path="res://Assets/Graphite.png" id="4_1aik2"]
+[ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="5_jypod"]
 
 [sub_resource type="Resource" id="Resource_0g4ye"]
 script = ExtResource("3_jypod")
@@ -13,18 +14,18 @@ icon = ExtResource("2_1aik2")
 name = "Coal"
 metadata/_custom_type_script = "uid://qm6i68lmfktf"
 
-[sub_resource type="Resource" id="Resource_247tj"]
-script = ExtResource("3_jypod")
+[sub_resource type="Resource" id="Resource_2lbpn"]
+script = ExtResource("5_jypod")
 icon = ExtResource("4_1aik2")
 name = "Graphite"
-metadata/_custom_type_script = "uid://qm6i68lmfktf"
+metadata/_custom_type_script = "uid://fvk4kso7ogn0"
 
 [resource]
 script = ExtResource("1_c4fwl")
 input = {
 SubResource("Resource_0g4ye"): 2
 }
-output = SubResource("Resource_247tj")
+output = SubResource("Resource_2lbpn")
 production_time = 3.0
 inventory_size = 10
 icon = ExtResource("1_44n4x")
