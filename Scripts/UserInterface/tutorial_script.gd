@@ -17,6 +17,7 @@ var guide_node:Node2D
 func _ready() -> void:
 	for tip in tutorial.get_children():
 		tip.visible = false
+	iteration = $"..".starting_step
 	if $"..".tutorial_mode:
 		GameManager.tutorial_mode = true
 		start_iteration()
