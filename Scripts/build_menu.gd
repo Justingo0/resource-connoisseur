@@ -20,6 +20,7 @@ signal send_announcement(icon:Texture2D, message:String)
 @onready var pause_sign = preload("res://Assets/UI/pause.png")
 
 @export var tutorial_mode:bool = true
+@export_range(0, 33, 1, "prefer_slider") var starting_step:int = 0
 
 var paused = false
 
