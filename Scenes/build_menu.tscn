@@ -2405,6 +2405,55 @@ label_settings = SubResource("LabelSettings_87c2h")
 vertical_alignment = 1
 autowrap_mode = 3
 
+[node name="40" type="Control" parent="Tutorial" unique_id=744984515]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -153.0
+offset_right = -232.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/40" unique_id=199448218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = -83.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "congratulations, you completed the tutorial. You're now ready to start making your own factories the way you want to. Keep making machines and obliterating enemies. 
+Have fun! :D"
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/40" unique_id=334196079]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
+offset_top = 43.0
+offset_right = 205.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press F to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
+
 [node name="GuideArrow" type="TextureRect" parent="." unique_id=518443954]
 visible = false
 texture_filter = 1
@@ -2425,55 +2474,6 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("32_nlj0r")
 expand_mode = 1
 stretch_mode = 5
-
-[node name="32" type="Control" parent="." unique_id=744984515]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -440.0
-offset_top = -153.0
-offset_right = -232.0
-offset_bottom = -110.0
-grow_horizontal = 0
-grow_vertical = 0
-
-[node name="Tip" type="Label" parent="32" unique_id=199448218]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 84.0
-offset_top = -21.0
-offset_right = 207.0
-offset_bottom = 11.75
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Oh and if you find any bugs or spelling mistakes (i suck at spelling). Let us know!"
-label_settings = SubResource("LabelSettings_pj23d")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-
-[node name="Tip2" type="Label" parent="32" unique_id=334196079]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 93.0
-offset_top = 43.0
-offset_right = 205.0
-offset_bottom = 14.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "<- Press F to continue"
-label_settings = SubResource("LabelSettings_87c2h")
-vertical_alignment = 1
-autowrap_mode = 3
 
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
