@@ -16,9 +16,9 @@
 [ext_resource type="Resource" uid="uid://clc15lbcd830h" path="res://Resources/Data/Sorting/Conveyors/basic_conveyor.tres" id="17_u07jk"]
 [ext_resource type="Resource" uid="uid://blyr3tph1yotb" path="res://Resources/Data/Sorting/router.tres" id="18_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
-[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/turretBase.png" id="18_qi0q1"]
+[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="18_qi0q1"]
 [ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
-[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/turretBuild.png" id="19_cj8qe"]
+[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/DaggerBuild.png" id="19_cj8qe"]
 [ext_resource type="Resource" uid="uid://b55swmillii22" path="res://Resources/Data/Factories/graphitePress.tres" id="20_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
 [ext_resource type="Resource" uid="uid://dgykme6jgn6kr" path="res://Resources/Data/Walls/fluoriteWall.tres" id="21_5mldt"]
@@ -29,8 +29,10 @@
 [ext_resource type="PackedScene" uid="uid://btf7on0x1gbau" path="res://Scenes/wall.tscn" id="29_5mldt"]
 [ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="29_tsw58"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="30_qi0q1"]
+[ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="31_nlj0r"]
 [ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="32_5jpdo"]
 [ext_resource type="Texture2D" uid="uid://y7f4x2xgn0fj" path="res://Assets/UI/Arrow.png" id="32_nlj0r"]
+[ext_resource type="PackedScene" uid="uid://rbhy07an84kd" path="res://Scenes/conveyor.tscn" id="32_ypmmn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
@@ -380,6 +382,59 @@ metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_814mk"]
 script = ExtResource("28_liqnk")
+highlight_type = "color"
+highlight_value = Color(1, 1, 1, 0.5)
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_ikf1b"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = null
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_h6q0m"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = ExtResource("31_nlj0r")
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_67idc"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = ExtResource("29_tsw58")
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_sgpdj"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+expected_value = ExtResource("32_ypmmn")
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_eo1vj"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+external_action = "on_action_finised"
+expected_value = "placing"
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_okwr1"]
+script = ExtResource("28_liqnk")
+highlight_value = null
+private_recieving_object = "GameManager"
+external_action = "on_inventory_changed"
+expected_value = true
+trigger_value = null
+metadata/_custom_type_script = "uid://w07ceot5mi5n"
+
+[sub_resource type="Resource" id="Resource_njwl4"]
+script = ExtResource("28_liqnk")
 use_next = true
 highlight_value = null
 expected_value = null
@@ -402,6 +457,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hx1pr")
+starting_step = 31
 
 [node name="WaveContainer" type="Panel" parent="." unique_id=299618793]
 layout_mode = 1
@@ -916,7 +972,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("27_2lbpn")
-actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")], [NodePath(""), SubResource("Resource_lu4v0")], [NodePath("../SelectionMenu/Tabs/Container/Turrets"), SubResource("Resource_em7h0")], [NodePath("../SelectionMenu/Selections/Turrets/Selection"), SubResource("Resource_dgefj")], [NodePath(""), SubResource("Resource_w8fxn")], [NodePath(""), SubResource("Resource_mekxv")], [NodePath(""), SubResource("Resource_7so82")], [NodePath(""), SubResource("Resource_ymuu6")], [NodePath(""), SubResource("Resource_pmilx")], [NodePath(""), SubResource("Resource_ep86p")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_hmkjk")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection2"), SubResource("Resource_pvcui")], [NodePath(""), SubResource("Resource_ifh0d")], [NodePath(""), SubResource("Resource_pv6lm")], [NodePath(""), SubResource("Resource_1fcxi")], [NodePath(""), SubResource("Resource_5bfav")], [NodePath(""), SubResource("Resource_814mk")], [NodePath(""), SubResource("Resource_814mk")]])
+actions = Array[Array]([[NodePath(""), SubResource("Resource_87c2h")], [NodePath("../SelectionMenu/Tabs/Container/Miners"), SubResource("Resource_tsw58")], [NodePath("../SelectionMenu/Selections/Miners/Selection"), SubResource("Resource_5mldt")], [NodePath(""), SubResource("Resource_qi0q1")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_nlj0r")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection"), SubResource("Resource_5jpdo")], [NodePath(""), SubResource("Resource_ypmmn")], [NodePath(""), SubResource("Resource_ep4du")], [NodePath("../SelectionMenu/Tabs/Container/Walls"), SubResource("Resource_6gs3s")], [NodePath("../SelectionMenu/Selections/Walls/Selection"), SubResource("Resource_leu4g")], [NodePath(""), SubResource("Resource_q8lmm")], [NodePath(""), SubResource("Resource_ju4c0")], [NodePath(""), SubResource("Resource_87c2h")], [NodePath(""), SubResource("Resource_ir0w5")], [NodePath(""), SubResource("Resource_oqjwq")], [NodePath(""), SubResource("Resource_lu4v0")], [NodePath("../SelectionMenu/Tabs/Container/Turrets"), SubResource("Resource_em7h0")], [NodePath("../SelectionMenu/Selections/Turrets/Selection"), SubResource("Resource_dgefj")], [NodePath(""), SubResource("Resource_w8fxn")], [NodePath(""), SubResource("Resource_mekxv")], [NodePath(""), SubResource("Resource_7so82")], [NodePath(""), SubResource("Resource_ymuu6")], [NodePath(""), SubResource("Resource_pmilx")], [NodePath(""), SubResource("Resource_ep86p")], [NodePath("../SelectionMenu/Tabs/Container/Conveyors"), SubResource("Resource_hmkjk")], [NodePath("../SelectionMenu/Selections/Conveyors/Selection2"), SubResource("Resource_pvcui")], [NodePath(""), SubResource("Resource_ifh0d")], [NodePath(""), SubResource("Resource_pv6lm")], [NodePath(""), SubResource("Resource_1fcxi")], [NodePath(""), SubResource("Resource_5bfav")], [NodePath(""), SubResource("Resource_814mk")], [NodePath("../SelectionMenu/Tabs/Container/Base"), SubResource("Resource_814mk")], [NodePath("../SelectionMenu/Selections/Base/Selection"), SubResource("Resource_ikf1b")], [NodePath(""), SubResource("Resource_h6q0m")], [NodePath(""), SubResource("Resource_67idc")], [NodePath(""), SubResource("Resource_sgpdj")], [NodePath(""), SubResource("Resource_eo1vj")], [NodePath(""), SubResource("Resource_okwr1")], [NodePath(""), SubResource("Resource_njwl4")]])
 
 [node name="1" type="Control" parent="Tutorial" unique_id=657197617]
 visible = false
@@ -943,7 +999,7 @@ offset_top = -44.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Welcome to Resource Connoisseur (Demo)! in this game, you'll be gathering resources, building factories, and fighting waves of enemies."
+text = "Welcome to Resource Connoisseur! in this game, you'll be gathering resources, building factories, and fighting waves of enemies."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1176,7 +1232,7 @@ offset_left = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "If you ever misplaced anything, hold down rmb to delete."
+text = "If you ever misplace anything, hold down rmb to delete."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1221,7 +1277,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "hurry! a wave of enemies is approaching! start by placing walls to block the enemy's path."
+text = "hurry! a wave of enemies is approaching! start by placing walls to block the enemies' path."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1659,7 +1715,7 @@ offset_bottom = 10.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Once completed, place 2 miners on ore viens near each turrets."
+text = "Once completed, place 2 miners on ore veins near each turrets."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2000,7 +2056,7 @@ offset_bottom = 14.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = " if the wave hasn't started yet, press the next arrow to skip wait time."
+text = " if the wave hasn't started yet, press the next arrow to skip the wait time."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2049,7 +2105,7 @@ offset_bottom = 11.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "after all that, you built a source of resources aswell as defense to protect your core. now your ready to continue on your own. Have fun!"
+text = "Great work! you built a source of resources aswell as defense to protect your core. now you ready for more complicated machines!"
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -2071,7 +2127,7 @@ label_settings = SubResource("LabelSettings_87c2h")
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="32" type="Control" parent="Tutorial" unique_id=744984515]
+[node name="32" type="Control" parent="Tutorial" unique_id=1318667774]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -2086,30 +2142,259 @@ offset_bottom = -110.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="Tip" type="Label" parent="Tutorial/32" unique_id=199448218]
+[node name="Tip" type="Label" parent="Tutorial/32" unique_id=1316154311]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 84.0
+offset_left = 103.0
 offset_top = -21.0
 offset_right = 207.0
 offset_bottom = 11.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
-text = "Oh and if you find any bugs or spelling mistakes (i suck at spelling). Let us know!"
+text = "Open the factories menu to find your processing units such as presses and smelters."
 label_settings = SubResource("LabelSettings_pj23d")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Tip2" type="Label" parent="Tutorial/32" unique_id=334196079]
+[node name="33" type="Control" parent="Tutorial" unique_id=1978816834]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -487.0
+offset_top = -367.0
+offset_right = -285.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/33" unique_id=1905290310]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 93.0
+offset_right = 33.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "select the graphite press."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="34" type="Control" parent="Tutorial" unique_id=241679653]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/34" unique_id=13847730]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = -60.0
+offset_right = 207.0
+offset_bottom = 0.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "a graphite press will take in 2 coal and turn them into graphite. 
+Place the graphite press near the core."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="35" type="Control" parent="Tutorial" unique_id=1027447598]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/35" unique_id=1915997226]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = -47.0
+offset_right = 207.0
+offset_bottom = 0.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Graphite can only be made out of coal, so place a miner over any black vein of ore. this black ore is coal."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="36" type="Control" parent="Tutorial" unique_id=265581385]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/36" unique_id=770474605]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = -19.0
+offset_right = 207.0
+offset_bottom = 0.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Draw a track of conveyors from the miner to the graphite press."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="37" type="Control" parent="Tutorial" unique_id=627227322]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/37" unique_id=1137757712]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = -19.0
+offset_right = 207.0
+offset_bottom = 0.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Draw a track of conveyors from the miner to the graphite press."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="38" type="Control" parent="Tutorial" unique_id=1904204254]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/38" unique_id=199385476]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 105.0
+offset_top = -19.0
+offset_right = 207.0
+offset_bottom = 0.125
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Now draw one from the graphite press to the core."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="39" type="Control" parent="Tutorial" unique_id=1672445740]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -436.0
+offset_top = -367.0
+offset_right = -228.0
+offset_bottom = -324.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="Tutorial/39" unique_id=86332618]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -22.0
+offset_right = 207.0
+offset_bottom = 11.5625
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Now that you've obtained graphite, you can build tons of new machines and turrets."
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="Tutorial/39" unique_id=1814132769]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 69.0
 offset_top = 43.0
 offset_right = 205.0
 offset_bottom = 14.0
@@ -2140,6 +2425,55 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 texture = ExtResource("32_nlj0r")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="32" type="Control" parent="." unique_id=744984515]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -440.0
+offset_top = -153.0
+offset_right = -232.0
+offset_bottom = -110.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Tip" type="Label" parent="32" unique_id=199448218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 84.0
+offset_top = -21.0
+offset_right = 207.0
+offset_bottom = 11.75
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+text = "Oh and if you find any bugs or spelling mistakes (i suck at spelling). Let us know!"
+label_settings = SubResource("LabelSettings_pj23d")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Tip2" type="Label" parent="32" unique_id=334196079]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 93.0
+offset_top = 43.0
+offset_right = 205.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<- Press F to continue"
+label_settings = SubResource("LabelSettings_87c2h")
+vertical_alignment = 1
+autowrap_mode = 3
 
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
