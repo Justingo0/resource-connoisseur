@@ -13,7 +13,7 @@ extends Area2D
 @export var max_destroy_time:float = 2.5
 @export var destroy_time:float
 
-var health = 1
+@export var health = 1
 var targets = []
 var targetRotation:float
 var reloadTimer:float

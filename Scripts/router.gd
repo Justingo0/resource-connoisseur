@@ -1,6 +1,6 @@
 extends Area2D
 
-var health = 50
+@export var health = 50
 
 signal inventory_changed(value:int)
 

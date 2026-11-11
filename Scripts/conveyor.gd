@@ -1,6 +1,6 @@
 extends Area2D
 
-var health = 20
+@export var health = 20
 
 @onready var raycast = $RayCast
 @onready var conveyor_body = $Body
