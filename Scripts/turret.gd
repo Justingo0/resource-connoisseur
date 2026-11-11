@@ -13,6 +13,7 @@ extends Area2D
 @export var max_destroy_time:float = 2.5
 @export var destroy_time:float
 
+@export var max_health:int
 @export var health = 1
 var targets = []
 var targetRotation:float
@@ -29,6 +30,7 @@ var line_width: float = 2.0
 var radius_color: Color = Color.YELLOW
 
 func _ready() -> void:
+	max_health = health
 	range.shape.radius = turretProperties.range * 64
 	health = turretProperties.health
 	shotCount = turretProperties.shotCount

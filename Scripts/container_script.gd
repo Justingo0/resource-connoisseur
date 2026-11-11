@@ -1,4 +1,5 @@
 extends Area2D
+@export var max_health:int
 @export var health = 2000
 
 signal inventory_changed(value:int)
@@ -13,6 +14,9 @@ signal inventory_changed(value:int)
 @export var destroy_time:float = 0.0
 
 @export var held:bool
+
+func _ready() -> void:
+	max_health = health
 
 func get_disabled() -> bool:
 	if destroy_time == max_destroy_time and held == false:

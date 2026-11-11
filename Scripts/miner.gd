@@ -2,7 +2,9 @@ extends Area2D
 
 @onready var driller_anim = $Drill/AnimationPlayer
 
+@export var max_health:int
 @export var health = 200 
+
 var oreCount = 0
 var mineTime = 0
 var time = 0
@@ -38,6 +40,7 @@ var last_generated_item = null
 var selected_conveyor = null
 
 func _ready() -> void:
+	max_health = health
 	driller_anim.speed_scale = 0
 	$Drill.visible = true
 	if !held:

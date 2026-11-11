@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var max_health:int
 @export var health = 20
 
 @onready var raycast = $RayCast
@@ -20,6 +21,7 @@ var item_moving:bool = true
 
 func _ready() -> void:
 	$Body.frame = GameManager.conveyor_frame
+	max_health = health
 
 func get_disabled() -> bool:
 	if destroy_time == max_destroy_time and held == false:

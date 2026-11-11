@@ -21,6 +21,7 @@ signal inventory_changed(value:int)
 
 @export var held:bool
 
+@export var max_health:int
 @export var health = 200
 
 var conveyorInterval = 0
@@ -45,6 +46,7 @@ func get_disabled() -> bool:
 	return true
 
 func _ready() -> void:
+	max_health = health
 	if type:
 		inventory_size = type.inventory_size
 		timer.wait_time = type.production_time

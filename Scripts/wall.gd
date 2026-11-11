@@ -5,7 +5,11 @@ extends Area2D
 
 @export var held:bool = false
 
+@export var max_health:int
 @export var health = 1500
+
+func _ready() -> void:
+	max_health = health
 
 func take_damage(damage: int) -> void:
 	health -= damage

@@ -1,5 +1,6 @@
 extends Area2D
 
+@export var max_health:int
 @export var health = 50
 
 signal inventory_changed(value:int)
@@ -36,6 +37,9 @@ var conveyors = []:
 	get:
 		return conveyors
 var conveyor_interval = 0
+
+func _ready() -> void:
+	max_health = health
 
 func get_disabled() -> bool:
 	if destroy_time == max_destroy_time and held == false:
