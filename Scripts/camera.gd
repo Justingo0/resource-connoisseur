@@ -12,6 +12,7 @@ signal on_action_finised(action:String)
 
 @onready var inventory_display = $DeleteCursor/InventoryDisplay
 @onready var item_container = $DeleteCursor/InventoryDisplay/ItemContainer
+@onready var item_health_bar = $DeleteCursor/InventoryDisplay/HealthBar
 
 var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
 var construct_shader = preload("res://Assets/Shader/construct_shader.tres")
@@ -55,6 +56,7 @@ var MAX_ZOOM = 2.5
 
 func _ready() -> void:
 	set_build_cursor(building_object)
+	inventory_display.visible = false
 	#viewport_size = get_viewport().get_visible_rect().size
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -86,8 +88,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print(object_action == actions.placing and not current_objects.is_empty())
 		#print(not building_objects.is_empty())
 		#print((delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()).is_empty())
-		if object_action == actions.placing and not current_objects.is_empty(): return
 		building_object = null
+		if object_action == actions.placing and not current_objects.is_empty(): return
 		if not building_objects.is_empty():
 			for object in building_objects:
 				object.queue_free()
@@ -154,7 +156,7 @@ func _physics_process(delta: float) -> void:
 				update_inventory_display({hovering_object.item.itemType:1})
 			else:
 				update_inventory_display({})
-		else:
+		elif hovering_object.is_in_group("Container"):
 			update_inventory_display(hovering_object.inventory)
 	
 	inventory_display.global_position = get_global_mouse_position()
@@ -322,23 +324,33 @@ func update_inventory_display(items:Dictionary):
 		else:
 			item_display.visible = false
 
+func update_inventory_health(block:Area2D):
+	if block:
+		if "max_health" in block:
+			item_health_bar.visible = true
+			item_health_bar.max_value = block.max_health
+			item_health_bar.value = block.health
+	else:
+		item_health_bar.visible = false
+
 func _on_delete_cursor_area_entered(area: Area2D) -> void:
-	if area.is_in_group("Conveyor") or area.is_in_group("Container"):
+	if area.is_in_group("Block") and area.held == false:
 		hovering_object = area
 		if hovering_object.has_method("highlight"):
 			hovering_object.highlight(true)
-		if area.is_in_group("Conveyor"):
-			if area.item != null:
-				update_inventory_display({area.item.itemType:1})
-			else:
-				update_inventory_display({})
-		else:
-			print(area)
-			#update_inventory_display(area.inventory)
+		if area.is_in_group("Conveyor") or area.is_in_group("Container"):
+			if area.is_in_group("Conveyor"):
+				if area.item != null:
+					update_inventory_display({area.item.itemType:1})
+				else:
+					update_inventory_display({})
+			elif area.is_in_group("Container"):
+				update_inventory_display(area.inventory)
+		update_inventory_health(area)
 		inventory_display.visible = true
 
 func _on_delete_cursor_area_exited(area: Area2D) -> void:
-	if area.is_in_group("Conveyor") or area.is_in_group("Container") and hovering_object == area:
+	if area.is_in_group("Block") and hovering_object == area:
 		if area.has_method("highlight"):
 			area.highlight(false)
 		hovering_object = null

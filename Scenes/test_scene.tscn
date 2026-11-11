@@ -289,6 +289,22 @@ font_size = 12
 outline_size = 11
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0miu"]
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6bfml"]
+bg_color = Color(0, 0.83984375, 0.13174018, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+corner_detail = 1
+
 [node name="Node2D" type="Node2D" unique_id=1245121356]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=308093899]
@@ -354,7 +370,6 @@ collision_mask = 8
 shape = SubResource("RectangleShape2D_p7o00")
 
 [node name="InventoryDisplay" type="Panel" parent="Player/Camera2D/DeleteCursor" unique_id=806023210]
-visible = false
 top_level = true
 z_index = 10
 custom_minimum_size = Vector2(50, 50)
@@ -363,8 +378,8 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = -64.0
 offset_top = -417.0
-offset_right = 85.0
-offset_bottom = -331.0
+offset_right = 91.0
+offset_bottom = -319.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_cb7yr")
 
@@ -374,12 +389,39 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 6.0
-offset_top = 6.0
-offset_right = -7.0
-offset_bottom = -12.0
+offset_top = 24.0
+offset_right = -4.0
+offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
 columns = 4
+
+[node name="Coal" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=244550135]
+custom_minimum_size = Vector2(15, 30)
+custom_maximum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = ExtResource("6_d3awe")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer/Coal" unique_id=2017396845]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.7142944
+offset_top = -18.0
+offset_right = 3.7142944
+offset_bottom = 5.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "HA"
+label_settings = SubResource("LabelSettings_p7o00")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Fluorite" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=117419224]
 custom_minimum_size = Vector2(15, 30)
@@ -542,6 +584,21 @@ text = "HA"
 label_settings = SubResource("LabelSettings_p7o00")
 horizontal_alignment = 2
 vertical_alignment = 2
+
+[node name="HealthBar" type="ProgressBar" parent="Player/Camera2D/DeleteCursor/InventoryDisplay" unique_id=31431266]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = -5.0
+offset_bottom = 13.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("7_yglu3")
+theme_override_font_sizes/font_size = 6
+theme_override_styles/background = SubResource("StyleBoxFlat_i0miu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6bfml")
+value = 100.0
 
 [node name="Home" parent="." unique_id=1526990172 groups=["Unbreakable"] instance=ExtResource("3_hb2xm")]
 
