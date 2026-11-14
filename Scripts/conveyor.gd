@@ -45,17 +45,40 @@ func _physics_process(delta: float) -> void:
 				next_conveyer.item_incoming = null
 				item = null
 		elif next_conveyer and next_conveyer.is_in_group("Container") and next_conveyer.held == false:
-			
-			if "inputItem" in next_conveyer and not item.itemType in next_conveyer.inputItem.keys()[0].name:
-				item_moving = false
-				return
+			if "inputItem" in next_conveyer and not item.itemType in next_conveyer.inputItem.keys()[0]:
+				#print(item.itemType, ", ", next_conveyer.inputItem.keys()[1].name)
+				if not item.itemType in next_conveyer.inputItem.keys()[1]:
+					item_moving = false
+					return
 			var inventory_size = 0
 			for value in next_conveyer.inventory.values():
 				inventory_size += value
-			if inventory_size >= next_conveyer.inventory_size: return
+			if inventory_size >= next_conveyer.inventory_size: #and not ("inputItem" in next_conveyer and item.itemType == next_conveyer.inputItem.keys()[1]):
+				if "inputItem" in next_conveyer and item.itemType == next_conveyer.inputItem.keys()[1]:
+					var inventory_2_size = 0
+					if "inventory_2" in next_conveyer:
+						for value in next_conveyer.inventory_2.values():
+							inventory_2_size += value
+					if inventory_2_size >= next_conveyer.inventory_size:
+						item_moving = false
+						return
+				else:
+					item_moving = false
+					return
 			item.global_position = item.global_position.move_toward(global_position + Vector2.UP.rotated(rotation)*64, SPEED*delta*GameManager.time_scale)
 			item_moving = true
 			if item.global_position == (global_position + Vector2.UP.rotated(rotation)*64):
+				if "inventory_2" in next_conveyer:
+					if item.itemType == next_conveyer.inputItem.keys()[1]:
+						if not (item.itemType in next_conveyer.inventory_2.keys()):
+							next_conveyer.inventory_2[item.itemType] = 0
+						next_conveyer.inventory_2[item.itemType] += 1
+						next_conveyer.inventory_2 = next_conveyer.inventory_2
+						#next_conveyer.inventory_changed.emit(next_conveyer.inventory["ore"])
+						#print(next_conveyer.inventory)
+						item.queue_free()
+						item = null
+						return
 				if not (item.itemType in next_conveyer.inventory.keys()):
 					next_conveyer.inventory[item.itemType] = 0
 				next_conveyer.inventory[item.itemType] += 1

@@ -172,7 +172,11 @@ func _physics_process(delta: float) -> void:
 			else:
 				update_inventory_display({})
 		elif hovering_object.is_in_group("Container"):
-			update_inventory_display(hovering_object.inventory)
+			var common = hovering_object.inventory
+			if "inventory_2" in hovering_object:
+				common.merge(hovering_object.inventory_2)
+			#print(common)
+			update_inventory_display(common)
 	
 	inventory_display.global_position = get_global_mouse_position()
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))

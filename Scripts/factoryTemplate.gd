@@ -5,7 +5,7 @@ signal inventory_changed(value:int)
 
 @onready var timer = $ProductionTimer
 
-@export var type:blockStats
+@export var type:factoryStats
 
 @export var inputItem:Dictionary
 
@@ -15,6 +15,7 @@ signal inventory_changed(value:int)
 	set(new_val):
 		inventory = new_val
 		GameManager.core_inventory = inventory
+@export var inventory_2 := {}
 
 @export var max_destroy_time:float
 @export var destroy_time:float
@@ -54,12 +55,12 @@ func _ready() -> void:
 		outputItem = type.output
 
 func _physics_process(delta: float) -> void:
-	if inventory.keys().size() > 0 and resources != inventory_size:
-		if inventory[inventory.keys()[0]] == 0:
-			inventory.erase(inventory.keys()[0])
-		if inventory.keys().size() > 1:
-			if inventory[inventory.keys()[1]] == 0:
-				inventory.erase(inventory.keys()[1])
+	#if inventory.keys().size() > 0 and resources != inventory_size:
+		#if inventory[inventory.keys()[0]] == 0:
+			#inventory.erase(inventory.keys()[0])
+	#if inventory_2.keys().size() > 0 and resources != inventory_size:
+		#if inventory_2[inventory_2.keys()[0]] == 0:
+			#inventory_2.erase(inventory_2.keys()[0])
 	if get_disabled(): return
 	if last_output_item:
 		last_output_item.global_position = last_output_item.global_position.move_toward(output_conveyor.global_position, 400*delta*GameManager.time_scale)
@@ -71,13 +72,14 @@ func _physics_process(delta: float) -> void:
 	output()
 
 func output():
+	if not can_output(): return
 	if not conveyors.is_empty() and resources > 0 and not last_output_item:
 		selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
-		if not selected_conveyor or selected_conveyor.held or ("output_conveyor" in selected_conveyor and selected_conveyor.output_conveyor == self):
+		if not selected_conveyor or selected_conveyor.get_disabled() or ("output_conveyor" in selected_conveyor and selected_conveyor.output_conveyor == self):
 			#conveyors.erase(output_conveyor)
 			selected_conveyor = null
 			for conveyor in conveyors:
-				if conveyor and conveyor.held == false and ("output_conveyor" in conveyor and conveyor.output_conveyor != self):
+				if conveyor and conveyor.get_disabled() == false and ("output_conveyor" in conveyor and conveyor.output_conveyor != self):
 					selected_conveyor = conveyor
 					break
 			if not selected_conveyor: return
@@ -144,12 +146,36 @@ func _on_conveyor_detector_area_exited(area: Area2D) -> void:
 		conveyors = conveyors
 
 func _on_production_timer_timeout() -> void:
-	if inventory.keys().size() > 0 and resources != inventory_size:
-		if inputItem.size() == 2 and inventory[inventory.keys()[0]] >= inputItem.keys()[0] and inventory[inventory.keys()[1]] >= inputItem.keys()[1]:
-			resources = min(resources + 1, 10)
-		elif inventory[inventory.keys()[0]] >= inputItem.values()[0]:
+	if inventory.size() > 0 and resources != inventory_size:
+		#var inventory_keys = inventory.keys()
+		#for item in inventory_keys:
+			#if item in inputItem.keys():
+				#if inventory[item] >= inputItem[item]:
+					#if item1:
+						#item2 = true
+					#else:
+						#item1 = true
+		#print(item1, item2)
+		if not can_output(): return
+		#print("InputItem - ", inputItem, " | Inventory - ", inventory)
+		if inputItem.size() == 2 and (inventory.size() == 1 and inventory[inventory.keys()[0]] >= inputItem.values()[0]):
+			resources = min(resources + 1, type.inventory_size)
+		elif inventory.values()[0] >= inputItem.values()[0] and (inventory_2.values()[0] >= inputItem.values()[1]):
 			inventory[inventory.keys()[0]] -= inputItem.values()[0]
-			resources = min(resources + 1, 10)
+			if inputItem.size() == 2:
+				inventory_2[inventory_2.keys()[0]] -= inputItem.values()[1]
+			resources = min(resources + 1, type.inventory_size)
+
+func can_output() -> bool:
+	print(inventory, " and ", inventory_2, " comaped to ", inputItem)
+	if inventory.is_empty() or (inputItem.size() >= 2 and inventory_2.is_empty()):
+		return false
+	if inputItem.size() >= 1 and inventory[inventory.keys()[0]] >= inputItem.values()[0]:
+		if inputItem.size() >= 2 and inventory_2[inventory_2.keys()[0]] < inputItem.values()[1]:
+			return false
+	elif inputItem.size() >= 1 and inventory[inventory.keys()[0]] < inputItem.values()[0]:
+		return false
+	return true
 
 func _notification(notif: int) -> void:
 	if notif == NOTIFICATION_PREDELETE:

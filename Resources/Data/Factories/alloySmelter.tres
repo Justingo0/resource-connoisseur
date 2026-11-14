@@ -1,18 +1,21 @@
 [gd_resource type="Resource" script_class="factoryStats" format=3 uid="uid://dux2nmvmm42tu"]
 
 [ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_8f2gr"]
+[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="1_nwcaj"]
+[ext_resource type="Resource" uid="uid://dwetatp2vapwj" path="res://Resources/Data/Items/Alloy.tres" id="2_dv6wx"]
+[ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="3_h5nxf"]
 
 [resource]
 script = ExtResource("1_8f2gr")
-size = 1
-health = 200
 input = {
 "Ruby": 2,
 "Titanium": 1
 }
-output = {
-"RubyAlloy": 1
-}
-productionTime = 1.0
-inventory = [{}]
+output = ExtResource("2_dv6wx")
+inventory_size = 10
+icon = ExtResource("1_nwcaj")
+name = "Alloy Smelter"
+scene = ExtResource("3_h5nxf")
+size = 1
+health = 200
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"
