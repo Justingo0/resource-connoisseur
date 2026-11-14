@@ -590,9 +590,9 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 5.0
-offset_top = 5.0
+offset_top = 4.0
 offset_right = -5.0
-offset_bottom = 13.0
+offset_bottom = 12.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("7_yglu3")
 theme_override_font_sizes/font_size = 6
@@ -601,6 +601,7 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_6bfml")
 value = 100.0
 
 [node name="Home" parent="." unique_id=1526990172 groups=["Unbreakable"] instance=ExtResource("3_hb2xm")]
+unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1254243288]
 
@@ -610,6 +611,7 @@ anchor_left = 1.0
 anchor_top = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+tutorial_mode = false
 
 [node name="Ores" type="Node2D" parent="." unique_id=1186923284]
 

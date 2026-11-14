@@ -29,7 +29,7 @@ var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
 		set_build_cursor(building_object)
 	get:
 		return building_object
-@export var building_object_type:Resource
+@export var building_object_type:blockStats
 
 var last_object_built = null
 var building_objects := []
@@ -151,6 +151,9 @@ func _physics_process(delta: float) -> void:
 			delete()
 	
 	if hovering_object:
+		if "health" in hovering_object:
+			item_health_bar.max_value = hovering_object.max_health
+			item_health_bar.value = hovering_object.health
 		if hovering_object.is_in_group("Conveyor"):
 			if hovering_object.item != null:
 				update_inventory_display({hovering_object.item.itemType:1})
@@ -263,6 +266,13 @@ func place(object:PackedScene):
 			#deleting_obj.destroy_time = deleting_obj.max_destroy_time
 			#deleting_obj.material = null
 		#deleting_objects.clear()
+	var inv = %Home.inventory
+	var buildCost = building_object_type.buildCosts
+	if not inv.has_all(buildCost.keys()):
+		return
+	for key in buildCost:
+		if inv[key] < buildCost[key]:
+			return
 	
 	var placed_object = object.instantiate()
 	if placed_object.is_in_group("OverwriteSelf"):
@@ -308,6 +318,7 @@ func delete():
 	#current_action = actions.deleting
 
 func update_inventory_display(items:Dictionary):
+	item_container.visible = true
 	var item_keys = items.keys()
 	#for item in item_keys:
 		#var amount = items[item]
@@ -336,6 +347,7 @@ func update_inventory_health(block:Area2D):
 func _on_delete_cursor_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Block") and area.held == false:
 		hovering_object = area
+		
 		if hovering_object.has_method("highlight"):
 			hovering_object.highlight(true)
 		if area.is_in_group("Conveyor") or area.is_in_group("Container"):
@@ -345,7 +357,10 @@ func _on_delete_cursor_area_entered(area: Area2D) -> void:
 				else:
 					update_inventory_display({})
 			elif area.is_in_group("Container"):
-				update_inventory_display(area.inventory)
+				var inv = area.inventory
+				if "inventory_2" in area:
+					inv.merge(area.inventory_2)
+				update_inventory_display(inv)
 		update_inventory_health(area)
 		inventory_display.visible = true
 
@@ -355,3 +370,4 @@ func _on_delete_cursor_area_exited(area: Area2D) -> void:
 			area.highlight(false)
 		hovering_object = null
 		inventory_display.visible = false
+		item_container.visible = false
