@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="itemStats" format=3 uid="uid://dwetatp2vapwj"]
+
+[ext_resource type="Texture2D" uid="uid://c8qw3rm43neu0" path="res://Assets/Alloy.png" id="1_vf7xx"]
+[ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="2_n2if2"]
+
+[resource]
+script = ExtResource("2_n2if2")
+icon = ExtResource("1_vf7xx")
+name = "Alloy"
+metadata/_custom_type_script = "uid://fvk4kso7ogn0"
