@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/DaggerBuild.png" id="19_cj8qe"]
 [ext_resource type="Resource" uid="uid://b55swmillii22" path="res://Resources/Data/Factories/graphitePress.tres" id="20_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
+[ext_resource type="Resource" uid="uid://dux2nmvmm42tu" path="res://Resources/Data/Factories/alloySmelter.tres" id="20_ypmmn"]
 [ext_resource type="Resource" uid="uid://dgykme6jgn6kr" path="res://Resources/Data/Walls/fluoriteWall.tres" id="21_5mldt"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
 [ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
@@ -698,7 +699,6 @@ texture_normal = ExtResource("16_5mldt")
 type = ExtResource("21_5mldt")
 
 [node name="Base" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1813311783]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -720,6 +720,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("18_qi0q1")
 type = ExtResource("20_0dv3k")
+
+[node name="Selection2" parent="SelectionMenu/Selections/Base" unique_id=1354477393 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("18_qi0q1")
+type = ExtResource("20_ypmmn")
 
 [node name="HiddenArea" type="Control" parent="SelectionMenu" unique_id=2031371284]
 layout_mode = 2
@@ -914,37 +921,41 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 6.0
-offset_top = 37.0
+offset_top = 41.0
 offset_right = -6.0
-offset_bottom = 83.0
+offset_bottom = 87.0
 grow_horizontal = 2
 text = "Lorem ipsum dolor sit amet consectuer."
 label_settings = SubResource("LabelSettings_cj8qe")
 autowrap_mode = 2
 
 [node name="Annoucement" type="Label" parent="." unique_id=1853022101]
-visible = false
 custom_minimum_size = Vector2(0, 44)
 custom_maximum_size = Vector2(-1, 44)
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -2.5
-offset_top = 20.0
-offset_right = 2.5
-offset_bottom = 64.0
-grow_horizontal = 2
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -681.0
+offset_top = -628.0
+offset_right = -471.0
+offset_bottom = -584.0
+grow_horizontal = 0
+grow_vertical = 0
 pivot_offset_ratio = Vector2(0.5, 0)
 offset_transform_enabled = true
-offset_transform_position_ratio = Vector2(0, -1.5)
+offset_transform_position_ratio = Vector2(0, -1.6)
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
 text = "RIp brochacho"
 label_settings = SubResource("LabelSettings_p7o00")
+horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_trim_flags = 0
 
 [node name="Icon" type="TextureRect" parent="Annoucement" unique_id=894354975]
+visible = false
 texture_filter = 1
 custom_maximum_size = Vector2(44, 44)
 layout_mode = 1
@@ -2406,6 +2417,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="40" type="Control" parent="Tutorial" unique_id=744984515]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
