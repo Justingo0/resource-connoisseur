@@ -9,6 +9,7 @@ signal on_action_finised(action:String)
 @onready var mine_cursor = $DeleteCursor/MineCursor
 
 @onready var player = %Player
+@onready var build_menu = %BuildMenu
 
 @onready var inventory_display = $DeleteCursor/InventoryDisplay
 @onready var item_container = $DeleteCursor/InventoryDisplay/ItemContainer
@@ -34,6 +35,8 @@ var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
 var last_object_built = null
 var building_objects := []
 var deleting_objects := []
+
+var predicted_loss := {}
 
 var current_objects := []
 var interacting_object = null
@@ -89,6 +92,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		#print(not building_objects.is_empty())
 		#print((delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()).is_empty())
 		building_object = null
+		predicted_loss = {}
 		if object_action == actions.placing and not current_objects.is_empty(): return
 		if not building_objects.is_empty():
 			for object in building_objects:
@@ -122,6 +126,14 @@ func _input(event: InputEvent) -> void:
 		
 		current_objects.append_array(building_objects)
 		object_action = actions.placing
+		var inv = %Home.inventory as Dictionary
+		print(predicted_loss)
+		for key in predicted_loss:
+			if inv.keys().has(key):
+				inv[key] -= predicted_loss[key] - building_object_type.buildCosts[key]
+				if inv[key] <= 0:
+					inv.erase(key)
+		predicted_loss = {}
 		
 		building = false
 		current_action = null
@@ -268,19 +280,32 @@ func place(object:PackedScene):
 		#deleting_objects.clear()
 	var inv = %Home.inventory
 	var buildCost = building_object_type.buildCosts
-	if not inv.has_all(buildCost.keys()):
+	if predicted_loss.is_empty():
+		predicted_loss = buildCost.duplicate()
+		#print(predicted_loss)
+	if not inv.has_all(predicted_loss.keys()):
+		build_menu.send_announcement.emit("Insufficient Resources!")
 		return
-	for key in buildCost:
-		if inv[key] < buildCost[key]:
+	for key in predicted_loss:
+		#print(inv, predicted_loss)
+		if inv[key] < predicted_loss[key]:
+			build_menu.send_announcement.emit("Insufficient Resources!")
 			return
+	
+	var combined = {}
+	for key in buildCost:
+		combined[key] = predicted_loss[key] + buildCost[key]
+	predicted_loss = combined
 	
 	var placed_object = object.instantiate()
 	if placed_object.is_in_group("OverwriteSelf"):
 		var deleting = delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()
 		if not deleting.is_empty():
 			deleting[0].queue_free()
+	
 	if "type" in placed_object:
 		placed_object.type = building_object_type
+	
 	get_tree().current_scene.add_child(placed_object)
 	#placed_object.held = true
 	placed_object.destroy_time = 0

@@ -1,7 +1,7 @@
 extends Control
 
 signal startPrematurely
-signal send_announcement(icon:Texture2D, message:String)
+signal send_announcement(message:String, icon:Texture2D, color:Color)
 
 @onready var camera = %Camera2D
 @onready var pause_state_sign = $PauseButton/TextureRect
@@ -26,10 +26,12 @@ var paused = false
 
 var ANNOUNCEMENT_DURATION = 3 #seconds
 
+var announce_tween:Tween
+
 #func _input(event: InputEvent) -> void:
 	#if event.is_action_pressed("Delete"):
-		#print("Sent off")
-		#send_announcement.emit(null, "OMG HIII")
+		##print("Sent off")
+		#send_announcement.emit("Insufficient Resources!", null, Color.RED)
 
 func _on_pause_button_pressed() -> void:
 	paused = not paused
@@ -40,22 +42,25 @@ func _on_skip_wave_button_pressed() -> void:
 	if GameManager.time_scale <= 0.0: return
 	startPrematurely.emit()
 
-func _on_send_announcement(icon: Texture2D, message: String) -> void:
-	annoucment_label.offset_transform_pivot_ratio = Vector2(0,-1.5)
+func _on_send_announcement(message: String, icon:Texture2D=null, color:Color=Color.WHITE) -> void:
+	if announce_tween and announce_tween.is_valid():
+		announce_tween.kill()
+	annoucment_label.offset_transform_position_ratio = Vector2(0,-1.6)
 	annoucment_label.text = message
 	annoucement_icon.texture = icon
-	var tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
-	tween.tween_property(annoucment_label, "offset_transform_position_ratio", Vector2(0,0), 0.3)
-	tween.play()
+	annoucment_label.modulate = color
+	announce_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	announce_tween.tween_property(annoucment_label, "offset_transform_position_ratio", Vector2(0,0), 0.2)
+	announce_tween.play()
 	hide_timer.wait_time = ANNOUNCEMENT_DURATION
 	hide_timer.start()
-	print("recieved reveal")
+	#print("recieved reveal")
 
 func _on_hide_timer_timeout() -> void:
-	var tween = create_tween().set_ease(Tween.EASE_OUT_IN).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE)
-	tween.tween_property(annoucment_label, "offset_transform_position_ratio", Vector2(0,-1.5), 0.3)
-	tween.play()
-	print("recieved conceal")
+	announce_tween = create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	announce_tween.tween_property(annoucment_label, "offset_transform_position_ratio", Vector2(0,-1.6), 0.2)
+	announce_tween.play()
+	#print("recieved conceal")
 
 func get_camera() -> Camera2D:
 	return camera

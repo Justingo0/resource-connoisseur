@@ -606,6 +606,7 @@ unique_name_in_owner = true
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1254243288]
 
 [node name="BuildMenu" parent="CanvasLayer" unique_id=193295564 instance=ExtResource("5_ak5v8")]
+unique_name_in_owner = true
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
