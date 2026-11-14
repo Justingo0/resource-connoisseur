@@ -2,10 +2,11 @@ extends Area2D
 
 @export var inputItem:Dictionary
 
-@onready var turretTop = $turretTop
 @onready var bullet = preload("res://Scenes/bullet.tscn")
-@onready var turretProperties = preload("res://Resources/Data/Turrets/Ballista.tres")
-
+@export var type:Resource = preload("res://Resources/Data/Turrets/Ballista.tres")
+@onready var turretTop = $turretTop
+@onready var topSprite = $turretTop
+@onready var baseSprite = $turretBase
 @onready var range = $rangeCone/range
 @onready var range_outline = $RadiusOutline
 
@@ -29,11 +30,13 @@ var line_width: float = 2.0
 var radius_color: Color = Color.YELLOW
 
 func _ready() -> void:
-	range.shape.radius = turretProperties.range * 64
-	health = turretProperties.health
-	shotCount = turretProperties.shotCount
-	inputItem = turretProperties.input
-	print(turretProperties.input)
+	print("RUNNING")
+	range.shape.radius = type.range * 64
+	health = type.health
+	shotCount = type.shotCount
+	inputItem = type.input
+	topSprite.texture = type.topSprite
+	baseSprite.texture = type.baseSprite
 
 func get_disabled() -> bool:
 	if destroy_time == max_destroy_time and held == false:
@@ -65,7 +68,7 @@ func _physics_process(_delta: float) -> void:
 	if held: return
 	if !targets.is_empty():
 		targetRotation = global_position.angle_to_point(targets[0].global_position)
-		if abs(rad_to_deg(angle_difference(targetRotation + 1.571, turretTop.global_rotation))) < 3 and reloadTimer > turretProperties.reloadSpeed:
+		if abs(rad_to_deg(angle_difference(targetRotation + 1.571, turretTop.global_rotation))) < 3 and reloadTimer > type.reloadSpeed:
 			shoot()
 			reloadTimer = 0
 	pointAtEnemy(targetRotation)
@@ -88,25 +91,25 @@ func shoot():
 		return
 	while shotCount > 0:
 		reloadTimer = 0
-		if !turretProperties.shotgun:
-			await get_tree().create_timer(turretProperties.shotInterval).timeout
+		if !type.shotgun:
+			await get_tree().create_timer(type.shotInterval).timeout
 		shotCount -= 1
 		var bulletClone = bullet.instantiate()
 		bulletClone.position = global_position
-		bulletClone.rotation = turretTop.rotation - 1.571 + deg_to_rad(randf_range(-turretProperties.spread, turretProperties.spread))
-		bulletClone.projectileLifetime = turretProperties.projectileLifetime
-		bulletClone.damage = turretProperties.damage
-		bulletClone.projectilePierce = turretProperties.projectilePierce
-		bulletClone.projectileSpeed = turretProperties.projectileSpeed
-		if(turretProperties.shotgun):
+		bulletClone.rotation = turretTop.rotation - 1.571 + deg_to_rad(randf_range(-type.spread, type.spread))
+		bulletClone.projectileLifetime = type.projectileLifetime
+		bulletClone.damage = type.damage
+		bulletClone.projectilePierce = type.projectilePierce
+		bulletClone.projectileSpeed = type.projectileSpeed
+		if(type.shotgun):
 			bulletClone.projectileSpeed += randf_range(-200, 200)
-		bulletClone.laser = turretProperties.laser
-		bulletClone.range = turretProperties.range
-		bulletClone.widthMultiplier = turretProperties.widthMultiplier
-		bulletClone.knockAmount = turretProperties.knockAmount
+		bulletClone.laser = type.laser
+		bulletClone.range = type.range
+		bulletClone.widthMultiplier = type.widthMultiplier
+		bulletClone.knockAmount = type.knockAmount
 		
 		get_tree().current_scene.add_child(bulletClone)
-	shotCount = turretProperties.shotCount
+	shotCount = type.shotCount
 
 func pointAtEnemy(angle: float) -> void:
 	turretTop.rotation = rotate_toward(turretTop.rotation, targetRotation + 1.571, 0.1)
@@ -132,7 +135,7 @@ func _on_radius_outline_draw() -> void:
 	# Calculate all vertices along the circle perimeter
 	for i in range(total_segments + 1):
 		var angle = i * angle_step
-		points.append(center + Vector2(cos(angle), sin(angle)) * turretProperties.range * 64)
+		points.append(center + Vector2(cos(angle), sin(angle)) * type.range * 64)
 		
 	# Draw alternating segments
 	for i in range(0, total_segments, 2):
