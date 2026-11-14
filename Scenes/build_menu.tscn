@@ -10,11 +10,15 @@
 [ext_resource type="Script" uid="uid://c6f7oghh7tfqj" path="res://Scripts/UserInterface/selection_menu.gd" id="11_4o04s"]
 [ext_resource type="PackedScene" uid="uid://busepgbfxl48t" path="res://Scenes/selection_button.tscn" id="11_v31xr"]
 [ext_resource type="Texture2D" uid="uid://dq2yh8nw3wo0a" path="res://Assets/mineBuild.png" id="13_b2sko"]
+[ext_resource type="Resource" uid="uid://ubquto7gj313" path="res://Resources/Data/Turrets/Dagger.tres" id="14_nlj0r"]
+[ext_resource type="Resource" uid="uid://sxvaf54lydtu" path="res://Resources/Data/Turrets/Arbalest.tres" id="15_qi0q1"]
 [ext_resource type="Texture2D" uid="uid://cy4lb3o2s1f08" path="res://Assets/PrototypeWall.png" id="16_5mldt"]
 [ext_resource type="Resource" uid="uid://s8sox3x81p57" path="res://Resources/Data/Miners/basic_miner.tres" id="16_fg8k8"]
+[ext_resource type="Resource" uid="uid://c37b5vulia72t" path="res://Resources/Data/Turrets/Blunderbuss.tres" id="17_6gs3s"]
 [ext_resource type="Texture2D" uid="uid://d4idlmt7lifhb" path="res://Assets/UI/TabsIcons/Miners.png" id="17_fg8k8"]
 [ext_resource type="Resource" uid="uid://clc15lbcd830h" path="res://Resources/Data/Sorting/Conveyors/basic_conveyor.tres" id="17_u07jk"]
 [ext_resource type="Resource" uid="uid://blyr3tph1yotb" path="res://Resources/Data/Sorting/router.tres" id="18_0dv3k"]
+[ext_resource type="Resource" uid="uid://cp76e3xhj2ev" path="res://Resources/Data/Turrets/Lance.tres" id="18_87c2h"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
 [ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="18_qi0q1"]
 [ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
@@ -22,8 +26,14 @@
 [ext_resource type="Resource" uid="uid://b55swmillii22" path="res://Resources/Data/Factories/graphitePress.tres" id="20_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
 [ext_resource type="Resource" uid="uid://dux2nmvmm42tu" path="res://Resources/Data/Factories/alloySmelter.tres" id="20_ypmmn"]
+[ext_resource type="Resource" uid="uid://bohkep2gj2qrn" path="res://Resources/Data/Turrets/Hua-Che.tres" id="19_6gs3s"]
+[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/DaggerBuild.png" id="19_cj8qe"]
+[ext_resource type="Resource" uid="uid://b55swmillii22" path="res://Resources/Data/Factories/graphitePress.tres" id="20_0dv3k"]
+[ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
+[ext_resource type="Resource" uid="uid://cc8gawubv8gsg" path="res://Resources/Data/Turrets/Ballista.tres" id="20_leu4g"]
 [ext_resource type="Resource" uid="uid://dgykme6jgn6kr" path="res://Resources/Data/Walls/fluoriteWall.tres" id="21_5mldt"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
+[ext_resource type="Resource" uid="uid://cf6xyw62ii08y" path="res://Resources/Data/Factories/fluoriteRefiner.tres" id="26_leu4g"]
 [ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
 [ext_resource type="Texture2D" uid="uid://dlcq5afw7rf34" path="res://Assets/UI/TabsIcons/Walls.png" id="27_qi0q1"]
 [ext_resource type="Script" uid="uid://w07ceot5mi5n" path="res://Resources/Managers/tutorialStats.gd" id="28_liqnk"]
@@ -667,12 +677,48 @@ theme_override_constants/h_separation = 7
 theme_override_constants/v_separation = 6
 columns = 6
 
-[node name="Selection" parent="SelectionMenu/Selections/Turrets" unique_id=345103799 instance=ExtResource("11_v31xr")]
+[node name="Dagger" parent="SelectionMenu/Selections/Turrets" unique_id=1670737532 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+type = ExtResource("14_nlj0r")
+
+[node name="Arbalest" parent="SelectionMenu/Selections/Turrets" unique_id=252668739 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+type = ExtResource("15_qi0q1")
+
+[node name="Blunderbuss" parent="SelectionMenu/Selections/Turrets" unique_id=1107903705 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+type = ExtResource("17_6gs3s")
+
+[node name="Chu-Ko-Nu" parent="SelectionMenu/Selections/Turrets" unique_id=345103799 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("19_cj8qe")
 type = ExtResource("19_0dv3k")
+
+[node name="Lance" parent="SelectionMenu/Selections/Turrets" unique_id=1907970065 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+type = ExtResource("18_87c2h")
+
+[node name="Hua-Che" parent="SelectionMenu/Selections/Turrets" unique_id=1002338534 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+type = ExtResource("19_6gs3s")
+
+[node name="Ballista" parent="SelectionMenu/Selections/Turrets" unique_id=1374722836 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+type = ExtResource("20_leu4g")
 
 [node name="Walls" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1682967110]
 visible = false
