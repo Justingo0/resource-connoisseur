@@ -2,6 +2,9 @@ extends blockStats
 
 class_name turretStats
 
+@export var topSprite:Texture2D
+@export var baseSprite:Texture2D
+
 @export var inventory_size:Array
 @export var inventory:Array
 @export var input:Dictionary
