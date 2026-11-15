@@ -20,4 +20,4 @@ func _ready() -> void:
 	times_logged += 1
 	#if times_logged == 1:
 		#tutorial_mode = true
-	print(times_logged)
+	#print(times_logged)

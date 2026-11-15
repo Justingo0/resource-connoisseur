@@ -8,6 +8,7 @@ signal inventory_changed(value:int)
 	set(new_val):
 		inventory = new_val
 		GameManager.core_inventory = inventory
+		#print("no way broski")
 @export var inventory_size:int
 
 @export var max_destroy_time:float

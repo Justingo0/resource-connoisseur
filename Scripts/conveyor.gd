@@ -46,14 +46,21 @@ func _physics_process(delta: float) -> void:
 				item = null
 		elif next_conveyer and next_conveyer.is_in_group("Container") and next_conveyer.held == false:
 			if "inputItem" in next_conveyer and not item.itemType in next_conveyer.inputItem.keys()[0]:
-				if not item.itemType in next_conveyer.inputItem.keys()[1]:
+				if "inputItem" in next_conveyer and next_conveyer.inputItem.size() >= 2 and not item.itemType in next_conveyer.inputItem.keys()[1]:
 					item_moving = false
 					return
+				elif "inputItem" in next_conveyer and next_conveyer.inputItem.size() == 1:
+					item_moving = false
+					return
+			#elif "inputItem" in next_conveyer and next_conveyer.inputItem.size() >= 2 and not item.itemType in next_conveyer.inputItem.keys()[1]:
+				#item_moving = false
+				#return
 			var inventory_size = 0
 			for value in next_conveyer.inventory.values():
 				inventory_size += value
+			print(next_conveyer, inventory_size)
 			if inventory_size >= next_conveyer.inventory_size: #and not ("inputItem" in next_conveyer and item.itemType == next_conveyer.inputItem.keys()[1]):
-				if "inputItem" in next_conveyer and item.itemType == next_conveyer.inputItem.keys()[1]:
+				if "inputItem" in next_conveyer and next_conveyer.inputItem.size() == 2 and item.itemType == next_conveyer.inputItem.keys()[1]:
 					var inventory_2_size = 0
 					if "inventory_2" in next_conveyer:
 						for value in next_conveyer.inventory_2.values():
@@ -64,7 +71,7 @@ func _physics_process(delta: float) -> void:
 				else:
 					item_moving = false
 					return
-			if "inputItem" in next_conveyer and item.itemType == next_conveyer.inputItem.keys()[1]:
+			if "inputItem" in next_conveyer and next_conveyer.inputItem.size() == 2 and item.itemType == next_conveyer.inputItem.keys()[1]:
 				var inventory_2_size = 0
 				if "inventory_2" in next_conveyer:
 					for value in next_conveyer.inventory_2.values():

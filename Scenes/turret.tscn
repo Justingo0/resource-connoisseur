@@ -4,40 +4,38 @@
 [ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="2_6spbj"]
 [ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/DaggerTop.png" id="3_pulj5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_86gdd"]
 size = Vector2(54, 54)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_6spbj"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_fmtr8"]
 radius = 195.04102
 
-[node name="Turret" type="Area2D" unique_id=1590054207 groups=["Block", "Container"]]
+[node name="Turret" type="Area2D" unique_id=189769755 groups=["Block", "Container"]]
 z_index = 5
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_6spbj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1532442197]
-shape = SubResource("RectangleShape2D_p7o00")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1497481526]
+shape = SubResource("RectangleShape2D_86gdd")
 
-[node name="turretBase" type="Sprite2D" parent="." unique_id=1616883434]
+[node name="turretBase" type="Sprite2D" parent="." unique_id=1177223712]
 texture_filter = 1
 use_parent_material = true
 texture = ExtResource("2_6spbj")
 
-[node name="turretTop" type="Sprite2D" parent="." unique_id=1432120540]
+[node name="turretTop" type="Sprite2D" parent="." unique_id=347864580]
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_pulj5")
 
-[node name="RadiusOutline" type="Node2D" parent="." unique_id=1365690402]
+[node name="RadiusOutline" type="Node2D" parent="." unique_id=1079176963]
 visible = false
 
-[node name="rangeCone" type="Area2D" parent="." unique_id=277785001]
+[node name="rangeCone" type="Area2D" parent="." unique_id=1364791586]
 collision_layer = 8
 collision_mask = 8
 
-[node name="range" type="CollisionShape2D" parent="rangeCone" unique_id=487556908]
-shape = SubResource("CircleShape2D_6spbj")
+[node name="range" type="CollisionShape2D" parent="rangeCone" unique_id=865092373]
+shape = SubResource("CircleShape2D_fmtr8")
 debug_color = Color(0.606062, 0.532644, 0.28561583, 0.41960785)
-
-[connection signal="draw" from="RadiusOutline" to="." method="_on_radius_outline_draw"]
