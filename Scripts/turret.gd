@@ -31,7 +31,6 @@ var line_width: float = 2.0
 var radius_color: Color = Color.YELLOW
 
 func _ready() -> void:
-	print("RUNNING")
 	range.shape.radius = type.range * 64
 	health = type.health
 	shotCount = type.shotCount
@@ -107,7 +106,6 @@ func pointAtEnemy(angle: float) -> void:
 	turretTop.rotation = rotate_toward(turretTop.rotation, targetRotation + 1.571, 0.1)
 
 func highlight(toggle:bool):
-	print(toggle)
 	if not held and toggle:
 		range_outline.queue_redraw()
 		range_outline.visible = true
