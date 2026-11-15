@@ -11,11 +11,14 @@ signal inventory_changed(value:int)
 
 @export var outputItem:itemStats
 
-@export var inventory = {}:
+@export var inventory := {}:
 	set(new_val):
 		inventory = new_val
-		GameManager.core_inventory = inventory
-@export var inventory_2 := {}
+		print(inventory ," from Main")
+@export var inventory_2 := {}:
+	set(new_val):
+		inventory_2 = new_val
+		print(inventory_2 ," from Secondary")
 
 @export var max_destroy_time:float
 @export var destroy_time:float
@@ -37,7 +40,6 @@ var resources = 0
 @export var conveyors = []:
 	set(newValue):
 		conveyors = newValue
-		#print(conveyors)
 	get:
 		return conveyors
 
@@ -55,12 +57,6 @@ func _ready() -> void:
 		outputItem = type.output
 
 func _physics_process(delta: float) -> void:
-	#if inventory.keys().size() > 0 and resources != inventory_size:
-		#if inventory[inventory.keys()[0]] == 0:
-			#inventory.erase(inventory.keys()[0])
-	#if inventory_2.keys().size() > 0 and resources != inventory_size:
-		#if inventory_2[inventory_2.keys()[0]] == 0:
-			#inventory_2.erase(inventory_2.keys()[0])
 	if get_disabled(): return
 	if last_output_item:
 		last_output_item.global_position = last_output_item.global_position.move_toward(output_conveyor.global_position, 400*delta*GameManager.time_scale)
@@ -133,11 +129,9 @@ func take_damage(damage: int) -> void:
 
 func _on_conveyor_detector_area_entered(area: Area2D) -> void:
 	if (area.is_in_group("Conveyor") or area.is_in_group("Container")) and area.held == false and area != self:
-		if not held:
-			pass
-			#print(area, " from ", self)
 		conveyors.append(area)
 		conveyors = conveyors
+		print(area)
 		output()
 
 func _on_conveyor_detector_area_exited(area: Area2D) -> void:
@@ -146,28 +140,31 @@ func _on_conveyor_detector_area_exited(area: Area2D) -> void:
 		conveyors = conveyors
 
 func _on_production_timer_timeout() -> void:
-	if inventory.size() > 0 and resources != inventory_size:
-		#var inventory_keys = inventory.keys()
-		#for item in inventory_keys:
-			#if item in inputItem.keys():
-				#if inventory[item] >= inputItem[item]:
-					#if item1:
-						#item2 = true
-					#else:
-						#item1 = true
-		#print(item1, item2)
-		if not can_output(): return
-		#print("InputItem - ", inputItem, " | Inventory - ", inventory)
-		if inputItem.size() == 2 and (inventory.size() == 1 and inventory[inventory.keys()[0]] >= inputItem.values()[0]):
-			resources = min(resources + 1, type.inventory_size)
-		elif inventory.values()[0] >= inputItem.values()[0] and (inventory_2.values()[0] >= inputItem.values()[1]):
-			inventory[inventory.keys()[0]] -= inputItem.values()[0]
-			if inputItem.size() == 2:
-				inventory_2[inventory_2.keys()[0]] -= inputItem.values()[1]
-			resources = min(resources + 1, type.inventory_size)
+	check_conveyors()
+	if can_output():
+		print(is_same(inventory, inventory_2))
+		inventory[inventory.keys()[0]] -= inputItem.values()[0]
+		inventory = inventory
+		if inventory.values()[0] <= 0:
+			inventory.erase(inventory.keys()[0])
+			inventory = inventory
+		if inputItem.size() == 2:
+			inventory_2[inventory_2.keys()[0]] -= inputItem.values()[1]
+			inventory_2 = inventory_2
+			if inventory_2.values()[0] <= 0:
+				inventory_2.erase(inventory_2.keys()[0])
+				inventory_2 = inventory_2
+		resources = min(resources + 1, type.inventory_size)
+
+func check_conveyors():
+	for conveyor in conveyors:
+		if "output_conveyor" in conveyor:
+			if conveyor.output_conveyor == self:
+				conveyors.erase(conveyor)
 
 func can_output() -> bool:
-	print(inventory, " and ", inventory_2, " comaped to ", inputItem)
+	if resources == inventory_size or conveyors.is_empty():
+		return false
 	if inventory.is_empty() or (inputItem.size() >= 2 and inventory_2.is_empty()):
 		return false
 	if inputItem.size() >= 1 and inventory[inventory.keys()[0]] >= inputItem.values()[0]:

@@ -46,7 +46,6 @@ func _physics_process(delta: float) -> void:
 				item = null
 		elif next_conveyer and next_conveyer.is_in_group("Container") and next_conveyer.held == false:
 			if "inputItem" in next_conveyer and not item.itemType in next_conveyer.inputItem.keys()[0]:
-				#print(item.itemType, ", ", next_conveyer.inputItem.keys()[1].name)
 				if not item.itemType in next_conveyer.inputItem.keys()[1]:
 					item_moving = false
 					return
@@ -65,6 +64,14 @@ func _physics_process(delta: float) -> void:
 				else:
 					item_moving = false
 					return
+			if "inputItem" in next_conveyer and item.itemType == next_conveyer.inputItem.keys()[1]:
+				var inventory_2_size = 0
+				if "inventory_2" in next_conveyer:
+					for value in next_conveyer.inventory_2.values():
+						inventory_2_size += value
+				if inventory_2_size >= next_conveyer.inventory_size:
+					item_moving = false
+					return
 			item.global_position = item.global_position.move_toward(global_position + Vector2.UP.rotated(rotation)*64, SPEED*delta*GameManager.time_scale)
 			item_moving = true
 			if item.global_position == (global_position + Vector2.UP.rotated(rotation)*64):
@@ -74,8 +81,6 @@ func _physics_process(delta: float) -> void:
 							next_conveyer.inventory_2[item.itemType] = 0
 						next_conveyer.inventory_2[item.itemType] += 1
 						next_conveyer.inventory_2 = next_conveyer.inventory_2
-						#next_conveyer.inventory_changed.emit(next_conveyer.inventory["ore"])
-						#print(next_conveyer.inventory)
 						item.queue_free()
 						item = null
 						return
@@ -83,32 +88,10 @@ func _physics_process(delta: float) -> void:
 					next_conveyer.inventory[item.itemType] = 0
 				next_conveyer.inventory[item.itemType] += 1
 				next_conveyer.inventory = next_conveyer.inventory
-				#next_conveyer.inventory_changed.emit(next_conveyer.inventory["ore"])
-				#print(next_conveyer.inventory)
 				item.queue_free()
 				item = null
 		else:
 			item_moving = false
-	#if item_moving == true and conveyor_body.speed_scale == 0 and GameManager.time_scale > 0:
-		#conveyor_body.frame = GameManager.conveyor_frame
-	#conveyor_body.speed_scale = 1 * (1 if item_moving else 0) * GameManager.time_scale
-
-#func _process(delta: float) -> void:
-	#if item and not held:
-		#next_conveyor = raycast.get_collider()
-		#print(next_conveyor)
-		#if not next_conveyor or not next_conveyor.item: return
-		##var direction = Vector2.UP.rotated(rotation)
-		#item.velocity.move_toward(next_conveyor.global_position, SPEED*delta)
-		#print(item.velocity)
-		#item.velocity = direction * SPEED * delta
-		#item.velocity.clamp(Vector2(-SPEED, -SPEED), Vector2(SPEED, SPEED))
-
-#func _on_body_entered(body: Node2D) -> void:
-	#if body.is_in_group("Ore") and not held:
-		#if body.is_on_conveyor == false:
-			#item = body
-			#body.is_on_conveyor = true
 
 func take_damage(damage: int) -> void:
 	if !held:
@@ -122,8 +105,3 @@ func _notification(what: int) -> void:
 			item.queue_free()
 		elif item_incoming:
 			item_incoming.queue_free()
-
-
-func _on_mouse_entered() -> void:
-	pass
-	#print(item, ", ", item_incoming)
