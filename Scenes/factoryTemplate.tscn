@@ -16,6 +16,7 @@ script = ExtResource("1_llkfa")
 shape = SubResource("RectangleShape2D_sar82")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1548036570]
+texture_filter = 1
 texture = ExtResource("1_teede")
 
 [node name="ConveyorDetector" type="Area2D" parent="." unique_id=1770862702]

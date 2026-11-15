@@ -47,15 +47,6 @@ func get_disabled() -> bool:
 func _process(delta: float) -> void:
 	reloadTimer += delta*GameManager.time_scale
 
-#func _on_body_entered(body: Node2D) -> void:
-	#if body.is_in_group("Enemy") and not held:
-		#targets.append(body)
-		#targetRotation = global_position.angle_to_point(targets[0].global_position)
-#
-#func _on_body_exited(body: Node2D) -> void:
-	#if body.is_in_group("Enemy") and not held:
-		#targets.erase(body)
-
 func _on_range_cone_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Enemy") and not held:
 		targets.append(body)
@@ -128,21 +119,17 @@ func _on_radius_outline_draw() -> void:
 	var total_segments = dot_count * 2
 	var angle_step = 2 * PI / total_segments
 	
-	# Determine how many steps represent the actual "dot/dash"
 	var dash_steps = max(1, int(total_segments * dash_length_ratio / dot_count))
 	
 	var points = PackedVector2Array()
 	
-	# Calculate all vertices along the circle perimeter
 	for i in range(total_segments + 1):
 		var angle = i * angle_step
 		points.append(center + Vector2(cos(angle), sin(angle)) * type.range * 64)
-		
-	# Draw alternating segments
+	
 	for i in range(0, total_segments, 2):
 		var start_index = i
 		var end_index = min(i + dash_steps, total_segments)
 		
-		# Draw a multi-segmented arc segment to maintain the true curve
 		for j in range(start_index, end_index):
 			range_outline.draw_line(points[j], points[j + 1], radius_color, line_width, true)

@@ -11,7 +11,7 @@ func setProperties() -> void:
 		sprite2D.texture = ItemStats.icon
 	else:
 		var ItemStats = load("res://Resources/Data/Items/%s.tres"%[itemType])
-		print(ItemStats)
+		#print(ItemStats)
 		sprite2D.texture = ItemStats.icon
 
 func _physics_process(_delta: float) -> void:

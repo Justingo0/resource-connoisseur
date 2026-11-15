@@ -13,6 +13,7 @@ signal on_action_finised(action:String)
 
 @onready var inventory_display = $DeleteCursor/InventoryDisplay
 @onready var item_container = $DeleteCursor/InventoryDisplay/ItemContainer
+@onready var item_template = $DeleteCursor/InventoryDisplay/Template
 @onready var item_health_bar = $DeleteCursor/InventoryDisplay/HealthBar
 
 var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
@@ -88,9 +89,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		current_action = actions.placing
 		building = true
 	if event.is_action_pressed("Delete"):
-		#print(object_action == actions.placing and not current_objects.is_empty())
-		#print(not building_objects.is_empty())
-		#print((delete_cursor.get_overlapping_areas()+delete_cursor.get_overlapping_bodies()).is_empty())
 		building_object = null
 		predicted_loss = {}
 		if object_action == actions.placing and not current_objects.is_empty(): return
@@ -127,7 +125,6 @@ func _input(event: InputEvent) -> void:
 		current_objects.append_array(building_objects)
 		object_action = actions.placing
 		var inv = %Home.inventory as Dictionary
-		print(predicted_loss)
 		for key in predicted_loss:
 			if inv.keys().has(key):
 				inv[key] -= predicted_loss[key] - building_object_type.buildCosts[key]
@@ -163,7 +160,7 @@ func _physics_process(delta: float) -> void:
 			delete()
 	
 	if hovering_object:
-		if "health" in hovering_object:
+		if "health" in hovering_object and "max_health" in hovering_object:
 			item_health_bar.max_value = hovering_object.max_health
 			item_health_bar.value = hovering_object.health
 		if hovering_object.is_in_group("Conveyor"):
@@ -172,10 +169,9 @@ func _physics_process(delta: float) -> void:
 			else:
 				update_inventory_display({})
 		elif hovering_object.is_in_group("Container"):
-			var common = hovering_object.inventory
-			if "inventory_2" in hovering_object:
-				common.merge(hovering_object.inventory_2)
-			#print(common)
+			var common = hovering_object.inventory.duplicate()
+			if "inventory_2" in hovering_object and not hovering_object.inventory_2.is_empty():
+				common[hovering_object.inventory_2.keys()[0]] = hovering_object.inventory_2.values()[0]
 			update_inventory_display(common)
 	
 	inventory_display.global_position = get_global_mouse_position()
@@ -349,20 +345,25 @@ func delete():
 func update_inventory_display(items:Dictionary):
 	item_container.visible = true
 	var item_keys = items.keys()
+	for child in item_container.get_children():
+		child.queue_free()
 	#for item in item_keys:
 		#var amount = items[item]
 		#var index = item_keys.find(item)
 		#var item_display = item_container.get_child(index)
 		#
-	for item_display in item_container.get_children():
+	for item in item_keys:
 		#var index = item_container.get_children().find(item_display)
-		#var item = items[items.keys()[index]]
-		if item_display.name in item_keys:
-			item_display.visible = true
-			item_display.get_child(0).text = "x" + str(items[item_display.name])
-			item_display.texture = load("res://Resources/Data/Ores/"+item_display.name+".tres").icon
-		else:
-			item_display.visible = false
+		var amount = items[item]
+		var item_temp = item_template.duplicate()
+		
+		item_container.add_child(item_temp)
+		item_temp.texture = load("res://Resources/Data/Items/Raw"+item+".tres" if OreStats.isOre(item) else "res://Resources/Data/Items/"+item+".tres").icon
+		item_temp.get_child(0).text = "x" + str(amount)
+		#if item_display.name in item_keys:
+			#item_display.visible = true
+			#item_display.get_child(0).text = "x" + str(items[item_display.name])
+			#item_display.texture = load("res://Resources/Data/Ores/"+item_display.name+".tres").icon
 
 func update_inventory_health(block:Area2D):
 	if block:
@@ -386,10 +387,10 @@ func _on_delete_cursor_area_entered(area: Area2D) -> void:
 				else:
 					update_inventory_display({})
 			elif area.is_in_group("Container"):
-				var inv = area.inventory
-				if "inventory_2" in area:
-					inv.merge(area.inventory_2)
-				update_inventory_display(inv)
+				var common = area.inventory.duplicate()
+				if "inventory_2" in area and not area.inventory_2.is_empty():
+					common[area.inventory_2.keys()[0]] = area.inventory_2.values()[0]
+				update_inventory_display(common)
 		update_inventory_health(area)
 		inventory_display.visible = true
 

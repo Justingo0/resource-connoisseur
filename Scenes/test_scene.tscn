@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dtjqfgqfvwe21" path="res://Assets/EnvironmentWall.png" id="3_i0miu"]
 [ext_resource type="PackedScene" uid="uid://cvbrs641igcdw" path="res://Scenes/build_menu.tscn" id="5_ak5v8"]
 [ext_resource type="PackedScene" uid="uid://cbeydmwbdnvel" path="res://Scenes/rubyOre.tscn" id="5_x033f"]
-[ext_resource type="Texture2D" uid="uid://i42hp0nucpjp" path="res://icon.svg" id="6_d3awe"]
 [ext_resource type="PackedScene" uid="uid://dkfmjnoegfxcs" path="res://Scenes/Player.tscn" id="6_x033f"]
 [ext_resource type="FontFile" uid="uid://bxvbmimhusou1" path="res://Assets/UI/Square.ttf" id="7_yglu3"]
 [ext_resource type="Resource" uid="uid://b4l7gepg8c448" path="res://Resources/Data/Ores/Quartz.tres" id="11_bwjpn"]
@@ -286,8 +285,8 @@ corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_p7o00"]
 font = ExtResource("7_yglu3")
-font_size = 12
-outline_size = 11
+font_size = 10
+outline_size = 5
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i0miu"]
@@ -374,15 +373,41 @@ shape = SubResource("RectangleShape2D_p7o00")
 top_level = true
 z_index = 10
 custom_minimum_size = Vector2(50, 50)
+clip_contents = true
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = -64.0
 offset_top = -417.0
-offset_right = 91.0
+offset_right = 93.0
 offset_bottom = -319.0
 grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxFlat_cb7yr")
+
+[node name="Template" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay" unique_id=244550135]
+custom_minimum_size = Vector2(25, 30)
+custom_maximum_size = Vector2(25, 25)
+layout_mode = 0
+offset_left = -140.0
+offset_top = -79.0
+offset_right = -115.0
+offset_bottom = -54.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/Template" unique_id=2017396845]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "HA"
+label_settings = SubResource("LabelSettings_p7o00")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="ItemContainer" type="GridContainer" parent="Player/Camera2D/DeleteCursor/InventoryDisplay" unique_id=712489095]
 layout_mode = 1
@@ -395,196 +420,7 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 2
 grow_vertical = 2
-columns = 4
-
-[node name="Coal" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=244550135]
-custom_minimum_size = Vector2(15, 30)
-custom_maximum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("6_d3awe")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer/Coal" unique_id=2017396845]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.7142944
-offset_top = -18.0
-offset_right = 3.7142944
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "HA"
-label_settings = SubResource("LabelSettings_p7o00")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Fluorite" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=117419224]
-custom_minimum_size = Vector2(15, 30)
-custom_maximum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("6_d3awe")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer/Fluorite" unique_id=1391184297]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.7142944
-offset_top = -18.0
-offset_right = 3.7142944
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "HA"
-label_settings = SubResource("LabelSettings_p7o00")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Quartz" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=1036125036]
-custom_minimum_size = Vector2(15, 30)
-custom_maximum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("6_d3awe")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer/Quartz" unique_id=1876754518]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.7142944
-offset_top = -18.0
-offset_right = 3.7142944
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "HA"
-label_settings = SubResource("LabelSettings_p7o00")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Ruby" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=126096421]
-custom_minimum_size = Vector2(15, 30)
-custom_maximum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("6_d3awe")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer/Ruby" unique_id=298029402]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.7142944
-offset_top = -18.0
-offset_right = 3.7142944
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "HA"
-label_settings = SubResource("LabelSettings_p7o00")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Titanium" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=1481843557]
-custom_minimum_size = Vector2(15, 30)
-custom_maximum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("6_d3awe")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer/Titanium" unique_id=1953138716]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.7142944
-offset_top = -18.0
-offset_right = 3.7142944
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "HA"
-label_settings = SubResource("LabelSettings_p7o00")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Topaz" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=315044630]
-custom_minimum_size = Vector2(15, 30)
-custom_maximum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("6_d3awe")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer/Topaz" unique_id=1965652377]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.7142944
-offset_top = -18.0
-offset_right = 3.7142944
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "HA"
-label_settings = SubResource("LabelSettings_p7o00")
-horizontal_alignment = 2
-vertical_alignment = 2
-
-[node name="Tungsten" type="TextureRect" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer" unique_id=482220605]
-custom_minimum_size = Vector2(15, 30)
-custom_maximum_size = Vector2(30, 30)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-texture = ExtResource("6_d3awe")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="Amount" type="Label" parent="Player/Camera2D/DeleteCursor/InventoryDisplay/ItemContainer/Tungsten" unique_id=2099747679]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 3.7142944
-offset_top = -18.0
-offset_right = 3.7142944
-offset_bottom = 5.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "HA"
-label_settings = SubResource("LabelSettings_p7o00")
-horizontal_alignment = 2
-vertical_alignment = 2
+columns = 5
 
 [node name="HealthBar" type="ProgressBar" parent="Player/Camera2D/DeleteCursor/InventoryDisplay" unique_id=31431266]
 layout_mode = 1
