@@ -30,7 +30,6 @@ scale = Vector2(2, 2)
 texture = ExtResource("3_pulj5")
 
 [node name="RadiusOutline" type="Node2D" parent="." unique_id=1079176963]
-visible = false
 
 [node name="rangeCone" type="Area2D" parent="." unique_id=1364791586]
 collision_layer = 8
@@ -39,3 +38,6 @@ collision_mask = 8
 [node name="range" type="CollisionShape2D" parent="rangeCone" unique_id=865092373]
 shape = SubResource("CircleShape2D_fmtr8")
 debug_color = Color(0.606062, 0.532644, 0.28561583, 0.41960785)
+
+[connection signal="body_entered" from="rangeCone" to="." method="_on_range_cone_body_entered"]
+[connection signal="body_exited" from="rangeCone" to="." method="_on_range_cone_body_exited"]
