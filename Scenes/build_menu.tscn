@@ -44,8 +44,13 @@
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="30_qi0q1"]
 [ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="31_nlj0r"]
 [ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="32_5jpdo"]
+[ext_resource type="Texture2D" uid="uid://16khcxcfv6cm" path="res://Assets/AlloySmelter.png" id="32_ifh0d"]
 [ext_resource type="Texture2D" uid="uid://y7f4x2xgn0fj" path="res://Assets/UI/Arrow.png" id="32_nlj0r"]
 [ext_resource type="PackedScene" uid="uid://rbhy07an84kd" path="res://Scenes/conveyor.tscn" id="32_ypmmn"]
+[ext_resource type="Texture2D" uid="uid://dg5i2nniptarp" path="res://Assets/CarbideCrucible.png" id="34_pv6lm"]
+[ext_resource type="Resource" uid="uid://c1cj8wxu7mgxb" path="res://Resources/Data/Factories/carbideCrucible.tres" id="35_1fcxi"]
+[ext_resource type="Texture2D" uid="uid://d08olqelknfj2" path="res://Assets/flouriteRefiner.png" id="36_mekxv"]
+[ext_resource type="Resource" uid="uid://cf6xyw62ii08y" path="res://Resources/Data/Factories/fluoriteRefiner.tres" id="37_ymuu6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
@@ -601,7 +606,6 @@ theme_override_constants/separation = 12
 script = ExtResource("11_4o04s")
 
 [node name="Selections" type="Panel" parent="SelectionMenu" unique_id=74807063]
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -729,7 +733,6 @@ texture_normal = ExtResource("26_ifh0d")
 type = ExtResource("20_leu4g")
 
 [node name="Walls" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1682967110]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -780,10 +783,25 @@ type = ExtResource("20_0dv3k")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("18_qi0q1")
+texture_normal = ExtResource("32_ifh0d")
 type = ExtResource("20_ypmmn")
 
+[node name="Selection3" parent="SelectionMenu/Selections/Base" unique_id=48907758 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("34_pv6lm")
+type = ExtResource("35_1fcxi")
+
+[node name="Selection4" parent="SelectionMenu/Selections/Base" unique_id=1876960145 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("36_mekxv")
+type = ExtResource("37_ymuu6")
+
 [node name="HiddenArea" type="Control" parent="SelectionMenu" unique_id=2031371284]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 mouse_filter = 2

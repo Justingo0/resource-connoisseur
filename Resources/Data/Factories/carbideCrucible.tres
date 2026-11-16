@@ -1,6 +1,8 @@
 [gd_resource type="Resource" script_class="factoryStats" format=3 uid="uid://c1cj8wxu7mgxb"]
 
 [ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_f3443"]
+[ext_resource type="Texture2D" uid="uid://dg5i2nniptarp" path="res://Assets/CarbideCrucible.png" id="1_gli2r"]
+[ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="2_eb2lq"]
 
 [resource]
 script = ExtResource("1_f3443")
@@ -11,4 +13,8 @@ input = {
 output = {
 "Carbide": 1
 }
+icon = ExtResource("1_gli2r")
+name = "Carbide Crucible"
+scene = ExtResource("2_eb2lq")
+size = 1
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"

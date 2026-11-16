@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d08olqelknfj2" path="res://Assets/flouriteRefiner.png" id="1_b31ip"]
 [ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_e1jii"]
+[ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="2_bbc04"]
 
 [resource]
 script = ExtResource("1_e1jii")
@@ -10,4 +11,5 @@ input = {
 }
 icon = ExtResource("1_b31ip")
 name = "Flourite Refiner"
+scene = ExtResource("2_bbc04")
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"
