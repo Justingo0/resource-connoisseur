@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chfl6w0eeskx3"
-path="res://.godot/imported/PHAlloy.png-5f5a7a275404c5d54b0cf33621bf2544.ctex"
+uid="uid://dg5i2nniptarp"
+path="res://.godot/imported/CarbideCrucible.png-8d5160e7d8e09ccd7418d8d502b7e467.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/PHAlloy.png"
-dest_files=["res://.godot/imported/PHAlloy.png-5f5a7a275404c5d54b0cf33621bf2544.ctex"]
+source_file="res://Assets/CarbideCrucible.png"
+dest_files=["res://.godot/imported/CarbideCrucible.png-8d5160e7d8e09ccd7418d8d502b7e467.ctex"]
 
 [params]
 
