@@ -37,6 +37,13 @@ func _ready() -> void:
 	inputItem = type.input
 	topSprite.texture = type.topSprite
 	baseSprite.texture = type.baseSprite
+	
+	max_destroy_time = type.destroy_time
+	
+	print(type.size)
+	$CollisionShape2D.scale *= type.size
+	$turretBase.scale *= type.size
+	$turretTop.scale *= type.size
 
 func get_disabled() -> bool:
 	if destroy_time == max_destroy_time and held == false:
@@ -72,7 +79,6 @@ func take_damage(damage: int) -> void:
 
 func shoot():
 	if held: return
-	print(inventory)
 	if !inventory.keys().is_empty():
 		if inventory[inventory.keys()[0]] >= inputItem.values()[0]:
 			inventory[inventory.keys()[0]] = inventory[inventory.keys()[0]] - inputItem.values()[0]
