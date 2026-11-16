@@ -55,6 +55,7 @@ func _ready() -> void:
 		timer.wait_time = type.production_time
 		inputItem = type.input
 		outputItem = type.output
+		$Sprite2D.texture = type.icon
 
 func _physics_process(delta: float) -> void:
 	if get_disabled(): return

@@ -1,5 +1,6 @@
 [gd_resource type="Resource" script_class="factoryStats" format=3 uid="uid://cf6xyw62ii08y"]
 
+[ext_resource type="Texture2D" uid="uid://d08olqelknfj2" path="res://Assets/flouriteRefiner.png" id="1_b31ip"]
 [ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_e1jii"]
 
 [resource]
@@ -7,15 +8,6 @@ script = ExtResource("1_e1jii")
 input = {
 "Fluorite": 3
 }
-output = {
-"Fluorine": 1
-}
-production_time = null
-inventory_size = null
-name = null
-size = null
-health = null
-buildCosts = null
-destroy_time = null
-description = null
+icon = ExtResource("1_b31ip")
+name = "Flourite Refiner"
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"
