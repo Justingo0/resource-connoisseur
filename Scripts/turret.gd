@@ -3,7 +3,7 @@ extends Area2D
 @export var inputItem:Dictionary
 
 @onready var bullet = preload("res://Scenes/bullet.tscn")
-@export var type:Resource = preload("res://Resources/Data/Turrets/Ballista.tres")
+@export var type:turretStats #= preload("res://Resources/Data/Turrets/Ballista.tres")
 @onready var turretTop = $turretTop
 @onready var topSprite = $turretTop
 @onready var baseSprite = $turretBase

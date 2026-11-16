@@ -236,11 +236,12 @@ func set_build_cursor(object:PackedScene):
 		building_mode = false
 		return
 	building_mode = true
-
 	
 	var highlight = object.instantiate() as Area2D
 	if "held" in highlight:
 		highlight.held = true
+	if "type" in highlight:
+		highlight.type = building_object_type
 	highlight.collision_layer = 0
 	highlight.collision_mask = 1
 	build_cursor.add_child(highlight)
