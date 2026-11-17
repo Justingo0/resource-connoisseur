@@ -1,6 +1,7 @@
 extends Node
 
 signal on_inventory_changed(eh:bool)
+signal core_destroyed
 
 # Loaded Values
 static var times_logged:int = 0

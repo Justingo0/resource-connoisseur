@@ -27,7 +27,7 @@ var dragging := false
 
 var building_mode := false
 var building := false
-var building_object:PackedScene: #= preload("res://Scenes/conveyor.tscn"):
+var building_object:PackedScene:
 	set(new_object):
 		building_object = new_object
 		set_build_cursor(building_object)
@@ -63,6 +63,11 @@ var MAX_ZOOM = 2.5
 func _ready() -> void:
 	set_build_cursor(building_object)
 	inventory_display.visible = false
+	
+	GameManager.time_scale = 1.0
+	GameManager.core_inventory = {}
+	GameManager.conveyor_frame = 0
+	
 	#viewport_size = get_viewport().get_visible_rect().size
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -86,11 +91,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			#position = (starting_cam_pos + (mouse_starting_pos - get_global_mouse_position()))#.clamp(Vector2(limit_left+viewport_size.x, limit_top+viewport_size.y), Vector2(limit_right-viewport_size.x, limit_bottom-viewport_size.y))
 	
 	if event.is_action_pressed("Place"):
+		if GameManager.time_scale == 0.0: return
 		if object_action == actions.deleting and current_objects.size() > 0: return
 		speed = 1.0
 		current_action = actions.placing
 		building = true
 	if event.is_action_pressed("Delete"):
+		if GameManager.time_scale == 0.0: return
 		building_object = null
 		predicted_loss = {}
 		if object_action == actions.placing and not current_objects.is_empty(): return
@@ -120,12 +127,14 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_released("Place"):
+		if GameManager.time_scale == 0.0: return
 		if object_action == actions.deleting and current_objects.size() > 0: return
 		
 		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
 		
 		current_objects.append_array(building_objects)
 		object_action = actions.placing
+		
 		var inv = %Home.inventory as Dictionary
 		for key in predicted_loss:
 			if inv.keys().has(key):
@@ -139,7 +148,7 @@ func _input(event: InputEvent) -> void:
 		last_object_built = null
 		building_objects.clear()
 	if event.is_action_released("Delete"):
-		#print(object_action == actions.placing and current_objects.size() > 0)
+		if GameManager.time_scale == 0.0: return
 		if object_action == actions.placing and not current_objects.is_empty(): return
 		
 		current_objects.append_array(deleting_objects)
