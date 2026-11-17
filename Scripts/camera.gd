@@ -16,6 +16,8 @@ signal on_action_finised(action:String)
 @onready var item_template = $DeleteCursor/InventoryDisplay/Template
 @onready var item_health_bar = $DeleteCursor/InventoryDisplay/HealthBar
 
+@export var use_build_costs:bool = true
+
 var dissolve_shader = preload("res://Assets/Shader/dissolve_shader.tres")
 var construct_shader = preload("res://Assets/Shader/construct_shader.tres")
 
@@ -279,24 +281,25 @@ func place(object:PackedScene):
 			#deleting_obj.destroy_time = deleting_obj.max_destroy_time
 			#deleting_obj.material = null
 		#deleting_objects.clear()
-	var inv = %Home.inventory
-	var buildCost = building_object_type.buildCosts
-	if predicted_loss.is_empty():
-		predicted_loss = buildCost.duplicate()
-		#print(predicted_loss)
-	if not inv.has_all(predicted_loss.keys()):
-		build_menu.send_announcement.emit("Insufficient Resources!")
-		return
-	for key in predicted_loss:
-		#print(inv, predicted_loss)
-		if inv[key] < predicted_loss[key]:
+	if use_build_costs:
+		var inv = %Home.inventory
+		var buildCost = building_object_type.buildCosts
+		if predicted_loss.is_empty():
+			predicted_loss = buildCost.duplicate()
+			#print(predicted_loss)
+		if not inv.has_all(predicted_loss.keys()):
 			build_menu.send_announcement.emit("Insufficient Resources!")
 			return
-	
-	var combined = {}
-	for key in buildCost:
-		combined[key] = predicted_loss[key] + buildCost[key]
-	predicted_loss = combined
+		for key in predicted_loss:
+			#print(inv, predicted_loss)
+			if inv[key] < predicted_loss[key]:
+				build_menu.send_announcement.emit("Insufficient Resources!")
+				return
+		
+		var combined = {}
+		for key in buildCost:
+			combined[key] = predicted_loss[key] + buildCost[key]
+		predicted_loss = combined
 	
 	var placed_object = object.instantiate()
 	if placed_object.is_in_group("OverwriteSelf"):
