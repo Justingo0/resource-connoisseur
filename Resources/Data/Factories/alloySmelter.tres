@@ -18,4 +18,10 @@ name = "Alloy Smelter"
 scene = ExtResource("3_h5nxf")
 size = 1
 health = 200
+buildCosts = {
+"Graphite": 30,
+"Quartz": 15,
+"Ruby": 50,
+"Titanium": 35
+}
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"

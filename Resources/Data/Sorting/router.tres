@@ -9,6 +9,9 @@ script = ExtResource("1_b4klt")
 icon = ExtResource("1_yoo6d")
 name = "Router"
 scene = ExtResource("2_qraew")
+buildCosts = {
+"Ruby": 4
+}
 destroy_time = 0.05
 description = "Splits items evenly between 1-3 connected conveyors."
 metadata/_custom_type_script = "uid://b8flukosvjb3m"

@@ -24,6 +24,11 @@ name = "Chu-Ko-Nu"
 scene = ExtResource("3_gri2b")
 size = 2
 health = 200
+buildCosts = {
+"Ruby": 30,
+"Titanium": 15,
+"Topaz": 20
+}
 destroy_time = 2.5
 description = "Shoots enemies. Only takes in Flourite."
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

@@ -34,5 +34,11 @@ name = "Ballista"
 scene = ExtResource("5_d6k2h")
 size = 3
 health = 500
+buildCosts = {
+"Alloy": 75,
+"Fluorite": 40,
+"Quartz": 30,
+"Topaz": 20
+}
 destroy_time = 4.0
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

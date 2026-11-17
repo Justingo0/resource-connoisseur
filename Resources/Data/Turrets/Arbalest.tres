@@ -33,5 +33,10 @@ name = "Arbalest"
 scene = ExtResource("5_i35kc")
 size = 1
 health = 200
+buildCosts = {
+"Graphite": 5,
+"Quartz": 20,
+"Ruby": 20
+}
 destroy_time = 1.5
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

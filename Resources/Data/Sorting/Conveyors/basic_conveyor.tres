@@ -11,6 +11,9 @@ icon = ExtResource("1_718qu")
 name = "Basic Conveyor"
 scene = ExtResource("2_krdar")
 health = 20
+buildCosts = {
+"Ruby": 1
+}
 destroy_time = 0.05
 description = "Transports items."
 metadata/_custom_type_script = "uid://c0dn5eitsdxyh"

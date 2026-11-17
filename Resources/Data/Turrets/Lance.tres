@@ -35,5 +35,11 @@ name = "Lance"
 scene = ExtResource("5_7woc8")
 size = 2
 health = 250
+buildCosts = {
+"Alloy": 5,
+"Graphite": 10,
+"Ruby": 40,
+"Titanium": 30
+}
 destroy_time = 2.5
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

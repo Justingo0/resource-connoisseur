@@ -34,5 +34,11 @@ name = "Hua-Che"
 scene = ExtResource("5_30u1o")
 size = 3
 health = 300
+buildCosts = {
+"Alloy": 20,
+"Carbide": 20,
+"Titanium": 100,
+"Topaz": 50
+}
 destroy_time = 4.0
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

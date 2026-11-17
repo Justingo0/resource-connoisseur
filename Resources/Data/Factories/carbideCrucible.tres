@@ -17,4 +17,11 @@ icon = ExtResource("1_gli2r")
 name = "Carbide Crucible"
 scene = ExtResource("2_eb2lq")
 size = 1
+buildCosts = {
+"Alloy": 15,
+"Graphite": 20,
+"Quartz": 20,
+"Titanium": 35,
+"Topaz": 10
+}
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"

@@ -34,5 +34,9 @@ name = "Blunderbuss"
 scene = ExtResource("5_eofjf")
 size = 1
 health = 150
+buildCosts = {
+"Graphite": 20,
+"Ruby": 10
+}
 destroy_time = 1.5
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

@@ -9,4 +9,7 @@ script = ExtResource("1_nk0dt")
 icon = ExtResource("1_6xhlx")
 name = "Basic Miner"
 scene = ExtResource("2_1cgts")
+buildCosts = {
+"Ruby": 5
+}
 metadata/_custom_type_script = "uid://bkdxivsj5wkl2"
