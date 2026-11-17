@@ -40,10 +40,16 @@ func _ready() -> void:
 	
 	max_destroy_time = type.destroy_time
 	
-	print(type.size)
 	$CollisionShape2D.scale *= type.size
 	$turretBase.scale *= type.size
 	$turretTop.scale *= type.size
+	
+	if type.size % 2 == 0:
+		$turretBase.position = Vector2(-32, -32)
+		$CollisionShape2D.position = Vector2(-32, -32)
+		$turretTop.position = Vector2(-32, -32)
+		$RadiusOutline.position = Vector2(-32, -32)
+		$rangeCone.position = Vector2(-32, -32)
 
 func get_disabled() -> bool:
 	if destroy_time == max_destroy_time and held == false:
