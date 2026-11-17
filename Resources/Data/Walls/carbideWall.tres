@@ -1,7 +1,15 @@
 [gd_resource type="Resource" script_class="wallStats" format=3 uid="uid://b5802lfp00l6x"]
 
 [ext_resource type="Script" uid="uid://bgxel607vfhi8" path="res://Resources/Managers/wallStats.gd" id="1_kx8qs"]
+[ext_resource type="Texture2D" uid="uid://bl0l31dokewgf" path="res://Assets/CarbideWall.png" id="1_kxp7p"]
+[ext_resource type="PackedScene" uid="uid://btf7on0x1gbau" path="res://Scenes/wall.tscn" id="2_31wm3"]
 
 [resource]
 script = ExtResource("1_kx8qs")
+icon = ExtResource("1_kxp7p")
+name = "Carbide Wall"
+scene = ExtResource("2_31wm3")
+buildCosts = {
+"Carbide": 10
+}
 metadata/_custom_type_script = "uid://bgxel607vfhi8"

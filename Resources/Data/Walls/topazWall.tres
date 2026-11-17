@@ -1,7 +1,15 @@
 [gd_resource type="Resource" script_class="wallStats" format=3 uid="uid://bpjcgex3i50h1"]
 
 [ext_resource type="Script" uid="uid://bgxel607vfhi8" path="res://Resources/Managers/wallStats.gd" id="1_l0ste"]
+[ext_resource type="Texture2D" uid="uid://cm135xfomfkb6" path="res://Assets/TopazWall.png" id="1_s23kx"]
+[ext_resource type="PackedScene" uid="uid://btf7on0x1gbau" path="res://Scenes/wall.tscn" id="2_04lo3"]
 
 [resource]
 script = ExtResource("1_l0ste")
+icon = ExtResource("1_s23kx")
+name = "Topaz Wall"
+scene = ExtResource("2_04lo3")
+buildCosts = {
+"Topaz": 10
+}
 metadata/_custom_type_script = "uid://bgxel607vfhi8"
