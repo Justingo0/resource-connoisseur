@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://c6f7oghh7tfqj" path="res://Scripts/UserInterface/selection_menu.gd" id="11_4o04s"]
 [ext_resource type="PackedScene" uid="uid://busepgbfxl48t" path="res://Scenes/selection_button.tscn" id="11_v31xr"]
 [ext_resource type="Texture2D" uid="uid://dq2yh8nw3wo0a" path="res://Assets/mineBuild.png" id="13_b2sko"]
+[ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/DaggerTop.png" id="14_njwl4"]
 [ext_resource type="Resource" uid="uid://ubquto7gj313" path="res://Resources/Data/Turrets/Dagger.tres" id="14_nlj0r"]
 [ext_resource type="Resource" uid="uid://sxvaf54lydtu" path="res://Resources/Data/Turrets/Arbalest.tres" id="15_qi0q1"]
 [ext_resource type="Resource" uid="uid://s8sox3x81p57" path="res://Resources/Data/Miners/basic_miner.tres" id="16_fg8k8"]
@@ -24,7 +25,6 @@
 [ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="18_qi0q1"]
 [ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
 [ext_resource type="Resource" uid="uid://bohkep2gj2qrn" path="res://Resources/Data/Turrets/Hua-Che.tres" id="19_6gs3s"]
-[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/DaggerBuild.png" id="19_cj8qe"]
 [ext_resource type="Resource" uid="uid://b55swmillii22" path="res://Resources/Data/Factories/graphitePress.tres" id="20_0dv3k"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
 [ext_resource type="Resource" uid="uid://cc8gawubv8gsg" path="res://Resources/Data/Turrets/Ballista.tres" id="20_leu4g"]
@@ -43,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://c1vb3lhmhbwpe" path="res://Assets/QuartzWall.png" id="29_pv6lm"]
 [ext_resource type="PackedScene" uid="uid://deinq6sk480pu" path="res://Scenes/miner.tscn" id="29_tsw58"]
 [ext_resource type="Resource" uid="uid://e60ph27xkik1" path="res://Resources/Data/Walls/quartzWall.tres" id="30_1fcxi"]
+[ext_resource type="Resource" uid="uid://cgr4lofy3d8wi" path="res://Resources/Data/Walls/rubyWallLarge.tres" id="30_eo1vj"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="30_qi0q1"]
 [ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="31_nlj0r"]
 [ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="32_5jpdo"]
@@ -51,14 +52,18 @@
 [ext_resource type="Texture2D" uid="uid://y7f4x2xgn0fj" path="res://Assets/UI/Arrow.png" id="32_nlj0r"]
 [ext_resource type="PackedScene" uid="uid://rbhy07an84kd" path="res://Scenes/conveyor.tscn" id="32_ypmmn"]
 [ext_resource type="Resource" uid="uid://d2c1kq3x31x4j" path="res://Resources/Data/Walls/titaniumWall.tres" id="33_67idc"]
+[ext_resource type="Resource" uid="uid://usxqk4r7g1j4" path="res://Resources/Data/Walls/quartzWallLarge.tres" id="33_okwr1"]
 [ext_resource type="Texture2D" uid="uid://dg5i2nniptarp" path="res://Assets/CarbideCrucible.png" id="34_pv6lm"]
 [ext_resource type="Texture2D" uid="uid://cm135xfomfkb6" path="res://Assets/TopazWall.png" id="34_sgpdj"]
 [ext_resource type="Resource" uid="uid://c1cj8wxu7mgxb" path="res://Resources/Data/Factories/carbideCrucible.tres" id="35_1fcxi"]
 [ext_resource type="Resource" uid="uid://bpjcgex3i50h1" path="res://Resources/Data/Walls/topazWall.tres" id="35_b2bwh"]
+[ext_resource type="Resource" uid="uid://04xymsfhbx4p" path="res://Resources/Data/Walls/titaniumWallLarge.tres" id="36_lq6r3"]
 [ext_resource type="Texture2D" uid="uid://d08olqelknfj2" path="res://Assets/flouriteRefiner.png" id="36_mekxv"]
 [ext_resource type="Texture2D" uid="uid://bl0l31dokewgf" path="res://Assets/CarbideWall.png" id="36_njwl4"]
 [ext_resource type="Resource" uid="uid://b5802lfp00l6x" path="res://Resources/Data/Walls/carbideWall.tres" id="37_eo1vj"]
 [ext_resource type="Resource" uid="uid://cf6xyw62ii08y" path="res://Resources/Data/Factories/fluoriteRefiner.tres" id="37_ymuu6"]
+[ext_resource type="Resource" uid="uid://bsq6a1sydj1f3" path="res://Resources/Data/Walls/topazWallLarge.tres" id="39_b7han"]
+[ext_resource type="Resource" uid="uid://dcb1p3i3pw323" path="res://Resources/Data/Walls/carbideWallLarge.tres" id="42_4qut6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
@@ -695,7 +700,7 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("19_cj8qe")
+texture_normal = ExtResource("14_njwl4")
 type = ExtResource("14_nlj0r")
 
 [node name="Arbalest" parent="SelectionMenu/Selections/Turrets" unique_id=252668739 instance=ExtResource("11_v31xr")]
@@ -763,12 +768,26 @@ size_flags_vertical = 3
 texture_normal = ExtResource("28_ikf1b")
 type = ExtResource("28_pvcui")
 
+[node name="Selection6" parent="SelectionMenu/Selections/Walls" unique_id=1196623387 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("28_ikf1b")
+type = ExtResource("30_eo1vj")
+
 [node name="Selection2" parent="SelectionMenu/Selections/Walls" unique_id=2085933312 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("29_pv6lm")
 type = ExtResource("30_1fcxi")
+
+[node name="Selection7" parent="SelectionMenu/Selections/Walls" unique_id=17331881 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("29_pv6lm")
+type = ExtResource("33_okwr1")
 
 [node name="Selection3" parent="SelectionMenu/Selections/Walls" unique_id=1859092243 instance=ExtResource("11_v31xr")]
 layout_mode = 2
@@ -777,6 +796,13 @@ size_flags_vertical = 3
 texture_normal = ExtResource("32_h6q0m")
 type = ExtResource("33_67idc")
 
+[node name="Selection8" parent="SelectionMenu/Selections/Walls" unique_id=401559463 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("32_h6q0m")
+type = ExtResource("36_lq6r3")
+
 [node name="Selection4" parent="SelectionMenu/Selections/Walls" unique_id=1398825682 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -784,12 +810,26 @@ size_flags_vertical = 3
 texture_normal = ExtResource("34_sgpdj")
 type = ExtResource("35_b2bwh")
 
+[node name="Selection9" parent="SelectionMenu/Selections/Walls" unique_id=1370850810 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("34_sgpdj")
+type = ExtResource("39_b7han")
+
 [node name="Selection5" parent="SelectionMenu/Selections/Walls" unique_id=475453684 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture_normal = ExtResource("36_njwl4")
 type = ExtResource("37_eo1vj")
+
+[node name="Selection10" parent="SelectionMenu/Selections/Walls" unique_id=1818887763 instance=ExtResource("11_v31xr")]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture_normal = ExtResource("36_njwl4")
+type = ExtResource("42_4qut6")
 
 [node name="Base" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1813311783]
 visible = false

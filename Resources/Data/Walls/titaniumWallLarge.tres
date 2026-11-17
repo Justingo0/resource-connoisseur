@@ -1,7 +1,16 @@
 [gd_resource type="Resource" script_class="wallStats" format=3 uid="uid://04xymsfhbx4p"]
 
 [ext_resource type="Script" uid="uid://bgxel607vfhi8" path="res://Resources/Managers/wallStats.gd" id="1_jsqvm"]
+[ext_resource type="Texture2D" uid="uid://c0w1m2epeey1n" path="res://Assets/TitaniumWall.png" id="1_wi5pj"]
+[ext_resource type="PackedScene" uid="uid://btf7on0x1gbau" path="res://Scenes/wall.tscn" id="2_icmxh"]
 
 [resource]
 script = ExtResource("1_jsqvm")
+icon = ExtResource("1_wi5pj")
+name = "Large Tatium Wall"
+scene = ExtResource("2_icmxh")
+size = 2
+buildCosts = {
+"Titanium": 40
+}
 metadata/_custom_type_script = "uid://bgxel607vfhi8"

@@ -9,6 +9,7 @@ script = ExtResource("1_eo8ut")
 icon = ExtResource("1_urqjx")
 name = "Titanium Wall"
 scene = ExtResource("2_tquck")
+size = 1
 buildCosts = {
 "Titanium": 10
 }

@@ -11,8 +11,18 @@ extends Area2D
 @export var type:wallStats
 
 func _ready() -> void:
-	max_health = health
-	$Sprite2D.texture = type.icon
+	if type:
+		max_destroy_time = type.destroy_time
+		health = type.health
+		max_health = health
+		$Sprite2D.texture = type.icon
+		
+		$CollisionShape2D.scale *= type.size
+		$Sprite2D.scale *= type.size
+		
+		if type.size % 2 == 0:
+			$Sprite2D.position = Vector2(-32, -32)
+			$CollisionShape2D.position = Vector2(-32, -32)
 
 func take_damage(damage: int) -> void:
 	health -= damage
