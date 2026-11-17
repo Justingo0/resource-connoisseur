@@ -64,8 +64,7 @@ sprite_frames = SubResource("SpriteFrames_sar82")
 self_modulate = Color(1, 1, 1, 0.14)
 clip_children = 2
 z_index = -1
-texture_filter = 1
-position = Vector2(10.333334, 19.333334)
+position = Vector2(7.666668, 16.666668)
 sprite_frames = SubResource("SpriteFrames_sar82")
 autoplay = "default"
 
