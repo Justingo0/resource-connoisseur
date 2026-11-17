@@ -733,6 +733,7 @@ texture_normal = ExtResource("26_ifh0d")
 type = ExtResource("20_leu4g")
 
 [node name="Walls" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1682967110]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

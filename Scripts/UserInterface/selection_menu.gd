@@ -20,6 +20,8 @@ func _ready() -> void:
 	for tab in tabs:
 		tab.pressed.connect(func():
 			tab_switch(tab.name, tab))
+	$Selections.visible = false
+	$HiddenArea.visible = true
 
 func tab_switch(tab:String, tab_button):
 	$Selections.visible = true
