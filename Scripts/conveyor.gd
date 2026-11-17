@@ -83,7 +83,7 @@ func _physics_process(delta: float) -> void:
 			item_moving = true
 			if item.global_position == (global_position + Vector2.UP.rotated(rotation)*64):
 				if "inventory_2" in next_conveyer:
-					if item.itemType == next_conveyer.inputItem.keys()[1]:
+					if next_conveyer.inputItem.size() == 2 and item.itemType == next_conveyer.inputItem.keys()[1]:
 						if not (item.itemType in next_conveyer.inventory_2.keys()):
 							next_conveyer.inventory_2[item.itemType] = 0
 						next_conveyer.inventory_2[item.itemType] += 1
