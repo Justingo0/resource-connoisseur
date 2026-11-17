@@ -1,9 +1,17 @@
 [gd_resource type="Resource" script_class="wallStats" format=3 uid="uid://cgr4lofy3d8wi"]
 
+[ext_resource type="Texture2D" uid="uid://c81vu3yt2i3xt" path="res://Assets/RubyWall.png" id="1_bp2js"]
 [ext_resource type="Script" uid="uid://bgxel607vfhi8" path="res://Resources/Managers/wallStats.gd" id="1_eyhgo"]
+[ext_resource type="PackedScene" uid="uid://btf7on0x1gbau" path="res://Scenes/wall.tscn" id="2_ft8ni"]
 
 [resource]
 script = ExtResource("1_eyhgo")
-size = 1
+icon = ExtResource("1_bp2js")
+name = "Large Ruby Wall"
+scene = ExtResource("2_ft8ni")
+size = 2
 health = 3000
+buildCosts = {
+"Ruby": 40
+}
 metadata/_custom_type_script = "uid://bgxel607vfhi8"

@@ -10,7 +10,7 @@ icon = ExtResource("1_u0t0l")
 name = "Ruby Wall"
 scene = ExtResource("2_hyb47")
 size = 1
-health = 3000
+health = 100
 buildCosts = {
 "Ruby": 10
 }
