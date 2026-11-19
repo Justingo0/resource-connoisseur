@@ -305,7 +305,7 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 corner_detail = 1
 
-[node name="Node2D" type="Node2D" unique_id=1245121356]
+[node name="Game" type="Node2D" unique_id=1245121356]
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="." unique_id=308093899]
 z_index = -2
@@ -346,6 +346,7 @@ limit_bottom = 874
 limit_smoothed = true
 position_smoothing_enabled = true
 script = ExtResource("1_r5l72")
+use_build_costs = false
 
 [node name="BuildCursor" type="Node2D" parent="Player/Camera2D" unique_id=1263513972]
 modulate = Color(1, 1, 1, 0.41960785)
@@ -438,7 +439,7 @@ theme_override_styles/background = SubResource("StyleBoxFlat_i0miu")
 theme_override_styles/fill = SubResource("StyleBoxFlat_6bfml")
 value = 100.0
 
-[node name="Home" parent="." unique_id=1526990172 groups=["Unbreakable"] instance=ExtResource("3_hb2xm")]
+[node name="Home" parent="." unique_id=1526990172 groups=["Core", "Unbreakable"] instance=ExtResource("3_hb2xm")]
 unique_name_in_owner = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1254243288]
