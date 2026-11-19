@@ -77,20 +77,16 @@ func take_damage(damage: int) -> void:
 			queue_free()
 
 func deposit():
-	#print("Depositing from ", self)
 	if get_disabled(): return
-	#print(conveyors, ", ", self)
-	#print(inventory.keys().size() == 0, ", ", self)
-	#if inventory.keys().size() > 0:
-		#print(inventory.values()[0] <= 0, ", ", self)
 	if conveyors.is_empty() or inventory.keys().size() == 0 or inventory.values()[0] <= 0: return
 	print(self, " went through TSA.")
 	
 	conveyor_interval += 1
-	#print(conveyor_interval%conveyors.size())
+
 	output_conveyor = conveyors[conveyor_interval%conveyors.size()]
+	var itemType = inventory.keys()[0]
+	
 	if not output_conveyor or output_conveyor.held or ("output_conveyor" in output_conveyor and output_conveyor.output_conveyor == self):
-		#conveyors.erase(output_conveyor)
 		output_conveyor = null
 		for convey in conveyors:
 			if convey and not convey.held == false and ("output_conveyor" in convey and convey.output_conveyor != self):
@@ -98,17 +94,7 @@ func deposit():
 				break
 		if not output_conveyor: return
 	print(output_conveyor, ", ", self)
-	#print(output_conveyor)
-	#print("Where am i")
 	
-	#if output_conveyor.has_node("RayCast"):
-		#var conveyor_ray = output_conveyor.get_node("RayCast")
-		#if conveyor_ray and conveyor_ray.is_colliding() and conveyor_ray.get_collider() == self:
-			#conveyors.erase(output_conveyor)
-			#deposit()
-			#return
-	
-	#print(output_conveyor.item == null and output_conveyor.held == false and !held)
 	if output_conveyor.is_in_group("Conveyor"):
 		if output_conveyor.item == null and output_conveyor.held == false and !held:
 			last_output_item = ore_item.instantiate()
@@ -122,12 +108,29 @@ func deposit():
 		else:
 			return
 	elif output_conveyor.is_in_group("Container"):
+		if "inputItem" in output_conveyor and not itemType in output_conveyor.inputItem.keys()[0]:
+			if "inputItem" in output_conveyor and output_conveyor.inputItem.size() >= 2 and not itemType in output_conveyor.inputItem.keys()[1]:
+				return
+			elif "inputItem" in output_conveyor and output_conveyor.inputItem.size() == 1:
+				return
+		
 		var size = 0
 		for value in output_conveyor.inventory.values():
 			size += value
 		if size >= output_conveyor.inventory_size:
-			conveyors.erase(output_conveyor)
-			deposit()
+			if "inputItem" in output_conveyor and output_conveyor.inputItem.size() == 2 and itemType == output_conveyor.inputItem.keys()[1]:
+				var size_2 = 0
+				for value in output_conveyor.inventory_2.values():
+					size_2 += value
+				if size_2 >= output_conveyor.inventory_size: return
+			else:
+				return
+		
+		if "inputItem" in output_conveyor and output_conveyor.inputItem.size() == 2 and itemType == output_conveyor.inputItem.keys()[1]:
+			if not (itemType in output_conveyor.inventory_2.keys()):
+				output_conveyor.inventory_2[itemType] = 0
+			output_conveyor.inventory_2[itemType] += 1
+			output_conveyor.inventory_2 = output_conveyor.inventory_2
 			return
 		if not (inventory.keys()[0] in output_conveyor.inventory.keys()):
 			output_conveyor.inventory[inventory.keys()[0]] = 0
