@@ -28,3 +28,8 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:
 		queue_free()
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		GameManager.time_scale = 0.0
+		GameManager.core_destroyed.emit()

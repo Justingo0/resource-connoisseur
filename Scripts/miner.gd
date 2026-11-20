@@ -135,13 +135,32 @@ func output():
 				
 				last_generated_item.global_position = starting_pos #- (64 * global_position.direction_to(selected_conveyor.global_position))
 		elif selected_conveyor.is_in_group("Container"):
+			conveyorInterval += 1
+			if "inputItem" in selected_conveyor and not itemType in selected_conveyor.inputItem.keys()[0]:
+				if "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() >= 2 and not itemType in selected_conveyor.inputItem.keys()[1]:
+					return
+				elif "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() == 1:
+					return
+			
 			var size = 0
 			for value in selected_conveyor.inventory.values():
 				size += value
-			if size >= selected_conveyor.inventory_size: return
-			
-			conveyorInterval += 1
+			if size >= selected_conveyor.inventory_size:
+				if "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() == 2 and itemType == selected_conveyor.inputItem.keys()[1]:
+					var size_2 = 0
+					for value in selected_conveyor.inventory_2.values():
+						size_2 += value
+					if size_2 >= selected_conveyor.inventory_size: return
+				else:
+					return
 			resources -= 1
+			
+			if "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() == 2 and itemType == selected_conveyor.inputItem.keys()[1]:
+				if not (itemType in selected_conveyor.inventory_2.keys()):
+					selected_conveyor.inventory_2[itemType] = 0
+				selected_conveyor.inventory_2[itemType] += 1
+				selected_conveyor.inventory_2 = selected_conveyor.inventory_2
+				return
 			
 			if not (itemType in selected_conveyor.inventory.keys()):
 				selected_conveyor.inventory[itemType] = 0

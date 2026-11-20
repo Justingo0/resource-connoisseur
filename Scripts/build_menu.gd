@@ -28,10 +28,8 @@ var ANNOUNCEMENT_DURATION = 3 #seconds
 
 var announce_tween:Tween
 
-#func _input(event: InputEvent) -> void:
-	#if event.is_action_pressed("Delete"):
-		##print("Sent off")
-		#send_announcement.emit("Insufficient Resources!", null, Color.RED)
+func _ready() -> void:
+	GameManager.core_destroyed.connect(lose_screen)
 
 func _on_pause_button_pressed() -> void:
 	paused = not paused
@@ -64,3 +62,12 @@ func _on_hide_timer_timeout() -> void:
 
 func get_camera() -> Camera2D:
 	return camera
+
+func lose_screen():
+	for child in get_children():
+		child.visible = false
+	$LoseScreen.visible = true
+
+
+func _on_try_again_pressed() -> void:
+	pass # Replace with function body.

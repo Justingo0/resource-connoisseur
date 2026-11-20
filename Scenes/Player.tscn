@@ -63,7 +63,8 @@ sprite_frames = SubResource("SpriteFrames_sar82")
 [node name="Shadow" type="AnimatedSprite2D" parent="." unique_id=1610434485]
 self_modulate = Color(1, 1, 1, 0.14)
 clip_children = 2
-z_index = -1
+z_index = -2
+z_as_relative = false
 position = Vector2(7.666668, 16.666668)
 sprite_frames = SubResource("SpriteFrames_sar82")
 autoplay = "default"
@@ -80,6 +81,7 @@ offset_right = 4.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1788188403]

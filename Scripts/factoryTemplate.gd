@@ -110,17 +110,37 @@ func output():
 				
 				last_generated_item.global_position = starting_pos #- (64 * global_position.direction_to(selected_conveyor.global_position))
 		elif selected_conveyor.is_in_group("Container"):
+			conveyorInterval += 1
+			if "inputItem" in selected_conveyor and not outputItem.name in selected_conveyor.inputItem.keys()[0]:
+				if "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() >= 2 and not outputItem.name in selected_conveyor.inputItem.keys()[1]:
+					return
+				elif "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() == 1:
+					return
+			
 			var size = 0
 			for value in selected_conveyor.inventory.values():
 				size += value
-			if size >= selected_conveyor.inventory_size: return
+			if size >= selected_conveyor.inventory_size:
+				if "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() == 2 and outputItem.name == selected_conveyor.inputItem.keys()[1]:
+					var size_2 = 0
+					for value in selected_conveyor.inventory_2.values():
+						size_2 += value
+					if size_2 >= selected_conveyor.inventory_size: return
+				else:
+					return
 			
-			conveyorInterval += 1
 			resources -= 1
 			
-			if not (outputType in selected_conveyor.inventory.keys()):
-				selected_conveyor.inventory[outputType] = 0
-			selected_conveyor.inventory[outputType] += 1
+			if "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() == 2 and outputItem.name == selected_conveyor.inputItem.keys()[1]:
+				if not (outputItem.name in selected_conveyor.inventory_2.keys()):
+					selected_conveyor.inventory_2[outputItem.name] = 0
+				selected_conveyor.inventory_2[outputItem.name] += 1
+				selected_conveyor.inventory_2 = selected_conveyor.inventory_2
+				return
+			
+			if not (outputItem.name in selected_conveyor.inventory.keys()):
+				selected_conveyor.inventory[outputItem.name] = 0
+			selected_conveyor.inventory[outputItem.name] += 1
 			selected_conveyor.inventory = selected_conveyor.inventory
 
 func take_damage(damage: int) -> void:
@@ -132,7 +152,6 @@ func _on_conveyor_detector_area_entered(area: Area2D) -> void:
 	if (area.is_in_group("Conveyor") or area.is_in_group("Container")) and area.held == false and area != self:
 		conveyors.append(area)
 		conveyors = conveyors
-		print(area)
 		output()
 
 func _on_conveyor_detector_area_exited(area: Area2D) -> void:
@@ -143,7 +162,6 @@ func _on_conveyor_detector_area_exited(area: Area2D) -> void:
 func _on_production_timer_timeout() -> void:
 	check_conveyors()
 	if can_output():
-		print(is_same(inventory, inventory_2))
 		inventory[inventory.keys()[0]] -= inputItem.values()[0]
 		inventory = inventory
 		if inventory.values()[0] <= 0:
