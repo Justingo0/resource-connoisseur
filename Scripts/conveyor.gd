@@ -52,9 +52,6 @@ func _physics_process(delta: float) -> void:
 				elif "inputItem" in next_conveyer and next_conveyer.inputItem.size() == 1:
 					item_moving = false
 					return
-			#elif "inputItem" in next_conveyer and next_conveyer.inputItem.size() >= 2 and not item.itemType in next_conveyer.inputItem.keys()[1]:
-				#item_moving = false
-				#return
 			var inventory_size = 0
 			for value in next_conveyer.inventory.values():
 				inventory_size += value
