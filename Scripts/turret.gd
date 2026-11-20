@@ -31,6 +31,7 @@ var line_width: float = 2.0
 var radius_color: Color = Color.YELLOW
 
 func _ready() -> void:
+	range.shape = CircleShape2D.new()
 	range.shape.radius = type.range * 64
 	health = type.health
 	shotCount = type.shotCount
