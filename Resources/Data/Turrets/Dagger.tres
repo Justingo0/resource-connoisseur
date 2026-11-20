@@ -10,7 +10,7 @@ script = ExtResource("1_c7us3")
 topSprite = ExtResource("6_oij5r")
 baseSprite = ExtResource("1_rflue")
 input = {
-"Ruby": 1
+"Ruby": 0.2
 }
 range = 8
 reloadSpeed = 0.2
@@ -30,4 +30,6 @@ buildCosts = {
 "Ruby": 20
 }
 destroy_time = 1.5
+description = "A weak turret, strength in numbers really shows with this turret and its efficient ammo usage
+Takes in ruby"
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

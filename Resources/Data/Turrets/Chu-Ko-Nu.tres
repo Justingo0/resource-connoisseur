@@ -30,5 +30,6 @@ buildCosts = {
 "Topaz": 20
 }
 destroy_time = 2.5
-description = "Shoots enemies. Only takes in Flourite."
+description = "Powerful medium-range turret, fires bursts of high accuracy projectiles
+Takes in topaz"
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"
