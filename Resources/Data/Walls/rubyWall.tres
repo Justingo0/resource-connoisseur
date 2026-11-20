@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="wallStats" format=3 uid="uid://cdmldtxr036ya"]
 
 [ext_resource type="Script" uid="uid://bgxel607vfhi8" path="res://Resources/Managers/wallStats.gd" id="1_smom8"]
-[ext_resource type="Texture2D" uid="uid://c81vu3yt2i3xt" path="res://Assets/RubyWall.png" id="1_u0t0l"]
+[ext_resource type="Texture2D" uid="uid://8i0ed5axyrnk" path="res://Assets/smallRubyWall.png" id="1_u0t0l"]
 [ext_resource type="PackedScene" uid="uid://btf7on0x1gbau" path="res://Scenes/wall.tscn" id="2_hyb47"]
 
 [resource]
