@@ -12,7 +12,7 @@ script = ExtResource("1_oduel")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1297865220]
 texture_filter = 1
-position = Vector2(-2, 0)
+position = Vector2(0, -2)
 rotation = 1.5707964
 scale = Vector2(4, 4)
 texture = ExtResource("2_oduel")

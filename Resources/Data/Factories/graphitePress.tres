@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="factoryStats" format=3 uid="uid://b55swmillii22"]
 
-[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="1_44n4x"]
 [ext_resource type="Script" uid="uid://bjqapbmg5eu4y" path="res://Resources/Managers/factoryStats.gd" id="1_c4fwl"]
+[ext_resource type="Texture2D" uid="uid://daoa6e6lyq7jd" path="res://Assets/GraphitePress.png" id="1_xkjd7"]
 [ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="2_syqd1"]
 [ext_resource type="Texture2D" uid="uid://dydb4t41j541j" path="res://Assets/Graphite.png" id="4_1aik2"]
 [ext_resource type="Script" uid="uid://fvk4kso7ogn0" path="res://Resources/Managers/ItemStats.gd" id="5_jypod"]
@@ -20,7 +20,7 @@ input = {
 output = SubResource("Resource_2lbpn")
 production_time = 3.0
 inventory_size = 10
-icon = ExtResource("1_44n4x")
+icon = ExtResource("1_xkjd7")
 name = "Graphite Press"
 scene = ExtResource("2_syqd1")
 size = 2
