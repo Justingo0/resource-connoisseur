@@ -11,10 +11,10 @@ signal on_action_finised(action:String)
 @onready var player = %Player
 @onready var build_menu = %BuildMenu
 
-@onready var inventory_display = $DeleteCursor/InventoryDisplay
-@onready var item_container = $DeleteCursor/InventoryDisplay/ItemContainer
-@onready var item_template = $DeleteCursor/InventoryDisplay/Template
-@onready var item_health_bar = $DeleteCursor/InventoryDisplay/HealthBar
+@onready var inventory_display = $"../../CanvasLayer/InventoryDisplay"
+@onready var item_container = $"../../CanvasLayer/InventoryDisplay/ItemContainer"
+@onready var item_template = $"../../CanvasLayer/InventoryDisplay/Template"
+@onready var item_health_bar = $"../../CanvasLayer/InventoryDisplay/HealthBar"
 
 @export var use_build_costs:bool = true
 
@@ -185,7 +185,7 @@ func _physics_process(delta: float) -> void:
 				common[hovering_object.inventory_2.keys()[0]] = hovering_object.inventory_2.values()[0]
 			update_inventory_display(common)
 	
-	inventory_display.global_position = get_global_mouse_position()
+	inventory_display.position = inventory_display.get_global_mouse_position()
 	build_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	delete_cursor.global_position = get_global_mouse_position().snapped(Vector2(GRID_SIZE, GRID_SIZE))
 	
@@ -372,7 +372,7 @@ func update_inventory_display(items:Dictionary):
 		
 		item_container.add_child(item_temp)
 		item_temp.texture = load("res://Resources/Data/Items/Raw"+item+".tres" if OreStats.isOre(item) else "res://Resources/Data/Items/"+item+".tres").icon
-		item_temp.get_child(0).text = "x" + str(amount)
+		item_temp.get_child(0).text = str(amount) + "x"
 		#if item_display.name in item_keys:
 			#item_display.visible = true
 			#item_display.get_child(0).text = "x" + str(items[item_display.name])
