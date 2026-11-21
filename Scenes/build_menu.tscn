@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://desde04bcsrc4" path="res://Assets/BlunderbussTop.png" id="18_7so82"]
 [ext_resource type="Resource" uid="uid://cp76e3xhj2ev" path="res://Resources/Data/Turrets/Lance.tres" id="18_87c2h"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
-[ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="18_qi0q1"]
 [ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
 [ext_resource type="Resource" uid="uid://bohkep2gj2qrn" path="res://Resources/Data/Turrets/Hua-Che.tres" id="19_6gs3s"]
 [ext_resource type="Resource" uid="uid://b55swmillii22" path="res://Resources/Data/Factories/graphitePress.tres" id="20_0dv3k"]
@@ -36,6 +35,7 @@
 [ext_resource type="Texture2D" uid="uid://bhh7ockuabwlt" path="res://Assets/BallistaTop.png" id="26_ifh0d"]
 [ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
 [ext_resource type="Texture2D" uid="uid://dlcq5afw7rf34" path="res://Assets/UI/TabsIcons/Walls.png" id="27_qi0q1"]
+[ext_resource type="Texture2D" uid="uid://8i0ed5axyrnk" path="res://Assets/smallRubyWall.png" id="28_44wjp"]
 [ext_resource type="Texture2D" uid="uid://c81vu3yt2i3xt" path="res://Assets/RubyWall.png" id="28_ikf1b"]
 [ext_resource type="Script" uid="uid://w07ceot5mi5n" path="res://Resources/Managers/tutorialStats.gd" id="28_liqnk"]
 [ext_resource type="Resource" uid="uid://cdmldtxr036ya" path="res://Resources/Data/Walls/rubyWall.tres" id="28_pvcui"]
@@ -47,6 +47,7 @@
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="30_qi0q1"]
 [ext_resource type="PackedScene" uid="uid://xoy54k244pnd" path="res://Scenes/factoryTemplate.tscn" id="31_nlj0r"]
 [ext_resource type="PackedScene" uid="uid://byicaco3t1gqo" path="res://Scenes/router.tscn" id="32_5jpdo"]
+[ext_resource type="Texture2D" uid="uid://b7biag85ppsp6" path="res://Assets/smallQuartzWall.png" id="32_7uu0d"]
 [ext_resource type="Texture2D" uid="uid://c0w1m2epeey1n" path="res://Assets/TitaniumWall.png" id="32_h6q0m"]
 [ext_resource type="Texture2D" uid="uid://16khcxcfv6cm" path="res://Assets/AlloySmelter.png" id="32_ifh0d"]
 [ext_resource type="Texture2D" uid="uid://y7f4x2xgn0fj" path="res://Assets/UI/Arrow.png" id="32_nlj0r"]
@@ -60,12 +61,17 @@
 [ext_resource type="Resource" uid="uid://04xymsfhbx4p" path="res://Resources/Data/Walls/titaniumWallLarge.tres" id="36_lq6r3"]
 [ext_resource type="Texture2D" uid="uid://d08olqelknfj2" path="res://Assets/flouriteRefiner.png" id="36_mekxv"]
 [ext_resource type="Texture2D" uid="uid://bl0l31dokewgf" path="res://Assets/CarbideWall.png" id="36_njwl4"]
+[ext_resource type="Texture2D" uid="uid://d06qbyh4xwy4r" path="res://Assets/smallTitaniumWall.png" id="36_sl55x"]
 [ext_resource type="Resource" uid="uid://b5802lfp00l6x" path="res://Resources/Data/Walls/carbideWall.tres" id="37_eo1vj"]
 [ext_resource type="Resource" uid="uid://cf6xyw62ii08y" path="res://Resources/Data/Factories/fluoriteRefiner.tres" id="37_ymuu6"]
 [ext_resource type="Resource" uid="uid://bsq6a1sydj1f3" path="res://Resources/Data/Walls/topazWallLarge.tres" id="39_b7han"]
+[ext_resource type="Texture2D" uid="uid://bh6osbub5s6bs" path="res://Assets/smallTopazWall.png" id="40_57h2s"]
 [ext_resource type="Resource" uid="uid://dcb1p3i3pw323" path="res://Resources/Data/Walls/carbideWallLarge.tres" id="42_4qut6"]
+[ext_resource type="Texture2D" uid="uid://bgc150gofur1s" path="res://Assets/smallCarbideWall.png" id="44_g5vdn"]
+[ext_resource type="Texture2D" uid="uid://daoa6e6lyq7jd" path="res://Assets/GraphitePress.png" id="48_0frks"]
 [ext_resource type="Texture2D" uid="uid://dydb4t41j541j" path="res://Assets/Graphite.png" id="56_okwr1"]
 [ext_resource type="Script" uid="uid://crpu44nvursjn" path="res://Scripts/UserInterface/lose_screen.gd" id="65_eo1vj"]
+[ext_resource type="Script" uid="uid://cqg3pnpmiwf5x" path="res://Scripts/UserInterface/selection_panel.gd" id="72_7uu0d"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
@@ -528,6 +534,9 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 8
 
+[sub_resource type="LabelSettings" id="LabelSettings_t5fij"]
+font = ExtResource("2_0dv3k")
+
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
 anchors_preset = 15
@@ -813,7 +822,7 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("28_ikf1b")
+texture_normal = ExtResource("28_44wjp")
 type = ExtResource("28_pvcui")
 
 [node name="Selection6" parent="SelectionMenu/Selections/Walls" unique_id=1196623387 instance=ExtResource("11_v31xr")]
@@ -827,7 +836,7 @@ type = ExtResource("30_eo1vj")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("29_pv6lm")
+texture_normal = ExtResource("32_7uu0d")
 type = ExtResource("30_1fcxi")
 
 [node name="Selection7" parent="SelectionMenu/Selections/Walls" unique_id=17331881 instance=ExtResource("11_v31xr")]
@@ -841,7 +850,7 @@ type = ExtResource("33_okwr1")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("32_h6q0m")
+texture_normal = ExtResource("36_sl55x")
 type = ExtResource("33_67idc")
 
 [node name="Selection8" parent="SelectionMenu/Selections/Walls" unique_id=401559463 instance=ExtResource("11_v31xr")]
@@ -855,7 +864,7 @@ type = ExtResource("36_lq6r3")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("34_sgpdj")
+texture_normal = ExtResource("40_57h2s")
 type = ExtResource("35_b2bwh")
 
 [node name="Selection9" parent="SelectionMenu/Selections/Walls" unique_id=1370850810 instance=ExtResource("11_v31xr")]
@@ -869,7 +878,7 @@ type = ExtResource("39_b7han")
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("36_njwl4")
+texture_normal = ExtResource("44_g5vdn")
 type = ExtResource("37_eo1vj")
 
 [node name="Selection10" parent="SelectionMenu/Selections/Walls" unique_id=1818887763 instance=ExtResource("11_v31xr")]
@@ -900,7 +909,7 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("18_qi0q1")
+texture_normal = ExtResource("48_0frks")
 type = ExtResource("20_0dv3k")
 
 [node name="Selection2" parent="SelectionMenu/Selections/Base" unique_id=1354477393 instance=ExtResource("11_v31xr")]
@@ -1100,7 +1109,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -737.0
 offset_top = -394.0
-offset_right = -526.0
+offset_right = -505.0
 offset_bottom = -286.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -1118,6 +1127,7 @@ offset_right = 32.0
 offset_bottom = 49.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 
 [node name="TextureRect" type="TextureRect" parent="ItemDisplay/Template" unique_id=910976105]
 layout_mode = 1
@@ -1130,6 +1140,7 @@ offset_right = 3.1153831
 offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("56_okwr1")
 expand_mode = 1
 stretch_mode = 4
@@ -1169,7 +1180,7 @@ offset_bottom = 104.0
 grow_horizontal = 2
 text = "Lorem ipsum dolor sit amet consectuer."
 label_settings = SubResource("LabelSettings_cj8qe")
-autowrap_mode = 2
+autowrap_mode = 3
 
 [node name="BuildCost" type="HBoxContainer" parent="ItemDisplay" unique_id=70594507]
 layout_mode = 1
@@ -1183,6 +1194,7 @@ offset_right = -5.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 6
 
 [node name="Annoucement" type="Label" parent="." unique_id=1853022101]
@@ -2876,6 +2888,111 @@ autowrap_mode = 0
 autowrap_trim_flags = 0
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Selection" type="Panel" parent="." unique_id=890283236]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -270.0
+offset_top = -156.0
+offset_right = -26.0
+offset_bottom = -106.0
+grow_horizontal = 0
+grow_vertical = 0
+offset_transform_enabled = true
+offset_transform_position = Vector2(0, -216)
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nlj0r")
+script = ExtResource("72_7uu0d")
+
+[node name="Icon" type="TextureRect" parent="Selection" unique_id=934144545]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -46.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("34_sgpdj")
+expand_mode = 1
+stretch_mode = 6
+
+[node name="Name" type="Label" parent="Selection" unique_id=1135142988]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 3.0
+offset_right = -54.0
+offset_bottom = 21.0
+grow_horizontal = 2
+text = "Name here AHAHAHA"
+label_settings = SubResource("LabelSettings_t5fij")
+horizontal_alignment = 2
+
+[node name="BuildCost" type="HBoxContainer" parent="Selection" unique_id=832768441]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -3.0
+offset_right = -55.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/separation = 6
+alignment = 2
+
+[node name="Template" type="Control" parent="Selection" unique_id=383732924]
+visible = false
+texture_filter = 1
+custom_maximum_size = Vector2(27, -1)
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 23.0
+offset_right = 32.0
+offset_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Selection/Template" unique_id=112894218]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.1153831
+offset_top = -3.0
+offset_right = 3.1153831
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("56_okwr1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="Selection/Template" unique_id=480918549]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5x"
+label_settings = SubResource("LabelSettings_lq6r3")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]

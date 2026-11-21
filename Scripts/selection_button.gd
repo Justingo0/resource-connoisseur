@@ -4,6 +4,8 @@ extends TextureButton
 @onready var camera = $"../../../../../../Player/Camera2D"
 @onready var item_display = %ItemDisplay
 
+@onready var selection_panel = $"../../../../Selection"
+
 @export var type:blockStats:
 	set(new_val):
 		type = new_val
@@ -20,6 +22,20 @@ func _on_pressed() -> void:
 	if not type: return
 	camera.building_object_type = type
 	camera.building_object = type.scene
+	
+	selection_panel.get_node("Name").text = type.name
+	selection_panel.get_node("Icon").texture = type.icon
+	for child in selection_panel.get_node("BuildCost").get_children():
+		child.queue_free()
+	for item in type.buildCosts.keys():
+		var value = type.buildCosts[item]
+		var template = selection_panel.get_node("Template").duplicate()
+		var item_type = load("res://Resources/Data/Items/Raw%s.tres" % [item] if OreStats.isOre(item) else "res://Resources/Data/Items/%s.tres" % [item])
+		selection_panel.get_node("BuildCost").add_child(template)
+		template.visible = true
+		template.get_node("Amount").text = str(value) + "x"
+		template.get_node("TextureRect").texture = item_type.icon
+	selection_panel.visible = true
 
 func _on_mouse_entered() -> void:
 	if not Engine.is_editor_hint():
