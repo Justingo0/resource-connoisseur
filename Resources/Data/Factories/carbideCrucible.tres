@@ -25,4 +25,5 @@ buildCosts = {
 "Titanium": 35,
 "Topaz": 10
 }
+destroy_time = 2.0
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"

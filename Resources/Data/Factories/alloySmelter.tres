@@ -24,4 +24,5 @@ buildCosts = {
 "Ruby": 50,
 "Titanium": 35
 }
+destroy_time = 3.0
 metadata/_custom_type_script = "uid://bjqapbmg5eu4y"
