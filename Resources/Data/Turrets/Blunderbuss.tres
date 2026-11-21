@@ -10,12 +10,12 @@ script = ExtResource("1_rurbd")
 topSprite = ExtResource("5_4fhvw")
 baseSprite = ExtResource("1_lgjw4")
 input = {
-"Quartz": 0.25
+"Quartz": 0.4
 }
 range = 6
 reloadSpeed = 0.5
 spread = 35.0
-shotCount = 7
+shotCount = 6
 shotgun = true
 damage = 8
 projectileSpeed = 1300

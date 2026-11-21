@@ -12,11 +12,12 @@ baseSprite = ExtResource("1_n3akm")
 input = {
 "Graphite": 0.3
 }
-range = 14
+range = 16
 reloadSpeed = 1.0
 spread = 5.0
+shotCount = 1
 damage = 25
-projectileSpeed = 2700
+projectileSpeed = 2800
 projectileLifetime = 0.4
 knockAmount = 25
 icon = ExtResource("5_n3akm")
