@@ -64,6 +64,7 @@
 [ext_resource type="Resource" uid="uid://cf6xyw62ii08y" path="res://Resources/Data/Factories/fluoriteRefiner.tres" id="37_ymuu6"]
 [ext_resource type="Resource" uid="uid://bsq6a1sydj1f3" path="res://Resources/Data/Walls/topazWallLarge.tres" id="39_b7han"]
 [ext_resource type="Resource" uid="uid://dcb1p3i3pw323" path="res://Resources/Data/Walls/carbideWallLarge.tres" id="42_4qut6"]
+[ext_resource type="Texture2D" uid="uid://dydb4t41j541j" path="res://Assets/Graphite.png" id="56_okwr1"]
 [ext_resource type="Script" uid="uid://crpu44nvursjn" path="res://Scripts/UserInterface/lose_screen.gd" id="65_eo1vj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
@@ -156,6 +157,12 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 corner_detail = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_lq6r3"]
+font = ExtResource("2_0dv3k")
+font_size = 12
+outline_size = 7
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_p7o00"]
 font = ExtResource("2_0dv3k")
@@ -945,6 +952,7 @@ grow_vertical = 2
 columns = 5
 
 [node name="Miners" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=1324528805]
+editor_description = "Miners & Extractors"
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -971,6 +979,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Conveyors" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=557796593]
+editor_description = "Conveyors & Sorting"
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -997,6 +1006,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Turrets" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=1643078247]
+editor_description = "Weaponry"
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1023,6 +1033,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Walls" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=871083808]
+editor_description = "Walls & Defenses"
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1031,6 +1042,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_lpbhf")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_t5fij")
 theme_override_styles/hover = SubResource("StyleBoxFlat_b2sko")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_7e7c6")
+toggle_mode = true
 
 [node name="TextureRect2" type="TextureRect" parent="SelectionMenu/Tabs/Container/Walls" unique_id=387913221]
 layout_mode = 1
@@ -1048,6 +1060,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="Base" type="Button" parent="SelectionMenu/Tabs/Container" unique_id=1931005291]
+editor_description = "Factories & Processors"
 texture_filter = 1
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1087,12 +1100,51 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -737.0
 offset_top = -394.0
-offset_right = -579.0
-offset_bottom = -302.0
+offset_right = -526.0
+offset_bottom = -286.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qi0q1")
+
+[node name="Template" type="Control" parent="ItemDisplay" unique_id=1542662188]
+visible = false
+texture_filter = 1
+custom_maximum_size = Vector2(27, -1)
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 23.0
+offset_right = 32.0
+offset_bottom = 49.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="ItemDisplay/Template" unique_id=910976105]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.1153831
+offset_top = -3.0
+offset_right = 3.1153831
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("56_okwr1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="Amount" type="Label" parent="ItemDisplay/Template" unique_id=1858911107]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5x"
+label_settings = SubResource("LabelSettings_lq6r3")
+horizontal_alignment = 2
+vertical_alignment = 2
 
 [node name="Name" type="Label" parent="ItemDisplay" unique_id=812347860]
 layout_mode = 1
@@ -1111,13 +1163,27 @@ layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 6.0
-offset_top = 41.0
+offset_top = 54.0
 offset_right = -6.0
-offset_bottom = 87.0
+offset_bottom = 104.0
 grow_horizontal = 2
 text = "Lorem ipsum dolor sit amet consectuer."
 label_settings = SubResource("LabelSettings_cj8qe")
 autowrap_mode = 2
+
+[node name="BuildCost" type="HBoxContainer" parent="ItemDisplay" unique_id=70594507]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = -31.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
 
 [node name="Annoucement" type="Label" parent="." unique_id=1853022101]
 custom_minimum_size = Vector2(0, 44)
@@ -2781,6 +2847,35 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
 text = "Main menu"
+
+[node name="Tooltip" type="PanelContainer" parent="." unique_id=633838063]
+visible = false
+propagate_maximum_size = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -648.0
+offset_right = -1139.0
+offset_bottom = -626.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_nlj0r")
+
+[node name="Label" type="RichTextLabel" parent="Tooltip" unique_id=2108675797]
+layout_mode = 2
+offset_transform_position_ratio = Vector2(0, -1.6)
+theme_override_fonts/normal_font = ExtResource("2_0dv3k")
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+autowrap_trim_flags = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]

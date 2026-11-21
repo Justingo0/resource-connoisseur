@@ -63,7 +63,7 @@ autoplay = "move"
 frame_progress = 0.7843642
 
 [node name="RayCast" type="RayCast2D" parent="." unique_id=423209814]
-target_position = Vector2(0, -46)
+target_position = Vector2(0, -58)
 collide_with_areas = true
 collide_with_bodies = false
 

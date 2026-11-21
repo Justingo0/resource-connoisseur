@@ -7,8 +7,8 @@
 size = Vector2(60, 60)
 
 [node name="Wall" type="Area2D" unique_id=66120586 groups=["Block"]]
-collision_layer = 11
-collision_mask = 11
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_yjehn")
 max_destroy_time = 1.2
 
@@ -19,3 +19,10 @@ shape = SubResource("RectangleShape2D_p7o00")
 texture_filter = 1
 use_parent_material = true
 texture = ExtResource("2_yjehn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=205992152]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=714161372]
+shape = SubResource("RectangleShape2D_p7o00")

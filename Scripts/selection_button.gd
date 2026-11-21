@@ -9,40 +9,12 @@ extends TextureButton
 		type = new_val
 		if type:
 			texture_normal = type.icon
-#@export var base_texture:Texture2D:
-	#set(new_val):
-		#base_texture = new_val
-		#if base_texture:
-			#texture_normal = base_texture
-		#else:
-			#texture_normal = null
-	#get:
-		#return base_texture
-#@export var sub_texture:Texture2D:
-	#set(new_val):
-		#sub_texture = new_val
-		#if sub_texture:
-			#if not subtexture_rect: return
-			#subtexture_rect.texture = sub_texture
-		#else:
-			#if not subtexture_rect: return
-			#subtexture_rect.texture = null
-	#get:
-		#return sub_texture
 
 var hovering := false
 
 func _ready() -> void:
-	#if base_texture:
-		#texture_normal = base_texture
-	#if sub_texture:
-		#subtexture_rect.texture = sub_texture
 	if type:
 		texture_normal = type.icon
-
-func _process(delta: float) -> void:
-	if not Engine.is_editor_hint() and hovering:
-		item_display.position = global_position+(size/2)
 
 func _on_pressed() -> void:
 	if not type: return
@@ -53,11 +25,29 @@ func _on_mouse_entered() -> void:
 	if not Engine.is_editor_hint():
 		item_display.visible = true
 		hovering = true
+		item_display.position = global_position+(size/2)
+		if is_ui_off_screen(item_display):
+			item_display.position = global_position+(Vector2((-size.x*2)-10, size.y/2))
 		
 		item_display.get_node("Name").text = str(type.name)
 		item_display.get_node("Description").text = str(type.description)
+		for child in item_display.get_node("BuildCost").get_children():
+			child.queue_free()
+		for item in type.buildCosts.keys():
+			var value = type.buildCosts[item]
+			var template = item_display.get_node("Template").duplicate()
+			var item_type = load("res://Resources/Data/Items/Raw%s.tres" % [item] if OreStats.isOre(item) else "res://Resources/Data/Items/%s.tres" % [item])
+			item_display.get_node("BuildCost").add_child(template)
+			template.visible = true
+			template.get_node("Amount").text = str(value) + "x"
+			template.get_node("TextureRect").texture = item_type.icon
 
 func _on_mouse_exited() -> void:
 	if not Engine.is_editor_hint():
 		item_display.visible = false
 		hovering = false
+
+func is_ui_off_screen(control: Control) -> bool:
+	var screen_rect := control.get_viewport_rect()
+	var ui_rect := control.get_global_rect()
+	return not screen_rect.encloses(ui_rect)

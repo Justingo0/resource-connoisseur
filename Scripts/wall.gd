@@ -18,11 +18,13 @@ func _ready() -> void:
 		$Sprite2D.texture = type.icon
 		
 		$CollisionShape2D.scale *= type.size
+		$StaticBody2D.scale *= type.size
 		$Sprite2D.scale *= type.size
 		
 		if type.size % 2 == 0:
 			$Sprite2D.position = Vector2(-32, -32)
 			$CollisionShape2D.position = Vector2(-32, -32)
+			$StaticBody2D.position = Vector2(-32, -32)
 
 func take_damage(damage: int) -> void:
 	health -= damage

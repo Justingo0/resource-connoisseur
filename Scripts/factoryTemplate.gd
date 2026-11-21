@@ -72,6 +72,7 @@ func output():
 	if not can_output(): return
 	if not conveyors.is_empty() and resources > 0 and not last_output_item:
 		selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
+		conveyorInterval += 1
 		if not selected_conveyor or selected_conveyor.get_disabled() or ("output_conveyor" in selected_conveyor and selected_conveyor.output_conveyor == self):
 			#conveyors.erase(output_conveyor)
 			selected_conveyor = null
@@ -83,7 +84,6 @@ func output():
 		if selected_conveyor.is_in_group("Conveyor"):
 			if selected_conveyor.item != null: #or selected_conveyor.item_incoming != null:
 				for i in conveyors.size():
-					conveyorInterval += 1
 					selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
 					if selected_conveyor.item == null: return #or selected_conveyor.item_incoming == null: return
 			if (selected_conveyor.item == null) and selected_conveyor.held == false and !held:
@@ -93,7 +93,6 @@ func output():
 				last_generated_item.setProperties()
 				last_output_item = last_generated_item
 				output_conveyor = selected_conveyor
-				conveyorInterval += 1
 				resources -= 1
 				
 				selected_conveyor.item_incoming = last_generated_item
@@ -110,13 +109,11 @@ func output():
 				
 				last_generated_item.global_position = starting_pos #- (64 * global_position.direction_to(selected_conveyor.global_position))
 		elif selected_conveyor.is_in_group("Container"):
-			conveyorInterval += 1
 			if "inputItem" in selected_conveyor and not outputItem.name in selected_conveyor.inputItem.keys()[0]:
 				if "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() >= 2 and not outputItem.name in selected_conveyor.inputItem.keys()[1]:
 					return
 				elif "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() == 1:
 					return
-			
 			var size = 0
 			for value in selected_conveyor.inventory.values():
 				size += value
@@ -128,9 +125,7 @@ func output():
 					if size_2 >= selected_conveyor.inventory_size: return
 				else:
 					return
-			
 			resources -= 1
-			
 			if "inputItem" in selected_conveyor and selected_conveyor.inputItem.size() == 2 and outputItem.name == selected_conveyor.inputItem.keys()[1]:
 				if not (outputItem.name in selected_conveyor.inventory_2.keys()):
 					selected_conveyor.inventory_2[outputItem.name] = 0
