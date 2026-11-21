@@ -38,15 +38,14 @@ offset_bottom = 218.56793
 color = Color(1, 0, 0, 1)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1382670652]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 9
+collision_mask = 9
 
 [node name="bulletDetector" type="CollisionShape2D" parent="Area2D" unique_id=1846499004]
 shape = SubResource("CircleShape2D_hghv2")
 debug_color = Color(0.6745601, 0.5026713, 0.19050765, 0.41960785)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=674082287]
-path_max_distance = 147.0
 navigation_layers = 255
 avoidance_layers = 0
 avoidance_mask = 0

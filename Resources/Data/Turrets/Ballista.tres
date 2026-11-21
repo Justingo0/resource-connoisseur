@@ -12,15 +12,16 @@ baseSprite = ExtResource("1_dh6i5")
 input = {
 "Fluorine": 0.2
 }
-range = 20
-reloadSpeed = 1.0
+range = 25
+reloadSpeed = 0.75
 spread = 5.0
-shotCount = 1
-damage = 200
+shotCount = 7
+shotgun = true
+damage = 50
 projectileSpeed = 4000
-projectileLifetime = 0.33
-projectilePierce = 10
-knockAmount = 50
+projectileLifetime = 0.45
+projectilePierce = 1
+knockAmount = 10
 icon = ExtResource("5_hqa5q")
 name = "Ballista"
 scene = ExtResource("5_d6k2h")

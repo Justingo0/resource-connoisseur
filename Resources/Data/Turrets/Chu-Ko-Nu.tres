@@ -9,13 +9,16 @@
 script = ExtResource("1_a51gm")
 topSprite = ExtResource("5_j4g1b")
 baseSprite = ExtResource("1_o3jqf")
-range = 11
+input = {
+"Topaz": 0.3
+}
+range = 12
 reloadSpeed = 1.0
-spread = 18.0
-shotCount = 4
-shotInterval = 0.05
-damage = 12
-projectileSpeed = 1500
+spread = 10.0
+shotCount = 6
+shotInterval = 0.025
+damage = 20
+projectileSpeed = 1750
 projectileLifetime = 0.5
 projectilePierce = 1
 knockAmount = 10
@@ -30,5 +33,6 @@ buildCosts = {
 "Topaz": 20
 }
 destroy_time = 2.5
-description = "Powerful medium-range turret, fires bursts of high accuracy projectiles. Takes in topaz."
+description = "Powerful medium-range turret, fires bursts of high accuracy piercing projectiles
+Takes in topaz"
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"
