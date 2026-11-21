@@ -45,6 +45,11 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	#omg hiii :D
 	reloadTimer += delta*GameManager.time_scale
+
+	if not targets.is_empty() and reloadTimer > reloadSpeed:
+		shoot()
+		reloadTimer = 0
+	
 	if not targets.is_empty():
 		current_target = targets[0]
 	else:
@@ -52,17 +57,23 @@ func _physics_process(delta: float) -> void:
 	
 	if(!targetLocation): return
 	
+	
 	var targetDirection = to_local(navigator.get_next_path_position()).normalized()
 	var targetAngle = targetDirection.angle()
 	sprite.rotation = rotate_toward(sprite.global_rotation, targetAngle + 1.571, 0.07)
 	
 	var forwardDirection = Vector2.from_angle(sprite.rotation - 1.571)
-	velocity = forwardDirection * speed *GameManager.time_scale
 	
-	if not targets.is_empty() and reloadTimer > reloadSpeed:
-		shoot()
-		reloadTimer = 0
 	move_and_slide()
+	
+	if(global_position.distance_to(targetLocation.global_position) < 200):
+		return
+
+	if(global_position.distance_to(targetLocation.global_position) < 250):
+		velocity = forwardDirection * speed/2 *GameManager.time_scale
+		return
+
+	velocity = forwardDirection * speed *GameManager.time_scale
 
 func take_damage(damage_dealt: int) -> void:
 	health -= damage_dealt
@@ -80,11 +91,10 @@ func knockback(knockDirection: Vector2, knock_Amount: int) -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.is_in_group("Block"):
-		print('MUAHAHAHAHA')
-		if area.is_in_group("Core"):
-			targets.push_front(area)
-		else:
-			targets.append(area)
+		#if area.is_in_group("Core"):
+			#targets.push_front(area)
+		#else:
+		targets.append(area)
 		targetRotation = global_position.angle_to_point(targets[0].global_position)
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
