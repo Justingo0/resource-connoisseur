@@ -25,3 +25,10 @@ texture_filter = 1
 use_parent_material = true
 scale = Vector2(3.0000002, 3.0000002)
 texture = ExtResource("2_dt112")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1963736882]
+collision_layer = 8
+collision_mask = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1319372451]
+shape = SubResource("RectangleShape2D_p7o00")
