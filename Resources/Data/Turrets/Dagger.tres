@@ -30,6 +30,5 @@ buildCosts = {
 "Ruby": 20
 }
 destroy_time = 1.5
-description = "A weak turret, strength in numbers really shows with this turret and its efficient ammo usage
-Takes in ruby"
+description = "A weak turret, strength in numbers really shows with this turret and its efficient ammo usage. Takes in ruby."
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

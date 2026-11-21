@@ -31,6 +31,5 @@ buildCosts = {
 "Ruby": 10
 }
 destroy_time = 1.5
-description = "Fires damaging shards in a wide albeit short range cone Deals tremendous damage at close range
-Takes in quartz"
+description = "Fires damaging shards in a wide albeit short range cone Deals tremendous damage at close range. Takes in quartz."
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

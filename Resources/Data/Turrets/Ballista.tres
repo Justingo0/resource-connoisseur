@@ -34,6 +34,5 @@ buildCosts = {
 }
 destroy_time = 4.0
 description = "The most powerful sniper, destroys anything with ease
-Leaves destruction in its wake
-Takes in precious fluorine"
+Leaves destruction in its wake. Takes in  fluorine."
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

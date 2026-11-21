@@ -42,6 +42,5 @@ buildCosts = {
 "Titanium": 30
 }
 destroy_time = 2.5
-description = "Fires piercing blasts that deal considerable damage
-Takes in titanium"
+description = "Fires piercing blasts that deal considerable damage. Takes in titanium."
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

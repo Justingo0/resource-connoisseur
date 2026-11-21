@@ -41,6 +41,5 @@ buildCosts = {
 "Topaz": 50
 }
 destroy_time = 4.0
-description = "One of the most powerful weapons at your disposal, firing at immense speeds towards anything moving
-Takes in alloy"
+description = "One of the most powerful weapons at your disposal, firing at immense speeds towards anything moving. Takes in alloy."
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"

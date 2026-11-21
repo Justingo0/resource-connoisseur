@@ -30,6 +30,5 @@ buildCosts = {
 "Ruby": 20
 }
 destroy_time = 1.5
-description = "Fires a long range medium damage projectile at enemies
-Takes in graphite"
+description = "Fires a long range medium damage projectile at enemies. Takes in graphite"
 metadata/_custom_type_script = "uid://bd63pnbqlmvh0"
