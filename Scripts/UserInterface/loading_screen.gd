@@ -6,6 +6,7 @@ extends Control
 var progress: Array[float] = []
 
 func _ready() -> void:
+	next_scene = GameManager.next_scene
 	ResourceLoader.load_threaded_request(next_scene)
 	loading_bar.value = 0.0
 

@@ -8,6 +8,7 @@ func _pressed() -> void:
 	call(str(name).to_lower())
 
 func play():
+	GameManager.next_scene = "res://Scenes/level_selector.tscn"
 	get_tree().change_scene_to_file("res://Scenes/loading_screen.tscn")
 
 func settings():

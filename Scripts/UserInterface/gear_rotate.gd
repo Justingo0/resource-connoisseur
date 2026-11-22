@@ -15,4 +15,4 @@ extends TextureRect
 		#)
 
 func _process(delta: float) -> void:
-	rotation += direction * speed * delta
+	offset_transform_rotation += direction * speed * delta

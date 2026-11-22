@@ -12,6 +12,9 @@ static var tutorial_mode:bool = false
 static var time_scale:float = 1
 static var conveyor_frame:int = 0
 
+static var levels_completed:int = 0
+static var next_scene:String
+
 @export var core_inventory:Dictionary = {}:
 	set(new_val):
 		core_inventory = new_val
