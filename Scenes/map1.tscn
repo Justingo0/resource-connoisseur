@@ -4,6 +4,15 @@
 [ext_resource type="Texture2D" uid="uid://tynngbbimgp5" path="res://Assets/Tile.png" id="2_0650q"]
 [ext_resource type="Texture2D" uid="uid://dtjqfgqfvwe21" path="res://Assets/EnvironmentWall.png" id="3_rxi31"]
 [ext_resource type="Texture2D" uid="uid://dbp455hvivxaj" path="res://Assets/World/Placeholder.png" id="4_73eik"]
+[ext_resource type="PackedScene" uid="uid://cbeydmwbdnvel" path="res://Scenes/rubyOre.tscn" id="5_vcux0"]
+[ext_resource type="Resource" uid="uid://m74ijmtebdjw" path="res://Resources/Data/Ores/Coal.tres" id="6_gg3vl"]
+[ext_resource type="Resource" uid="uid://jin70igp6w87" path="res://Resources/Data/Ores/Titanium.tres" id="7_kif58"]
+[ext_resource type="Resource" uid="uid://b4l7gepg8c448" path="res://Resources/Data/Ores/Quartz.tres" id="8_ypv6j"]
+[ext_resource type="Resource" uid="uid://dgpenujx5gtm4" path="res://Resources/Data/Ores/Tungsten.tres" id="9_cjqyo"]
+[ext_resource type="Resource" uid="uid://cxu15ap42d1o2" path="res://Resources/Data/Ores/Topaz.tres" id="10_55xmv"]
+[ext_resource type="Resource" uid="uid://di4o2v2cqjeq8" path="res://Resources/Data/Ores/Ruby.tres" id="11_ngqs7"]
+[ext_resource type="Resource" uid="uid://qp4lsbh0gjiw" path="res://Resources/Data/Ores/Fluorite.tres" id="12_qakiw"]
+[ext_resource type="PackedScene" uid="uid://dhtwtpvdf8yu" path="res://Scenes/spawner.tscn" id="13_gg3vl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wouuh"]
 texture = ExtResource("1_xgpx1")
@@ -254,7 +263,7 @@ terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 sources/0 = SubResource("TileSetAtlasSource_gg3vl")
 sources/1 = SubResource("TileSetAtlasSource_kif58")
 
-[node name="Map1" type="Node2D" unique_id=782683000]
+[node name="Map" type="Node2D" unique_id=782683000]
 
 [node name="tiles" type="TileMapLayer" parent="." unique_id=1242806979]
 z_index = -2
@@ -277,3 +286,1046 @@ position = Vector2(32, -32)
 scale = Vector2(4, 4)
 tile_map_data = PackedByteArray("AADf/w4AAQABAAEAAADg/w4AAQABAAEAAADh/w4AAQABAAEAAADi/w4AAQABAAEAAADj/w4AAQABAAEAAADk/w4AAQABAAEAAADl/w4AAQABAAEAAADm/w4AAQABAAEAAADn/w4AAQABAAEAAADo/w4AAQABAAEAAADp/w4AAQABAAEAAADq/w4AAQABAAEAAADr/w4AAQABAAEAAADs/w4AAQABAAEAAADt/w4AAQABAAEAAADu/w4AAQABAAEAAADv/w4AAQABAAEAAADw/w4AAQABAAEAAADx/w4AAQABAAEAAADy/w4AAQABAAEAAADz/w4AAQABAAEAAAD0/w4AAQABAAEAAAD1/w4AAQABAAEAAAD2/w4AAQABAAEAAAD3/w4AAQABAAEAAAD4/w4AAQABAAEAAAD5/w4AAQABAAEAAAD6/w4AAQABAAEAAAD7/w4AAQABAAEAAAD8/w4AAQABAAEAAAD9/w4AAQABAAEAAAD+/w4AAQABAAEAAAD//w4AAQABAAEAAAAAAA4AAQABAAEAAAABAA4AAQABAAEAAAACAA4AAQABAAEAAAADAA4AAQABAAEAAAAEAA4AAQABAAEAAAAFAA4AAQABAAEAAAAGAA4AAQABAAEAAAAHAA4AAQABAAEAAAAIAA4AAQABAAEAAAAJAA4AAQABAAEAAAAKAA4AAQABAAEAAAALAA4AAQABAAEAAAAMAA4AAQABAAEAAAANAA4AAQABAAEAAAAOAA4AAQABAAEAAAAPAA4AAQABAAEAAAAQAA4AAQABAAEAAAARAA4AAQABAAEAAAASAA4AAQABAAEAAAATAA4AAQABAAEAAAAUAA4AAQABAAEAAAAVAA4AAQABAAEAAAAWAA4AAQABAAEAAAAXAA4AAQABAAEAAAAYAA4AAQABAAEAAAAZAA4AAQABAAEAAAAaAA4AAQABAAEAAAAbAA4AAQABAAEAAAAcAA4AAQABAAEAAAAdAA4AAQABAAEAAAAeAA4AAQABAAEAAAAeAA0AAQABAAEAAAAeAAwAAQABAAEAAAAeAAsAAQABAAEAAAAeAAoAAQABAAEAAAAeAAkAAQABAAEAAAAeAAgAAQABAAEAAAAeAAcAAQABAAEAAAAeAAYAAQABAAEAAAAeAAUAAQABAAEAAAAeAAQAAQABAAEAAAAeAAMAAQABAAEAAAAeAAIAAQABAAEAAAAeAAEAAQABAAEAAAAeAAAAAQABAAEAAAAeAP//AQABAAEAAAAeAP7/AQABAAEAAAAeAP3/AQABAAEAAAAeAPz/AQABAAEAAAAeAPv/AQABAAEAAAAeAPr/AQABAAEAAAAeAPn/AQABAAEAAAAeAPj/AQABAAEAAAAeAPf/AQABAAEAAAAeAPb/AQABAAEAAAAeAPX/AQABAAEAAAAeAPT/AQABAAEAAAAeAPP/AQABAAEAAAAeAPL/AQABAAEAAAAeAPH/AQABAAEAAAAeAPD/AQABAAEAAAAeAO//AQABAAEAAAAeAO7/AQABAAEAAAAeAO3/AQABAAEAAAAeAOz/AQABAAEAAAAeAOv/AQABAAEAAAAeAOr/AQABAAEAAAAeAOn/AQABAAEAAAAeAOj/AQABAAEAAAAeAOf/AQABAAEAAAAeAOb/AQABAAEAAAAeAOX/AQABAAEAAAAeAOT/AQABAAEAAAAeAOP/AQABAAEAAAAeAOL/AQABAAEAAAAeAOH/AQABAAEAAAAeAOD/AQABAAEAAAAeAN//AQABAAEAAAAeAN7/AQABAAEAAAAeAN3/AQABAAEAAAAeANz/AQABAAEAAAAeANv/AQABAAEAAAAeANr/AQABAAEAAAAeANn/AQABAAEAAAAeANj/AQABAAEAAAAeANf/AQABAAEAAAAeANb/AQABAAEAAAAeANX/AQABAAEAAAAeANT/AQABAAEAAAAeANP/AQABAAEAAAAeANL/AQABAAEAAAAeANH/AQABAAEAAAAeAND/AQABAAEAAAAeAM//AQABAAEAAAAeAM7/AQABAAEAAAAeAM3/AQABAAEAAAAeAMz/AQABAAEAAAAeAMv/AQABAAEAAAAeAMr/AQABAAEAAAAeAMn/AQABAAEAAAAeAMj/AQABAAEAAAAeAMf/AQABAAEAAAAeAMb/AQABAAEAAAAeAMX/AQABAAEAAAAeAMT/AQABAAEAAAAeAMP/AQABAAEAAAAeAML/AQABAAEAAAAeAMH/AQABAAEAAAAeAMD/AQABAAEAAAAeAL//AQABAAEAAAAeAL7/AQABAAEAAAAeAL3/AQABAAEAAAAeALz/AQABAAEAAAAeALv/AQABAAEAAAAeALr/AQABAAEAAAAdALr/AQABAAEAAAAcALr/AQABAAEAAAAbALr/AQABAAEAAAAaALr/AQABAAEAAAAZALr/AQABAAEAAAAYALr/AQABAAEAAAAXALr/AQABAAEAAAAWALr/AQABAAEAAAAVALr/AQABAAEAAAAUALr/AQABAAEAAAATALr/AQABAAEAAAASALr/AQABAAEAAAARALr/AQABAAEAAAAQALr/AQABAAEAAAAPALr/AQABAAEAAAAOALr/AQABAAEAAAANALr/AQABAAEAAAAMALr/AQABAAEAAAALALr/AQABAAEAAAAKALr/AQABAAEAAAAJALr/AQABAAEAAAAIALr/AQABAAEAAAAHALr/AQABAAEAAAAGALr/AQABAAEAAAAFALr/AQABAAEAAAAEALr/AQABAAEAAAADALr/AQABAAEAAAACALr/AQABAAEAAAABALr/AQABAAEAAAAAALr/AQABAAEAAAD//7r/AQABAAEAAAD+/7r/AQABAAEAAAD9/7r/AQABAAEAAAD8/7r/AQABAAEAAAD7/7r/AQABAAEAAAD6/7r/AQABAAEAAAD5/7r/AQABAAEAAAD4/7r/AQABAAEAAAD3/7r/AQABAAEAAAD2/7r/AQABAAEAAAD1/7r/AQABAAEAAAD0/7r/AQABAAEAAADz/7r/AQABAAEAAADy/7r/AQABAAEAAADx/7r/AQABAAEAAADw/7r/AQABAAEAAADv/7r/AQABAAEAAADu/7r/AQABAAEAAADt/7r/AQABAAEAAADs/7r/AQABAAEAAADr/7r/AQABAAEAAADq/7r/AQABAAEAAADp/7r/AQABAAEAAADo/7r/AQABAAEAAADn/7r/AQABAAEAAADm/7r/AQABAAEAAADl/7r/AQABAAEAAADk/7r/AQABAAEAAADj/7r/AQABAAEAAADi/7r/AQABAAEAAADh/7r/AQABAAEAAADg/7r/AQABAAEAAADf/7r/AQABAAEAAADf/7v/AQABAAEAAADf/7z/AQABAAEAAADf/73/AQABAAEAAADf/77/AQABAAEAAADf/7//AQABAAEAAADf/8D/AQABAAEAAADf/8H/AQABAAEAAADf/8L/AQABAAEAAADf/8P/AQABAAEAAADf/8T/AQABAAEAAADf/8X/AQABAAEAAADf/8b/AQABAAEAAADf/8f/AQABAAEAAADf/8j/AQABAAEAAADf/8n/AQABAAEAAADf/8r/AQABAAEAAADf/8v/AQABAAEAAADf/8z/AQABAAEAAADf/83/AQABAAEAAADf/87/AQABAAEAAADf/8//AQABAAEAAADf/9D/AQABAAEAAADf/9H/AQABAAEAAADf/9L/AQABAAEAAADf/9P/AQABAAEAAADf/9T/AQABAAEAAADf/9X/AQABAAEAAADf/9b/AQABAAEAAADf/9f/AQABAAEAAADf/9j/AQABAAEAAADf/9n/AQABAAEAAADf/9r/AQABAAEAAADf/9v/AQABAAEAAADf/9z/AQABAAEAAADf/93/AQABAAEAAADf/97/AQABAAEAAADf/9//AQABAAEAAADf/+D/AQABAAEAAADf/+H/AQABAAEAAADf/+L/AQABAAEAAADf/+P/AQABAAEAAADf/+T/AQABAAEAAADf/+X/AQABAAEAAADf/+b/AQABAAEAAADf/+f/AQABAAEAAADf/+j/AQABAAEAAADf/+n/AQABAAEAAADf/+r/AQABAAEAAADf/+v/AQABAAEAAADf/+z/AQABAAEAAADf/+3/AQABAAEAAADf/+7/AQABAAEAAADf/+//AQABAAEAAADf//D/AQABAAEAAADf//H/AQABAAEAAADf//L/AQABAAEAAADf//P/AQABAAEAAADf//T/AQABAAEAAADf//X/AQABAAEAAADf//b/AQABAAEAAADf//f/AQABAAEAAADf//j/AQABAAEAAADf//n/AQABAAEAAADf//r/AQABAAEAAADf//v/AQABAAEAAADf//z/AQABAAEAAADf//3/AQABAAEAAADf//7/AQABAAEAAADf////AQABAAEAAADf/wAAAQABAAEAAADf/wEAAQABAAEAAADf/wIAAQABAAEAAADf/wMAAQABAAEAAADf/wQAAQABAAEAAADf/wUAAQABAAEAAADf/wYAAQABAAEAAADf/wcAAQABAAEAAADf/wgAAQABAAEAAADf/wkAAQABAAEAAADf/woAAQABAAEAAADf/wsAAQABAAEAAADf/wwAAQABAAEAAADf/w0AAQABAAEAAAAdALv/AQACAAEAAAAdALz/AQACAAEAAAAdAL3/AQACAAEAAAAdAL7/AQACAAEAAAAdAL//AQACAAEAAAAdAMD/AQACAAEAAAAdAMH/AQACAAEAAAAdAML/AQACAAEAAAAdAMP/AQACAAEAAAAdAMT/AQACAAEAAAAdAMX/AQACAAEAAAAdAMb/AQACAAEAAAAdAMf/AQACAAEAAAAdAMj/AQACAAEAAAAdAMn/AQACAAEAAAAdAMr/AQACAAEAAAAdAMv/AQACAAEAAAAdAMz/AQACAAEAAAAdAM3/AQACAAEAAAAdAM7/AQACAAEAAAAdAM//AQACAAEAAAAdAND/AQACAAEAAAAdANH/AQACAAEAAAAdANL/AQACAAEAAAAdANP/AQACAAEAAAAdANT/AQACAAEAAAAdANX/AQACAAEAAAAdANb/AQACAAEAAAAdANf/AQACAAEAAAAdANj/AQACAAEAAAAdANn/AQACAAEAAAAdANr/AQACAAEAAAAdANv/AQACAAEAAAAdANz/AQACAAEAAAAdAN3/AQACAAEAAAAdAN7/AQACAAEAAAAdAN//AQACAAEAAAAdAOD/AQACAAEAAAAdAOH/AQACAAEAAAAdAOL/AQACAAEAAAAdAOP/AQACAAEAAAAdAOT/AQACAAEAAAAdAOX/AQACAAEAAAAdAOb/AQACAAEAAAAdAOf/AQACAAEAAAAdAOj/AQACAAEAAAAdAOn/AQACAAEAAAAdAOr/AQACAAEAAAAdAOv/AQACAAEAAAAdAOz/AQACAAEAAAAdAO3/AQACAAEAAAAdAO7/AQACAAEAAAAdAO//AQACAAEAAAAdAPD/AQACAAEAAAAdAPH/AQACAAEAAAAdAPL/AQACAAEAAAAdAPP/AQACAAEAAAAdAPT/AQACAAEAAAAdAPX/AQACAAEAAAAdAPb/AQACAAEAAAAdAPf/AQACAAEAAAAdAPj/AQACAAEAAAAdAPn/AQACAAEAAAAdAPr/AQACAAEAAAAdAPv/AQACAAEAAAAdAPz/AQACAAEAAAAdAP3/AQACAAEAAAAdAP7/AQACAAEAAAAdAP//AQACAAEAAAAdAAAAAQACAAEAAAAdAAEAAQACAAEAAAAdAAIAAQACAAEAAAAdAAMAAQACAAEAAAAdAAQAAQACAAEAAAAdAAUAAQACAAEAAAAdAAYAAQACAAEAAAAdAAcAAQACAAEAAAAdAAgAAQACAAEAAAAdAAkAAQACAAEAAAAdAAoAAQACAAEAAAAdAAsAAQACAAEAAAAdAAwAAQACAAEAAAAdAA0AAQACAAEAAAAcALv/AQABAAAAAAAcALz/AQABAAAAAAAcAL3/AQABAAAAAAAcAL7/AQABAAAAAAAcAL//AQABAAAAAAAcAMD/AQABAAAAAAAcAMH/AQABAAAAAAAcAML/AQABAAAAAAAcAMP/AQABAAAAAAAcAMT/AQABAAAAAAAcAMX/AQABAAAAAAAcAMb/AQABAAAAAAAcAMf/AQABAAAAAAAcAMj/AQABAAAAAAAcAMn/AQABAAAAAAAcAMr/AQABAAAAAAAcAMv/AQABAAAAAAAcAMz/AQABAAAAAAAcAM3/AQABAAAAAAAcAM7/AQABAAAAAAAcAM//AQABAAAAAAAcAND/AQABAAAAAAAcANH/AQABAAAAAAAcANL/AQABAAAAAAAcANP/AQABAAAAAAAcANT/AQABAAAAAAAcANX/AQABAAAAAAAcANb/AQABAAAAAAAcANf/AQABAAAAAAAcANj/AQABAAAAAAAcANn/AQABAAAAAAAcANr/AQABAAAAAAAcANv/AQABAAAAAAAcANz/AQABAAAAAAAcAN3/AQABAAAAAAAcAN7/AQABAAAAAAAcAN//AQABAAAAAAAcAOD/AQABAAAAAAAcAOH/AQABAAAAAAAcAOL/AQABAAAAAAAcAOP/AQABAAAAAAAcAOT/AQABAAAAAAAcAOX/AQABAAAAAAAcAOb/AQABAAAAAAAcAOf/AQABAAAAAAAcAOj/AQABAAAAAAAcAOn/AQABAAAAAAAcAOr/AQABAAAAAAAcAOv/AQABAAAAAAAcAOz/AQABAAAAAAAcAO3/AQABAAAAAAAcAO7/AQABAAAAAAAcAO//AQABAAAAAAAcAPD/AQABAAAAAAAcAPH/AQABAAAAAAAcAPL/AQABAAAAAAAcAPP/AQABAAAAAAAcAPT/AQABAAAAAAAcAPX/AQABAAAAAAAcAPb/AQABAAAAAAAcAPf/AQABAAAAAAAcAPj/AQABAAAAAAAcAPn/AQABAAAAAAAcAPr/AQABAAAAAAAcAPv/AQABAAAAAAAcAPz/AQABAAAAAAAcAP3/AQABAAAAAAAcAP7/AQABAAAAAAAcAP//AQABAAAAAAAcAAAAAQABAAAAAAAcAAEAAQABAAAAAAAcAAIAAQABAAAAAAAcAAMAAQABAAAAAAAcAAQAAQABAAAAAAAcAAUAAQABAAAAAAAcAAYAAQABAAAAAAAcAAcAAQABAAAAAAAcAAgAAQABAAAAAAAcAAkAAQABAAAAAAAcAAoAAQABAAAAAAAcAAsAAQABAAAAAAAcAAwAAQABAAAAAAAcAA0AAQABAAAAAAAbAL7/AQADAAAAAAAaAL7/AQADAAAAAAAZAL7/AQADAAAAAAAYAL7/AQADAAAAAAAXAL7/AQADAAAAAAAWAL7/AQADAAAAAAAVAL7/AQADAAAAAAAUAL7/AQADAAAAAAATAL7/AQADAAAAAAASAL7/AQADAAAAAAARAL7/AQADAAAAAAAQAL7/AQADAAAAAAAPAL7/AQADAAAAAAAOAL7/AQADAAAAAAANAL7/AQADAAAAAAAMAL7/AQADAAAAAAALAL7/AQADAAAAAAAKAL7/AQADAAAAAAAJAL7/AQADAAAAAAAIAL7/AQADAAAAAAAHAL7/AQADAAAAAAAGAL7/AQADAAAAAAAFAL7/AQADAAAAAAAEAL7/AQADAAAAAAADAL7/AQADAAAAAAACAL7/AQADAAAAAAABAL7/AQADAAAAAAAAAL7/AQADAAAAAAD//77/AQADAAAAAAD+/77/AQADAAAAAAD9/77/AQADAAAAAAD8/77/AQADAAAAAAD7/77/AQADAAAAAAD6/77/AQADAAAAAAD5/77/AQADAAAAAAD4/77/AQADAAAAAAD3/77/AQADAAAAAAD2/77/AQADAAAAAAD1/77/AQADAAAAAAD0/77/AQADAAAAAADz/77/AQADAAAAAADy/77/AQADAAAAAADx/77/AQADAAAAAADw/77/AQADAAAAAADv/77/AQADAAAAAADu/77/AQADAAAAAADt/77/AQADAAAAAADs/77/AQADAAAAAADr/77/AQADAAAAAADq/77/AQADAAAAAADp/77/AQADAAAAAADo/77/AQADAAAAAADn/77/AQADAAAAAADm/77/AQADAAAAAADl/77/AQADAAAAAADk/77/AQADAAAAAADj/77/AQADAAAAAADi/77/AQADAAAAAADh/77/AQADAAAAAADg/77/AQADAAAAAAA=")
 tile_set = SubResource("TileSet_ypv6j")
+
+[node name="Ores" type="Node2D" parent="." unique_id=1251494091]
+
+[node name="rubyOre" parent="Ores" unique_id=545579719 instance=ExtResource("5_vcux0")]
+position = Vector2(-512, -576)
+metadata/_scene_painted = true
+
+[node name="rubyOre2" parent="Ores" unique_id=106239280 instance=ExtResource("5_vcux0")]
+position = Vector2(-512, -512)
+metadata/_scene_painted = true
+
+[node name="rubyOre3" parent="Ores" unique_id=302389672 instance=ExtResource("5_vcux0")]
+position = Vector2(-512, -448)
+metadata/_scene_painted = true
+
+[node name="rubyOre4" parent="Ores" unique_id=1731364153 instance=ExtResource("5_vcux0")]
+position = Vector2(-448, -448)
+metadata/_scene_painted = true
+
+[node name="rubyOre5" parent="Ores" unique_id=1197666543 instance=ExtResource("5_vcux0")]
+position = Vector2(-448, -512)
+metadata/_scene_painted = true
+
+[node name="rubyOre6" parent="Ores" unique_id=981999130 instance=ExtResource("5_vcux0")]
+position = Vector2(-448, -576)
+metadata/_scene_painted = true
+
+[node name="rubyOre7" parent="Ores" unique_id=1728010062 instance=ExtResource("5_vcux0")]
+position = Vector2(448, -512)
+metadata/_scene_painted = true
+
+[node name="rubyOre8" parent="Ores" unique_id=1427927499 instance=ExtResource("5_vcux0")]
+position = Vector2(576, -448)
+metadata/_scene_painted = true
+
+[node name="rubyOre9" parent="Ores" unique_id=1426030254 instance=ExtResource("5_vcux0")]
+position = Vector2(576, -384)
+metadata/_scene_painted = true
+
+[node name="rubyOre10" parent="Ores" unique_id=580584535 instance=ExtResource("5_vcux0")]
+position = Vector2(576, -320)
+metadata/_scene_painted = true
+
+[node name="rubyOre11" parent="Ores" unique_id=496114502 instance=ExtResource("5_vcux0")]
+position = Vector2(512, -384)
+metadata/_scene_painted = true
+
+[node name="rubyOre12" parent="Ores" unique_id=1340420537 instance=ExtResource("5_vcux0")]
+position = Vector2(-832, -64)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre13" parent="Ores" unique_id=1144203809 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -128)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre14" parent="Ores" unique_id=225216130 instance=ExtResource("5_vcux0")]
+position = Vector2(-832, -128)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre15" parent="Ores" unique_id=668684348 instance=ExtResource("5_vcux0")]
+position = Vector2(512, -448)
+metadata/_scene_painted = true
+
+[node name="rubyOre16" parent="Ores" unique_id=883608821 instance=ExtResource("5_vcux0")]
+position = Vector2(448, -384)
+metadata/_scene_painted = true
+
+[node name="rubyOre17" parent="Ores" unique_id=1745045335 instance=ExtResource("5_vcux0")]
+position = Vector2(448, -448)
+metadata/_scene_painted = true
+
+[node name="rubyOre18" parent="Ores" unique_id=1746116017 instance=ExtResource("5_vcux0")]
+position = Vector2(-448, -384)
+metadata/_scene_painted = true
+
+[node name="rubyOre19" parent="Ores" unique_id=252897374 instance=ExtResource("5_vcux0")]
+position = Vector2(-640, -384)
+metadata/_scene_painted = true
+
+[node name="rubyOre20" parent="Ores" unique_id=1249165942 instance=ExtResource("5_vcux0")]
+position = Vector2(-640, -448)
+metadata/_scene_painted = true
+
+[node name="rubyOre21" parent="Ores" unique_id=2143742900 instance=ExtResource("5_vcux0")]
+position = Vector2(-640, -512)
+metadata/_scene_painted = true
+
+[node name="rubyOre22" parent="Ores" unique_id=1443942101 instance=ExtResource("5_vcux0")]
+position = Vector2(-576, -512)
+metadata/_scene_painted = true
+
+[node name="rubyOre23" parent="Ores" unique_id=1937487493 instance=ExtResource("5_vcux0")]
+position = Vector2(-576, -448)
+metadata/_scene_painted = true
+
+[node name="rubyOre24" parent="Ores" unique_id=1458991483 instance=ExtResource("5_vcux0")]
+position = Vector2(-576, -384)
+metadata/_scene_painted = true
+
+[node name="rubyOre43" parent="Ores" unique_id=1077079386 instance=ExtResource("5_vcux0")]
+position = Vector2(704, 128)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre44" parent="Ores" unique_id=1434388917 instance=ExtResource("5_vcux0")]
+position = Vector2(704, 192)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre45" parent="Ores" unique_id=898923410 instance=ExtResource("5_vcux0")]
+position = Vector2(768, 192)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre46" parent="Ores" unique_id=1737911090 instance=ExtResource("5_vcux0")]
+position = Vector2(832, 256)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre144" parent="Ores" unique_id=278388840 instance=ExtResource("5_vcux0")]
+position = Vector2(832, 192)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre145" parent="Ores" unique_id=2143770143 instance=ExtResource("5_vcux0")]
+position = Vector2(896, 192)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre47" parent="Ores" unique_id=128514737 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -256)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre48" parent="Ores" unique_id=950736442 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -192)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre49" parent="Ores" unique_id=1340143168 instance=ExtResource("5_vcux0")]
+position = Vector2(-832, -192)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre50" parent="Ores" unique_id=6316264 instance=ExtResource("5_vcux0")]
+position = Vector2(1472, -960)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre51" parent="Ores" unique_id=1160441274 instance=ExtResource("5_vcux0")]
+position = Vector2(1344, -896)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre150" parent="Ores" unique_id=1833063190 instance=ExtResource("5_vcux0")]
+position = Vector2(1472, -1024)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre52" parent="Ores" unique_id=521041342 instance=ExtResource("5_vcux0")]
+position = Vector2(1344, -832)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre151" parent="Ores" unique_id=1743986174 instance=ExtResource("5_vcux0")]
+position = Vector2(1472, -1088)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre152" parent="Ores" unique_id=2030535746 instance=ExtResource("5_vcux0")]
+position = Vector2(1408, -1024)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre153" parent="Ores" unique_id=257568347 instance=ExtResource("5_vcux0")]
+position = Vector2(1344, -960)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre154" parent="Ores" unique_id=1191527033 instance=ExtResource("5_vcux0")]
+position = Vector2(1408, -960)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre53" parent="Ores" unique_id=352378115 instance=ExtResource("5_vcux0")]
+position = Vector2(-64, -960)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre54" parent="Ores" unique_id=1762966689 instance=ExtResource("5_vcux0")]
+position = Vector2(0, -960)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre55" parent="Ores" unique_id=1615967971 instance=ExtResource("5_vcux0")]
+position = Vector2(320, -1088)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre56" parent="Ores" unique_id=29621267 instance=ExtResource("5_vcux0")]
+position = Vector2(-384, -1024)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre57" parent="Ores" unique_id=1360731480 instance=ExtResource("5_vcux0")]
+position = Vector2(-448, -1024)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre58" parent="Ores" unique_id=298455339 instance=ExtResource("5_vcux0")]
+position = Vector2(-512, -1088)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre59" parent="Ores" unique_id=65514044 instance=ExtResource("5_vcux0")]
+position = Vector2(-512, -1024)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre60" parent="Ores" unique_id=549542874 instance=ExtResource("5_vcux0")]
+position = Vector2(-576, -1024)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre61" parent="Ores" unique_id=1562063210 instance=ExtResource("5_vcux0")]
+position = Vector2(-576, -1088)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre62" parent="Ores" unique_id=1780564383 instance=ExtResource("5_vcux0")]
+position = Vector2(-640, -1088)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre63" parent="Ores" unique_id=344433270 instance=ExtResource("5_vcux0")]
+position = Vector2(-640, -1152)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre64" parent="Ores" unique_id=109770876 instance=ExtResource("5_vcux0")]
+position = Vector2(-704, -1152)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre25" parent="Ores" unique_id=830377864 instance=ExtResource("5_vcux0")]
+position = Vector2(1344, -2048)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre26" parent="Ores" unique_id=1557287989 instance=ExtResource("5_vcux0")]
+position = Vector2(1344, -1984)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre27" parent="Ores" unique_id=1451115261 instance=ExtResource("5_vcux0")]
+position = Vector2(1344, -1920)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre34" parent="Ores" unique_id=554195354 instance=ExtResource("5_vcux0")]
+position = Vector2(1408, -1920)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre35" parent="Ores" unique_id=64527406 instance=ExtResource("5_vcux0")]
+position = Vector2(1216, -2048)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre37" parent="Ores" unique_id=1282130969 instance=ExtResource("5_vcux0")]
+position = Vector2(1280, -2176)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre38" parent="Ores" unique_id=1619322227 instance=ExtResource("5_vcux0")]
+position = Vector2(1280, -1920)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre39" parent="Ores" unique_id=2013758663 instance=ExtResource("5_vcux0")]
+position = Vector2(1280, -2048)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre40" parent="Ores" unique_id=2024434941 instance=ExtResource("5_vcux0")]
+position = Vector2(1280, -1984)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre41" parent="Ores" unique_id=773632760 instance=ExtResource("5_vcux0")]
+position = Vector2(1216, -1984)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre78" parent="Ores" unique_id=1780515112 instance=ExtResource("5_vcux0")]
+position = Vector2(960, -1280)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre79" parent="Ores" unique_id=1011038417 instance=ExtResource("5_vcux0")]
+position = Vector2(960, -1344)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre81" parent="Ores" unique_id=93991706 instance=ExtResource("5_vcux0")]
+position = Vector2(896, -1216)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre96" parent="Ores" unique_id=1127634230 instance=ExtResource("5_vcux0")]
+position = Vector2(896, -1280)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre80" parent="Ores" unique_id=738643011 instance=ExtResource("5_vcux0")]
+position = Vector2(896, -1344)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre42" parent="Ores" unique_id=978078898 instance=ExtResource("5_vcux0")]
+position = Vector2(1280, -2112)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre30" parent="Ores" unique_id=587503635 instance=ExtResource("5_vcux0")]
+position = Vector2(512, -2048)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre31" parent="Ores" unique_id=1319764980 instance=ExtResource("5_vcux0")]
+position = Vector2(512, -1984)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre32" parent="Ores" unique_id=1411838870 instance=ExtResource("5_vcux0")]
+position = Vector2(512, -1920)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre65" parent="Ores" unique_id=1475545605 instance=ExtResource("5_vcux0")]
+position = Vector2(576, -1920)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre66" parent="Ores" unique_id=1833485033 instance=ExtResource("5_vcux0")]
+position = Vector2(576, -1984)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre67" parent="Ores" unique_id=1968024088 instance=ExtResource("5_vcux0")]
+position = Vector2(448, -1984)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre68" parent="Ores" unique_id=2099460769 instance=ExtResource("5_vcux0")]
+position = Vector2(448, -2048)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre69" parent="Ores" unique_id=1850928798 instance=ExtResource("5_vcux0")]
+position = Vector2(384, -2112)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre70" parent="Ores" unique_id=2094400497 instance=ExtResource("5_vcux0")]
+position = Vector2(384, -2176)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre71" parent="Ores" unique_id=1295065375 instance=ExtResource("5_vcux0")]
+position = Vector2(384, -2048)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre72" parent="Ores" unique_id=1599901793 instance=ExtResource("5_vcux0")]
+position = Vector2(448, -1920)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre73" parent="Ores" unique_id=1143092729 instance=ExtResource("5_vcux0")]
+position = Vector2(448, -1856)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre29" parent="Ores" unique_id=1203359516 instance=ExtResource("5_vcux0")]
+position = Vector2(-1408, -1472)
+type = ExtResource("11_ngqs7")
+metadata/_scene_painted = true
+
+[node name="rubyOre74" parent="Ores" unique_id=633788353 instance=ExtResource("5_vcux0")]
+position = Vector2(-1408, -1536)
+type = ExtResource("11_ngqs7")
+metadata/_scene_painted = true
+
+[node name="rubyOre75" parent="Ores" unique_id=241657283 instance=ExtResource("5_vcux0")]
+position = Vector2(-1472, -1600)
+type = ExtResource("11_ngqs7")
+metadata/_scene_painted = true
+
+[node name="rubyOre76" parent="Ores" unique_id=507145719 instance=ExtResource("5_vcux0")]
+position = Vector2(-1408, -1600)
+type = ExtResource("11_ngqs7")
+metadata/_scene_painted = true
+
+[node name="rubyOre77" parent="Ores" unique_id=762533300 instance=ExtResource("5_vcux0")]
+position = Vector2(-1344, -1536)
+type = ExtResource("11_ngqs7")
+metadata/_scene_painted = true
+
+[node name="rubyOre82" parent="Ores" unique_id=1340734124 instance=ExtResource("5_vcux0")]
+position = Vector2(1216, -2304)
+metadata/_scene_painted = true
+
+[node name="rubyOre83" parent="Ores" unique_id=1114846612 instance=ExtResource("5_vcux0")]
+position = Vector2(1152, -2304)
+metadata/_scene_painted = true
+
+[node name="rubyOre84" parent="Ores" unique_id=1775841824 instance=ExtResource("5_vcux0")]
+position = Vector2(1152, -2368)
+metadata/_scene_painted = true
+
+[node name="rubyOre85" parent="Ores" unique_id=1085502054 instance=ExtResource("5_vcux0")]
+position = Vector2(1152, -2432)
+metadata/_scene_painted = true
+
+[node name="rubyOre208" parent="Ores" unique_id=846443031 instance=ExtResource("5_vcux0")]
+position = Vector2(1088, -2432)
+metadata/_scene_painted = true
+
+[node name="rubyOre211" parent="Ores" unique_id=1397388299 instance=ExtResource("5_vcux0")]
+position = Vector2(1088, -2368)
+metadata/_scene_painted = true
+
+[node name="rubyOre209" parent="Ores" unique_id=20187940 instance=ExtResource("5_vcux0")]
+position = Vector2(1088, -2496)
+metadata/_scene_painted = true
+
+[node name="rubyOre210" parent="Ores" unique_id=945610242 instance=ExtResource("5_vcux0")]
+position = Vector2(1088, -2560)
+metadata/_scene_painted = true
+
+[node name="rubyOre194" parent="Ores" unique_id=1115301222 instance=ExtResource("5_vcux0")]
+position = Vector2(-1088, -3392)
+metadata/_scene_painted = true
+
+[node name="rubyOre195" parent="Ores" unique_id=1091855853 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -3328)
+metadata/_scene_painted = true
+
+[node name="rubyOre201" parent="Ores" unique_id=281020123 instance=ExtResource("5_vcux0")]
+position = Vector2(-1088, -3328)
+metadata/_scene_painted = true
+
+[node name="rubyOre196" parent="Ores" unique_id=1421127296 instance=ExtResource("5_vcux0")]
+position = Vector2(-1024, -3392)
+metadata/_scene_painted = true
+
+[node name="rubyOre202" parent="Ores" unique_id=659260578 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -3008)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre203" parent="Ores" unique_id=604106416 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -2944)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre204" parent="Ores" unique_id=426504555 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -3008)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre205" parent="Ores" unique_id=1503766424 instance=ExtResource("5_vcux0")]
+position = Vector2(-1344, -2944)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre206" parent="Ores" unique_id=1295183220 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -2880)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre207" parent="Ores" unique_id=1311228002 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -2944)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre197" parent="Ores" unique_id=2131631571 instance=ExtResource("5_vcux0")]
+position = Vector2(-1024, -3456)
+metadata/_scene_painted = true
+
+[node name="rubyOre198" parent="Ores" unique_id=1555520094 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -3392)
+metadata/_scene_painted = true
+
+[node name="rubyOre199" parent="Ores" unique_id=606313448 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -3328)
+metadata/_scene_painted = true
+
+[node name="rubyOre200" parent="Ores" unique_id=978569596 instance=ExtResource("5_vcux0")]
+position = Vector2(-1024, -3328)
+metadata/_scene_painted = true
+
+[node name="rubyOre112" parent="Ores" unique_id=329174353 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -2240)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre113" parent="Ores" unique_id=612453289 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -2304)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre217" parent="Ores" unique_id=1542063661 instance=ExtResource("5_vcux0")]
+position = Vector2(-1024, -2176)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre218" parent="Ores" unique_id=46978909 instance=ExtResource("5_vcux0")]
+position = Vector2(-1024, -2240)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre114" parent="Ores" unique_id=2100970031 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -2368)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre115" parent="Ores" unique_id=1847701456 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -2432)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre116" parent="Ores" unique_id=172073089 instance=ExtResource("5_vcux0")]
+position = Vector2(-832, -2752)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre117" parent="Ores" unique_id=1865623894 instance=ExtResource("5_vcux0")]
+position = Vector2(-832, -2816)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre118" parent="Ores" unique_id=1549080744 instance=ExtResource("5_vcux0")]
+position = Vector2(-768, -2816)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre125" parent="Ores" unique_id=591902921 instance=ExtResource("5_vcux0")]
+position = Vector2(-704, -2880)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre165" parent="Ores" unique_id=507967555 instance=ExtResource("5_vcux0")]
+position = Vector2(-768, -2880)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre166" parent="Ores" unique_id=1050391409 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -2752)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre173" parent="Ores" unique_id=1817789190 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -2688)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre167" parent="Ores" unique_id=1509030366 instance=ExtResource("5_vcux0")]
+position = Vector2(-640, -2880)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre86" parent="Ores" unique_id=54248701 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -1600)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre87" parent="Ores" unique_id=1332544248 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -1664)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre88" parent="Ores" unique_id=1591621506 instance=ExtResource("5_vcux0")]
+position = Vector2(-1024, -1664)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre89" parent="Ores" unique_id=162654300 instance=ExtResource("5_vcux0")]
+position = Vector2(-1024, -1728)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre213" parent="Ores" unique_id=1913576085 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -1408)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre214" parent="Ores" unique_id=318775113 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -1472)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre215" parent="Ores" unique_id=1999722833 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -1472)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre216" parent="Ores" unique_id=1581219558 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -1536)
+type = ExtResource("7_kif58")
+metadata/_scene_painted = true
+
+[node name="rubyOre90" parent="Ores" unique_id=701045926 instance=ExtResource("5_vcux0")]
+position = Vector2(448, 576)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre91" parent="Ores" unique_id=655276710 instance=ExtResource("5_vcux0")]
+position = Vector2(384, 576)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre146" parent="Ores" unique_id=47398101 instance=ExtResource("5_vcux0")]
+position = Vector2(448, 512)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre147" parent="Ores" unique_id=254192634 instance=ExtResource("5_vcux0")]
+position = Vector2(384, 512)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre148" parent="Ores" unique_id=1548280971 instance=ExtResource("5_vcux0")]
+position = Vector2(256, 640)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre149" parent="Ores" unique_id=347933216 instance=ExtResource("5_vcux0")]
+position = Vector2(192, 640)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre92" parent="Ores" unique_id=1270180423 instance=ExtResource("5_vcux0")]
+position = Vector2(320, 640)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre93" parent="Ores" unique_id=238600706 instance=ExtResource("5_vcux0")]
+position = Vector2(384, 640)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre94" parent="Ores" unique_id=590324369 instance=ExtResource("5_vcux0")]
+position = Vector2(320, 576)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre95" parent="Ores" unique_id=473391233 instance=ExtResource("5_vcux0")]
+position = Vector2(64, -960)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre97" parent="Ores" unique_id=470482898 instance=ExtResource("5_vcux0")]
+position = Vector2(-960, -3776)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre98" parent="Ores" unique_id=241676873 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -3712)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre99" parent="Ores" unique_id=364639500 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -3648)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre100" parent="Ores" unique_id=725207353 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -3584)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre101" parent="Ores" unique_id=1896091578 instance=ExtResource("5_vcux0")]
+position = Vector2(-1344, -3648)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre102" parent="Ores" unique_id=1656923200 instance=ExtResource("5_vcux0")]
+position = Vector2(-1472, -3648)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre103" parent="Ores" unique_id=2044259881 instance=ExtResource("5_vcux0")]
+position = Vector2(-1408, -3648)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre105" parent="Ores" unique_id=539870836 instance=ExtResource("5_vcux0")]
+position = Vector2(-1344, -3584)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre106" parent="Ores" unique_id=2037677992 instance=ExtResource("5_vcux0")]
+position = Vector2(-1472, -3584)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre107" parent="Ores" unique_id=1903304259 instance=ExtResource("5_vcux0")]
+position = Vector2(-1408, -3584)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre108" parent="Ores" unique_id=1451673435 instance=ExtResource("5_vcux0")]
+position = Vector2(-1408, -3520)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre111" parent="Ores" unique_id=716678013 instance=ExtResource("5_vcux0")]
+position = Vector2(-1536, -3520)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre193" parent="Ores" unique_id=996068066 instance=ExtResource("5_vcux0")]
+position = Vector2(-1472, -3520)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre104" parent="Ores" unique_id=1851584953 instance=ExtResource("5_vcux0")]
+position = Vector2(-832, -3776)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre109" parent="Ores" unique_id=55155299 instance=ExtResource("5_vcux0")]
+position = Vector2(-896, -3776)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre110" parent="Ores" unique_id=1230639832 instance=ExtResource("5_vcux0")]
+position = Vector2(-1024, -3776)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre212" parent="Ores" unique_id=65339836 instance=ExtResource("5_vcux0")]
+position = Vector2(192, -1024)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre119" parent="Ores" unique_id=1774349771 instance=ExtResource("5_vcux0")]
+position = Vector2(128, -2688)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre126" parent="Ores" unique_id=1672250873 instance=ExtResource("5_vcux0")]
+position = Vector2(-64, -2880)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre127" parent="Ores" unique_id=1161823815 instance=ExtResource("5_vcux0")]
+position = Vector2(192, -2560)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre172" parent="Ores" unique_id=277865796 instance=ExtResource("5_vcux0")]
+position = Vector2(192, -2624)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre170" parent="Ores" unique_id=1203143627 instance=ExtResource("5_vcux0")]
+position = Vector2(0, -2880)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre171" parent="Ores" unique_id=1182243741 instance=ExtResource("5_vcux0")]
+position = Vector2(-128, -2880)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre174" parent="Ores" unique_id=5595335 instance=ExtResource("5_vcux0")]
+position = Vector2(896, -3712)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre175" parent="Ores" unique_id=627861702 instance=ExtResource("5_vcux0")]
+position = Vector2(896, -3776)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre176" parent="Ores" unique_id=1664937557 instance=ExtResource("5_vcux0")]
+position = Vector2(896, -3840)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre177" parent="Ores" unique_id=2057729184 instance=ExtResource("5_vcux0")]
+position = Vector2(960, -3712)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre178" parent="Ores" unique_id=1779262093 instance=ExtResource("5_vcux0")]
+position = Vector2(960, -3776)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre179" parent="Ores" unique_id=294730460 instance=ExtResource("5_vcux0")]
+position = Vector2(1024, -3648)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre180" parent="Ores" unique_id=1186237372 instance=ExtResource("5_vcux0")]
+position = Vector2(1024, -3712)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre128" parent="Ores" unique_id=1674578454 instance=ExtResource("5_vcux0")]
+position = Vector2(64, -2752)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre129" parent="Ores" unique_id=726084244 instance=ExtResource("5_vcux0")]
+position = Vector2(128, -2752)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre168" parent="Ores" unique_id=1273113858 instance=ExtResource("5_vcux0")]
+position = Vector2(0, -2816)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre169" parent="Ores" unique_id=172623949 instance=ExtResource("5_vcux0")]
+position = Vector2(64, -2816)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre130" parent="Ores" unique_id=1185638842 instance=ExtResource("5_vcux0")]
+position = Vector2(128, -2624)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre120" parent="Ores" unique_id=699287272 instance=ExtResource("5_vcux0")]
+position = Vector2(640, -3456)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre155" parent="Ores" unique_id=791215361 instance=ExtResource("5_vcux0")]
+position = Vector2(576, -3456)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre156" parent="Ores" unique_id=1379800644 instance=ExtResource("5_vcux0")]
+position = Vector2(704, -3392)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre121" parent="Ores" unique_id=1630166808 instance=ExtResource("5_vcux0")]
+position = Vector2(512, -3520)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre157" parent="Ores" unique_id=1120660821 instance=ExtResource("5_vcux0")]
+position = Vector2(768, -3328)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre158" parent="Ores" unique_id=1514100119 instance=ExtResource("5_vcux0")]
+position = Vector2(640, -3392)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre122" parent="Ores" unique_id=1948960337 instance=ExtResource("5_vcux0")]
+position = Vector2(512, -3456)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre159" parent="Ores" unique_id=1451514928 instance=ExtResource("5_vcux0")]
+position = Vector2(704, -3328)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre160" parent="Ores" unique_id=1085203115 instance=ExtResource("5_vcux0")]
+position = Vector2(448, -3584)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre123" parent="Ores" unique_id=1186054091 instance=ExtResource("5_vcux0")]
+position = Vector2(704, -3264)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre124" parent="Ores" unique_id=238387626 instance=ExtResource("5_vcux0")]
+position = Vector2(704, -3200)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre161" parent="Ores" unique_id=405749271 instance=ExtResource("5_vcux0")]
+position = Vector2(640, -3328)
+type = ExtResource("9_cjqyo")
+metadata/_scene_painted = true
+
+[node name="rubyOre181" parent="Ores" unique_id=2080017645 instance=ExtResource("5_vcux0")]
+position = Vector2(1152, -3072)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre182" parent="Ores" unique_id=892617034 instance=ExtResource("5_vcux0")]
+position = Vector2(1088, -3072)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre183" parent="Ores" unique_id=713234779 instance=ExtResource("5_vcux0")]
+position = Vector2(1152, -3008)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre184" parent="Ores" unique_id=1966496393 instance=ExtResource("5_vcux0")]
+position = Vector2(1152, -3136)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre185" parent="Ores" unique_id=459418597 instance=ExtResource("5_vcux0")]
+position = Vector2(1088, -3008)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre186" parent="Ores" unique_id=1646286902 instance=ExtResource("5_vcux0")]
+position = Vector2(1088, -2944)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre187" parent="Ores" unique_id=1292458821 instance=ExtResource("5_vcux0")]
+position = Vector2(1088, -2880)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre188" parent="Ores" unique_id=1812365964 instance=ExtResource("5_vcux0")]
+position = Vector2(1024, -3008)
+type = ExtResource("6_gg3vl")
+metadata/_scene_painted = true
+
+[node name="rubyOre189" parent="Ores" unique_id=703895724 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -960)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre190" parent="Ores" unique_id=1413355661 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -896)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre191" parent="Ores" unique_id=777604701 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -832)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre192" parent="Ores" unique_id=2115065584 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -960)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre131" parent="Ores" unique_id=1639724624 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -2112)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre132" parent="Ores" unique_id=1622432116 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -2176)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre133" parent="Ores" unique_id=1710689621 instance=ExtResource("5_vcux0")]
+position = Vector2(-1344, -2176)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre162" parent="Ores" unique_id=60345197 instance=ExtResource("5_vcux0")]
+position = Vector2(-1664, -2944)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre164" parent="Ores" unique_id=1088374316 instance=ExtResource("5_vcux0")]
+position = Vector2(-1664, -3008)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre163" parent="Ores" unique_id=746410564 instance=ExtResource("5_vcux0")]
+position = Vector2(-1728, -2944)
+type = ExtResource("12_qakiw")
+metadata/_scene_painted = true
+
+[node name="rubyOre135" parent="Ores" unique_id=629372068 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -2112)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre134" parent="Ores" unique_id=249932 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -1984)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre136" parent="Ores" unique_id=857997073 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -2176)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre139" parent="Ores" unique_id=1351393907 instance=ExtResource("5_vcux0")]
+position = Vector2(-1280, -2048)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre138" parent="Ores" unique_id=1284306044 instance=ExtResource("5_vcux0")]
+position = Vector2(-1216, -2048)
+type = ExtResource("10_55xmv")
+metadata/_scene_painted = true
+
+[node name="rubyOre137" parent="Ores" unique_id=463846277 instance=ExtResource("5_vcux0")]
+position = Vector2(-1664, -2496)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre140" parent="Ores" unique_id=1378895095 instance=ExtResource("5_vcux0")]
+position = Vector2(-1664, -2432)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre141" parent="Ores" unique_id=1213757540 instance=ExtResource("5_vcux0")]
+position = Vector2(-1728, -2496)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre142" parent="Ores" unique_id=722495917 instance=ExtResource("5_vcux0")]
+position = Vector2(-1728, -2432)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="rubyOre143" parent="Ores" unique_id=930209824 instance=ExtResource("5_vcux0")]
+position = Vector2(-1728, -2368)
+type = ExtResource("8_ypv6j")
+metadata/_scene_painted = true
+
+[node name="Spawner" parent="." unique_id=263560184 instance=ExtResource("13_gg3vl")]
+position = Vector2(-480, -3360)
