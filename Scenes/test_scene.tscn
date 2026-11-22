@@ -96,7 +96,6 @@ unique_name_in_owner = true
 
 [node name="InventoryDisplay" type="Panel" parent="CanvasLayer" unique_id=806023210]
 top_level = true
-z_index = 10
 custom_minimum_size = Vector2(50, 50)
 clip_contents = true
 offset_left = -1.0
@@ -160,6 +159,7 @@ value = 100.0
 
 [node name="BuildMenu" parent="CanvasLayer" unique_id=193295564 instance=ExtResource("5_ak5v8")]
 unique_name_in_owner = true
+z_index = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0

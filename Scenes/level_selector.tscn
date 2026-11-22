@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://smw1io6akod2" path="res://Assets/UI/MapScreenshots/Map2.png" id="6_g3msu"]
 [ext_resource type="Texture2D" uid="uid://bbxhfxplnqwsp" path="res://Assets/UI/Lock.png" id="7_2h1o8"]
 [ext_resource type="Texture2D" uid="uid://bw1ed5q5wtwfw" path="res://Assets/UI/TabsIcons/CheckMark.png" id="7_oto5v"]
+[ext_resource type="Script" uid="uid://bjs2q4u4nx1lk" path="res://Scripts/UserInterface/return_button.gd" id="10_bivqt"]
+[ext_resource type="Texture2D" uid="uid://bucp40lgcrvsb" path="res://Assets/UI/TabsIcons/X.png" id="11_auv11"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_p7o00"]
 font = ExtResource("4_b8t80")
@@ -47,6 +49,22 @@ corner_detail = 1
 
 [sub_resource type="LabelSettings" id="LabelSettings_wew43"]
 font = ExtResource("4_b8t80")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q1av8"]
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
 
 [node name="LevelSelector" type="Control" unique_id=1434641130]
 layout_mode = 3
@@ -239,6 +257,7 @@ offset_left = 86.0
 offset_top = 192.0
 offset_right = 373.0
 offset_bottom = 461.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nlj0r")
@@ -341,6 +360,7 @@ offset_left = 436.0
 offset_top = 192.0
 offset_right = 723.0
 offset_bottom = 461.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nlj0r")
@@ -443,6 +463,7 @@ offset_left = 786.0
 offset_top = 192.0
 offset_right = 1073.0
 offset_bottom = 461.0
+mouse_default_cursor_shape = 2
 theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/hover = SubResource("StyleBoxFlat_nlj0r")
@@ -537,3 +558,32 @@ expand_mode = 1
 stretch_mode = 5
 script = ExtResource("3_t6kw3")
 direction = 1
+
+[node name="ReturnButton" type="Button" parent="." unique_id=858080734]
+layout_mode = 1
+offset_left = 32.0
+offset_top = 27.0
+offset_right = 72.0
+offset_bottom = 67.0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_q1av8")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_q1av8")
+theme_override_styles/hover = SubResource("StyleBoxFlat_q1av8")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_q1av8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_q1av8")
+theme_override_styles/focus = SubResource("StyleBoxFlat_q1av8")
+script = ExtResource("10_bivqt")
+
+[node name="TextureRect" type="TextureRect" parent="ReturnButton" unique_id=708945913]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_auv11")

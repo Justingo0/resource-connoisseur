@@ -72,6 +72,9 @@
 [ext_resource type="Texture2D" uid="uid://dydb4t41j541j" path="res://Assets/Graphite.png" id="56_okwr1"]
 [ext_resource type="Script" uid="uid://crpu44nvursjn" path="res://Scripts/UserInterface/lose_screen.gd" id="65_eo1vj"]
 [ext_resource type="Script" uid="uid://cqg3pnpmiwf5x" path="res://Scripts/UserInterface/selection_panel.gd" id="72_7uu0d"]
+[ext_resource type="Script" uid="uid://p01i53cdgrbq" path="res://Scripts/UserInterface/map_button.gd" id="73_57h2s"]
+[ext_resource type="Texture2D" uid="uid://b70tktqcn5fwj" path="res://Assets/UI/TabsIcons/Map.png" id="73_sl55x"]
+[ext_resource type="Script" uid="uid://h81f00n53soy" path="res://Scripts/UserInterface/return_to_level.gd" id="75_g5vdn"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
@@ -536,6 +539,10 @@ border_width_bottom = 8
 
 [sub_resource type="LabelSettings" id="LabelSettings_t5fij"]
 font = ExtResource("2_0dv3k")
+
+[sub_resource type="LabelSettings" id="LabelSettings_g5vdn"]
+font = ExtResource("2_0dv3k")
+font_size = 66
 
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
@@ -2994,9 +3001,135 @@ label_settings = SubResource("LabelSettings_lq6r3")
 horizontal_alignment = 2
 vertical_alignment = 2
 
+[node name="MapButton" type="Button" parent="." unique_id=906797242]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1127.0
+offset_top = -548.0
+offset_right = -1087.0
+offset_bottom = -508.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_nlj0r")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nlj0r")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nlj0r")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_nlj0r")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_nlj0r")
+theme_override_styles/focus = SubResource("StyleBoxFlat_nlj0r")
+script = ExtResource("73_57h2s")
+
+[node name="TextureRect" type="TextureRect" parent="MapButton" unique_id=2019134935]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("73_sl55x")
+
+[node name="ReturnToLevel" type="Control" parent="." unique_id=1284017196]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -648.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("75_g5vdn")
+
+[node name="Background" type="Panel" parent="ReturnToLevel" unique_id=216754518]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7o00")
+
+[node name="Label" type="Label" parent="ReturnToLevel" unique_id=1933396323]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -104.0
+offset_right = 218.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Return to 
+level selection?"
+label_settings = SubResource("LabelSettings_g5vdn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Return" type="Button" parent="ReturnToLevel" unique_id=1243564551]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = 104.0
+offset_right = -71.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_0dv3k")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
+text = "Return"
+
+[node name="Continue" type="Button" parent="ReturnToLevel" unique_id=1047784289]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 71.0
+offset_top = 104.0
+offset_right = 286.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_0dv3k")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
+text = "Continue"
+
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
 [connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="timeout" from="Annoucement/HideTimer" to="." method="_on_hide_timer_timeout"]
 [connection signal="pressed" from="LoseScreen/TryAgain" to="LoseScreen" method="_on_try_again_pressed"]
 [connection signal="pressed" from="LoseScreen/MainMenu" to="LoseScreen" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="ReturnToLevel/Return" to="ReturnToLevel" method="_on_try_again_pressed"]
+[connection signal="pressed" from="ReturnToLevel/Continue" to="ReturnToLevel" method="_on_main_menu_pressed"]
