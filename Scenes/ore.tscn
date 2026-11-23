@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://deq8y6x3qi08m"]
 
-[ext_resource type="Texture2D" uid="uid://d34ssrpml08sf" path="res://Assets/rubyOre.png" id="1_b6xxr"]
+[ext_resource type="Texture2D" uid="uid://ceohrvcj2b3s3" path="res://Assets/rubyOre.png" id="1_b6xxr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7qq0"]
 size = Vector2(121.09374, 121.09374)
@@ -16,4 +16,5 @@ shape = SubResource("RectangleShape2D_p7qq0")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=308717136]
 texture_filter = 1
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_b6xxr")
