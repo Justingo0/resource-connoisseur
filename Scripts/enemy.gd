@@ -6,6 +6,7 @@ extends CharacterBody2D
 
 @onready var targetLocation = $"../Home"
 @onready var damageIndicator = $AnimatedSprite2D/ColorRect
+@onready var death_particle = $DeathParticle
 
 @onready var bullet = preload("res://Scenes/bullet.tscn")
 
@@ -79,6 +80,10 @@ func take_damage(damage_dealt: int) -> void:
 	health -= damage_dealt
 	if health < 1:
 		GameManager.screen_shake.emit(0.1, 6)
+		death_particle.emitting = true
+		remove_child(death_particle)
+		get_tree().current_scene.add_child(death_particle)
+		death_particle.global_position = global_position
 		queue_free()
 	flash()
 
