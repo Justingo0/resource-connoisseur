@@ -1,11 +1,57 @@
 [gd_scene format=3 uid="uid://bmk5u6cfajpkj"]
 
+[ext_resource type="Texture2D" uid="uid://766a52umrs7j" path="res://Assets/UI/MapScreenshots/SmallMap1.png" id="1_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://huhnaedk2d3n" path="res://Assets/UI/Gear.png" id="2_ce3w2"]
 [ext_resource type="Script" uid="uid://pvmcjpn5xfy5" path="res://Scripts/UserInterface/gear_rotate.gd" id="2_n45e2"]
 [ext_resource type="Texture2D" uid="uid://befydcy5cqsya" path="res://Assets/UI/SmallGear.png" id="3_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://bwjobe61x5l6w" path="res://Assets/UI/RCLogoBasic.png" id="3_n45e2"]
 [ext_resource type="FontFile" uid="uid://bxvbmimhusou1" path="res://Assets/UI/Square.ttf" id="5_n45e2"]
 [ext_resource type="Script" uid="uid://c6jcny7pne40q" path="res://Scripts/UserInterface/action_button.gd" id="6_opfnp"]
+
+[sub_resource type="Animation" id="Animation_cp0ys"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yhxw7"]
+resource_name = "okay bro"
+length = 20.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:offset_transform_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 20),
+"transitions": PackedFloat32Array(-2, -2, -2),
+"update": 0,
+"values": [Vector2(0, 87.725), Vector2(0, -88.155), Vector2(0, 87.725)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trj04"]
+_data = {
+&"RESET": SubResource("Animation_cp0ys"),
+&"okay bro": SubResource("Animation_yhxw7")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pj23d"]
+bg_color = Color(0, 0, 0, 0.523)
+border_width_left = 6
+border_width_right = 6
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7o00"]
 bg_color = Color(0.8980392, 0.7764706, 0.22352941, 1)
@@ -92,6 +138,37 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1906297695]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -293.0
+offset_right = 41.0
+offset_bottom = 293.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+texture = ExtResource("1_cp0ys")
+expand_mode = 4
+stretch_mode = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=1439841948]
+libraries/ = SubResource("AnimationLibrary_trj04")
+autoplay = &"okay bro"
+
+[node name="Panel" type="Panel" parent="." unique_id=1695010982]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 266.0
+offset_right = -266.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pj23d")
 
 [node name="Gear3" type="TextureRect" parent="." unique_id=6068396]
 layout_mode = 1
@@ -208,10 +285,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 174.10168
-offset_top = -8.75
-offset_right = -174.10168
-offset_bottom = 5.0
+offset_left = 207.73895
+offset_top = 2.25
+offset_right = -197.73895
+offset_bottom = -6.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
