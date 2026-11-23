@@ -85,7 +85,7 @@ func output():
 			if selected_conveyor.item != null: #or selected_conveyor.item_incoming != null:
 				for i in conveyors.size():
 					selected_conveyor = conveyors[conveyorInterval%conveyors.size()]
-					if selected_conveyor.item == null: return #or selected_conveyor.item_incoming == null: return
+					if selected_conveyor.is_in_group("Conveyor") and selected_conveyor.item == null: return #or selected_conveyor.item_incoming == null: return
 			if (selected_conveyor.item == null) and selected_conveyor.held == false and !held:
 				last_generated_item = outputType.instantiate()
 				last_generated_item.itemType = type.output.name
