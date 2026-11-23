@@ -3,12 +3,39 @@
 [ext_resource type="Script" uid="uid://by4lc3lesdxok" path="res://Scripts/turret.gd" id="1_6spbj"]
 [ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="2_6spbj"]
 [ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/DaggerTop.png" id="3_pulj5"]
+[ext_resource type="Texture2D" uid="uid://0l7c2pym3i4r" path="res://Assets/VFX/Smoke.png" id="4_ahfaj"]
+[ext_resource type="Script" uid="uid://bxyohgxvyajcn" path="res://Scripts/kill_particle.gd" id="5_ku01o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_86gdd"]
 size = Vector2(54, 54)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fmtr8"]
 radius = 195.04102
+
+[sub_resource type="Gradient" id="Gradient_628tr"]
+offsets = PackedFloat32Array(0, 0.5862069, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_74mb1"]
+gradient = SubResource("Gradient_628tr")
+
+[sub_resource type="Curve" id="Curve_hxjjt"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98591554, 0.57303375), -1.0636704, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hpwha"]
+curve = SubResource("Curve_hxjjt")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_bfgsf"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 127.77
+initial_velocity_max = 416.66
+gravity = Vector3(0, 0, 0)
+scale_max = 1.6999999
+scale_curve = SubResource("CurveTexture_hpwha")
+color_ramp = SubResource("GradientTexture1D_74mb1")
 
 [node name="Turret" type="Area2D" unique_id=189769755 groups=["Block", "Container"]]
 z_index = 5
@@ -38,6 +65,18 @@ collision_mask = 8
 [node name="range" type="CollisionShape2D" parent="rangeCone" unique_id=865092373]
 shape = SubResource("CircleShape2D_fmtr8")
 debug_color = Color(0.606062, 0.532644, 0.28561583, 0.41960785)
+
+[node name="DeathParticle" type="GPUParticles2D" parent="." unique_id=995950953]
+texture_filter = 1
+emitting = false
+amount = 24
+texture = ExtResource("4_ahfaj")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_bfgsf")
+script = ExtResource("5_ku01o")
 
 [connection signal="body_entered" from="rangeCone" to="." method="_on_range_cone_body_entered"]
 [connection signal="body_exited" from="rangeCone" to="." method="_on_range_cone_body_exited"]

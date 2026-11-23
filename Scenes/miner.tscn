@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bot6kmnge57q3" path="res://Scripts/miner.gd" id="1_p7qq0"]
 [ext_resource type="Texture2D" uid="uid://casb24tydm1ro" path="res://Assets/minerBase.png" id="2_p7qq0"]
 [ext_resource type="Texture2D" uid="uid://bktfrrkhvt3tm" path="res://Assets/minerDrill.png" id="3_ljvdd"]
+[ext_resource type="Texture2D" uid="uid://0l7c2pym3i4r" path="res://Assets/VFX/Smoke.png" id="4_7xmpc"]
+[ext_resource type="Script" uid="uid://bxyohgxvyajcn" path="res://Scripts/kill_particle.gd" id="5_3guh4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7qq0"]
 size = Vector2(96, 96)
@@ -45,6 +47,31 @@ _data = {
 &"new_animation": SubResource("Animation_ljvdd")
 }
 
+[sub_resource type="Gradient" id="Gradient_5pfqj"]
+offsets = PackedFloat32Array(0, 0.5862069, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_u3744"]
+gradient = SubResource("Gradient_5pfqj")
+
+[sub_resource type="Curve" id="Curve_tr8gn"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98591554, 0.57303375), -1.0636704, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_37h0l"]
+curve = SubResource("Curve_tr8gn")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_5705u"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 127.77
+initial_velocity_max = 416.66
+gravity = Vector3(0, 0, 0)
+scale_max = 1.6999999
+scale_curve = SubResource("CurveTexture_37h0l")
+color_ramp = SubResource("GradientTexture1D_u3744")
+
 [node name="Miner" type="Area2D" unique_id=545579719 groups=["Block"]]
 z_index = 5
 collision_layer = 11
@@ -81,6 +108,18 @@ texture = ExtResource("3_ljvdd")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Drill" unique_id=2113555063]
 libraries/ = SubResource("AnimationLibrary_rfhns")
+
+[node name="DeathParticle" type="GPUParticles2D" parent="." unique_id=327319663]
+texture_filter = 1
+emitting = false
+amount = 24
+texture = ExtResource("4_7xmpc")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_5705u")
+script = ExtResource("5_3guh4")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="area_exited" from="." to="." method="_on_area_exited"]

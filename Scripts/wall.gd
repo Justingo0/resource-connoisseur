@@ -1,5 +1,7 @@
 extends Area2D
 
+@onready var death_particle = $DeathParticle
+
 @export var max_destroy_time:float
 @export var destroy_time:float = 0.0
 
@@ -30,4 +32,8 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:
 		GameManager.screen_shake.emit(0.1, 6)
+		death_particle.emitting = true
+		remove_child(death_particle)
+		get_tree().current_scene.add_child(death_particle)
+		death_particle.global_position = global_position
 		queue_free()

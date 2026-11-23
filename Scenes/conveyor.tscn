@@ -9,6 +9,8 @@
 [ext_resource type="Texture2D" uid="uid://cwo6weospvo4k" path="res://Assets/Conveyor/Conveyer6.png" id="7_g8mpg"]
 [ext_resource type="Texture2D" uid="uid://ct16k0nrxds03" path="res://Assets/Conveyor/Conveyer7.png" id="8_jhnkp"]
 [ext_resource type="Texture2D" uid="uid://b50u6lhchht41" path="res://Assets/Conveyor/Conveyer8.png" id="9_6nye6"]
+[ext_resource type="Texture2D" uid="uid://0l7c2pym3i4r" path="res://Assets/VFX/Smoke.png" id="10_jhnkp"]
+[ext_resource type="Script" uid="uid://bxyohgxvyajcn" path="res://Scripts/kill_particle.gd" id="11_6nye6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(60, 60)
@@ -45,6 +47,31 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="Gradient" id="Gradient_2rft0"]
+offsets = PackedFloat32Array(0, 0.5862069, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_4q6us"]
+gradient = SubResource("Gradient_2rft0")
+
+[sub_resource type="Curve" id="Curve_v812f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98591554, 0.57303375), -1.0636704, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_5o50i"]
+curve = SubResource("Curve_v812f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_g6a8n"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 127.77
+initial_velocity_max = 416.66
+gravity = Vector3(0, 0, 0)
+scale_max = 1.6999999
+scale_curve = SubResource("CurveTexture_5o50i")
+color_ramp = SubResource("GradientTexture1D_4q6us")
+
 [node name="Conveyer" type="Area2D" unique_id=1277094344 groups=["Block", "Conveyor", "Rotate"]]
 collision_layer = 3
 collision_mask = 3
@@ -66,6 +93,18 @@ frame_progress = 0.7843642
 target_position = Vector2(0, -58)
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="DeathParticle" type="GPUParticles2D" parent="." unique_id=718214640]
+texture_filter = 1
+emitting = false
+amount = 24
+texture = ExtResource("10_jhnkp")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_g6a8n")
+script = ExtResource("11_6nye6")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="frame_changed" from="Body" to="." method="_on_body_frame_changed"]

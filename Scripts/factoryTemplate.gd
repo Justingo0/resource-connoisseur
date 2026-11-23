@@ -1,6 +1,8 @@
 extends Area2D
 signal inventory_changed(value:int)
 
+@onready var death_particle = $DeathParticle
+
 @export var inventory_size:int
 
 @onready var timer = $ProductionTimer
@@ -142,6 +144,10 @@ func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:
 		GameManager.screen_shake.emit(0.1, 6)
+		death_particle.emitting = true
+		remove_child(death_particle)
+		get_tree().current_scene.add_child(death_particle)
+		death_particle.global_position = global_position
 		queue_free()
 
 func _on_conveyor_detector_area_entered(area: Area2D) -> void:

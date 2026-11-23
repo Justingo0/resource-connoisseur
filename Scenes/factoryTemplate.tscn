@@ -2,9 +2,36 @@
 
 [ext_resource type="Script" uid="uid://drgisgwrt7m67" path="res://Scripts/factoryTemplate.gd" id="1_llkfa"]
 [ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="1_teede"]
+[ext_resource type="Texture2D" uid="uid://0l7c2pym3i4r" path="res://Assets/VFX/Smoke.png" id="3_3qqdw"]
+[ext_resource type="Script" uid="uid://bxyohgxvyajcn" path="res://Scripts/kill_particle.gd" id="4_3mfg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sar82"]
 size = Vector2(62, 62)
+
+[sub_resource type="Gradient" id="Gradient_1oi2g"]
+offsets = PackedFloat32Array(0, 0.5862069, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_3qqdw"]
+gradient = SubResource("Gradient_1oi2g")
+
+[sub_resource type="Curve" id="Curve_f6v6f"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98591554, 0.57303375), -1.0636704, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_3mfg4"]
+curve = SubResource("Curve_f6v6f")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_80254"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 127.77
+initial_velocity_max = 416.66
+gravity = Vector3(0, 0, 0)
+scale_max = 1.6999999
+scale_curve = SubResource("CurveTexture_3mfg4")
+color_ramp = SubResource("GradientTexture1D_3qqdw")
 
 [node name="factoryTemplate" type="Area2D" unique_id=1741287052 groups=["Block", "Container"]]
 z_index = 5
@@ -30,6 +57,18 @@ polygon = PackedVector2Array(-90.98579, 26.10196, -33.46265, 26.10196, -33.46265
 
 [node name="ProductionTimer" type="Timer" parent="." unique_id=1993989413]
 autostart = true
+
+[node name="DeathParticle" type="GPUParticles2D" parent="." unique_id=241934830]
+texture_filter = 1
+emitting = false
+amount = 24
+texture = ExtResource("3_3qqdw")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_80254")
+script = ExtResource("4_3mfg4")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="area_entered" from="ConveyorDetector" to="." method="_on_conveyor_detector_area_entered"]

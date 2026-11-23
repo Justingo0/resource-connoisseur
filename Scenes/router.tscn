@@ -2,9 +2,36 @@
 
 [ext_resource type="Script" uid="uid://c0fsqw5ybrq8i" path="res://Scripts/router.gd" id="1_fc2lw"]
 [ext_resource type="Texture2D" uid="uid://d3a1vl3n1yqco" path="res://Assets/Router.png" id="2_cavi2"]
+[ext_resource type="Texture2D" uid="uid://0l7c2pym3i4r" path="res://Assets/VFX/Smoke.png" id="3_5oy8s"]
+[ext_resource type="Script" uid="uid://bxyohgxvyajcn" path="res://Scripts/kill_particle.gd" id="4_ek7fb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(60, 60)
+
+[sub_resource type="Gradient" id="Gradient_hvq1f"]
+offsets = PackedFloat32Array(0, 0.5862069, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_1dp5w"]
+gradient = SubResource("Gradient_hvq1f")
+
+[sub_resource type="Curve" id="Curve_hjmmh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98591554, 0.57303375), -1.0636704, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ghaa6"]
+curve = SubResource("Curve_hjmmh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ivdju"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 127.77
+initial_velocity_max = 416.66
+gravity = Vector3(0, 0, 0)
+scale_max = 1.6999999
+scale_curve = SubResource("CurveTexture_ghaa6")
+color_ramp = SubResource("GradientTexture1D_1dp5w")
 
 [node name="Router" type="Area2D" unique_id=419990703 groups=["Block", "Container"]]
 z_index = 5
@@ -34,6 +61,18 @@ polygon = PackedVector2Array(-90.98579, 26.10196, -33.46265, 26.10196, -33.46265
 [node name="OutputTimer" type="Timer" parent="." unique_id=1447171364]
 wait_time = 0.4
 autostart = true
+
+[node name="DeathParticle" type="GPUParticles2D" parent="." unique_id=2077312941]
+texture_filter = 1
+emitting = false
+amount = 24
+texture = ExtResource("3_5oy8s")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ivdju")
+script = ExtResource("4_ek7fb")
 
 [connection signal="inventory_changed" from="." to="." method="_on_inventory_changed"]
 [connection signal="area_entered" from="ConveyorDetector" to="." method="_on_conveyor_detector_area_entered"]

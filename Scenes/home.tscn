@@ -2,9 +2,36 @@
 
 [ext_resource type="Script" uid="uid://de6gdx0s1lpmd" path="res://Scripts/container_script.gd" id="1_uq2cn"]
 [ext_resource type="Texture2D" uid="uid://c2447bohxeme6" path="res://Assets/core.png" id="2_dt112"]
+[ext_resource type="Texture2D" uid="uid://0l7c2pym3i4r" path="res://Assets/VFX/Smoke.png" id="3_12ycv"]
+[ext_resource type="Script" uid="uid://bxyohgxvyajcn" path="res://Scripts/kill_particle.gd" id="4_llnbm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p7o00"]
 size = Vector2(190, 190)
+
+[sub_resource type="Gradient" id="Gradient_fhpuh"]
+offsets = PackedFloat32Array(0, 0.5862069, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_vkfas"]
+gradient = SubResource("Gradient_fhpuh")
+
+[sub_resource type="Curve" id="Curve_q1yq7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.98591554, 0.57303375), -1.0636704, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_cykap"]
+curve = SubResource("Curve_q1yq7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nw1ns"]
+particle_flag_disable_z = true
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 127.77
+initial_velocity_max = 416.66
+gravity = Vector3(0, 0, 0)
+scale_max = 1.6999999
+scale_curve = SubResource("CurveTexture_cykap")
+color_ramp = SubResource("GradientTexture1D_vkfas")
 
 [node name="Home" type="Area2D" unique_id=280351326 groups=["Block", "Container"]]
 z_index = 5
@@ -32,3 +59,15 @@ collision_mask = 8
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1319372451]
 shape = SubResource("RectangleShape2D_p7o00")
+
+[node name="DeathParticle" type="GPUParticles2D" parent="." unique_id=1616783020]
+texture_filter = 1
+emitting = false
+amount = 24
+texture = ExtResource("3_12ycv")
+lifetime = 0.4
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_nw1ns")
+script = ExtResource("4_llnbm")
