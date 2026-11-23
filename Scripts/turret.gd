@@ -23,13 +23,14 @@ var reloadTimer:float
 var shotCount:int
 
 @export var inventory_size = 10
-@export var inventory = {}
+@export var inventory = {"Fluorine":10}
 
-# Radius Outline Settings
 var dot_count: int = 36
 var dash_length_ratio: float = 0.5
 var line_width: float = 2.0
 var radius_color: Color = Color.YELLOW
+
+var shoot_tween:Tween
 
 func _ready() -> void:
 	range.shape = CircleShape2D.new()
@@ -104,6 +105,13 @@ func shoot():
 		if !type.shotgun:
 			await get_tree().create_timer(type.shotInterval).timeout
 		shotCount -= 1
+		
+		if shoot_tween and shoot_tween.is_valid():
+			shoot_tween.kill()
+		shoot_tween = create_tween()
+		turretTop.position = Vector2.from_angle(turretTop.global_rotation-deg_to_rad(90)) * -15.0*(1.0+(type.size/3.0))
+		shoot_tween.tween_property(turretTop, "position", Vector2(0,0), 1)
+		
 		var bulletClone = bullet.instantiate()
 		bulletClone.position = global_position
 		bulletClone.rotation = turretTop.rotation - 1.571 + deg_to_rad(randf_range(-type.spread, type.spread))
