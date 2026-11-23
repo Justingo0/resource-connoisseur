@@ -78,6 +78,7 @@ func _physics_process(delta: float) -> void:
 func take_damage(damage_dealt: int) -> void:
 	health -= damage_dealt
 	if health < 1:
+		GameManager.screen_shake.emit(0.1, 6)
 		queue_free()
 	flash()
 

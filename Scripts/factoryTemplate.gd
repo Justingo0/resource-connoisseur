@@ -141,6 +141,7 @@ func output():
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:
+		GameManager.screen_shake.emit(0.1, 6)
 		queue_free()
 
 func _on_conveyor_detector_area_entered(area: Area2D) -> void:

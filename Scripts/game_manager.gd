@@ -3,6 +3,8 @@ extends Node
 signal on_inventory_changed(eh:bool)
 signal core_destroyed
 
+signal screen_shake(duration:float, magnitude:float)
+
 # Loaded Values
 static var times_logged:int = 0
 

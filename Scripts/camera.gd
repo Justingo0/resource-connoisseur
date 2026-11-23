@@ -68,7 +68,7 @@ func _ready() -> void:
 	GameManager.core_inventory = {}
 	GameManager.conveyor_frame = 0
 	
-	#viewport_size = get_viewport().get_visible_rect().size
+	GameManager.screen_shake.connect(screen_shake)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -414,3 +414,13 @@ func _on_delete_cursor_area_exited(area: Area2D) -> void:
 		hovering_object = null
 		inventory_display.visible = false
 		item_container.visible = false
+
+func screen_shake(period:float, magnitude:float):
+	var initial_position = offset
+	var elapsed_time:float = 0.0
+	while elapsed_time < period:
+		var random_offset = Vector2(randf_range(-magnitude, magnitude), randf_range(-magnitude, magnitude))
+		offset = initial_position + random_offset
+		elapsed_time += get_process_delta_time()
+		await get_tree().process_frame
+		offset = initial_position

@@ -170,4 +170,5 @@ func output():
 func take_damage(damage: int) -> void:
 	health -= damage
 	if health < 1:
+		GameManager.screen_shake.emit(0.1, 6)
 		queue_free()
