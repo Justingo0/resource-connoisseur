@@ -13,4 +13,5 @@ size = 2
 buildCosts = {
 "Carbide": 40
 }
+destroy_time = 4.0
 metadata/_custom_type_script = "uid://bgxel607vfhi8"

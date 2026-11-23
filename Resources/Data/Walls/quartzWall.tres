@@ -10,7 +10,9 @@ icon = ExtResource("1_obrak")
 name = "Quartz Wall"
 scene = ExtResource("2_s06ov")
 size = 1
+health = 300
 buildCosts = {
 "Quartz": 10
 }
+destroy_time = 2.0
 metadata/_custom_type_script = "uid://bgxel607vfhi8"

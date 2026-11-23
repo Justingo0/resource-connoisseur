@@ -4,7 +4,7 @@ signal waveInfo(waveCount, timeForWave)
 
 @onready var wave_spawn_timer = $WaveSpawning
 
-@onready var gameUI = $"../../CanvasLayer/BuildMenu"
+@onready var gameUI = %BuildMenu
 @onready var enemy = preload("res://Scenes/enemy.tscn")
 @onready var waveData = preload("res://Resources/Data/Wavesets/wavePreset1.tres")
 @onready var waveSet = waveData.waves # Amount of Enemies
