@@ -20,3 +20,6 @@ shape = SubResource("RectangleShape2D_p7qq0")
 texture_filter = 1
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_b6xxr")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

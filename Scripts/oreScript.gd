@@ -16,3 +16,9 @@ func _ready() -> void:
 func restartProperties() -> void:
 	if sprite:
 		sprite.texture = type.icon
+
+func _on_mouse_entered() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_DRAG)
+
+func _on_mouse_exited() -> void:
+	Input.set_default_cursor_shape(Input.CURSOR_ARROW)

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bmk5u6cfajpkj"]
 
 [ext_resource type="Texture2D" uid="uid://766a52umrs7j" path="res://Assets/UI/MapScreenshots/SmallMap1.png" id="1_cp0ys"]
+[ext_resource type="Script" uid="uid://ceqjgqnrdsibg" path="res://Scripts/UserInterface/init_cursor.gd" id="1_yhxw7"]
 [ext_resource type="Texture2D" uid="uid://huhnaedk2d3n" path="res://Assets/UI/Gear.png" id="2_ce3w2"]
 [ext_resource type="Script" uid="uid://pvmcjpn5xfy5" path="res://Scripts/UserInterface/gear_rotate.gd" id="2_n45e2"]
 [ext_resource type="Texture2D" uid="uid://befydcy5cqsya" path="res://Assets/UI/SmallGear.png" id="3_ce3w2"]
@@ -138,6 +139,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yhxw7")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1906297695]
 layout_mode = 1
