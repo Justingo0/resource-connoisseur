@@ -404,6 +404,8 @@ func _on_delete_cursor_area_entered(area: Area2D) -> void:
 				if "inventory_2" in area and not area.inventory_2.is_empty():
 					common[area.inventory_2.keys()[0]] = area.inventory_2.values()[0]
 				update_inventory_display(common)
+		else:
+			update_inventory_display({})
 		update_inventory_health(area)
 		inventory_display.visible = true
 
