@@ -13,6 +13,9 @@ extends Area2D
 @export var type:wallStats
 
 func _ready() -> void:
+	if held:
+		$StaticBody2D.collision_layer = 0
+		$StaticBody2D.collision_mask = 0
 	if type:
 		max_destroy_time = type.destroy_time
 		health = type.health
