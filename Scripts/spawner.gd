@@ -7,7 +7,7 @@ signal all_enemies_killed
 
 @onready var gameUI = %BuildMenu
 @onready var enemy = preload("res://Scenes/enemy.tscn")
-@onready var waveData = preload("res://Resources/Data/Wavesets/wavePreset2.tres")
+@export var waveData:waveEnemies
 @onready var waveSet = waveData.waves # Amount of Enemies
 @onready var waveTimes = waveData.waveTimes # Time till next Wave
 var waveCount = 0

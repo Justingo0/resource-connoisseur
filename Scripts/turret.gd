@@ -2,6 +2,7 @@ extends Area2D
 
 @export var inputItem:Dictionary
 
+@onready var soundPlayer = $soundPlayer
 @onready var bullet = preload("res://Scenes/bullet.tscn")
 @export var type:turretStats #= preload("res://Resources/Data/Turrets/Ballista.tres")
 @onready var turretTop = $turretTop
@@ -33,6 +34,7 @@ var radius_color: Color = Color.YELLOW
 var shoot_tween:Tween
 
 func _ready() -> void:
+	soundPlayer.stream = type.firingNoise
 	range.shape = CircleShape2D.new()
 	range.shape.radius = type.range * 64
 	health = type.health
@@ -105,6 +107,8 @@ func shoot():
 		if !type.shotgun:
 			await get_tree().create_timer(type.shotInterval).timeout
 		shotCount -= 1
+		soundPlayer.volume_db = type.volume
+		soundPlayer.play()
 		
 		if shoot_tween and shoot_tween.is_valid():
 			shoot_tween.kill()

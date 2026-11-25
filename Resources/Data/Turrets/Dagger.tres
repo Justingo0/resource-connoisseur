@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_c7us3"]
 [ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="1_rflue"]
+[ext_resource type="AudioStream" uid="uid://cl0e3wlbkxldn" path="res://Assets/Sounds/Dagger.mp3" id="2_iuhic"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="3_iuhic"]
 [ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/DaggerTop.png" id="6_oij5r"]
 
@@ -21,6 +22,7 @@ projectileSpeed = 1280
 projectileLifetime = 0.4
 widthMultiplier = 50.0
 knockAmount = 5
+firingNoise = ExtResource("2_iuhic")
 icon = ExtResource("6_oij5r")
 name = "Dagger"
 scene = ExtResource("3_iuhic")

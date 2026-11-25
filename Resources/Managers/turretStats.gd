@@ -26,3 +26,6 @@ class_name turretStats
 @export var splashDamage:int
 @export var widthMultiplier:float
 @export var knockAmount:int
+
+@export var firingNoise:AudioStreamMP3
+@export_range(-80, 24, 1) var volume:float

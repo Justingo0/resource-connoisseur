@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="waveEnemies" format=3 uid="uid://bm5wsqw1enolj"]
+
+[ext_resource type="Script" uid="uid://sbtvp5qiyinq" path="res://Resources/Managers/waveEnemies.gd" id="1_8wu35"]
+
+[resource]
+script = ExtResource("1_8wu35")
+waveTimes = [180, 90, 60, 60, 120, 90, 90, 90, 90, 200, 100, 100, 100, 100, 300, 120, 120, 120, 120, 300]
+waves = [[1, 0, 20, 0, 20, 20], [2], [3], [4], [0, 1], [2], [2, 2], [4, 2], [10, 1], [4, 2, 1], [2, 4, 0, 0, 2], [4, 4, 0, 0, 5], [2, 1, 1, 0, 5], [10, 4, 0, 0, 5], [5, 5, 2], [5, 5, 0, 0, 2, 2], [2, 2, 1, 0, 6, 4], [10, 5, 0, 0, 6], [2, 2, 2, 0, 6, 4], [3, 2, 1, 1, 3]]
+metadata/_custom_type_script = "uid://sbtvp5qiyinq"

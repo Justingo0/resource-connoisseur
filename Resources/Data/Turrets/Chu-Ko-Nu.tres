@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_a51gm"]
 [ext_resource type="Texture2D" uid="uid://dt3ari4dfo2ix" path="res://Assets/Chu-Ko-NuBase.png" id="1_o3jqf"]
+[ext_resource type="AudioStream" uid="uid://df5xr5pr71mnw" path="res://Assets/Sounds/Chu-Ko-Nu.mp3" id="2_o3jqf"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="3_gri2b"]
 [ext_resource type="Texture2D" uid="uid://0lqn3qj3xxx2" path="res://Assets/Chu-Ko-NuTop.png" id="5_j4g1b"]
 
@@ -22,6 +23,7 @@ projectileSpeed = 1750
 projectileLifetime = 0.5
 projectilePierce = 1
 knockAmount = 10
+firingNoise = ExtResource("2_o3jqf")
 icon = ExtResource("5_j4g1b")
 name = "Chu-Ko-Nu"
 scene = ExtResource("3_gri2b")

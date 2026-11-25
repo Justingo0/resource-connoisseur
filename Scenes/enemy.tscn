@@ -111,7 +111,6 @@ avoidance_mask = 0
 debug_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="NavigationAgent2D" unique_id=1250587147]
-visible = false
 navigation_polygon = SubResource("NavigationPolygon_hghv2")
 
 [node name="Timer" type="Timer" parent="." unique_id=983399352]

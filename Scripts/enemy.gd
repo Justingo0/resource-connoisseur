@@ -39,8 +39,9 @@ var current_target = null
 
 func _ready() -> void:
 	if air:
-		collision_mask = 5
-		collision_layer = 5
+		collision_mask = 16
+		collision_layer = 16
+		z_index = 6
 	navigator.target_position = targetLocation.global_position
 
 func _physics_process(delta: float) -> void:

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_3cbxr"]
 [ext_resource type="Texture2D" uid="uid://cd4rx8hcpjdaa" path="res://Assets/BallistaBase.png" id="1_dh6i5"]
+[ext_resource type="AudioStream" uid="uid://bp63l45wxno5c" path="res://Assets/Sounds/Ballista.mp3" id="2_dh6i5"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="5_d6k2h"]
 [ext_resource type="Texture2D" uid="uid://bhh7ockuabwlt" path="res://Assets/BallistaTop.png" id="5_hqa5q"]
 
@@ -22,6 +23,7 @@ projectileSpeed = 4000
 projectileLifetime = 0.45
 projectilePierce = 1
 knockAmount = 10
+firingNoise = ExtResource("2_dh6i5")
 icon = ExtResource("5_hqa5q")
 name = "Ballista"
 scene = ExtResource("5_d6k2h")
