@@ -265,7 +265,7 @@ theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/disabled = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/focus = SubResource("StyleBoxFlat_nlj0r")
 script = ExtResource("3_b8t80")
-map_scene = "uid://ccgyrxlfrub0a"
+map_scene = "uid://cschi7v4e0dp"
 map_icon = ExtResource("5_t6kw3")
 map_name = "Artamis"
 
@@ -369,6 +369,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/focus = SubResource("StyleBoxFlat_nlj0r")
 disabled = true
 script = ExtResource("3_b8t80")
+map_scene = "uid://dxc00ojx1wl4k"
 map_icon = ExtResource("6_g3msu")
 map_name = "Janter's Log"
 
@@ -472,6 +473,7 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_nlj0r")
 theme_override_styles/focus = SubResource("StyleBoxFlat_nlj0r")
 disabled = true
 script = ExtResource("3_b8t80")
+map_scene = "uid://cbsj25jysd6r2"
 map_icon = ExtResource("6_g3msu")
 
 [node name="TextureRect" type="TextureRect" parent="3" unique_id=819205273]
