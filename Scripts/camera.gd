@@ -57,8 +57,8 @@ var speed := 1.0
 var GRID_SIZE = 64
 
 var ZOOM_SPEED = 0.1
-var MIN_ZOOM = 0.5
-var MAX_ZOOM = 2.5
+@export var MIN_ZOOM = 0.5
+@export var MAX_ZOOM = 2.5
 
 func _ready() -> void:
 	set_build_cursor(building_object)
