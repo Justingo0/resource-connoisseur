@@ -1,12 +1,13 @@
 extends Area2D
 
 signal waveInfo(waveCount, timeForWave)
+signal all_enemies_killed
 
 @onready var wave_spawn_timer = $WaveSpawning
 
 @onready var gameUI = %BuildMenu
 @onready var enemy = preload("res://Scenes/enemy.tscn")
-@onready var waveData = preload("res://Resources/Data/Wavesets/wavePreset1.tres")
+@onready var waveData = preload("res://Resources/Data/Wavesets/wavePreset2.tres")
 @onready var waveSet = waveData.waves # Amount of Enemies
 @onready var waveTimes = waveData.waveTimes # Time till next Wave
 var waveCount = 0
@@ -32,10 +33,12 @@ var timeForWave:int
 	t4air
 ]
 
+var in_wave = false
+
 func _ready() -> void:
 	wave_spawn_timer.wait_time = waveTimes[0]
 	timeForWave = waveTimes[0]
-	#wave_spawn_timer.start()
+	wave_spawn_timer.start()
 	await get_tree().create_timer(0.02).timeout
 	waveInfo.emit(waveCount, timeForWave)
 	gameUI.startPrematurely.connect(start_wave)
@@ -45,6 +48,10 @@ func _process(_delta: float) -> void:
 		wave_spawn_timer.paused = true
 	else:
 		wave_spawn_timer.paused = false
+	if GameManager.enemy_count == 0 and in_wave:
+		if waveCount > waveSet.size()-1:
+			GameManager.game_won.emit()
+		in_wave = false
 
 func spawn_wave():
 	if waveCount > waveSet.size()-1: return
@@ -60,7 +67,9 @@ func spawn_wave():
 			spawn_enemy(waveIndex)
 			await get_tree().create_timer(0.01).timeout
 			spawnCount += 1
+			GameManager.enemy_count += 1
 		waveIndex += 1
+	in_wave = true
 
 func spawn_enemy(enemyIndex) -> void:
 	var enemyStats = enemyArray[enemyIndex]
@@ -101,3 +110,5 @@ func start_wave() -> void:
 
 func _on_wave_spawning_timeout() -> void:
 	start_wave()
+	if waveCount > waveSet.size()-1:
+		GameManager.game_won.emit()

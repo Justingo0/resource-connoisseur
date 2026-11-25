@@ -18,7 +18,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not GameManager.tutorial_mode:
+	if not GameManager.tutorial_mode and not GameManager.peacful_mode:
+		if GameManager.enemy_count == 0:
+			$skipWaveButton.visible = true
 		time += delta*GameManager.time_scale
 		if time > 1:
 			timeForWave -= 1
@@ -34,6 +36,9 @@ func _process(delta: float) -> void:
 			time = 0
 	else:
 		text = "waiting..."
+		$skipWaveButton.visible = false
+	if GameManager.enemy_count > 0:
+		$skipWaveButton.visible = false
 
 func set_timer(newWaveCount, newTimeForWave) -> void:
 	timeForWave = newTimeForWave

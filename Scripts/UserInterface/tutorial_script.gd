@@ -19,6 +19,7 @@ func _ready() -> void:
 		tip.visible = false
 	iteration = $"..".starting_step
 	if $"..".tutorial_mode:
+		$"../WaveContainer/waveTimer/skipWaveButton".visible = false
 		GameManager.tutorial_mode = true
 		start_iteration()
 	else:

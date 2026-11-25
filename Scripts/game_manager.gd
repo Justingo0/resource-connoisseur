@@ -2,6 +2,7 @@ extends Node
 
 signal on_inventory_changed(eh:bool)
 signal core_destroyed
+signal game_won
 
 signal screen_shake(duration:float, magnitude:float)
 
@@ -10,6 +11,9 @@ static var times_logged:int = 0
 
 # Game Values
 static var tutorial_mode:bool = false
+static var peacful_mode:bool = false
+
+static var enemy_count:int = 0
 
 static var time_scale:float = 1
 static var conveyor_frame:int = 0

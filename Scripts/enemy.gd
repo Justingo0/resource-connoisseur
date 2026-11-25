@@ -136,3 +136,7 @@ func pointAtEnemy(angle: float) -> void:
 func _on_timer_timeout() -> void:
 	if targetLocation:
 		navigator.target_position = targetLocation.global_position
+
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_PREDELETE:
+		GameManager.enemy_count -= 1

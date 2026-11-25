@@ -67,7 +67,3 @@ func lose_screen():
 	for child in get_children():
 		child.visible = false
 	$LoseScreen.visible = true
-
-
-func _on_try_again_pressed() -> void:
-	pass # Replace with function body.

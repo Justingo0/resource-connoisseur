@@ -71,6 +71,7 @@
 [ext_resource type="Texture2D" uid="uid://daoa6e6lyq7jd" path="res://Assets/GraphitePress.png" id="48_0frks"]
 [ext_resource type="Texture2D" uid="uid://dydb4t41j541j" path="res://Assets/Graphite.png" id="56_okwr1"]
 [ext_resource type="Script" uid="uid://crpu44nvursjn" path="res://Scripts/UserInterface/lose_screen.gd" id="65_eo1vj"]
+[ext_resource type="Script" uid="uid://ha2rx2onk0gv" path="res://Scripts/UserInterface/win_screen.gd" id="72_0frks"]
 [ext_resource type="Script" uid="uid://cqg3pnpmiwf5x" path="res://Scripts/UserInterface/selection_panel.gd" id="72_7uu0d"]
 [ext_resource type="Script" uid="uid://p01i53cdgrbq" path="res://Scripts/UserInterface/map_button.gd" id="73_57h2s"]
 [ext_resource type="Texture2D" uid="uid://b70tktqcn5fwj" path="res://Assets/UI/TabsIcons/Map.png" id="73_sl55x"]
@@ -201,7 +202,9 @@ script = ExtResource("28_liqnk")
 use_next = true
 highlight_value = null
 expected_value = null
-trigger_value = null
+public_trigger_object = NodePath("../WaveContainer/waveTimer/skipWaveButton")
+trigger_property = "visible"
+trigger_value = false
 metadata/_custom_type_script = "uid://w07ceot5mi5n"
 
 [sub_resource type="Resource" id="Resource_tsw58"]
@@ -497,6 +500,9 @@ font = ExtResource("2_0dv3k")
 font_size = 12
 font_color = Color(1, 1, 1, 0.44400004)
 
+[sub_resource type="LabelSettings" id="LabelSettings_t5fij"]
+font = ExtResource("2_0dv3k")
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p7o00"]
 bg_color = Color(0, 0, 0, 0.814)
 
@@ -536,9 +542,6 @@ border_width_left = 2
 border_width_top = 2
 border_width_right = 2
 border_width_bottom = 8
-
-[sub_resource type="LabelSettings" id="LabelSettings_t5fij"]
-font = ExtResource("2_0dv3k")
 
 [sub_resource type="LabelSettings" id="LabelSettings_g5vdn"]
 font = ExtResource("2_0dv3k")
@@ -2767,111 +2770,6 @@ texture = ExtResource("32_nlj0r")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LoseScreen" type="Control" parent="." unique_id=1974083939]
-visible = false
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -1152.0
-offset_top = -648.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("65_eo1vj")
-
-[node name="Background" type="Panel" parent="LoseScreen" unique_id=1789074252]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_p7o00")
-
-[node name="Label" type="Label" parent="LoseScreen" unique_id=1041791062]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -218.0
-offset_top = -104.0
-offset_right = 218.0
-offset_bottom = -19.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "game over"
-label_settings = SubResource("LabelSettings_wew43")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Label2" type="Label" parent="LoseScreen" unique_id=179923879]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -218.0
-offset_top = -39.0
-offset_right = 218.0
-offset_bottom = 46.0
-grow_horizontal = 2
-grow_vertical = 2
-text = "core destroyed"
-label_settings = SubResource("LabelSettings_njwl4")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="TryAgain" type="Button" parent="LoseScreen" unique_id=1680112654]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -286.0
-offset_top = 104.0
-offset_right = -71.0
-offset_bottom = 167.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_0dv3k")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
-theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
-text = "Try Again"
-
-[node name="MainMenu" type="Button" parent="LoseScreen" unique_id=503359803]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 71.0
-offset_top = 104.0
-offset_right = 286.0
-offset_bottom = 167.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_default_cursor_shape = 2
-theme_override_fonts/font = ExtResource("2_0dv3k")
-theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
-theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
-theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
-text = "Main menu"
-
 [node name="Tooltip" type="PanelContainer" parent="." unique_id=633838063]
 visible = false
 propagate_maximum_size = false
@@ -3042,6 +2940,216 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("73_sl55x")
 
+[node name="LoseScreen" type="Control" parent="." unique_id=1974083939]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -648.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("65_eo1vj")
+
+[node name="Background" type="Panel" parent="LoseScreen" unique_id=1789074252]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7o00")
+
+[node name="Label" type="Label" parent="LoseScreen" unique_id=1041791062]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -104.0
+offset_right = 218.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "game over"
+label_settings = SubResource("LabelSettings_wew43")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="LoseScreen" unique_id=179923879]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -39.0
+offset_right = 218.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "core destroyed"
+label_settings = SubResource("LabelSettings_njwl4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TryAgain" type="Button" parent="LoseScreen" unique_id=1680112654]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = 104.0
+offset_right = -71.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_0dv3k")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
+text = "Try Again"
+
+[node name="MainMenu" type="Button" parent="LoseScreen" unique_id=503359803]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 71.0
+offset_top = 104.0
+offset_right = 286.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_0dv3k")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
+text = "Main menu"
+
+[node name="WinScreen" type="Control" parent="." unique_id=569050886]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1152.0
+offset_top = -648.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("72_0frks")
+
+[node name="Background" type="Panel" parent="WinScreen" unique_id=62994]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p7o00")
+
+[node name="Label" type="Label" parent="WinScreen" unique_id=90094154]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -104.0
+offset_right = 218.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MAP COMPLETED"
+label_settings = SubResource("LabelSettings_wew43")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="WinScreen" unique_id=769346061]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -39.0
+offset_right = 218.0
+offset_bottom = 46.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "ALL ENEMIES DEFEATED"
+label_settings = SubResource("LabelSettings_njwl4")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="WinScreen" unique_id=991646729]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -286.0
+offset_top = 104.0
+offset_right = -71.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_0dv3k")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
+text = "Continue"
+
+[node name="Next" type="Button" parent="WinScreen" unique_id=544674661]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 71.0
+offset_top = 104.0
+offset_right = 286.0
+offset_bottom = 167.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("2_0dv3k")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
+theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
+text = "Next LEvel"
+
 [node name="ReturnToLevel" type="Control" parent="." unique_id=1284017196]
 visible = false
 layout_mode = 1
@@ -3136,5 +3244,7 @@ text = "Continue"
 [connection signal="timeout" from="Annoucement/HideTimer" to="." method="_on_hide_timer_timeout"]
 [connection signal="pressed" from="LoseScreen/TryAgain" to="LoseScreen" method="_on_try_again_pressed"]
 [connection signal="pressed" from="LoseScreen/MainMenu" to="LoseScreen" method="_on_main_menu_pressed"]
+[connection signal="pressed" from="WinScreen/Continue" to="WinScreen" method="_on_continue_pressed"]
+[connection signal="pressed" from="WinScreen/Next" to="WinScreen" method="_on_next_pressed"]
 [connection signal="pressed" from="ReturnToLevel/Return" to="ReturnToLevel" method="_on_try_again_pressed"]
 [connection signal="pressed" from="ReturnToLevel/Continue" to="ReturnToLevel" method="_on_main_menu_pressed"]
