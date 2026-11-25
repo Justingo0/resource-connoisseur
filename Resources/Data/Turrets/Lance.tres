@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_0atx0"]
 [ext_resource type="Texture2D" uid="uid://nse6xmp3t7d6" path="res://Assets/LanceBase.png" id="1_tcff8"]
+[ext_resource type="AudioStream" uid="uid://bug4nbrgfuaah" path="res://Assets/Sounds/Lance.mp3" id="2_tcff8"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="5_7woc8"]
 [ext_resource type="Texture2D" uid="uid://dpboq81kw6b1" path="res://Assets/LanceTop.png" id="5_atjs7"]
 
@@ -22,6 +23,7 @@ projectileLifetime = 0.2
 projectilePierce = 5
 widthMultiplier = 5.0
 knockAmount = 15
+firingNoise = ExtResource("2_tcff8")
 icon = ExtResource("5_atjs7")
 name = "Lance"
 scene = ExtResource("5_7woc8")

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_lg766"]
 [ext_resource type="Texture2D" uid="uid://b01sc12m6uqbh" path="res://Assets/ArbalestBase.png" id="1_n3akm"]
+[ext_resource type="AudioStream" uid="uid://by0ldxqu0ypm0" path="res://Assets/Sounds/Arbalest.mp3" id="2_n3akm"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="5_i35kc"]
 [ext_resource type="Texture2D" uid="uid://yi0chpm8bqqx" path="res://Assets/ArbalestTop.png" id="5_n3akm"]
 
@@ -20,6 +21,7 @@ damage = 25
 projectileSpeed = 2800
 projectileLifetime = 0.4
 knockAmount = 25
+firingNoise = ExtResource("2_n3akm")
 icon = ExtResource("5_n3akm")
 name = "Arbalest"
 scene = ExtResource("5_i35kc")

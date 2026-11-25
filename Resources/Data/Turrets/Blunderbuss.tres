@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bdmccdkdtj8gl" path="res://Assets/BlunderbussBase.png" id="1_lgjw4"]
 [ext_resource type="Script" uid="uid://bd63pnbqlmvh0" path="res://Resources/Managers/turretStats.gd" id="1_rurbd"]
+[ext_resource type="AudioStream" uid="uid://du0fl6j6tbjea" path="res://Assets/Sounds/Blunderbuss.mp3" id="2_lgjw4"]
 [ext_resource type="Texture2D" uid="uid://desde04bcsrc4" path="res://Assets/BlunderbussTop.png" id="5_4fhvw"]
 [ext_resource type="PackedScene" uid="uid://buokk0ij5kndh" path="res://Scenes/turret.tscn" id="5_eofjf"]
 
@@ -21,6 +22,7 @@ damage = 8
 projectileSpeed = 1300
 projectileLifetime = 0.3
 knockAmount = 6
+firingNoise = ExtResource("2_lgjw4")
 icon = ExtResource("5_4fhvw")
 name = "Blunderbuss"
 scene = ExtResource("5_eofjf")
