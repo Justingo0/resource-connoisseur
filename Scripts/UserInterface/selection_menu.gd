@@ -15,6 +15,9 @@ func _unhandled_input(event: InputEvent) -> void:
 		for btn_tab in tabs:
 			btn_tab.button_pressed = false
 
+var active_button = null
+var tab_hover:bool = false
+
 func _ready() -> void:
 	tabs[4].pressed.connect(func():
 		camera.building_object = null
@@ -22,21 +25,35 @@ func _ready() -> void:
 		)
 	for tab in tabs as Array[Button]:
 		tab.pressed.connect(func():
-			tab_switch(tab.name, tab))
+			tab_switch(tab.name, tab)
+			active_button = tab)
 		tab.mouse_entered.connect(func():
+			tab_hover = true
 			tooltip_label.text = tab.editor_description
 			tooltip.size.x = 0
 			tooltip.size = tooltip.size
-			if tab.editor_description and (not get_node("Selections/%s" % [tab.name]).visible or not $Selections.visible):
+			if tab.editor_description: #and (not get_node("Selections/%s" % [tab.name]).visible or not $Selections.visible):
 				if is_mouse_over_control(tab):
 					tooltip.global_position = tab.global_position+Vector2(tooltip.size.x/4, tab.size.y)
 					if tab.name == "Base":
 						tooltip.global_position = tab.global_position+Vector2(-tooltip.size.x/2, tab.size.y)
 					tooltip.visible = true)
 		tab.mouse_exited.connect(func():
-			tooltip.visible = false)
+			tooltip.visible = false
+			tab_hover = false
+			tooltip.size.x = 0
+			tooltip.size = tooltip.size)
 	$Selections.visible = false
 	$HiddenArea.visible = true
+
+func _process(delta: float) -> void:
+	if not tab_hover and active_button:
+		tooltip_label.text = active_button.editor_description
+		if active_button.editor_description:
+			tooltip.global_position = active_button.global_position+Vector2(tooltip.size.x/4, active_button.size.y)
+			if active_button.name == "Base":
+				tooltip.global_position = active_button.global_position+Vector2(-tooltip.size.x/2, active_button.size.y)
+			tooltip.visible = true
 
 func tab_switch(tab:String, tab_button):
 	$Selections.visible = true
@@ -50,6 +67,7 @@ func tab_switch(tab:String, tab_button):
 		$Selections.visible = false
 		$HiddenArea.visible = true
 		selected_tab.visible = false
+		active_button = null
 		return
 	tooltip.visible = false
 	for selection in selections:
