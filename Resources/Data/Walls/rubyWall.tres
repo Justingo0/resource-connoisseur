@@ -10,9 +10,10 @@ icon = ExtResource("1_u0t0l")
 name = "Ruby Wall"
 scene = ExtResource("2_hyb47")
 size = 1
-health = 100
+health = 275
 buildCosts = {
 "Ruby": 10
 }
 destroy_time = 2.0
+description = "Mild protection from enemy fire"
 metadata/_custom_type_script = "uid://bgxel607vfhi8"

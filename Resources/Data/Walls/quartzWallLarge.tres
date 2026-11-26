@@ -10,8 +10,10 @@ icon = ExtResource("1_51mn5")
 name = "Large Quartz Wall"
 scene = ExtResource("2_w5hks")
 size = 2
+health = 1400
 buildCosts = {
 "Quartz": 40
 }
 destroy_time = 4.0
+description = "Decent protection from enemy fire"
 metadata/_custom_type_script = "uid://bgxel607vfhi8"

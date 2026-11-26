@@ -10,8 +10,10 @@ icon = ExtResource("1_kxp7p")
 name = "Carbide Wall"
 scene = ExtResource("2_31wm3")
 size = 1
+health = 1000
 buildCosts = {
 "Carbide": 10
 }
 destroy_time = 2.0
+description = "The most powerful protection from enemy fire"
 metadata/_custom_type_script = "uid://bgxel607vfhi8"
