@@ -24,7 +24,8 @@ var reloadTimer:float
 var shotCount:int
 
 @export var inventory_size = 10
-@export var inventory = {"Ruby":10}
+
+@export var inventory = {}
 
 var dot_count: int = 36
 var dash_length_ratio: float = 0.5
