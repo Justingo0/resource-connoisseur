@@ -52,6 +52,7 @@ use_parent_material = true
 texture = ExtResource("2_6spbj")
 
 [node name="turretTop" type="Sprite2D" parent="." unique_id=347864580]
+z_index = 1
 texture_filter = 1
 scale = Vector2(2, 2)
 texture = ExtResource("3_pulj5")
