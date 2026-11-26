@@ -27,14 +27,16 @@ func _ready() -> void:
 			tooltip_label.text = tab.editor_description
 			tooltip.size.x = 0
 			tooltip.size = tooltip.size
-			if tab.editor_description and (not get_node("Selections/%s" % [tab.name]).visible or not $Selections.visible):
+			if tab.editor_description: #and (not get_node("Selections/%s" % [tab.name]).visible or not $Selections.visible):
 				if is_mouse_over_control(tab):
 					tooltip.global_position = tab.global_position+Vector2(tooltip.size.x/4, tab.size.y)
 					if tab.name == "Base":
 						tooltip.global_position = tab.global_position+Vector2(-tooltip.size.x/2, tab.size.y)
 					tooltip.visible = true)
 		tab.mouse_exited.connect(func():
-			tooltip.visible = false)
+			tooltip.visible = false
+			tooltip.size.x = 0
+			tooltip.size = tooltip.size)
 	$Selections.visible = false
 	$HiddenArea.visible = true
 

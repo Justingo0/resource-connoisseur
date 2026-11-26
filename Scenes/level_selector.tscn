@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://smw1io6akod2" path="res://Assets/UI/MapScreenshots/Map2.png" id="6_g3msu"]
 [ext_resource type="Texture2D" uid="uid://bbxhfxplnqwsp" path="res://Assets/UI/Lock.png" id="7_2h1o8"]
 [ext_resource type="Texture2D" uid="uid://bw1ed5q5wtwfw" path="res://Assets/UI/TabsIcons/CheckMark.png" id="7_oto5v"]
+[ext_resource type="Texture2D" uid="uid://ddqu7sltur8r5" path="res://Assets/UI/MapScreenshots/Map3.png" id="10_auv11"]
 [ext_resource type="Script" uid="uid://bjs2q4u4nx1lk" path="res://Scripts/UserInterface/return_button.gd" id="10_bivqt"]
 [ext_resource type="Texture2D" uid="uid://bucp40lgcrvsb" path="res://Assets/UI/TabsIcons/X.png" id="11_auv11"]
 
@@ -286,9 +287,13 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
 offset_top = -29.0
+offset_right = 3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p7o00")
 
 [node name="Label" type="Label" parent="1/Panel" unique_id=972403578]
@@ -315,6 +320,7 @@ offset_top = -28.25
 offset_right = 18.5
 offset_bottom = 8.75
 grow_horizontal = 2
+mouse_filter = 2
 texture = ExtResource("7_oto5v")
 
 [node name="Gear2" type="TextureRect" parent="1/TextureRect2" unique_id=1266944029]
@@ -333,6 +339,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 offset_transform_enabled = true
+mouse_filter = 2
 texture = ExtResource("1_yk0gq")
 expand_mode = 1
 stretch_mode = 5
@@ -390,9 +397,13 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
 offset_top = -29.0
+offset_right = 3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p7o00")
 
 [node name="Label" type="Label" parent="2/Panel" unique_id=344620504]
@@ -434,6 +445,7 @@ offset_top = -28.25
 offset_right = 18.5
 offset_bottom = 8.75
 grow_horizontal = 2
+mouse_filter = 2
 texture = ExtResource("7_oto5v")
 
 [node name="Gear2" type="TextureRect" parent="2/TextureRect2" unique_id=1795564211]
@@ -452,6 +464,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 offset_transform_enabled = true
+mouse_filter = 2
 texture = ExtResource("1_yk0gq")
 expand_mode = 1
 stretch_mode = 5
@@ -474,7 +487,7 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_nlj0r")
 disabled = true
 script = ExtResource("3_b8t80")
 map_scene = "uid://cbsj25jysd6r2"
-map_icon = ExtResource("6_g3msu")
+map_icon = ExtResource("10_auv11")
 
 [node name="TextureRect" type="TextureRect" parent="3" unique_id=819205273]
 layout_mode = 1
@@ -493,9 +506,13 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -3.0
 offset_top = -29.0
+offset_right = 3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_p7o00")
 
 [node name="Label" type="Label" parent="3/Panel" unique_id=125888781]
@@ -537,6 +554,7 @@ offset_top = -28.25
 offset_right = 18.5
 offset_bottom = 8.75
 grow_horizontal = 2
+mouse_filter = 2
 texture = ExtResource("7_oto5v")
 
 [node name="Gear2" type="TextureRect" parent="3/TextureRect2" unique_id=414410331]
@@ -555,6 +573,7 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset_ratio = Vector2(0.5, 0.5)
 offset_transform_enabled = true
+mouse_filter = 2
 texture = ExtResource("1_yk0gq")
 expand_mode = 1
 stretch_mode = 5
