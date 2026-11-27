@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://by4lc3lesdxok" path="res://Scripts/turret.gd" id="1_6spbj"]
 [ext_resource type="Texture2D" uid="uid://crt6dnay6ivb6" path="res://Assets/DaggerBase.png" id="2_6spbj"]
-[ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/DaggerTop.png" id="3_pulj5"]
+[ext_resource type="Texture2D" uid="uid://dpboq81kw6b1" path="res://Assets/LanceTop.png" id="3_ahfaj"]
 [ext_resource type="Texture2D" uid="uid://0l7c2pym3i4r" path="res://Assets/VFX/Smoke.png" id="4_ahfaj"]
 [ext_resource type="Script" uid="uid://bxyohgxvyajcn" path="res://Scripts/kill_particle.gd" id="5_ku01o"]
 
@@ -38,7 +38,6 @@ scale_curve = SubResource("CurveTexture_hpwha")
 color_ramp = SubResource("GradientTexture1D_74mb1")
 
 [node name="Turret" type="Area2D" unique_id=189769755 groups=["Block", "Container"]]
-z_index = 5
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_6spbj")
@@ -52,9 +51,11 @@ use_parent_material = true
 texture = ExtResource("2_6spbj")
 
 [node name="turretTop" type="Sprite2D" parent="." unique_id=347864580]
+z_index = 5
 texture_filter = 1
+rotation = 2.4075572
 scale = Vector2(2, 2)
-texture = ExtResource("3_pulj5")
+texture = ExtResource("3_ahfaj")
 
 [node name="RadiusOutline" type="Node2D" parent="." unique_id=1079176963]
 

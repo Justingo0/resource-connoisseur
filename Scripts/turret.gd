@@ -24,7 +24,7 @@ var reloadTimer:float
 var shotCount:int
 
 @export var inventory_size = 10
-@export var inventory = {"Ruby":10}
+@export var inventory = {}
 
 var dot_count: int = 36
 var dash_length_ratio: float = 0.5
@@ -113,9 +113,9 @@ func shoot():
 		
 		if shoot_tween:
 			shoot_tween.kill()
-		turretTop.offset = Vector2.from_angle(turretTop.global_rotation+deg_to_rad(90) * -15.0*(1.0+(type.size/3.0)))
+		turretTop.position = Vector2.from_angle(turretTop.rotation-deg_to_rad(90)) * -8.0*(1.0+(type.size/3.0))+(Vector2(-32,-32) if type.size == 2 else Vector2.ZERO)
 		shoot_tween = create_tween()
-		shoot_tween.tween_property(turretTop, "offset", Vector2(0,0), 1)
+		shoot_tween.tween_property(turretTop, "position", Vector2(-32,-32) if type.size == 2 else Vector2.ZERO, 1)
 		
 		var bulletClone = bullet.instantiate()
 		bulletClone.position = global_position
