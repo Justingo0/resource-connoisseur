@@ -2,6 +2,7 @@ extends Camera2D
 
 signal on_object_placed(obj_type:PackedScene)
 signal on_object_deleted
+signal on_action_started(action:String)
 signal on_action_finised(action:String)
 
 @onready var build_cursor = $BuildCursor
@@ -126,6 +127,31 @@ func _unhandled_input(event: InputEvent) -> void:
 		#building = true
 
 func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Pause"):
+		if current_objects.is_empty(): return
+		speed = 1.0 if speed == 0.0 else 0.0
+	if event.is_action_pressed("Cancel"):
+		if current_objects.is_empty(): return
+		if object_action == actions.placing:
+			for object in current_objects:
+				#if object_action == actions.placing:
+					#object.destroy_time = object.max_destroy_time
+					#object.material = null
+					#object.modulate = Color.WHITE
+					#continue
+				object.queue_free()
+		elif object_action == actions.deleting:
+			for object in current_objects:
+				#if object_action == actions.placing:
+				object.destroy_time = object.max_destroy_time
+				object.material = null
+				object.modulate = Color.WHITE
+				continue
+		#if interacting_object:
+			#interacting_object.destroy_time = interacting_object.max_destroy_time
+			#interacting_object.material = null
+			#interacting_object.modulate = Color.WHITE
+		current_objects.clear()
 	if event.is_action_released("Place"):
 		if GameManager.time_scale == 0.0: return
 		if object_action == actions.deleting and current_objects.size() > 0: return
@@ -134,6 +160,8 @@ func _input(event: InputEvent) -> void:
 		
 		current_objects.append_array(building_objects)
 		object_action = actions.placing
+		if not current_objects.is_empty():
+			on_action_started.emit("placing")
 		
 		var inv = %Home.inventory as Dictionary
 		for key in predicted_loss:
@@ -153,6 +181,8 @@ func _input(event: InputEvent) -> void:
 		
 		current_objects.append_array(deleting_objects)
 		object_action = actions.deleting
+		if not current_objects.is_empty():
+			on_action_started.emit("deleting")
 		
 		building = false
 		current_action = null

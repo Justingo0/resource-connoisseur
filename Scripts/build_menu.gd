@@ -6,15 +6,12 @@ signal send_announcement(message:String, icon:Texture2D, color:Color)
 @onready var camera = %Camera2D
 @onready var pause_state_sign = $PauseButton/TextureRect
 
-@onready var miner = preload("res://Scenes/miner.tscn")
-@onready var conveyor = preload("res://Scenes/conveyor.tscn")
-@onready var home = preload("res://Scenes/home.tscn")
-@onready var router = preload("res://Scenes/router.tscn")
-@onready var turrent = preload("res://Scenes/turret.tscn")
-
 @onready var annoucment_label = $Annoucement
 @onready var annoucement_icon = $Annoucement/Icon
 @onready var hide_timer = $Annoucement/HideTimer
+
+@onready var action_panel = $ActionPanel
+@onready var action_label = $ActionPanel/Action
 
 @onready var play_sign = preload("res://Assets/UI/play.png")
 @onready var pause_sign = preload("res://Assets/UI/pause.png")
@@ -28,8 +25,21 @@ var ANNOUNCEMENT_DURATION = 3 #seconds
 
 var announce_tween:Tween
 
+var building_paused = false
+
 func _ready() -> void:
 	GameManager.core_destroyed.connect(lose_screen)
+	
+	action_panel.visible = false
+	camera.on_action_started.connect(func(_lala):
+		action_panel.visible = true)
+	camera.on_action_finised.connect(func(_lala):
+		action_panel.visible = false)
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("Pause") and action_panel.visible:
+		building_paused = not building_paused
+		action_label.text = "[color={0}][b][C][/b][/color] to pause\n[b][X][/b] to cancel".format(["green" if building_paused else "white"])
 
 func _on_pause_button_pressed() -> void:
 	paused = not paused

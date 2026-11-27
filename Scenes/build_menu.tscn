@@ -10,29 +10,29 @@
 [ext_resource type="Script" uid="uid://c6f7oghh7tfqj" path="res://Scripts/UserInterface/selection_menu.gd" id="11_4o04s"]
 [ext_resource type="PackedScene" uid="uid://busepgbfxl48t" path="res://Scenes/selection_button.tscn" id="11_v31xr"]
 [ext_resource type="Texture2D" uid="uid://dq2yh8nw3wo0a" path="res://Assets/mineBuild.png" id="13_b2sko"]
-[ext_resource type="Texture2D" uid="uid://ee1qbu4trhlf" path="res://Assets/DaggerTop.png" id="14_njwl4"]
+[ext_resource type="Texture2D" uid="uid://cslfjbldikx83" path="res://Assets/DaggerBuild.png" id="14_l5rai"]
 [ext_resource type="Resource" uid="uid://ubquto7gj313" path="res://Resources/Data/Turrets/Dagger.tres" id="14_nlj0r"]
 [ext_resource type="Resource" uid="uid://sxvaf54lydtu" path="res://Resources/Data/Turrets/Arbalest.tres" id="15_qi0q1"]
 [ext_resource type="Resource" uid="uid://s8sox3x81p57" path="res://Resources/Data/Miners/basic_miner.tres" id="16_fg8k8"]
-[ext_resource type="Texture2D" uid="uid://yi0chpm8bqqx" path="res://Assets/ArbalestTop.png" id="16_w8fxn"]
+[ext_resource type="Texture2D" uid="uid://bvbvidefjxiog" path="res://Assets/ArbalestBaseIcon.png" id="16_m26fi"]
 [ext_resource type="Resource" uid="uid://c37b5vulia72t" path="res://Resources/Data/Turrets/Blunderbuss.tres" id="17_6gs3s"]
 [ext_resource type="Texture2D" uid="uid://d4idlmt7lifhb" path="res://Assets/UI/TabsIcons/Miners.png" id="17_fg8k8"]
 [ext_resource type="Resource" uid="uid://clc15lbcd830h" path="res://Resources/Data/Sorting/Conveyors/basic_conveyor.tres" id="17_u07jk"]
 [ext_resource type="Resource" uid="uid://blyr3tph1yotb" path="res://Resources/Data/Sorting/router.tres" id="18_0dv3k"]
-[ext_resource type="Texture2D" uid="uid://desde04bcsrc4" path="res://Assets/BlunderbussTop.png" id="18_7so82"]
 [ext_resource type="Resource" uid="uid://cp76e3xhj2ev" path="res://Resources/Data/Turrets/Lance.tres" id="18_87c2h"]
 [ext_resource type="Texture2D" uid="uid://dfd1btk12bhyh" path="res://Assets/UI/TabsIcons/Conveyors.png" id="18_b2sko"]
+[ext_resource type="Texture2D" uid="uid://cgt02p6ttctfr" path="res://Assets/BlunderbussBaseIcon.png" id="18_liuvp"]
 [ext_resource type="Resource" uid="uid://cj6rocxqm5owa" path="res://Resources/Data/Turrets/Chu-Ko-Nu.tres" id="19_0dv3k"]
 [ext_resource type="Resource" uid="uid://bohkep2gj2qrn" path="res://Resources/Data/Turrets/Hua-Che.tres" id="19_6gs3s"]
 [ext_resource type="Resource" uid="uid://b55swmillii22" path="res://Resources/Data/Factories/graphitePress.tres" id="20_0dv3k"]
+[ext_resource type="Texture2D" uid="uid://b8ex4g71bdu2g" path="res://Assets/Chu-Ko-NuBaseIcon.png" id="20_a1vno"]
 [ext_resource type="Texture2D" uid="uid://vwpymd5ttyrd" path="res://Assets/UI/TabsIcons/Turrets.png" id="20_fg8k8"]
 [ext_resource type="Resource" uid="uid://cc8gawubv8gsg" path="res://Resources/Data/Turrets/Ballista.tres" id="20_leu4g"]
-[ext_resource type="Texture2D" uid="uid://0lqn3qj3xxx2" path="res://Assets/Chu-Ko-NuTop.png" id="20_pmilx"]
 [ext_resource type="Resource" uid="uid://dux2nmvmm42tu" path="res://Resources/Data/Factories/alloySmelter.tres" id="20_ypmmn"]
 [ext_resource type="Texture2D" uid="uid://dxotj1p8d112" path="res://Assets/UI/TabsIcons/Base.png" id="22_dnf6v"]
-[ext_resource type="Texture2D" uid="uid://dpboq81kw6b1" path="res://Assets/LanceTop.png" id="22_hmkjk"]
-[ext_resource type="Texture2D" uid="uid://chtwrv6tkw8af" path="res://Assets/Hua-CheTop.png" id="24_pvcui"]
-[ext_resource type="Texture2D" uid="uid://bhh7ockuabwlt" path="res://Assets/BallistaTop.png" id="26_ifh0d"]
+[ext_resource type="Texture2D" uid="uid://do0cfnobot3ln" path="res://Assets/LanceBaseIcon.png" id="22_kv06r"]
+[ext_resource type="Texture2D" uid="uid://4lu1dov4ok2f" path="res://Assets/Hua-CheBaseIcon.png" id="24_sakbf"]
+[ext_resource type="Texture2D" uid="uid://yi3pbc7v4a6p" path="res://Assets/BallistaBaseIcon.png" id="26_3sv5c"]
 [ext_resource type="Script" uid="uid://b1ywjhqiff4su" path="res://Scripts/UserInterface/tutorial_script.gd" id="27_2lbpn"]
 [ext_resource type="Texture2D" uid="uid://dlcq5afw7rf34" path="res://Assets/UI/TabsIcons/Walls.png" id="27_qi0q1"]
 [ext_resource type="Texture2D" uid="uid://8i0ed5axyrnk" path="res://Assets/smallRubyWall.png" id="28_44wjp"]
@@ -547,6 +547,9 @@ border_width_bottom = 8
 font = ExtResource("2_0dv3k")
 font_size = 66
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0frks"]
+bg_color = Color(0.14733289, 0.14733289, 0.14733289, 0.646)
+
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
 anchors_preset = 15
@@ -674,9 +677,9 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -496.0
-offset_top = -305.0
-offset_right = -19.999756
+offset_left = -446.0
+offset_top = -295.0
+offset_right = -20.0
 offset_bottom = -20.0
 grow_horizontal = 0
 grow_vertical = 0
@@ -767,49 +770,49 @@ columns = 6
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("14_njwl4")
+texture_normal = ExtResource("14_l5rai")
 type = ExtResource("14_nlj0r")
 
 [node name="Arbalest" parent="SelectionMenu/Selections/Turrets" unique_id=252668739 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("16_w8fxn")
+texture_normal = ExtResource("16_m26fi")
 type = ExtResource("15_qi0q1")
 
 [node name="Blunderbuss" parent="SelectionMenu/Selections/Turrets" unique_id=1107903705 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("18_7so82")
+texture_normal = ExtResource("18_liuvp")
 type = ExtResource("17_6gs3s")
 
 [node name="Chu-Ko-Nu" parent="SelectionMenu/Selections/Turrets" unique_id=345103799 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("20_pmilx")
+texture_normal = ExtResource("20_a1vno")
 type = ExtResource("19_0dv3k")
 
 [node name="Lance" parent="SelectionMenu/Selections/Turrets" unique_id=1907970065 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("22_hmkjk")
+texture_normal = ExtResource("22_kv06r")
 type = ExtResource("18_87c2h")
 
 [node name="Hua-Che" parent="SelectionMenu/Selections/Turrets" unique_id=1002338534 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("24_pvcui")
+texture_normal = ExtResource("24_sakbf")
 type = ExtResource("19_6gs3s")
 
 [node name="Ballista" parent="SelectionMenu/Selections/Turrets" unique_id=1374722836 instance=ExtResource("11_v31xr")]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture_normal = ExtResource("26_ifh0d")
+texture_normal = ExtResource("26_3sv5c")
 type = ExtResource("20_leu4g")
 
 [node name="Walls" type="GridContainer" parent="SelectionMenu/Selections" unique_id=1682967110]
@@ -3187,7 +3190,7 @@ offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Return to 
-level selection?"
+map selection?"
 label_settings = SubResource("LabelSettings_g5vdn")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -3213,7 +3216,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
-text = "Return"
+text = "continue"
 
 [node name="Continue" type="Button" parent="ReturnToLevel" unique_id=1047784289]
 texture_filter = 1
@@ -3223,9 +3226,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 71.0
+offset_left = 51.0
 offset_top = 104.0
-offset_right = 286.0
+offset_right = 306.0
 offset_bottom = 167.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -3236,7 +3239,39 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_njwl4")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
-text = "Continue"
+text = "return to menu"
+
+[node name="ActionPanel" type="Panel" parent="." unique_id=1930101947]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -656.0
+offset_top = -61.0
+offset_right = -496.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0frks")
+
+[node name="Action" type="RichTextLabel" parent="ActionPanel" unique_id=1992434036]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = -9.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_0dv3k")
+theme_override_fonts/bold_font = ExtResource("2_0dv3k")
+theme_override_font_sizes/normal_font_size = 19
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[b][C][/b] to pause
+[b][X][/b] to cancel"
+vertical_alignment = 1
 
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]
