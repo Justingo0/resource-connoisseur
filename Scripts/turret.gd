@@ -76,7 +76,7 @@ func _on_range_cone_body_exited(body: Node2D) -> void:
 func _physics_process(_delta: float) -> void:
 	if held: return
 	if !targets.is_empty():
-		var targetPos = targets[0].global_position+(targets[0].velocity*0.05)
+		var targetPos = targets[0].global_position+(targets[0].velocity*0.07)
 		targetRotation = global_position.angle_to_point(targetPos)
 		if abs(rad_to_deg(angle_difference(targetRotation + 1.571, turretTop.global_rotation))) < 3 and reloadTimer > type.reloadSpeed:
 			shoot()
@@ -113,9 +113,9 @@ func shoot():
 		
 		if shoot_tween:
 			shoot_tween.kill()
-		turretTop.position = Vector2.from_angle(turretTop.global_rotation-deg_to_rad(90)) * -15.0*(1.0+(type.size/3.0))
+		turretTop.offset = Vector2.from_angle(turretTop.global_rotation+deg_to_rad(90) * -15.0*(1.0+(type.size/3.0)))
 		shoot_tween = create_tween()
-		shoot_tween.tween_property(turretTop, "position", Vector2(0,0), 1)
+		shoot_tween.tween_property(turretTop, "offset", Vector2(0,0), 1)
 		
 		var bulletClone = bullet.instantiate()
 		bulletClone.position = global_position
