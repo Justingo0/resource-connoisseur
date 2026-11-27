@@ -11,7 +11,7 @@ extends CharacterBody2D
 
 @export var SPEED:float = 3000
 
-@export var main_core:Area2D
+@onready var main_core = %Home
 
 var targetPosition:Vector2
 var moving = false
@@ -78,7 +78,9 @@ func give_action(assignment, interacting_object):
 
 
 func _on_mine_time_timeout() -> void:
+	print(main_core)
 	if not main_core: return
+	print("Hello")
 	if action_object.is_in_group("Ore"):
 		if not (action_object.type.name in main_core.inventory.keys()):
 			main_core.inventory[action_object.type.name] = 0
