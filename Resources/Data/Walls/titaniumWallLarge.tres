@@ -10,8 +10,10 @@ icon = ExtResource("1_wi5pj")
 name = "Large Tatium Wall"
 scene = ExtResource("2_icmxh")
 size = 2
+health = 2000
 buildCosts = {
 "Titanium": 40
 }
 destroy_time = 4.0
+description = "Considerable protection from enemy fire"
 metadata/_custom_type_script = "uid://bgxel607vfhi8"

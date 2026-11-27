@@ -10,8 +10,9 @@ icon = ExtResource("1_bp2js")
 name = "Large Ruby Wall"
 scene = ExtResource("2_ft8ni")
 size = 2
-health = 3000
+health = 1100
 buildCosts = {
 "Ruby": 40
 }
+description = "Mild protection from enemy fire"
 metadata/_custom_type_script = "uid://bgxel607vfhi8"
