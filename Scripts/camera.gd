@@ -92,13 +92,11 @@ func _unhandled_input(event: InputEvent) -> void:
 			#position = (starting_cam_pos + (mouse_starting_pos - get_global_mouse_position()))#.clamp(Vector2(limit_left+viewport_size.x, limit_top+viewport_size.y), Vector2(limit_right-viewport_size.x, limit_bottom-viewport_size.y))
 	
 	if event.is_action_pressed("Place"):
-		if GameManager.time_scale == 0.0: return
 		if object_action == actions.deleting and current_objects.size() > 0: return
 		speed = 1.0
 		current_action = actions.placing
 		building = true
 	if event.is_action_pressed("Delete"):
-		if GameManager.time_scale == 0.0: return
 		building_object = null
 		predicted_loss = {}
 		if object_action == actions.placing and not current_objects.is_empty(): return
@@ -128,6 +126,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
+		if GameManager.time_scale == 0.0: return
 		if current_objects.is_empty(): return
 		speed = 1.0 if speed == 0.0 else 0.0
 	if event.is_action_pressed("Cancel"):
@@ -153,7 +152,6 @@ func _input(event: InputEvent) -> void:
 			#interacting_object.modulate = Color.WHITE
 		current_objects.clear()
 	if event.is_action_released("Place"):
-		if GameManager.time_scale == 0.0: return
 		if object_action == actions.deleting and current_objects.size() > 0: return
 		
 		build_cursor.modulate = Color.from_rgba8(255, 255, 255, 107)
@@ -176,7 +174,6 @@ func _input(event: InputEvent) -> void:
 		last_object_built = null
 		building_objects.clear()
 	if event.is_action_released("Delete"):
-		if GameManager.time_scale == 0.0: return
 		if object_action == actions.placing and not current_objects.is_empty(): return
 		
 		current_objects.append_array(deleting_objects)
