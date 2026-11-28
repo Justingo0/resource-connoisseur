@@ -77,6 +77,22 @@
 [ext_resource type="Texture2D" uid="uid://b70tktqcn5fwj" path="res://Assets/UI/TabsIcons/Map.png" id="73_sl55x"]
 [ext_resource type="Script" uid="uid://h81f00n53soy" path="res://Scripts/UserInterface/return_to_level.gd" id="75_g5vdn"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlj0r"]
+bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+corner_detail = 1
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cb7yr"]
 bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
 border_width_left = 2
@@ -180,22 +196,6 @@ font = ExtResource("2_0dv3k")
 [sub_resource type="LabelSettings" id="LabelSettings_cj8qe"]
 font = ExtResource("2_0dv3k")
 font_size = 11
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nlj0r"]
-bg_color = Color(0.14901961, 0.14901961, 0.14901961, 0.43137255)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 6
-corner_radius_top_right = 6
-corner_radius_bottom_right = 6
-corner_radius_bottom_left = 6
-corner_detail = 1
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
 
 [sub_resource type="Resource" id="Resource_87c2h"]
 script = ExtResource("28_liqnk")
@@ -547,9 +547,6 @@ border_width_bottom = 8
 font = ExtResource("2_0dv3k")
 font_size = 66
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0frks"]
-bg_color = Color(0.14733289, 0.14733289, 0.14733289, 0.646)
-
 [node name="BuildMenu" type="Control" unique_id=193295564]
 layout_mode = 3
 anchors_preset = 15
@@ -559,6 +556,75 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_hx1pr")
 starting_step = 31
+
+[node name="ActionPanel" type="Panel" parent="." unique_id=1930101947]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -646.0
+offset_top = -55.0
+offset_right = -506.0
+offset_bottom = 2.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nlj0r")
+
+[node name="Action" type="RichTextLabel" parent="ActionPanel" unique_id=1992434036]
+clip_contents = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_right = -3.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_0dv3k")
+theme_override_fonts/bold_font = ExtResource("2_0dv3k")
+theme_override_font_sizes/normal_font_size = 19
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "[color=\"red\"][b][C][/b][/color] to pause
+[b][X][/b] to cancel"
+vertical_alignment = 1
+
+[node name="PausedIndicator" type="Panel" parent="." unique_id=530793347]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -623.0
+offset_top = -658.0
+offset_right = -529.0
+offset_bottom = -620.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_nlj0r")
+
+[node name="Action" type="RichTextLabel" parent="PausedIndicator" unique_id=755815944]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 10.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_0dv3k")
+theme_override_fonts/bold_font = ExtResource("2_0dv3k")
+theme_override_font_sizes/normal_font_size = 19
+theme_override_font_sizes/bold_font_size = 24
+bbcode_enabled = true
+text = "<Paused>"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="WaveContainer" type="Panel" parent="." unique_id=299618793]
 layout_mode = 1
@@ -3240,38 +3306,6 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_eo1vj")
 theme_override_styles/hover = SubResource("StyleBoxFlat_okwr1")
 theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_lq6r3")
 text = "return to menu"
-
-[node name="ActionPanel" type="Panel" parent="." unique_id=1930101947]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -656.0
-offset_top = -61.0
-offset_right = -496.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_0frks")
-
-[node name="Action" type="RichTextLabel" parent="ActionPanel" unique_id=1992434036]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_right = -9.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_0dv3k")
-theme_override_fonts/bold_font = ExtResource("2_0dv3k")
-theme_override_font_sizes/normal_font_size = 19
-theme_override_font_sizes/bold_font_size = 24
-bbcode_enabled = true
-text = "[b][C][/b] to pause
-[b][X][/b] to cancel"
-vertical_alignment = 1
 
 [connection signal="send_announcement" from="." to="." method="_on_send_announcement"]
 [connection signal="pressed" from="WaveContainer/waveTimer/skipWaveButton" to="." method="_on_skip_wave_button_pressed"]

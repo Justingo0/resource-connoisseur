@@ -10,6 +10,8 @@ signal send_announcement(message:String, icon:Texture2D, color:Color)
 @onready var annoucement_icon = $Annoucement/Icon
 @onready var hide_timer = $Annoucement/HideTimer
 
+@onready var paused_indicator = $PausedIndicator
+
 @onready var action_panel = $ActionPanel
 @onready var action_label = $ActionPanel/Action
 
@@ -30,7 +32,10 @@ var building_paused = false
 func _ready() -> void:
 	GameManager.core_destroyed.connect(lose_screen)
 	
+	paused_indicator.visible = false
+	
 	action_panel.visible = false
+	action_label.text = "[color={0}][b][C][/b][/color] to pause\n[b][X][/b] to cancel".format(["white"])
 	camera.on_action_started.connect(func(_lala):
 		action_panel.visible = true)
 	camera.on_action_finised.connect(func(_lala):
@@ -38,13 +43,15 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause") and action_panel.visible:
+		if GameManager.time_scale == 0.0: return
 		building_paused = not building_paused
-		action_label.text = "[color={0}][b][C][/b][/color] to pause\n[b][X][/b] to cancel".format(["green" if building_paused else "white"])
+		action_label.text = "[color={0}][b][C][/b][/color] to pause\n[b][X][/b] to cancel".format(["yellow" if building_paused else "white"])
 
 func _on_pause_button_pressed() -> void:
 	paused = not paused
 	GameManager.time_scale = 0 if paused else 1
 	pause_state_sign.texture = play_sign if paused else pause_sign
+	paused_indicator.visible = paused
 
 func _on_skip_wave_button_pressed() -> void:
 	if GameManager.time_scale <= 0.0: return
