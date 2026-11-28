@@ -82,5 +82,6 @@ randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_bfgsf")
 script = ExtResource("5_ku01o")
 
+[connection signal="draw" from="RadiusOutline" to="." method="_on_radius_outline_draw"]
 [connection signal="body_entered" from="rangeCone" to="." method="_on_range_cone_body_entered"]
 [connection signal="body_exited" from="rangeCone" to="." method="_on_range_cone_body_exited"]

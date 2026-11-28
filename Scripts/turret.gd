@@ -28,7 +28,7 @@ var shotCount:int
 
 var dot_count: int = 36
 var dash_length_ratio: float = 0.5
-var line_width: float = 2.0
+var line_width: float = 4.0
 var radius_color: Color = Color.YELLOW
 
 var shoot_tween:Tween
